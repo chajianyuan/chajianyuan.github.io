@@ -20,14 +20,12 @@
 <meta property="og:description" content="1、ES6 中 Set 去重set 中成员的值都是唯一的，没有重复的值，set 内部会判断两个值是否不同 Array.from(new Set(arr)) 12let arr &#x3D; [4,1,2,3,4,2,3]Array.from(new Set(arr))  &#x3D;&gt;  [4, 1, 2, 3]  2、利用 for 嵌套 for，然后用 splice 去重1234567">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-10-16T13:00:46.000Z">
-<meta property="article:modified_time" content="2020-09-23T02:15:37.063Z">
+<meta property="article:modified_time" content="2020-09-23T03:30:42.939Z">
 <meta property="article:author" content="chajianyuan">
 <meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
     
 
-    
-        <link rel="alternate" href="/" title="南殇的博客" type="application/atom+xml" />
     
 
     
@@ -65,7 +63,8 @@
     
 
 
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="南殇的博客" type="application/atom+xml">
+</head>
 
 <body>
     <div id="wrap">
@@ -78,6 +77,10 @@
                         <a href="/" class="logo"></a>
                     </h1>
                     
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">More efforts, more fortune</p>
+                        </h2>
+                    
                 </div>
                 <div id="header-inner" class="nav-container">
                     <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
@@ -88,7 +91,7 @@
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                    
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li></ul>
                                 
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
@@ -150,7 +153,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    未分类
+    <a class="page-title-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
     </h1>
 </div>
 
@@ -182,7 +185,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2019/10/16/JS%EF%BC%9A%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" class="article-date">
-     <time datetime="2020-09-23T02:15:37.063Z" itemprop="dateModified">2020-09-23</time>
+     <time datetime="2020-09-23T03:30:42.939Z" itemprop="dateModified">2020-09-23</time>
   </a>
 </div>
 
@@ -198,6 +201,15 @@
                 
 
                 
+   <div class="article-counter">
+      <i class="fa fa-file-word-o"></i>
+      <span class="post-count-item-text">本文字数: </span>
+      <span class="post-count">513</span>
+      <i class="fa fa-clock-o"></i>
+      <span class="post-time-item-text">阅读时长: </span>
+      <span class="post-count">2 分钟 </span>
+   </div>
+
 
             </div>
         
@@ -239,7 +251,7 @@
 
 
 
-    <a data-url="http://cjyblog.com/2019/10/16/JS%EF%BC%9A%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" data-id="ckfet9ikn000jg1fy5dwsahd2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://cjyblog.com/2019/10/16/JS%EF%BC%9A%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" data-id="ckfex8omc000q31fyc6bh3jnq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -312,7 +324,7 @@
         "headline": "JS：数组去重",
         "image": "http://cjyblog.com",
         "keywords": "javascript",
-        "genre": "",
+        "genre": "技术",
         "datePublished": "2019-10-16",
         "dateCreated": "2019-10-16",
         "dateModified": "2020-09-23",
@@ -353,48 +365,8 @@ Array.from(new Set(arr))
             
                 
                 <li>
-                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-twitter"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-facebook"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-stack-overflow"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                    <a class="social-tooltip" title="github" href="https://github.com/chajianyuan" target="_blank" rel="noopener">
                         <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-weibo"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
-                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
-                        <i class="icon fa fa-rss"></i>
                     </a>
                 </li>
                 
@@ -451,7 +423,7 @@ Array.from(new Set(arr))
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></p>
                             <p class="item-title"><a href="/2020/03/27/vue%EF%BC%9Avue%E7%89%88%E6%9C%AC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" class="title">vue：vue版本之间的区别</a></p>
                             <p class="item-date"><time datetime="2020-03-27T00:51:17.000Z" itemprop="datePublished">2020-03-27</time></p>
                         </div>
@@ -471,7 +443,7 @@ Array.from(new Set(arr))
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></p>
                             <p class="item-title"><a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0koa.js/" class="title">Node：学习koa.js</a></p>
                             <p class="item-date"><time datetime="2020-03-26T01:01:10.000Z" itemprop="datePublished">2020-03-26</time></p>
                         </div>
@@ -491,7 +463,7 @@ Array.from(new Set(arr))
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></p>
                             <p class="item-title"><a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0Express.js/" class="title">Node：学习Express.js</a></p>
                             <p class="item-date"><time datetime="2020-03-26T00:50:44.000Z" itemprop="datePublished">2020-03-26</time></p>
                         </div>
@@ -511,7 +483,7 @@ Array.from(new Set(arr))
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></p>
                             <p class="item-title"><a href="/2020/03/26/%E6%80%BB%E7%BB%93%EF%BC%9ANode.js/" class="title">总结：Node.js</a></p>
                             <p class="item-date"><time datetime="2020-03-26T00:45:13.000Z" itemprop="datePublished">2020-03-26</time></p>
                         </div>
@@ -531,7 +503,7 @@ Array.from(new Set(arr))
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></p>
                             <p class="item-title"><a href="/2020/03/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E5%92%8Chttps/" class="title">网络协议：http和https</a></p>
                             <p class="item-date"><time datetime="2020-03-25T00:39:45.000Z" itemprop="datePublished">2020-03-25</time></p>
                         </div>
@@ -543,6 +515,13 @@ Array.from(new Set(arr))
 
             
                 
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><span class="category-list-count">68</span></li></ul>
+        </div>
+    </div>
+
 
             
                 

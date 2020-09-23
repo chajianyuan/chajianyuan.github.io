@@ -2,139 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://cjyblog.com/about/index.html</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/10/12/%E9%9D%A2%E7%BB%8F/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/10/19/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9A%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/10/20/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Apost%E5%92%8Cget%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/10/20/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E7%8A%B6%E6%80%81%E7%A0%81/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/03/27/%E7%AE%97%E6%B3%95%EF%BC%9A%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/03/29/%E7%AE%97%E6%B3%95%EF%BC%9A914%E3%80%81%E5%8D%A1%E7%89%87%E5%88%86%E7%BB%84%EF%BC%88JavaScripe%EF%BC%89/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/03/29/%E7%AE%97%E6%B3%95%EF%BC%9A6%E3%80%81Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2%EF%BC%88JavaScript%EF%BC%89/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/03/29/%E7%AE%97%E6%B3%95%EF%BC%9A488%E3%80%81%E7%A5%96%E7%8E%9B%E6%B8%B8%E6%88%8F%EF%BC%88JavaScript%EF%BC%89/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/03/27/%E7%AE%97%E6%B3%95%EF%BC%9A257%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%EF%BC%88Javascript%EF%BC%89%E2%80%9D/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/03/27/%E7%AE%97%E6%B3%95%EF%BC%9A107%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86II%EF%BC%88Javascript%EF%BC%89%E2%80%9D/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9A%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/09/20/%E6%80%BB%E7%BB%93%EF%BC%9A%E7%AE%97%E6%B3%95/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9Ahtml/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/10/23/%E6%80%BB%E7%BB%93%EF%BC%9Acss/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2020/03/09/%E6%80%BB%E7%BB%93%EF%BC%9AReact/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9AES6/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/03/16/%E5%85%B6%E4%BB%96%EF%BC%9A%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/08/22/%E5%85%B6%E4%BB%96%EF%BC%9AMarkdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://cjyblog.com/2019/09/03/webpack%EF%BC%9Awebpack%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/</loc>
     
     <lastmod>2020-09-23</lastmod>
@@ -142,14 +9,14 @@
   </url>
   
   <url>
-    <loc>http://cjyblog.com/2019/10/19/vue%EF%BC%9A%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/</loc>
+    <loc>http://cjyblog.com/2019/08/09/vue%EF%BC%9A%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E9%80%9A%E4%BF%A1/</loc>
     
     <lastmod>2020-09-23</lastmod>
     
   </url>
   
   <url>
-    <loc>http://cjyblog.com/2019/08/09/vue%EF%BC%9A%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E9%80%9A%E4%BF%A1/</loc>
+    <loc>http://cjyblog.com/2019/10/19/vue%EF%BC%9A%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/</loc>
     
     <lastmod>2020-09-23</lastmod>
     
@@ -170,13 +37,6 @@
   </url>
   
   <url>
-    <loc>http://cjyblog.com/2020/02/11/react%EF%BC%9A%E6%9C%89%E7%8A%B6%E6%80%81%E7%BB%84%E4%BB%B6%E5%92%8C%E6%97%A0%E7%8A%B6%E6%80%81%E7%BB%84%E4%BB%B6/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://cjyblog.com/2019/05/12/uniapp%EF%BC%9AAPP%E5%AE%9E%E7%8E%B0%E5%AE%9A%E4%BD%8D/</loc>
     
     <lastmod>2020-09-23</lastmod>
@@ -184,63 +44,14 @@
   </url>
   
   <url>
-    <loc>http://cjyblog.com/2019/10/15/html%EF%BC%9A%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E3%80%81%E8%A1%8C%E5%86%85%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E3%80%81%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/</loc>
+    <loc>http://cjyblog.com/2020/02/11/react%EF%BC%9A%E6%9C%89%E7%8A%B6%E6%80%81%E7%BB%84%E4%BB%B6%E5%92%8C%E6%97%A0%E7%8A%B6%E6%80%81%E7%BB%84%E4%BB%B6/</loc>
     
     <lastmod>2020-09-23</lastmod>
     
   </url>
   
   <url>
-    <loc>http://cjyblog.com/2019/10/26/html%EF%BC%9AwebSocket%E5%AD%A6%E4%B9%A0/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/09/09/git%EF%BC%9A%E5%AD%A6%E4%B9%A0Git/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/10/15/css%EF%BC%9A%E7%9B%92%E6%A8%A1%E5%9E%8B%E5%8F%8Abox-sizing/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/10/27/css%EF%BC%9A%E5%8D%95%E5%88%97%E3%80%81%E4%B8%A4%E5%88%97%E3%80%81%E4%B8%89%E5%88%97%E5%B8%83%E5%B1%80/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/10/17/css%EF%BC%9A%E5%85%83%E7%B4%A0%E5%8D%95%E4%BD%8D%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/10/19/css%EF%BC%9Acss%E9%80%89%E6%8B%A9%E5%99%A8%E5%8F%8A%E4%BC%98%E5%85%88%E7%BA%A7/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/08/22/css%EF%BC%9Acss%E5%8A%A8%E7%94%BB/</loc>
-    
-    <lastmod>2020-09-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cjyblog.com/2019/10/19/css%EF%BC%9Acss3%E5%B1%9E%E6%80%A7/</loc>
+    <loc>http://cjyblog.com/2019/10/17/JS%EF%BC%9Afor-in%E5%92%8Cfor-of%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
     
     <lastmod>2020-09-23</lastmod>
     
@@ -268,14 +79,21 @@
   </url>
   
   <url>
-    <loc>http://cjyblog.com/2019/10/17/JS%EF%BC%9Afor-in%E5%92%8Cfor-of%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
+    <loc>http://cjyblog.com/2019/10/26/html%EF%BC%9AwebSocket%E5%AD%A6%E4%B9%A0/</loc>
     
     <lastmod>2020-09-23</lastmod>
     
   </url>
   
   <url>
-    <loc>http://cjyblog.com/2019/10/12/ES6%EF%BC%9A%E6%B5%85%E8%B0%88Promise%E3%80%81Generator%E4%BB%A5%E5%8F%8Aasync%20await/</loc>
+    <loc>http://cjyblog.com/2019/10/15/html%EF%BC%9A%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E3%80%81%E8%A1%8C%E5%86%85%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E3%80%81%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/09/09/git%EF%BC%9A%E5%AD%A6%E4%B9%A0Git/</loc>
     
     <lastmod>2020-09-23</lastmod>
     
@@ -297,6 +115,188 @@
   
   <url>
     <loc>http://cjyblog.com/2019/10/14/ES6%EF%BC%9Alet%E3%80%81const%E3%80%81var/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/10/12/ES6%EF%BC%9A%E6%B5%85%E8%B0%88Promise%E3%80%81Generator%E4%BB%A5%E5%8F%8Aasync%20await/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/10/19/css%EF%BC%9Acss%E9%80%89%E6%8B%A9%E5%99%A8%E5%8F%8A%E4%BC%98%E5%85%88%E7%BA%A7/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/08/22/css%EF%BC%9Acss%E5%8A%A8%E7%94%BB/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/10/19/css%EF%BC%9Acss3%E5%B1%9E%E6%80%A7/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/10/17/css%EF%BC%9A%E5%85%83%E7%B4%A0%E5%8D%95%E4%BD%8D%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/10/15/css%EF%BC%9A%E7%9B%92%E6%A8%A1%E5%9E%8B%E5%8F%8Abox-sizing/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/10/27/css%EF%BC%9A%E5%8D%95%E5%88%97%E3%80%81%E4%B8%A4%E5%88%97%E3%80%81%E4%B8%89%E5%88%97%E5%B8%83%E5%B1%80/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2020/03/09/%E6%80%BB%E7%BB%93%EF%BC%9AReact/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9Ahtml/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9AES6/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/10/23/%E6%80%BB%E7%BB%93%EF%BC%9Acss/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9A%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/09/20/%E6%80%BB%E7%BB%93%EF%BC%9A%E7%AE%97%E6%B3%95/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/10/20/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Apost%E5%92%8Cget%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/10/20/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E7%8A%B6%E6%80%81%E7%A0%81/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/10/19/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9A%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/03/27/%E7%AE%97%E6%B3%95%EF%BC%9A%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/03/29/%E7%AE%97%E6%B3%95%EF%BC%9A914%E3%80%81%E5%8D%A1%E7%89%87%E5%88%86%E7%BB%84%EF%BC%88JavaScripe%EF%BC%89/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/03/29/%E7%AE%97%E6%B3%95%EF%BC%9A488%E3%80%81%E7%A5%96%E7%8E%9B%E6%B8%B8%E6%88%8F%EF%BC%88JavaScript%EF%BC%89/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/03/27/%E7%AE%97%E6%B3%95%EF%BC%9A257%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%EF%BC%88Javascript%EF%BC%89%E2%80%9D/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/03/27/%E7%AE%97%E6%B3%95%EF%BC%9A107%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86II%EF%BC%88Javascript%EF%BC%89%E2%80%9D/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/03/29/%E7%AE%97%E6%B3%95%EF%BC%9A6%E3%80%81Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2%EF%BC%88JavaScript%EF%BC%89/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/08/22/%E5%85%B6%E4%BB%96%EF%BC%9AMarkdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/03/16/%E5%85%B6%E4%BB%96%EF%BC%9A%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/2019/10/12/%E9%9D%A2%E7%BB%8F/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cjyblog.com/about/index.html</loc>
     
     <lastmod>2020-09-23</lastmod>
     
@@ -613,5 +613,12 @@
   </url>
   
 
+  
+  <url>
+    <loc>http://cjyblog.com/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2020-09-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
 </urlset>
