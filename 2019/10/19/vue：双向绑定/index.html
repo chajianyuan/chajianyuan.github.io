@@ -1,229 +1,219 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
-
-
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
-  <meta name="author" content="chajianyuan">
-  <meta name="keywords" content="">
-  <title>vue：双向绑定 - 南殇的博客</title>
+    <meta charset="utf-8" />
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+    
+
+    
+    <title>vue：双向绑定 | 南殇的博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="vue" />
+    
+    <meta name="description" content="一、Vue 双向数据绑定 vue 双向数据绑定是通过数据劫持和订阅者-发布者模式实现的  实现一个监听器 Observer：对数据进行遍历，包括子属性对象的属性，利用 Object.defineProperty()或 Proxy 对属性都加上 setter 和 getter。这样给这个对象的某个值赋值，就会触发 setter，就能监听到了数据变化； 实现一个解析器 Compile：解析 Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue：双向绑定">
+<meta property="og:url" content="http://cjyblog.com/2019/10/19/vue%EF%BC%9A%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/index.html">
+<meta property="og:site_name" content="南殇的博客">
+<meta property="og:description" content="一、Vue 双向数据绑定 vue 双向数据绑定是通过数据劫持和订阅者-发布者模式实现的  实现一个监听器 Observer：对数据进行遍历，包括子属性对象的属性，利用 Object.defineProperty()或 Proxy 对属性都加上 setter 和 getter。这样给这个对象的某个值赋值，就会触发 setter，就能监听到了数据变化； 实现一个解析器 Compile：解析 Vue">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/8560482-d18d5fe20c1ade5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/730/format/webp">
+<meta property="article:published_time" content="2019-10-19T01:30:53.000Z">
+<meta property="article:modified_time" content="2020-02-22T07:45:56.000Z">
+<meta property="article:author" content="chajianyuan">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/8560482-d18d5fe20c1ade5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/730/format/webp">
+    
+
+    
+        <link rel="alternate" href="/" title="南殇的博客" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+    
+<link rel="stylesheet" href="/css/style.css">
 
-  
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
     
     
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
-  
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+    
+    
+    
+    
 
 
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="南殇的博客" type="application/atom+xml">
-</head>
-
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 <body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                    
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-10-19 09:30" pubdate>
-        2019年10月19日 上午
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      1.2k 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      17
-       分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
-          
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-      </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </header>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-  <main>
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
     
-      
+    未分类
+    </h1>
+</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
-            <!-- SEO header -->
-            <h1 style="display: none">vue：双向绑定</h1>
+                        <div class="main-body-content">
+                            <article id="post-vue：双向绑定" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        vue：双向绑定
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2019/10/19/vue%EF%BC%9A%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" class="article-date">
+       <time datetime="2019-10-19T01:30:53.000Z" itemprop="datePublished">2019-10-19</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2019/10/19/vue%EF%BC%9A%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" class="article-date">
+     <time datetime="2020-02-22T07:45:56.000Z" itemprop="dateModified">2020-02-22</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/vue/" rel="tag">vue</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
             
-            <div class="markdown-body" id="post-body">
-              <meta name="referrer" content="no-referrer"/>
 
-<h2 id="一、Vue-双向数据绑定"><a href="#一、Vue-双向数据绑定" class="headerlink" title="一、Vue 双向数据绑定"></a>一、Vue 双向数据绑定</h2><p><img src="https://upload-images.jianshu.io/upload_images/8560482-d18d5fe20c1ade5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/730/format/webp" srcset="/img/loading.gif"></p>
+            
+
+            
+
+            <meta name="referrer" content="no-referrer"/>
+
+<h2 id="一、Vue-双向数据绑定"><a href="#一、Vue-双向数据绑定" class="headerlink" title="一、Vue 双向数据绑定"></a>一、Vue 双向数据绑定</h2><p><img src="https://upload-images.jianshu.io/upload_images/8560482-d18d5fe20c1ade5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/730/format/webp"></p>
 <p>vue 双向数据绑定是通过数据劫持和订阅者-发布者模式实现的</p>
 <ol>
 <li>实现一个监听器 Observer：对数据进行遍历，包括子属性对象的属性，利用 Object.defineProperty()或 Proxy 对属性都加上 setter 和 getter。这样给这个对象的某个值赋值，就会触发 setter，就能监听到了数据变化；</li>
@@ -233,152 +223,9 @@
 </ol>
 <p><strong>注意：</strong> Object.defineProperty()对数据进行劫持，但是 Object.defineProperty()只能对属性进行数据劫持，不能对整个对象进行劫持，同理无法对数组进行劫持，所以 Vue 框架是通过遍历数组的递归遍历对象，从而达到利用 Object.defineProperty()也能对对象和数组（部分方法的操作）进行监听。</p>
 <p><strong>代码实现：</strong></p>
-<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>  <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;number&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">v-click</span>=<span class="hljs-string">&quot;increment&quot;</span>&gt;</span>增加<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">from</span>&gt;</span>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    &lt;form&gt;</span><br><span class="line">      &lt;input type&#x3D;&quot;text&quot;  v-model&#x3D;&quot;number&quot;&gt;</span><br><span class="line">      &lt;button type&#x3D;&quot;button&quot; v-click&#x3D;&quot;increment&quot;&gt;增加&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;from&gt;</span><br><span class="line"></span><br><span class="line">    &lt;h3 v-bind&#x3D;&quot;number&quot;&gt;&lt;&#x2F;h3&gt;</span><br><span class="line">    &lt;form&gt;</span><br><span class="line">      &lt;input type&#x3D;&quot;text&quot;  v-model&#x3D;&quot;count&quot;&gt;</span><br><span class="line">      &lt;button type&#x3D;&quot;button&quot; v-click&#x3D;&quot;incre&quot;&gt;增加&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;form&gt;</span><br><span class="line">    &lt;h3 v-bind&#x3D;&quot;count&quot;&gt;&lt;&#x2F;h3&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  function myVue(options) &#123;</span><br><span class="line">    this._init();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  myVue.prototype._init &#x3D; function (options) &#123;</span><br><span class="line">    this.$options &#x3D; options;</span><br><span class="line">    this.$el &#x3D; document.querySelector(options.el);</span><br><span class="line">    this.$data &#x3D; options.data;</span><br><span class="line">    this.$methods &#x3D; options.methods;</span><br><span class="line"></span><br><span class="line">    this._binding &#x3D; &#123;&#125;;</span><br><span class="line">    this._obverse(this.$data);</span><br><span class="line">    this._complie(this.$el);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  myVue.prototype._obverse &#x3D; function (obj) &#123;</span><br><span class="line">    var _this &#x3D; this;</span><br><span class="line">    Object.keys(obj).forEach(function (key) &#123;</span><br><span class="line">      if (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">        _this._binding[key] &#x3D; &#123;</span><br><span class="line">          _directives: []</span><br><span class="line">        &#125;;</span><br><span class="line">        console.log(_this._binding[key])</span><br><span class="line">        var value &#x3D; obj[key];</span><br><span class="line">        if (typeof value &#x3D;&#x3D;&#x3D; &#39;object&#39;) &#123;</span><br><span class="line">          _this._obverse(value);</span><br><span class="line">        &#125;</span><br><span class="line">        var binding &#x3D; _this._binding[key];</span><br><span class="line">        Object.defineProperty(_this.$data, key, &#123;</span><br><span class="line">          enumerable: true,</span><br><span class="line">          configurable: true,</span><br><span class="line">          get: function () &#123;</span><br><span class="line">            console.log(&#96;$&#123;key&#125;获取$&#123;value&#125;&#96;);</span><br><span class="line">            return value;</span><br><span class="line">          &#125;,</span><br><span class="line">          set: function (newVal) &#123;</span><br><span class="line">            console.log(&#96;$&#123;key&#125;更新$&#123;newVal&#125;&#96;);</span><br><span class="line">            if (value !&#x3D;&#x3D; newVal) &#123;</span><br><span class="line">              value &#x3D; newVal;</span><br><span class="line">              binding._directives.forEach(function (item) &#123;</span><br><span class="line">                item.update();</span><br><span class="line">              &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  myVue.prototype._complie &#x3D; function (root) &#123;</span><br><span class="line">    var _this &#x3D; this;</span><br><span class="line">    var nodes &#x3D; root.children;</span><br><span class="line">    for (var i &#x3D; 0; i &lt; nodes.length; i++) &#123;</span><br><span class="line">      var node &#x3D; nodes[i];</span><br><span class="line">      if (node.children.length) &#123;</span><br><span class="line">        this._complie(node);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      if (node.hasAttribute(&#39;v-click&#39;)) &#123;</span><br><span class="line">        node.onclick &#x3D; (function () &#123;</span><br><span class="line">          var attrVal &#x3D; nodes[i].getAttribute(&#39;v-click&#39;);</span><br><span class="line">          return _this.$methods[attrVal].bind(_this.$data);</span><br><span class="line">        &#125;)();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      if (node.hasAttribute(&#39;v-model&#39;) &amp;&amp; (node.tagName &#x3D; &#39;INPUT&#39; || node.tagName &#x3D;&#x3D; &#39;TEXTAREA&#39;)) &#123;</span><br><span class="line">        node.addEventListener(&#39;input&#39;, (function(key) &#123;</span><br><span class="line">          var attrVal &#x3D; node.getAttribute(&#39;v-model&#39;);</span><br><span class="line">          _this._binding[attrVal]._directives.push(new Watcher(</span><br><span class="line">            &#39;input&#39;,</span><br><span class="line">            node,</span><br><span class="line">            _this,</span><br><span class="line">            attrVal,</span><br><span class="line">            &#39;value&#39;</span><br><span class="line">          ))</span><br><span class="line"></span><br><span class="line">          return function() &#123;</span><br><span class="line">            _this.$data[attrVal] &#x3D;  nodes[key].value;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)(i));</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      if (node.hasAttribute(&#39;v-bind&#39;)) &#123;</span><br><span class="line">        var attrVal &#x3D; node.getAttribute(&#39;v-bind&#39;);</span><br><span class="line">        _this._binding[attrVal]._directives.push(new Watcher(</span><br><span class="line">          &#39;text&#39;,</span><br><span class="line">          node,</span><br><span class="line">          _this,</span><br><span class="line">          attrVal,</span><br><span class="line">          &#39;innerHTML&#39;</span><br><span class="line">        ))</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function Watcher(name, el, vm, exp, attr) &#123;</span><br><span class="line">    this.name &#x3D; name;         &#x2F;&#x2F;指令名称，例如文本节点，该值设为&quot;text&quot;</span><br><span class="line">    this.el &#x3D; el;             &#x2F;&#x2F;指令对应的DOM元素</span><br><span class="line">    this.vm &#x3D; vm;             &#x2F;&#x2F;指令所属myVue实例</span><br><span class="line">    this.exp &#x3D; exp;           &#x2F;&#x2F;指令对应的值，本例如&quot;number&quot;</span><br><span class="line">    this.attr &#x3D; attr;         &#x2F;&#x2F;绑定的属性值，本例为&quot;innerHTML&quot;</span><br><span class="line"></span><br><span class="line">    this.update();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Watcher.prototype.update &#x3D; function () &#123;</span><br><span class="line">    this.el[this.attr] &#x3D; this.vm.$data[this.exp];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  window.onload &#x3D; function() &#123;</span><br><span class="line">    var app &#x3D; new myVue(&#123;</span><br><span class="line">      el:&#39;#app&#39;,</span><br><span class="line">      data: &#123;</span><br><span class="line">        number: 0,</span><br><span class="line">        count: 0,</span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line">        increment: function() &#123;</span><br><span class="line">          this.number ++;</span><br><span class="line">        &#125;,</span><br><span class="line">        incre: function() &#123;</span><br><span class="line">          this.count ++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">v-bind</span>=<span class="hljs-string">&quot;number&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>  <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;count&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">v-click</span>=<span class="hljs-string">&quot;incre&quot;</span>&gt;</span>增加<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">v-bind</span>=<span class="hljs-string">&quot;count&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="javascript">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myVue</span>(<span class="hljs-params">options</span>) </span>&#123;</span>
-<span class="javascript">    <span class="hljs-built_in">this</span>._init();</span>
-  &#125;
-
-<span class="javascript">  myVue.prototype._init = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">options</span>) </span>&#123;</span>
-<span class="javascript">    <span class="hljs-built_in">this</span>.$options = options;</span>
-<span class="javascript">    <span class="hljs-built_in">this</span>.$el = <span class="hljs-built_in">document</span>.querySelector(options.el);</span>
-<span class="javascript">    <span class="hljs-built_in">this</span>.$data = options.data;</span>
-<span class="javascript">    <span class="hljs-built_in">this</span>.$methods = options.methods;</span>
-
-<span class="javascript">    <span class="hljs-built_in">this</span>._binding = &#123;&#125;;</span>
-<span class="javascript">    <span class="hljs-built_in">this</span>._obverse(<span class="hljs-built_in">this</span>.$data);</span>
-<span class="javascript">    <span class="hljs-built_in">this</span>._complie(<span class="hljs-built_in">this</span>.$el);</span>
-  &#125;
-
-<span class="javascript">  myVue.prototype._obverse = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj</span>) </span>&#123;</span>
-<span class="javascript">    <span class="hljs-keyword">var</span> _this = <span class="hljs-built_in">this</span>;</span>
-<span class="javascript">    <span class="hljs-built_in">Object</span>.keys(obj).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">key</span>) </span>&#123;</span>
-      if (obj.hasOwnProperty(key)) &#123;
-        _this._binding[key] = &#123;
-          _directives: []
-        &#125;;
-<span class="javascript">        <span class="hljs-built_in">console</span>.log(_this._binding[key])</span>
-<span class="javascript">        <span class="hljs-keyword">var</span> value = obj[key];</span>
-<span class="javascript">        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> value === <span class="hljs-string">&#x27;object&#x27;</span>) &#123;</span>
-          _this._obverse(value);
-        &#125;
-<span class="javascript">        <span class="hljs-keyword">var</span> binding = _this._binding[key];</span>
-<span class="javascript">        <span class="hljs-built_in">Object</span>.defineProperty(_this.$data, key, &#123;</span>
-<span class="javascript">          enumerable: <span class="hljs-literal">true</span>,</span>
-<span class="javascript">          configurable: <span class="hljs-literal">true</span>,</span>
-<span class="javascript">          get: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
-<span class="javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">$&#123;key&#125;</span>获取<span class="hljs-subst">$&#123;value&#125;</span>`</span>);</span>
-<span class="javascript">            <span class="hljs-keyword">return</span> value;</span>
-          &#125;,
-<span class="javascript">          set: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">newVal</span>) </span>&#123;</span>
-<span class="javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">$&#123;key&#125;</span>更新<span class="hljs-subst">$&#123;newVal&#125;</span>`</span>);</span>
-            if (value !== newVal) &#123;
-              value = newVal;
-<span class="javascript">              binding._directives.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item</span>) </span>&#123;</span>
-                item.update();
-              &#125;)
-            &#125;
-          &#125;
-        &#125;)
-      &#125;
-    &#125;)
-  &#125;
-
-<span class="javascript">  myVue.prototype._complie = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">root</span>) </span>&#123;</span>
-<span class="javascript">    <span class="hljs-keyword">var</span> _this = <span class="hljs-built_in">this</span>;</span>
-<span class="javascript">    <span class="hljs-keyword">var</span> nodes = root.children;</span>
-<span class="javascript">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; nodes.length; i++) &#123;</span>
-<span class="javascript">      <span class="hljs-keyword">var</span> node = nodes[i];</span>
-      if (node.children.length) &#123;
-<span class="javascript">        <span class="hljs-built_in">this</span>._complie(node);</span>
-      &#125;
-
-<span class="javascript">      <span class="hljs-keyword">if</span> (node.hasAttribute(<span class="hljs-string">&#x27;v-click&#x27;</span>)) &#123;</span>
-<span class="javascript">        node.onclick = (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
-<span class="javascript">          <span class="hljs-keyword">var</span> attrVal = nodes[i].getAttribute(<span class="hljs-string">&#x27;v-click&#x27;</span>);</span>
-<span class="javascript">          <span class="hljs-keyword">return</span> _this.$methods[attrVal].bind(_this.$data);</span>
-        &#125;)();
-      &#125;
-
-<span class="javascript">      <span class="hljs-keyword">if</span> (node.hasAttribute(<span class="hljs-string">&#x27;v-model&#x27;</span>) &amp;&amp; (node.tagName = <span class="hljs-string">&#x27;INPUT&#x27;</span> || node.tagName == <span class="hljs-string">&#x27;TEXTAREA&#x27;</span>)) &#123;</span>
-<span class="javascript">        node.addEventListener(<span class="hljs-string">&#x27;input&#x27;</span>, (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">key</span>) </span>&#123;</span>
-<span class="javascript">          <span class="hljs-keyword">var</span> attrVal = node.getAttribute(<span class="hljs-string">&#x27;v-model&#x27;</span>);</span>
-<span class="javascript">          _this._binding[attrVal]._directives.push(<span class="hljs-keyword">new</span> Watcher(</span>
-<span class="javascript">            <span class="hljs-string">&#x27;input&#x27;</span>,</span>
-            node,
-            _this,
-            attrVal,
-<span class="javascript">            <span class="hljs-string">&#x27;value&#x27;</span></span>
-          ))
-
-<span class="javascript">          <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span>
-            _this.$data[attrVal] =  nodes[key].value;
-          &#125;
-        &#125;)(i));
-      &#125;
-
-<span class="javascript">      <span class="hljs-keyword">if</span> (node.hasAttribute(<span class="hljs-string">&#x27;v-bind&#x27;</span>)) &#123;</span>
-<span class="javascript">        <span class="hljs-keyword">var</span> attrVal = node.getAttribute(<span class="hljs-string">&#x27;v-bind&#x27;</span>);</span>
-<span class="javascript">        _this._binding[attrVal]._directives.push(<span class="hljs-keyword">new</span> Watcher(</span>
-<span class="javascript">          <span class="hljs-string">&#x27;text&#x27;</span>,</span>
-          node,
-          _this,
-          attrVal,
-<span class="javascript">          <span class="hljs-string">&#x27;innerHTML&#x27;</span></span>
-        ))
-      &#125;
-    &#125;
-  &#125;
-
-<span class="javascript">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Watcher</span>(<span class="hljs-params">name, el, vm, exp, attr</span>) </span>&#123;</span>
-<span class="javascript">    <span class="hljs-built_in">this</span>.name = name;         <span class="hljs-comment">//指令名称，例如文本节点，该值设为&quot;text&quot;</span></span>
-<span class="javascript">    <span class="hljs-built_in">this</span>.el = el;             <span class="hljs-comment">//指令对应的DOM元素</span></span>
-<span class="javascript">    <span class="hljs-built_in">this</span>.vm = vm;             <span class="hljs-comment">//指令所属myVue实例</span></span>
-<span class="javascript">    <span class="hljs-built_in">this</span>.exp = exp;           <span class="hljs-comment">//指令对应的值，本例如&quot;number&quot;</span></span>
-<span class="javascript">    <span class="hljs-built_in">this</span>.attr = attr;         <span class="hljs-comment">//绑定的属性值，本例为&quot;innerHTML&quot;</span></span>
-
-<span class="javascript">    <span class="hljs-built_in">this</span>.update();</span>
-  &#125;
-
-<span class="javascript">  Watcher.prototype.update = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span>
-<span class="javascript">    <span class="hljs-built_in">this</span>.el[<span class="hljs-built_in">this</span>.attr] = <span class="hljs-built_in">this</span>.vm.$data[<span class="hljs-built_in">this</span>.exp];</span>
-  &#125;
-
-<span class="javascript">  <span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span>
-<span class="javascript">    <span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> myVue(&#123;</span>
-<span class="javascript">      el:<span class="hljs-string">&#x27;#app&#x27;</span>,</span>
-      data: &#123;
-        number: 0,
-        count: 0,
-      &#125;,
-      methods: &#123;
-<span class="javascript">        increment: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span>
-<span class="javascript">          <span class="hljs-built_in">this</span>.number ++;</span>
-        &#125;,
-<span class="javascript">        incre: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span>
-<span class="javascript">          <span class="hljs-built_in">this</span>.count ++;</span>
-        &#125;
-      &#125;
-    &#125;)
-  &#125;
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
-
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162ad3d5beb544b6?imageslim" srcset="/img/loading.gif"></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162ad3d5beb544b6?imageslim"></p>
 <h2 id="二、Proxy-和-Object-defineProperty-优劣势对比"><a href="#二、Proxy-和-Object-defineProperty-优劣势对比" class="headerlink" title="二、Proxy 和 Object.defineProperty 优劣势对比"></a>二、Proxy 和 Object.defineProperty 优劣势对比</h2><h3 id="1、Proxy-优势"><a href="#1、Proxy-优势" class="headerlink" title="1、Proxy 优势"></a>1、Proxy 优势</h3><ul>
 <li>Proxy 可以直接监听对象而非属性；</li>
 <li>Proxy 可以直接监听数组的变化；</li>
@@ -391,257 +238,461 @@
 </ul>
 <p><a target="_blank" rel="noopener" href="https://juejin.im/post/5d229bfc5188252d707f3ac6">深入浅出 Vue 响应式原理（完整版）</a></p>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://cjyblog.com/2019/10/19/vue%EF%BC%9A%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" data-id="ckfet1usw0023e8fy1tl07zxg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "chajianyuan"
+        },
+        "headline": "vue：双向绑定",
+        "image": "http://cjyblog.comhttps://upload-images.jianshu.io/upload_images/8560482-d18d5fe20c1ade5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/730/format/webp",
+        "keywords": "vue",
+        "genre": "",
+        "datePublished": "2019-10-19",
+        "dateCreated": "2019-10-19",
+        "dateModified": "2020-02-22",
+        "url": "http://cjyblog.com/2019/10/19/vue：双向绑定/",
+        "description": "
+
+一、Vue 双向数据绑定
+vue 双向数据绑定是通过数据劫持和订阅者-发布者模式实现的
+
+实现一个监听器 Observer：对数据进行遍历，包括子属性对象的属性，利用 Object.defineProperty()或 Proxy 对属性都加上 setter 和 getter。这样给这个对象的某个值赋值，就会触发 setter，就能监听到了数据变化；
+实现一个解析器 Compile：解析 Vue",
+        "wordCount": 1473
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
                 
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
                 
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/vue/">vue</a>
-                    
-                  </div>
+            
                 
-              </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2019/10/19/%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">浏览器：事件机制</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2019/10/18/%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AFEeventloop/">
-                        <span class="hidden-mobile">浏览器：事件循环Eeventloop</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/10/19/%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            浏览器：事件机制
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/10/18/%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AFEeventloop/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">浏览器：事件循环Eeventloop</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
 
             
-          </article>
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/27/vue%EF%BC%9Avue%E7%89%88%E6%9C%AC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://pic3.zhimg.com/80/v2-120c6f2e62e740210a77ab3c87d65c0e_1440w.jpg)" alt="vue：vue版本之间的区别" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/27/vue%EF%BC%9Avue%E7%89%88%E6%9C%AC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" class="title">vue：vue版本之间的区别</a></p>
+                            <p class="item-date"><time datetime="2020-03-27T00:51:17.000Z" itemprop="datePublished">2020-03-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0koa.js/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0koa.js/" class="title">Node：学习koa.js</a></p>
+                            <p class="item-date"><time datetime="2020-03-26T01:01:10.000Z" itemprop="datePublished">2020-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0Express.js/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0Express.js/" class="title">Node：学习Express.js</a></p>
+                            <p class="item-date"><time datetime="2020-03-26T00:50:44.000Z" itemprop="datePublished">2020-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/26/%E6%80%BB%E7%BB%93%EF%BC%9ANode.js/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/26/%E6%80%BB%E7%BB%93%EF%BC%9ANode.js/" class="title">总结：Node.js</a></p>
+                            <p class="item-date"><time datetime="2020-03-26T00:45:13.000Z" itemprop="datePublished">2020-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E5%92%8Chttps/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-gold-cdn.xitu.io/2018/6/11/163ef70cbdc63e95?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)" alt="网络协议：http和https" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E5%92%8Chttps/" class="title">网络协议：http和https</a></p>
+                            <p class="item-date"><time datetime="2020-03-25T00:39:45.000Z" itemprop="datePublished">2020-03-25</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
-      </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
-</div>
 
-      </div>
-    
-  </div>
-</div>
+            
+                
 
-<!-- Custom -->
-
-
-    
-  </main>
-
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
-
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">43</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">7</span></li></ul>
         </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
     </div>
-  </div>
-</div>
-  
 
-  
 
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/" rel="tag">ES6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/" rel="tag">html</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/koa/" rel="tag">koa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" rel="tag">网络协议</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a><span class="tag-list-count">1</span></li></ul>
+        </div>
     </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ES6/" style="font-size: 14.29px;">ES6</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/html/" style="font-size: 12.86px;">html</a> <a href="/tags/javascript/" style="font-size: 18.57px;">javascript</a> <a href="/tags/koa/" style="font-size: 10px;">koa</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/vue/" style="font-size: 17.14px;">vue</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 11.43px;">其他</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 18.57px;">总结</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 15.71px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.14px;">算法</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.29px;">网络协议</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">面经</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 chajianyuan</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
     
 
-    
 
-    
-  </div>
+            </div>
+        </div>
+    </div>
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
-
-<!-- Plugins -->
-
-
-  
-    <script  src="/js/lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://cjyblog.com/2019/10/19/vue%EF%BC%9A%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
 
 
 
 
 
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
 
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
 
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "vue：双向绑定&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
 
 
 
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
-      
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
+<!-- Custom Scripts -->
 
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="/js/main.js"></script>
 
 
 </body>

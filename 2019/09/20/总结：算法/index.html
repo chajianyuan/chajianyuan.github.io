@@ -1,227 +1,215 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
-
-
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
-  <meta name="author" content="chajianyuan">
-  <meta name="keywords" content="">
-  <title>总结：算法 - 南殇的博客</title>
+    <meta charset="utf-8" />
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+    
+
+    
+    <title>总结：算法 | 南殇的博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="总结" />
+    
+    <meta name="description" content="一、二叉树1、二分查找二分查找也叫折半查找，他要求线性表必须采用顺序存储结构，而且表中元素按关键字有序排列 算法步骤 （1）设置查找区间初值，low 为 1，high 为表长； （2）当 low 小于等于 high 时，循环执行以下操作： ​ ·mid 取值为 low 和 high 的中间值； ​ ·将给定值 key 与中间位置记录的关键字进行比较，若相等则查找成功，返回中间位置 mid； ​">
+<meta property="og:type" content="article">
+<meta property="og:title" content="总结：算法">
+<meta property="og:url" content="http://cjyblog.com/2019/09/20/%E6%80%BB%E7%BB%93%EF%BC%9A%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="南殇的博客">
+<meta property="og:description" content="一、二叉树1、二分查找二分查找也叫折半查找，他要求线性表必须采用顺序存储结构，而且表中元素按关键字有序排列 算法步骤 （1）设置查找区间初值，low 为 1，high 为表长； （2）当 low 小于等于 high 时，循环执行以下操作： ​ ·mid 取值为 low 和 high 的中间值； ​ ·将给定值 key 与中间位置记录的关键字进行比较，若相等则查找成功，返回中间位置 mid； ​">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-20T05:19:09.000Z">
+<meta property="article:modified_time" content="2020-09-23T02:15:37.103Z">
+<meta property="article:author" content="chajianyuan">
+<meta property="article:tag" content="总结">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="南殇的博客" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+    
+<link rel="stylesheet" href="/css/style.css">
 
-  
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
     
     
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
-  
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+    
+    
+    
+    
 
 
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="南殇的博客" type="application/atom+xml">
-</head>
-
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 <body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                    
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-09-20 13:19" pubdate>
-        2019年9月20日 下午
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      2.3k 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      30
-       分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
-          
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-      </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </header>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-  <main>
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
     
-      
+    未分类
+    </h1>
+</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
-            <!-- SEO header -->
-            <h1 style="display: none">总结：算法</h1>
+                        <div class="main-body-content">
+                            <article id="post-总结：算法" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        总结：算法
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2019/09/20/%E6%80%BB%E7%BB%93%EF%BC%9A%E7%AE%97%E6%B3%95/" class="article-date">
+       <time datetime="2019-09-20T05:19:09.000Z" itemprop="datePublished">2019-09-20</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2019/09/20/%E6%80%BB%E7%BB%93%EF%BC%9A%E7%AE%97%E6%B3%95/" class="article-date">
+     <time datetime="2020-09-23T02:15:37.103Z" itemprop="dateModified">2020-09-23</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
             
-            <div class="markdown-body" id="post-body">
-              <meta name="referrer" content="no-referrer"/>
+
+            
+
+            
+
+            <meta name="referrer" content="no-referrer"/>
 
 <h1 id="一、二叉树"><a href="#一、二叉树" class="headerlink" title="一、二叉树"></a>一、二叉树</h1><h2 id="1、二分查找"><a href="#1、二分查找" class="headerlink" title="1、二分查找"></a>1、二分查找</h2><p>二分查找也叫折半查找，他要求线性表必须采用顺序存储结构，而且表中元素按关键字有序排列</p>
 <p><strong>算法步骤</strong></p>
@@ -231,21 +219,7 @@
 <p>​ ·将给定值 key 与中间位置记录的关键字进行比较，若相等则查找成功，返回中间位置 mid；</p>
 <p>​ ·若不相等则利用中间位置记录将表对分成前后两个子表。如果 key 比中间位置记录的关键字小，则 high 取为 mid-1，否则 low 取为 mid+1</p>
 <p>（3）循环结束，说明查找区间为空，则查找失败，返回 0</p>
-<pre><code class="hljs vbscript"><span class="hljs-keyword">function</span> midSearch(<span class="hljs-built_in">array</span>, key) &#123;
-        <span class="hljs-keyword">let</span> low = <span class="hljs-number">1</span>,
-          high = <span class="hljs-built_in">array</span>.length;
-        <span class="hljs-keyword">while</span> (low &lt;= high) &#123;
-          <span class="hljs-keyword">let</span> <span class="hljs-built_in">mid</span> = (high + low) / <span class="hljs-number">2</span>;
-          <span class="hljs-keyword">if</span> (key == <span class="hljs-built_in">array</span>[<span class="hljs-built_in">mid</span>]) &#123;
-            return <span class="hljs-built_in">mid</span>;
-          &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key &lt; <span class="hljs-built_in">array</span>[<span class="hljs-built_in">mid</span>]) &#123;
-            high = <span class="hljs-built_in">mid</span> - <span class="hljs-number">1</span>;
-          &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key &gt; <span class="hljs-built_in">array</span>[<span class="hljs-built_in">mid</span>]) &#123;
-            low = <span class="hljs-built_in">mid</span> + <span class="hljs-number">1</span>;
-          &#125;
-        &#125;
-        return <span class="hljs-number">0</span>;
-      &#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function midSearch(array, key) &#123;</span><br><span class="line">        let low &#x3D; 1,</span><br><span class="line">          high &#x3D; array.length;</span><br><span class="line">        while (low &lt;&#x3D; high) &#123;</span><br><span class="line">          let mid &#x3D; (high + low) &#x2F; 2;</span><br><span class="line">          if (key &#x3D;&#x3D; array[mid]) &#123;</span><br><span class="line">            return mid;</span><br><span class="line">          &#125; else if (key &lt; array[mid]) &#123;</span><br><span class="line">            high &#x3D; mid - 1;</span><br><span class="line">          &#125; else if (key &gt; array[mid]) &#123;</span><br><span class="line">            low &#x3D; mid + 1;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="2、二叉排序树"><a href="#2、二叉排序树" class="headerlink" title="2、二叉排序树"></a>2、二叉排序树</h2><h3 id="1）查找"><a href="#1）查找" class="headerlink" title="1）查找"></a>1）查找</h3><p><strong>算法步骤</strong></p>
 <p>（1）若二叉排序树为空，则查找失败，返回空指针；</p>
@@ -253,33 +227,14 @@
 <p>​ ·若 key 等于根节点关键字，则查找成功，返回根节点地址；</p>
 <p>​ ·若 key 小于根节点关键字，则递归查找左子树；</p>
 <p>​ ·若 key 大于根节点关键字，则递归查找右子树。</p>
-<pre><code class="hljs gauss">function <span class="hljs-built_in">erchasearch</span>(pNode, <span class="hljs-built_in">key</span>) &#123;
-	<span class="hljs-keyword">if</span> (!pNode || pNode.val == <span class="hljs-built_in">key</span>) &#123;
-		<span class="hljs-keyword">return</span> pNode;
-	&#125;
-	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">key</span> &lt; pNode.val) &#123;
-		<span class="hljs-keyword">return</span> <span class="hljs-built_in">erchasearch</span>(pNode.left, <span class="hljs-built_in">key</span>);
-	&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">key</span> &gt; pNode.val) &#123;
-		<span class="hljs-keyword">return</span> <span class="hljs-built_in">erchasearch</span>(pNode.right, <span class="hljs-built_in">key</span>);
-	&#125;
-&#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function erchasearch(pNode, key) &#123;</span><br><span class="line">	if (!pNode || pNode.val &#x3D;&#x3D; key) &#123;</span><br><span class="line">		return pNode;</span><br><span class="line">	&#125;</span><br><span class="line">	if (key &lt; pNode.val) &#123;</span><br><span class="line">		return erchasearch(pNode.left, key);</span><br><span class="line">	&#125; else if (key &gt; pNode.val) &#123;</span><br><span class="line">		return erchasearch(pNode.right, key);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="2）插入"><a href="#2）插入" class="headerlink" title="2）插入"></a>2）插入</h3><p><strong>算法步骤</strong></p>
 <p>（1）若二叉排序树为空，则将待插入节点 S 做为根节点插入到空树中；</p>
 <p>（2）若二叉排序树非空，则将 key 与根节点的值进行比较：</p>
 <p>​ ·若 key 小于根节点的值，则把 S 插入到左子树；</p>
 <p>​ ·若 key 大于根节点的值，则把 S 插入到右子树。</p>
-<pre><code class="hljs gauss">function <span class="hljs-built_in">erchainsert</span>(pNode, <span class="hljs-built_in">key</span>) &#123;
-	<span class="hljs-keyword">if</span> (!pNode) &#123;
- 		pNode.val = <span class="hljs-built_in">key</span>;
- 		<span class="hljs-keyword">return</span> pNode;
-	&#125;
-	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">key</span> &lt; pNode.val) &#123;
-		<span class="hljs-keyword">return</span> <span class="hljs-built_in">erchainsert</span>(pNode.left, <span class="hljs-built_in">key</span>);
-	&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">key</span> &gt; pNode.val) &#123;
-		<span class="hljs-keyword">return</span> <span class="hljs-built_in">erchainsert</span>(pNode.right, <span class="hljs-built_in">key</span>);
-	&#125;
-&#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function erchainsert(pNode, key) &#123;</span><br><span class="line">	if (!pNode) &#123;</span><br><span class="line"> 		pNode.val &#x3D; key;</span><br><span class="line"> 		return pNode;</span><br><span class="line">	&#125;</span><br><span class="line">	if (key &lt; pNode.val) &#123;</span><br><span class="line">		return erchainsert(pNode.left, key);</span><br><span class="line">	&#125; else if (key &gt; pNode.val) &#123;</span><br><span class="line">		return erchainsert(pNode.right, key);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="3）删除"><a href="#3）删除" class="headerlink" title="3）删除"></a>3）删除</h3><p><strong>算法步骤</strong></p>
 <p>（1）首先从二叉排序树的根节点开始查找关键字为 key 的带删除节点，如果树中不存在此节点，则不作任何操作；否则，假设被删除接地那为 p，其双亲节点为 f，PL 和 PR 分别表示其左子树和右子树 ，则只需修改其双亲节点的指针即可。</p>
@@ -297,87 +252,15 @@
 <p>（2）对每一对相邻元素做同样的工作，从开始第一对到结尾的最后一对，这样在最后的元素应该会是最大的数；</p>
 <p>（3）针对所有的元素重复以上的步骤，除了最后一个；</p>
 <p>（4）重复步骤 1-3，直到排序完成。</p>
-<pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bubbleSort</span><span class="hljs-params">(array)</span> &#123;</span>
-	let len = array.<span class="hljs-built_in">length</span>;
-	<span class="hljs-keyword">for</span> (let <span class="hljs-built_in">i</span> = <span class="hljs-number">0</span>; <span class="hljs-built_in">i</span> &lt; len; <span class="hljs-built_in">i</span>++) &#123;
-		<span class="hljs-keyword">for</span> (let <span class="hljs-built_in">j</span> = <span class="hljs-number">0</span>; <span class="hljs-built_in">j</span> &lt; len - <span class="hljs-number">1</span>; <span class="hljs-built_in">j</span>++) &#123;
-			<span class="hljs-keyword">if</span> (array[<span class="hljs-built_in">j</span>] &gt; array[<span class="hljs-built_in">j</span> + <span class="hljs-number">1</span>]) &#123;
-				let temp = array[<span class="hljs-built_in">j</span> + <span class="hljs-number">1</span>];
-				array[<span class="hljs-built_in">j</span> + <span class="hljs-number">1</span>] = array[<span class="hljs-built_in">j</span>];
-				array[<span class="hljs-built_in">j</span>] = temp;
-			&#125;
-		&#125;
-	&#125;
-	<span class="hljs-keyword">return</span> array;
-&#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function bubbleSort(array) &#123;</span><br><span class="line">	let len &#x3D; array.length;</span><br><span class="line">	for (let i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">		for (let j &#x3D; 0; j &lt; len - 1; j++) &#123;</span><br><span class="line">			if (array[j] &gt; array[j + 1]) &#123;</span><br><span class="line">				let temp &#x3D; array[j + 1];</span><br><span class="line">				array[j + 1] &#x3D; array[j];</span><br><span class="line">				array[j] &#x3D; temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="2、快速排序"><a href="#2、快速排序" class="headerlink" title="2、快速排序"></a>2、快速排序</h2><p><strong>算法步骤</strong></p>
 <p>（1）从数列中挑出一个元素，称为基准；</p>
 <p>（2）重新排列数列，所有元素比基准小的摆放在基准前面，所有元素比基准大的摆在基准后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区操作；</p>
 <p>（3）递归的把小于基准值元素的子数列和大于基准元素的子数列排序。</p>
-<pre><code class="hljs reasonml"><span class="hljs-keyword">function</span> quick<span class="hljs-constructor">Sort(<span class="hljs-params">array</span>, <span class="hljs-params">left</span>, <span class="hljs-params">right</span>)</span> &#123;
-  <span class="hljs-keyword">let</span> len = <span class="hljs-built_in">array</span>.length,
-    partitionIndex,
-    left = typeof left<span class="hljs-operator"> == </span>&#x27;number&#x27; ? left : <span class="hljs-number">0</span>,
-    right = typeof right<span class="hljs-operator"> == </span>&#x27;number&#x27; ? right : len - <span class="hljs-number">1</span>;
-  <span class="hljs-keyword">if</span> (left &lt; right) &#123;
-    partitionIndex = partition(<span class="hljs-built_in">array</span>, left, right);
-    quick<span class="hljs-constructor">Sort(<span class="hljs-params">array</span>, <span class="hljs-params">left</span>, <span class="hljs-params">partitionIndex</span> - 1)</span>;
-    quick<span class="hljs-constructor">Sort(<span class="hljs-params">array</span>, <span class="hljs-params">partitionIndex</span> + 1, <span class="hljs-params">right</span>)</span>;
-  &#125;
-  return <span class="hljs-built_in">array</span>;
-&#125;
-<span class="hljs-comment">//分区操作</span>
-<span class="hljs-keyword">function</span> partition(<span class="hljs-built_in">array</span>, left, right) &#123;
-  <span class="hljs-comment">//设定基准值pivot</span>
-  <span class="hljs-keyword">let</span> pivot = left,
-    index = pivot + <span class="hljs-number">1</span>;
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = index; i &lt;= right; i++) &#123;
-    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">array</span><span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span> &lt; <span class="hljs-built_in">array</span><span class="hljs-literal">[<span class="hljs-identifier">pivot</span>]</span>) &#123;
-      swap(<span class="hljs-built_in">array</span>, i, index);
-      index++;
-    &#125;
-  &#125;
-&#125;
-<span class="hljs-comment">//交换数据</span>
-<span class="hljs-keyword">function</span> swap(<span class="hljs-built_in">array</span>, i, j) &#123;
-  <span class="hljs-keyword">let</span> temp = <span class="hljs-built_in">array</span><span class="hljs-literal">[<span class="hljs-identifier">j</span>]</span>;
-  <span class="hljs-built_in">array</span><span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span> = <span class="hljs-built_in">array</span><span class="hljs-literal">[<span class="hljs-identifier">j</span>]</span>;
-  <span class="hljs-built_in">array</span><span class="hljs-literal">[<span class="hljs-identifier">j</span>]</span> = temp;
-&#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">function quickSort(array, left, right) &#123;</span><br><span class="line">  let len &#x3D; array.length,</span><br><span class="line">    partitionIndex,</span><br><span class="line">    left &#x3D; typeof left &#x3D;&#x3D; &#39;number&#39; ? left : 0,</span><br><span class="line">    right &#x3D; typeof right &#x3D;&#x3D; &#39;number&#39; ? right : len - 1;</span><br><span class="line">  if (left &lt; right) &#123;</span><br><span class="line">    partitionIndex &#x3D; partition(array, left, right);</span><br><span class="line">    quickSort(array, left, partitionIndex - 1);</span><br><span class="line">    quickSort(array, partitionIndex + 1, right);</span><br><span class="line">  &#125;</span><br><span class="line">  return array;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;分区操作</span><br><span class="line">function partition(array, left, right) &#123;</span><br><span class="line">  &#x2F;&#x2F;设定基准值pivot</span><br><span class="line">  let pivot &#x3D; left,</span><br><span class="line">    index &#x3D; pivot + 1;</span><br><span class="line">  for (let i &#x3D; index; i &lt;&#x3D; right; i++) &#123;</span><br><span class="line">    if (array[i] &lt; array[pivot]) &#123;</span><br><span class="line">      swap(array, i, index);</span><br><span class="line">      index++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;交换数据</span><br><span class="line">function swap(array, i, j) &#123;</span><br><span class="line">  let temp &#x3D; array[j];</span><br><span class="line">  array[i] &#x3D; array[j];</span><br><span class="line">  array[j] &#x3D; temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<pre><code class="hljs swift">function <span class="hljs-built_in">quickSort</span>(arr) &#123;
-  <span class="hljs-keyword">let</span> quick = arr =&gt; &#123;
-    <span class="hljs-built_in">sort</span>(arr, <span class="hljs-number">0</span>, arr.length - <span class="hljs-number">1</span>);
-    <span class="hljs-keyword">return</span> arr;
-  &#125;;
-  <span class="hljs-keyword">let</span> <span class="hljs-built_in">sort</span> = (arr, <span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>) =&gt; &#123;
-    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">left</span> &lt; <span class="hljs-keyword">right</span>) &#123;
-      <span class="hljs-keyword">let</span> center = findCenter(arr, <span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>);
-      <span class="hljs-built_in">sort</span>(arr, <span class="hljs-number">0</span>, center - <span class="hljs-number">1</span>);
-      <span class="hljs-built_in">sort</span>(arr, center, <span class="hljs-keyword">right</span>);
-    &#125;
-  &#125;;
-  <span class="hljs-keyword">let</span> findCenter = (arr, <span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>) =&gt; &#123;
-    <span class="hljs-keyword">let</span> flag = arr[<span class="hljs-keyword">left</span>];
-    <span class="hljs-keyword">let</span> index = <span class="hljs-keyword">left</span> + <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = index; i &lt; arr.length; i++) &#123;
-      <span class="hljs-keyword">if</span> (arr[i] &lt; flag) &#123;
-        <span class="hljs-built_in">swap</span>(arr, i, index);
-        index++;
-      &#125;
-    &#125;
-    <span class="hljs-built_in">swap</span>(arr, <span class="hljs-keyword">left</span>, index - <span class="hljs-number">1</span>);
-    <span class="hljs-keyword">return</span> index;
-  &#125;;
-  <span class="hljs-keyword">let</span> <span class="hljs-built_in">swap</span> = (arr, <span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>) =&gt; &#123;
-    <span class="hljs-keyword">let</span> mid = arr[<span class="hljs-keyword">left</span>];
-    arr[<span class="hljs-keyword">left</span>] = arr[<span class="hljs-keyword">right</span>];
-    arr[<span class="hljs-keyword">right</span>] = mid;
-  &#125;;
-
-  <span class="hljs-keyword">return</span> quick(arr);
-&#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">function quickSort(arr) &#123;</span><br><span class="line">  let quick &#x3D; arr &#x3D;&gt; &#123;</span><br><span class="line">    sort(arr, 0, arr.length - 1);</span><br><span class="line">    return arr;</span><br><span class="line">  &#125;;</span><br><span class="line">  let sort &#x3D; (arr, left, right) &#x3D;&gt; &#123;</span><br><span class="line">    if (left &lt; right) &#123;</span><br><span class="line">      let center &#x3D; findCenter(arr, left, right);</span><br><span class="line">      sort(arr, 0, center - 1);</span><br><span class="line">      sort(arr, center, right);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  let findCenter &#x3D; (arr, left, right) &#x3D;&gt; &#123;</span><br><span class="line">    let flag &#x3D; arr[left];</span><br><span class="line">    let index &#x3D; left + 1;</span><br><span class="line">    for (let i &#x3D; index; i &lt; arr.length; i++) &#123;</span><br><span class="line">      if (arr[i] &lt; flag) &#123;</span><br><span class="line">        swap(arr, i, index);</span><br><span class="line">        index++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    swap(arr, left, index - 1);</span><br><span class="line">    return index;</span><br><span class="line">  &#125;;</span><br><span class="line">  let swap &#x3D; (arr, left, right) &#x3D;&gt; &#123;</span><br><span class="line">    let mid &#x3D; arr[left];</span><br><span class="line">    arr[left] &#x3D; arr[right];</span><br><span class="line">    arr[right] &#x3D; mid;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  return quick(arr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="3、插入排序"><a href="#3、插入排序" class="headerlink" title="3、插入排序"></a>3、插入排序</h2><p><strong>主要思想</strong></p>
 <p>每次将一个待排序的数字按其关键码的大小插入到一个已排好序的有序序列中，直到全部数字排好序。</p>
@@ -387,21 +270,7 @@
 <p>（3）如果已排序的元素大于取出的元素，则将其分别向后移动一位；</p>
 <p>（4）直到找到已排序的元素中小于或等于取出的元素，将取出的元素放到他的后一位；</p>
 <p>（5）重复步骤 2</p>
-<pre><code class="hljs zephir"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertionSort</span><span class="hljs-params">(<span class="hljs-keyword">array</span>)</span> </span>&#123;
-  <span class="hljs-keyword">let</span> len = <span class="hljs-keyword">array</span>.length,
-    preIndex, <span class="hljs-comment">//从后向前扫描索引</span>
-    current; <span class="hljs-comment">//当前元素数值</span>
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; len; i++) &#123;
-    preIndex = i - <span class="hljs-number">1</span>;
-    current = <span class="hljs-keyword">array</span>[i];
-    <span class="hljs-keyword">while</span> (preIndex &gt;= <span class="hljs-number">0</span> &amp;&amp; <span class="hljs-keyword">array</span>[preIndex] &gt; current) &#123;
-      <span class="hljs-keyword">array</span>[preIndex + <span class="hljs-number">1</span>] = <span class="hljs-keyword">array</span>[preIndex];
-      preIndex--;
-    &#125;
-    <span class="hljs-keyword">array</span>[preIndex + <span class="hljs-number">1</span>] = current;
-  &#125;
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>;
-&#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function insertionSort(array) &#123;</span><br><span class="line">  let len &#x3D; array.length,</span><br><span class="line">    preIndex, &#x2F;&#x2F;从后向前扫描索引</span><br><span class="line">    current; &#x2F;&#x2F;当前元素数值</span><br><span class="line">  for (let i &#x3D; 1; i &lt; len; i++) &#123;</span><br><span class="line">    preIndex &#x3D; i - 1;</span><br><span class="line">    current &#x3D; array[i];</span><br><span class="line">    while (preIndex &gt;&#x3D; 0 &amp;&amp; array[preIndex] &gt; current) &#123;</span><br><span class="line">      array[preIndex + 1] &#x3D; array[preIndex];</span><br><span class="line">      preIndex--;</span><br><span class="line">    &#125;</span><br><span class="line">    array[preIndex + 1] &#x3D; current;</span><br><span class="line">  &#125;</span><br><span class="line">  return array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="4、希尔排序"><a href="#4、希尔排序" class="headerlink" title="4、希尔排序"></a>4、希尔排序</h2><p><strong>基本思想</strong></p>
 <p>先将整个待排序序列分割成若干个子序序列，在子序列分别进行直接插入排序，待整个序列基本有序时，再对整体序列进行一次插入排序。</p>
@@ -409,26 +278,7 @@
 <p>（1）选择一个增量序列 t1,t2,…,tk，其中 ti&gt;tj，tk=1;</p>
 <p>（2）按增量序列个数 k，对序列进行 k 趟排序；</p>
 <p>（3）每趟排序，根据对应的增量 ti，将待排序列分割成若干长度为 m 的子序列，分别对各子表进行直接插入排序，仅增量因子为 1 时，整个序列作为一个表来处理，表长度即为整个序列的长度</p>
-<pre><code class="hljs reasonml"><span class="hljs-keyword">function</span> <span class="hljs-constructor">SellSort(<span class="hljs-params">array</span>)</span> &#123;
-  <span class="hljs-keyword">let</span> len = <span class="hljs-built_in">array</span>.length;
-  <span class="hljs-keyword">for</span> (
-    <span class="hljs-keyword">let</span> gap = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Math</span>.</span></span>floor(len<span class="hljs-operator"> / </span><span class="hljs-number">2</span>);
-    gap &gt; <span class="hljs-number">0</span>;
-    gap = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Math</span>.</span></span>floor(gap<span class="hljs-operator"> / </span><span class="hljs-number">2</span>)
-  ) &#123;
-    <span class="hljs-comment">//多个分组交替执行</span>
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = gap; i &lt; <span class="hljs-built_in">array</span>.length; i++) &#123;
-      <span class="hljs-keyword">let</span> j = i,
-        current = <span class="hljs-built_in">array</span><span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span>;
-      <span class="hljs-keyword">while</span> (j - gap &gt;= <span class="hljs-number">0</span><span class="hljs-operator"> &amp;&amp; </span>current &lt; <span class="hljs-built_in">array</span><span class="hljs-literal">[<span class="hljs-identifier">j</span> - <span class="hljs-identifier">gap</span>]</span>) &#123;
-        <span class="hljs-built_in">array</span><span class="hljs-literal">[<span class="hljs-identifier">j</span>]</span> = <span class="hljs-built_in">array</span><span class="hljs-literal">[<span class="hljs-identifier">j</span> - <span class="hljs-identifier">gap</span>]</span>;
-        j = j - gap;
-      &#125;
-      <span class="hljs-built_in">array</span><span class="hljs-literal">[<span class="hljs-identifier">j</span>]</span> = current;
-    &#125;
-  &#125;
-  return <span class="hljs-built_in">array</span>;
-&#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function SellSort(array) &#123;</span><br><span class="line">  let len &#x3D; array.length;</span><br><span class="line">  for (</span><br><span class="line">    let gap &#x3D; Math.floor(len &#x2F; 2);</span><br><span class="line">    gap &gt; 0;</span><br><span class="line">    gap &#x3D; Math.floor(gap &#x2F; 2)</span><br><span class="line">  ) &#123;</span><br><span class="line">    &#x2F;&#x2F;多个分组交替执行</span><br><span class="line">    for (let i &#x3D; gap; i &lt; array.length; i++) &#123;</span><br><span class="line">      let j &#x3D; i,</span><br><span class="line">        current &#x3D; array[i];</span><br><span class="line">      while (j - gap &gt;&#x3D; 0 &amp;&amp; current &lt; array[j - gap]) &#123;</span><br><span class="line">        array[j] &#x3D; array[j - gap];</span><br><span class="line">        j &#x3D; j - gap;</span><br><span class="line">      &#125;</span><br><span class="line">      array[j] &#x3D; current;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="5、选择排序"><a href="#5、选择排序" class="headerlink" title="5、选择排序"></a>5、选择排序</h2><p><strong>基本思想</strong></p>
 <p>首先在待排序序列中选出最小值，存放在排序序列起始位置，然后再从剩余未排序元素中继续寻找最小元素，放到已排序序列末尾。以此类推，直到所有元素均排序完毕。</p>
@@ -436,276 +286,465 @@
 <p>（1）初始状态：无序区为 R[1…n]，有序区为空；</p>
 <p>（2）第 i 趟排序（i=1,2,3…n-1）开始时当前有序区和无序区分别为 R[1…i-1]和 R[i..n]，该趟排序从当前无序区中选出关键字最小的记录 R[k]，将它与无序区中的第一个记录 R 交换，使 R[1…i]和 R[i+1…n]分别变为记录个数增加 1 个的新有序区和记录个数减少 1 个的新无序区；</p>
 <p>（3）n-1 趟结束，数组有序化了</p>
-<pre><code class="hljs zephir"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">selectionSort</span><span class="hljs-params">(<span class="hljs-keyword">array</span>)</span> </span>&#123;
-  <span class="hljs-keyword">let</span> len = <span class="hljs-keyword">array</span>.length,
-    minIndex,
-    temp;
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++) &#123;
-    minIndex = i;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i + <span class="hljs-number">1</span>; j &lt; len; j++) &#123;
-      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">array</span>[j] &lt; <span class="hljs-keyword">array</span>[minIndex]) &#123;
-        <span class="hljs-comment">//寻找最小的数</span>
-        minIndex = j;
-      &#125;
-    &#125;
-    temp = <span class="hljs-keyword">array</span>[i];
-    <span class="hljs-keyword">array</span>[i] = <span class="hljs-keyword">array</span>[minIndex];
-    <span class="hljs-keyword">array</span>[minIndex] = temp;
-  &#125;
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>;
-&#125;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function selectionSort(array) &#123;</span><br><span class="line">  let len &#x3D; array.length,</span><br><span class="line">    minIndex,</span><br><span class="line">    temp;</span><br><span class="line">  for (let i &#x3D; 0; i &lt; len - 1; i++) &#123;</span><br><span class="line">    minIndex &#x3D; i;</span><br><span class="line">    for (let j &#x3D; i + 1; j &lt; len; j++) &#123;</span><br><span class="line">      if (array[j] &lt; array[minIndex]) &#123;</span><br><span class="line">        &#x2F;&#x2F;寻找最小的数</span><br><span class="line">        minIndex &#x3D; j;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    temp &#x3D; array[i];</span><br><span class="line">    array[i] &#x3D; array[minIndex];</span><br><span class="line">    array[minIndex] &#x3D; temp;</span><br><span class="line">  &#125;</span><br><span class="line">  return array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://cjyblog.com/2019/09/20/%E6%80%BB%E7%BB%93%EF%BC%9A%E7%AE%97%E6%B3%95/" data-id="ckfet1utg002ye8fygq4e92nt" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "chajianyuan"
+        },
+        "headline": "总结：算法",
+        "image": "http://cjyblog.com",
+        "keywords": "总结",
+        "genre": "",
+        "datePublished": "2019-09-20",
+        "dateCreated": "2019-09-20",
+        "dateModified": "2020-09-23",
+        "url": "http://cjyblog.com/2019/09/20/总结：算法/",
+        "description": "
+
+一、二叉树1、二分查找二分查找也叫折半查找，他要求线性表必须采用顺序存储结构，而且表中元素按关键字有序排列
+算法步骤
+（1）设置查找区间初值，low 为 1，high 为表长；
+（2）当 low 小于等于 high 时，循环执行以下操作：
+​ ·mid 取值为 low 和 high 的中间值；
+​ ·将给定值 key 与中间位置记录的关键字进行比较，若相等则查找成功，返回中间位置 mid；
+​",
+        "wordCount": 1508
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
                 
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
                 
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%80%BB%E7%BB%93/">总结</a>
-                    
-                  </div>
+            
                 
-              </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2019/10/12/%E9%9D%A2%E7%BB%8F/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">面经</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2019/09/09/git%EF%BC%9A%E5%AD%A6%E4%B9%A0Git/">
-                        <span class="hidden-mobile">git：学习Git</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/10/12/%E9%9D%A2%E7%BB%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            面经
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/09/09/git%EF%BC%9A%E5%AD%A6%E4%B9%A0Git/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">git：学习Git</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
 
             
-          </article>
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/27/vue%EF%BC%9Avue%E7%89%88%E6%9C%AC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://pic3.zhimg.com/80/v2-120c6f2e62e740210a77ab3c87d65c0e_1440w.jpg)" alt="vue：vue版本之间的区别" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/27/vue%EF%BC%9Avue%E7%89%88%E6%9C%AC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" class="title">vue：vue版本之间的区别</a></p>
+                            <p class="item-date"><time datetime="2020-03-27T00:51:17.000Z" itemprop="datePublished">2020-03-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0koa.js/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0koa.js/" class="title">Node：学习koa.js</a></p>
+                            <p class="item-date"><time datetime="2020-03-26T01:01:10.000Z" itemprop="datePublished">2020-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0Express.js/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0Express.js/" class="title">Node：学习Express.js</a></p>
+                            <p class="item-date"><time datetime="2020-03-26T00:50:44.000Z" itemprop="datePublished">2020-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/26/%E6%80%BB%E7%BB%93%EF%BC%9ANode.js/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/26/%E6%80%BB%E7%BB%93%EF%BC%9ANode.js/" class="title">总结：Node.js</a></p>
+                            <p class="item-date"><time datetime="2020-03-26T00:45:13.000Z" itemprop="datePublished">2020-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E5%92%8Chttps/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-gold-cdn.xitu.io/2018/6/11/163ef70cbdc63e95?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)" alt="网络协议：http和https" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E5%92%8Chttps/" class="title">网络协议：http和https</a></p>
+                            <p class="item-date"><time datetime="2020-03-25T00:39:45.000Z" itemprop="datePublished">2020-03-25</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
-      </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
-</div>
 
-      </div>
-    
-  </div>
-</div>
+            
+                
 
-<!-- Custom -->
-
-
-    
-  </main>
-
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
-
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">43</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">7</span></li></ul>
         </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
     </div>
-  </div>
-</div>
-  
 
-  
 
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/" rel="tag">ES6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/" rel="tag">html</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/koa/" rel="tag">koa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" rel="tag">网络协议</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a><span class="tag-list-count">1</span></li></ul>
+        </div>
     </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ES6/" style="font-size: 14.29px;">ES6</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/html/" style="font-size: 12.86px;">html</a> <a href="/tags/javascript/" style="font-size: 18.57px;">javascript</a> <a href="/tags/koa/" style="font-size: 10px;">koa</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/vue/" style="font-size: 17.14px;">vue</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 11.43px;">其他</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 18.57px;">总结</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 15.71px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.14px;">算法</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.29px;">网络协议</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">面经</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 chajianyuan</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
     
 
-    
 
-    
-  </div>
+            </div>
+        </div>
+    </div>
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
-
-<!-- Plugins -->
-
-
-  
-    <script  src="/js/lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://cjyblog.com/2019/09/20/%E6%80%BB%E7%BB%93%EF%BC%9A%E7%AE%97%E6%B3%95/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
 
 
 
 
 
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
 
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
 
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "总结：算法&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
 
 
 
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
-      
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
+<!-- Custom Scripts -->
 
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="/js/main.js"></script>
 
 
 </body>

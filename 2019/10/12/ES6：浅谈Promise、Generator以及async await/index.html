@@ -1,240 +1,220 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
-
-
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
-  <meta name="author" content="chajianyuan">
-  <meta name="keywords" content="">
-  <title>ES6：浅谈Promise、Generator以及async await - 南殇的博客</title>
+    <meta charset="utf-8" />
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+    
+
+    
+    <title>ES6：浅谈Promise、Generator以及async await | 南殇的博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="ES6" />
+    
+    <meta name="description" content="一、Generator1、基本概念Generator 函数是 ES6 提供的一种异步编程解决方案，执行 Generator 函数会返回一个遍历器对象。形式上，Generator 函数是一个普通函数，但是有两个特征： ​ （1）function 关键字和函数名之间有一个星号（*）； ​ （2）函数体内部使用 yield 表达式。 2、实现123456789function* hello(x)&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6：浅谈Promise、Generator以及async await">
+<meta property="og:url" content="http://cjyblog.com/2019/10/12/ES6%EF%BC%9A%E6%B5%85%E8%B0%88Promise%E3%80%81Generator%E4%BB%A5%E5%8F%8Aasync%20await/index.html">
+<meta property="og:site_name" content="南殇的博客">
+<meta property="og:description" content="一、Generator1、基本概念Generator 函数是 ES6 提供的一种异步编程解决方案，执行 Generator 函数会返回一个遍历器对象。形式上，Generator 函数是一个普通函数，但是有两个特征： ​ （1）function 关键字和函数名之间有一个星号（*）； ​ （2）函数体内部使用 yield 表达式。 2、实现123456789function* hello(x)&amp;#">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-12T11:23:00.000Z">
+<meta property="article:modified_time" content="2020-09-23T02:15:37.058Z">
+<meta property="article:author" content="chajianyuan">
+<meta property="article:tag" content="ES6">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="南殇的博客" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+    
+<link rel="stylesheet" href="/css/style.css">
 
-  
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
     
     
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
-  
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+    
+    
+    
+    
 
 
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="南殇的博客" type="application/atom+xml">
-</head>
-
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 <body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                    
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-10-12 19:23" pubdate>
-        2019年10月12日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      1.6k 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      20
-       分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
-          
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-      </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </header>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-  <main>
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
     
-      
+    未分类
+    </h1>
+</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
-            <!-- SEO header -->
-            <h1 style="display: none">ES6：浅谈Promise、Generator以及async await</h1>
+                        <div class="main-body-content">
+                            <article id="post-ES6：浅谈Promise、Generator以及async await" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        ES6：浅谈Promise、Generator以及async await
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2019/10/12/ES6%EF%BC%9A%E6%B5%85%E8%B0%88Promise%E3%80%81Generator%E4%BB%A5%E5%8F%8Aasync%20await/" class="article-date">
+       <time datetime="2019-10-12T11:23:00.000Z" itemprop="datePublished">2019-10-12</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2019/10/12/ES6%EF%BC%9A%E6%B5%85%E8%B0%88Promise%E3%80%81Generator%E4%BB%A5%E5%8F%8Aasync%20await/" class="article-date">
+     <time datetime="2020-09-23T02:15:37.058Z" itemprop="dateModified">2020-09-23</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/ES6/" rel="tag">ES6</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
             
-            <div class="markdown-body" id="post-body">
-              <meta name="referrer" content="no-referrer"/>
+
+            
+
+            
+
+            <meta name="referrer" content="no-referrer"/>
 
 <h2 id="一、Generator"><a href="#一、Generator" class="headerlink" title="一、Generator"></a>一、Generator</h2><h3 id="1、基本概念"><a href="#1、基本概念" class="headerlink" title="1、基本概念"></a>1、基本概念</h3><p>Generator 函数是 ES6 提供的一种异步编程解决方案，执行 Generator 函数会返回一个<strong>遍历器对象</strong>。形式上，Generator 函数是一个普通函数，但是有两个特征：</p>
 <p>​ （1）function 关键字和函数名之间有一个星号（*）；</p>
 <p>​ （2）函数体内部使用 yield 表达式。</p>
-<h3 id="2、实现"><a href="#2、实现" class="headerlink" title="2、实现"></a>2、实现</h3><pre><code class="hljs crystal">function* hello(x)&#123;
-  let y = <span class="hljs-number">2</span> * (<span class="hljs-keyword">yield</span>(x+<span class="hljs-number">1</span>));
-  let z = <span class="hljs-keyword">yield</span>(y / <span class="hljs-number">3</span>);
-  <span class="hljs-keyword">return</span> (x+y+z);
-&#125;
-let <span class="hljs-function"><span class="hljs-keyword">fun</span> = <span class="hljs-title">hello</span></span>(<span class="hljs-number">5</span>);
-cosnole.log(<span class="hljs-keyword">fun</span>.<span class="hljs-keyword">next</span>())     //=&gt;&#123;<span class="hljs-symbol">value:</span><span class="hljs-number">6</span>, <span class="hljs-symbol">done:</span><span class="hljs-literal">false</span>&#125;
-cosnole.log(<span class="hljs-keyword">fun</span>.<span class="hljs-keyword">next</span>(<span class="hljs-number">12</span>))   /<span class="hljs-regexp">/=&gt;&#123;value:8, done:false&#125;</span>
-<span class="hljs-regexp">cosnole.log(fun.next(13))   /</span><span class="hljs-regexp">/=&gt;&#123;value:42, done:false&#125;</span></code></pre>
+<h3 id="2、实现"><a href="#2、实现" class="headerlink" title="2、实现"></a>2、实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function* hello(x)&#123;</span><br><span class="line">  let y &#x3D; 2 * (yield(x+1));</span><br><span class="line">  let z &#x3D; yield(y &#x2F; 3);</span><br><span class="line">  return (x+y+z);</span><br><span class="line">&#125;</span><br><span class="line">let fun &#x3D; hello(5);</span><br><span class="line">cosnole.log(fun.next())     &#x2F;&#x2F;&#x3D;&gt;&#123;value:6, done:false&#125;</span><br><span class="line">cosnole.log(fun.next(12))   &#x2F;&#x2F;&#x3D;&gt;&#123;value:8, done:false&#125;</span><br><span class="line">cosnole.log(fun.next(13))   &#x2F;&#x2F;&#x3D;&gt;&#123;value:42, done:false&#125;</span><br></pre></td></tr></table></figure>
 
 <p>（1）执行第一个 next 时，<strong>x=5</strong>，函数执行到 yield(x+1)，所以返回 5+1=6；</p>
 <p>（2）执行第二个 next 时，<strong>x = 5</strong>，传入的参数会代替 yield(x+1)的位置，即 yield(x+1) = 12，所以<strong>y = 2 * 12 = 24</strong>，函数执行到 yield(y / 3)，所以返回 y / 3 = (2 * 12) / 3 = 8;</p>
@@ -253,73 +233,9 @@ cosnole.log(<span class="hljs-keyword">fun</span>.<span class="hljs-keyword">nex
 <h3 id="4、原理"><a href="#4、原理" class="headerlink" title="4、原理"></a>4、原理</h3><p>Promise 对象是一个构造函数，用来生成 Promise 实例，这个实例一旦创建就会立即执行，实例中接收一个执行函数作为参数，这个执行函数有两个函数类型形参（resolve 和 reject），resolved 函数的作用是将 Promie 对象的状态从“未完成”到“成功”，在异步函数成功时调用，并将异步操作的结果作为参数传递出去；rejected 函数的作用是将 Promise 对象的状态从“未完成”到“失败”，在异步函数失败时调用，并将异步操作报出的错误作为参数传递出去。</p>
 <p>Promise 实例生成后，可以用 then 方法分别指定 resolved 状态和 rejected 状态的回调函数。</p>
 <p><strong>真正的链式 Promise 是指在当前 promise 达到 fulfilled 状态后，即开始进行下一个 Promise。</strong></p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;
-  resolve(<span class="hljs-number">1</span>)
-&#125;).then(<span class="hljs-function"><span class="hljs-params">value</span>=&gt;</span>&#123;
-  <span class="hljs-built_in">console</span>.log(value)
-&#125;)</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">new Promise((resolve,reject)&#x3D;&gt;&#123;</span><br><span class="line">  resolve(1)</span><br><span class="line">&#125;).then(value&#x3D;&gt;&#123;</span><br><span class="line">  console.log(value)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h3 id="5、手撕-Promise"><a href="#5、手撕-Promise" class="headerlink" title="5、手撕 Promise"></a>5、手撕 Promise</h3><pre><code class="hljs pf"><span class="hljs-keyword">const</span> PENDING = &#x27;pending&#x27;;     // 首先创建三个常量来表示状态，
-<span class="hljs-keyword">const</span> RESOLVED = &#x27;resolved&#x27;;
-<span class="hljs-keyword">const</span> REJECTED = &#x27;rejected&#x27;;
-
-function MyPromise(fn)&#123;
-  <span class="hljs-keyword">const</span> that = this;   // 在函数体内部创建常量that，因为代码可能会异步执行，用于获取正确的this对象；
-  this.<span class="hljs-keyword">state</span> = PENDING;    // 一开始Promise状态应该是pending；
-  that.value = null;    // value变量用于保存resolve或者reject中传入的值
-  that.resolvedCallbacks = [];    // 用于保存then中的回调函数，因为当执行完Promise时状态可能还是等待
-  that.rejectedCallbacks = [];    // 中，这时候应该把then中的回调保存起来用于状态改变时用
-
-  /**
-  首先两个函数都得判断当前状态是否为等待状态，只有等待状态才可以改变状态；
-  将当前状态改变为对应状态，并且将传入的值赋给value；
-  遍历回调数组并执行
-  */
-  function resolve(value)&#123;
-    if(that.<span class="hljs-keyword">state</span> == PENDING)&#123;
-      that.<span class="hljs-keyword">state</span> = RESOLVED;
-      that.value = value;
-      that.resolvedCallbacks.map(item=&gt;item(that.value));
-    &#125;
-  &#125;
-  function reject(value)&#123;
-    if(that.<span class="hljs-keyword">state</span> == PENDING)&#123;
-      that.<span class="hljs-keyword">state</span> = REJECTED;
-      that.value = value;
-      that.rejectedCallbacks.map(item=&gt;item(that.value));
-    &#125;
-  &#125;
-
-  /**
-  执行传入的参数并且将之前两个函数当做函数传进去；
-  可能执行函数过程中会遇到错误，需要捕获错误并执行到reject函数
-  */
-  try&#123;
-    fn(resolve, reject)
-  &#125; catch(e)&#123;
-    reject(e)
-  &#125;
-&#125;
-
-/**
-首先判断两个参数是否为函数类型，因为这两个参数是可选参数；
-当参数不是函数类型的时候，需要创建一个函数赋值给对应的参数，同时也实现了透传
-*/
-MyPromise.prototype.then = function(<span class="hljs-keyword">on</span>Fulfilled,<span class="hljs-keyword">on</span>Rejected)&#123;
-  <span class="hljs-keyword">const</span> that = this;
-  <span class="hljs-keyword">on</span>Fulfilled = typeof <span class="hljs-keyword">on</span>Fulfilled === &#x27;function&#x27; ? <span class="hljs-keyword">on</span>Fulfilled : v=&gt; v;
-  <span class="hljs-keyword">on</span>Rejected = typeof <span class="hljs-keyword">on</span>Rejected === &#x27;function&#x27; ? <span class="hljs-keyword">on</span>Rejected : r=&gt; &#123;throw r&#125;;
-  if(that.<span class="hljs-keyword">state</span> === PENDING)&#123;
-    that.resolvedCallbacks.push(<span class="hljs-keyword">on</span>Fulfilled);
-    that.rejectedCallbacks.push(<span class="hljs-keyword">on</span>Rejected)
-  &#125;
-  if(that.<span class="hljs-keyword">state</span> === RESOLVED)&#123;
-    <span class="hljs-keyword">on</span>Fulfilled(that.value);
-  &#125;
-  if(that.<span class="hljs-keyword">state</span> === REJECTED)&#123;
-    <span class="hljs-keyword">on</span>Rejected(that.value);
-  &#125;
-&#125;</code></pre>
+<h3 id="5、手撕-Promise"><a href="#5、手撕-Promise" class="headerlink" title="5、手撕 Promise"></a>5、手撕 Promise</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">const PENDING &#x3D; &#39;pending&#39;;     &#x2F;&#x2F; 首先创建三个常量来表示状态，</span><br><span class="line">const RESOLVED &#x3D; &#39;resolved&#39;;</span><br><span class="line">const REJECTED &#x3D; &#39;rejected&#39;;</span><br><span class="line"></span><br><span class="line">function MyPromise(fn)&#123;</span><br><span class="line">  const that &#x3D; this;   &#x2F;&#x2F; 在函数体内部创建常量that，因为代码可能会异步执行，用于获取正确的this对象；</span><br><span class="line">  this.state &#x3D; PENDING;    &#x2F;&#x2F; 一开始Promise状态应该是pending；</span><br><span class="line">  that.value &#x3D; null;    &#x2F;&#x2F; value变量用于保存resolve或者reject中传入的值</span><br><span class="line">  that.resolvedCallbacks &#x3D; [];    &#x2F;&#x2F; 用于保存then中的回调函数，因为当执行完Promise时状态可能还是等待</span><br><span class="line">  that.rejectedCallbacks &#x3D; [];    &#x2F;&#x2F; 中，这时候应该把then中的回调保存起来用于状态改变时用</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">  首先两个函数都得判断当前状态是否为等待状态，只有等待状态才可以改变状态；</span><br><span class="line">  将当前状态改变为对应状态，并且将传入的值赋给value；</span><br><span class="line">  遍历回调数组并执行</span><br><span class="line">  *&#x2F;</span><br><span class="line">  function resolve(value)&#123;</span><br><span class="line">    if(that.state &#x3D;&#x3D; PENDING)&#123;</span><br><span class="line">      that.state &#x3D; RESOLVED;</span><br><span class="line">      that.value &#x3D; value;</span><br><span class="line">      that.resolvedCallbacks.map(item&#x3D;&gt;item(that.value));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  function reject(value)&#123;</span><br><span class="line">    if(that.state &#x3D;&#x3D; PENDING)&#123;</span><br><span class="line">      that.state &#x3D; REJECTED;</span><br><span class="line">      that.value &#x3D; value;</span><br><span class="line">      that.rejectedCallbacks.map(item&#x3D;&gt;item(that.value));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">  执行传入的参数并且将之前两个函数当做函数传进去；</span><br><span class="line">  可能执行函数过程中会遇到错误，需要捕获错误并执行到reject函数</span><br><span class="line">  *&#x2F;</span><br><span class="line">  try&#123;</span><br><span class="line">    fn(resolve, reject)</span><br><span class="line">  &#125; catch(e)&#123;</span><br><span class="line">    reject(e)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">首先判断两个参数是否为函数类型，因为这两个参数是可选参数；</span><br><span class="line">当参数不是函数类型的时候，需要创建一个函数赋值给对应的参数，同时也实现了透传</span><br><span class="line">*&#x2F;</span><br><span class="line">MyPromise.prototype.then &#x3D; function(onFulfilled,onRejected)&#123;</span><br><span class="line">  const that &#x3D; this;</span><br><span class="line">  onFulfilled &#x3D; typeof onFulfilled &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onFulfilled : v&#x3D;&gt; v;</span><br><span class="line">  onRejected &#x3D; typeof onRejected &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onRejected : r&#x3D;&gt; &#123;throw r&#125;;</span><br><span class="line">  if(that.state &#x3D;&#x3D;&#x3D; PENDING)&#123;</span><br><span class="line">    that.resolvedCallbacks.push(onFulfilled);</span><br><span class="line">    that.rejectedCallbacks.push(onRejected)</span><br><span class="line">  &#125;</span><br><span class="line">  if(that.state &#x3D;&#x3D;&#x3D; RESOLVED)&#123;</span><br><span class="line">    onFulfilled(that.value);</span><br><span class="line">  &#125;</span><br><span class="line">  if(that.state &#x3D;&#x3D;&#x3D; REJECTED)&#123;</span><br><span class="line">    onRejected(that.value);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><a target="_blank" rel="noopener" href="https://juejin.im/post/5b31a4b7f265da595725f322">面试精选之 Promise</a></p>
 <h2 id="三、async、await"><a href="#三、async、await" class="headerlink" title="三、async、await"></a>三、async、await</h2><h3 id="1、基本概念-2"><a href="#1、基本概念-2" class="headerlink" title="1、基本概念"></a>1、基本概念</h3><p>async 其实就是 Generator 函数的语法糖。async 就是将函数返回值使用 Promise.resolve()包裹一下，和 then 中处理返回值一样，并且 await 只能配套 async 使用。</p>
@@ -333,282 +249,467 @@ MyPromise.prototype.then = function(<span class="hljs-keyword">on</span>Fulfille
 <p>​ （4）返回值是 Promise</p>
 <p>​ 可以使用 then 指定下一步的操作。</p>
 <h3 id="2、用法"><a href="#2、用法" class="headerlink" title="2、用法"></a>2、用法</h3><p>async 函数返回一个 Promise 对象，可以使用<code>then</code>方法添加回调函数。当函数执行的时候，一旦遇到<code>await</code> 就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。</p>
-<pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">timeout</span>(<span class="hljs-params">ms</span>)</span>&#123;
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>)=&gt;</span>&#123;
-    <span class="hljs-built_in">setTimeout</span>(resolve,ms)
-  &#125;)
-&#125;
-<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">asyncPrint</span>(<span class="hljs-params">value, ms</span>)</span>&#123;
-  <span class="hljs-keyword">await</span> timeout(ms);
-  <span class="hljs-built_in">console</span>.log(value);
-&#125;
-asyncPrint(<span class="hljs-string">&#x27;hello world&#x27;</span>, <span class="hljs-number">50</span>)</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function timeout(ms)&#123;</span><br><span class="line">  return new Promise((resolve)&#x3D;&gt;&#123;</span><br><span class="line">    setTimeout(resolve,ms)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">async function asyncPrint(value, ms)&#123;</span><br><span class="line">  await timeout(ms);</span><br><span class="line">  console.log(value);</span><br><span class="line">&#125;</span><br><span class="line">asyncPrint(&#39;hello world&#39;, 50)</span><br></pre></td></tr></table></figure>
 
 <p>等同于</p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">timeout</span>(<span class="hljs-params">ms</span>)</span>&#123;
-  <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>)=&gt;</span>&#123;
-    <span class="hljs-built_in">setTimeout</span>(resolve,ms)
-  &#125;)
-&#125;
-<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">asyncPrint</span>(<span class="hljs-params">value, ms</span>)</span>&#123;
-  <span class="hljs-keyword">await</span> timeout(ms);
-  <span class="hljs-built_in">console</span>.log(value);
-&#125;
-asyncPrint(<span class="hljs-string">&#x27;hello world&#x27;</span>, <span class="hljs-number">50</span>)</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">async function timeout(ms)&#123;</span><br><span class="line">  await new Promise((resolve)&#x3D;&gt;&#123;</span><br><span class="line">    setTimeout(resolve,ms)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">async function asyncPrint(value, ms)&#123;</span><br><span class="line">  await timeout(ms);</span><br><span class="line">  console.log(value);</span><br><span class="line">&#125;</span><br><span class="line">asyncPrint(&#39;hello world&#39;, 50)</span><br></pre></td></tr></table></figure>
 
 <p><a target="_blank" rel="noopener" href="https://juejin.im/post/596e142d5188254b532ce2da">理解 async/await</a></p>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://cjyblog.com/2019/10/12/ES6%EF%BC%9A%E6%B5%85%E8%B0%88Promise%E3%80%81Generator%E4%BB%A5%E5%8F%8Aasync%20await/" data-id="ckfet1urn0005e8fyak58hdji" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "chajianyuan"
+        },
+        "headline": "ES6：浅谈Promise、Generator以及async await",
+        "image": "http://cjyblog.com",
+        "keywords": "ES6",
+        "genre": "",
+        "datePublished": "2019-10-12",
+        "dateCreated": "2019-10-12",
+        "dateModified": "2020-09-23",
+        "url": "http://cjyblog.com/2019/10/12/ES6：浅谈Promise、Generator以及async await/",
+        "description": "
+
+一、Generator1、基本概念Generator 函数是 ES6 提供的一种异步编程解决方案，执行 Generator 函数会返回一个遍历器对象。形式上，Generator 函数是一个普通函数，但是有两个特征：
+​ （1）function 关键字和函数名之间有一个星号（*）；
+​ （2）函数体内部使用 yield 表达式。
+2、实现123456789function* hello(x)&#",
+        "wordCount": 736
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
                 
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
                 
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/ES6/">ES6</a>
-                    
-                  </div>
+            
                 
-              </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2019/10/13/css%EF%BC%9Aflex%E5%B8%83%E5%B1%80/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">css：flex布局</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2019/10/12/%E9%9D%A2%E7%BB%8F/">
-                        <span class="hidden-mobile">面经</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/10/13/css%EF%BC%9Aflex%E5%B8%83%E5%B1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            css：flex布局
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/10/12/%E9%9D%A2%E7%BB%8F/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">面经</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
 
             
-          </article>
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/27/vue%EF%BC%9Avue%E7%89%88%E6%9C%AC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://pic3.zhimg.com/80/v2-120c6f2e62e740210a77ab3c87d65c0e_1440w.jpg)" alt="vue：vue版本之间的区别" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/27/vue%EF%BC%9Avue%E7%89%88%E6%9C%AC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" class="title">vue：vue版本之间的区别</a></p>
+                            <p class="item-date"><time datetime="2020-03-27T00:51:17.000Z" itemprop="datePublished">2020-03-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0koa.js/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0koa.js/" class="title">Node：学习koa.js</a></p>
+                            <p class="item-date"><time datetime="2020-03-26T01:01:10.000Z" itemprop="datePublished">2020-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0Express.js/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0Express.js/" class="title">Node：学习Express.js</a></p>
+                            <p class="item-date"><time datetime="2020-03-26T00:50:44.000Z" itemprop="datePublished">2020-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/26/%E6%80%BB%E7%BB%93%EF%BC%9ANode.js/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/26/%E6%80%BB%E7%BB%93%EF%BC%9ANode.js/" class="title">总结：Node.js</a></p>
+                            <p class="item-date"><time datetime="2020-03-26T00:45:13.000Z" itemprop="datePublished">2020-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E5%92%8Chttps/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-gold-cdn.xitu.io/2018/6/11/163ef70cbdc63e95?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)" alt="网络协议：http和https" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E5%92%8Chttps/" class="title">网络协议：http和https</a></p>
+                            <p class="item-date"><time datetime="2020-03-25T00:39:45.000Z" itemprop="datePublished">2020-03-25</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
-      </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
-</div>
 
-      </div>
-    
-  </div>
-</div>
+            
+                
 
-<!-- Custom -->
-
-
-    
-  </main>
-
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
-
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">43</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">7</span></li></ul>
         </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
     </div>
-  </div>
-</div>
-  
 
-  
 
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/" rel="tag">ES6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/" rel="tag">html</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/koa/" rel="tag">koa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" rel="tag">网络协议</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a><span class="tag-list-count">1</span></li></ul>
+        </div>
     </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ES6/" style="font-size: 14.29px;">ES6</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/html/" style="font-size: 12.86px;">html</a> <a href="/tags/javascript/" style="font-size: 18.57px;">javascript</a> <a href="/tags/koa/" style="font-size: 10px;">koa</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/vue/" style="font-size: 17.14px;">vue</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 11.43px;">其他</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 18.57px;">总结</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 15.71px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.14px;">算法</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.29px;">网络协议</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">面经</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 chajianyuan</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
     
 
-    
 
-    
-  </div>
+            </div>
+        </div>
+    </div>
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
-
-<!-- Plugins -->
-
-
-  
-    <script  src="/js/lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://cjyblog.com/2019/10/12/ES6%EF%BC%9A%E6%B5%85%E8%B0%88Promise%E3%80%81Generator%E4%BB%A5%E5%8F%8Aasync%20await/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
 
 
 
 
 
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
 
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
 
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "ES6：浅谈Promise、Generator以及async await&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
 
 
 
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
-      
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
+<!-- Custom Scripts -->
 
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="/js/main.js"></script>
 
 
 </body>

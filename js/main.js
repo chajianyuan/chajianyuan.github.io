@@ -1,123 +1,136 @@
-// 监听滚动事件
-function listenScroll(callback) {
-  // eslint-disable-next-line no-undef
-  const dbc = new Debouncer(callback);
-  window.addEventListener('scroll', dbc, false);
-  dbc.handleEvent();
-}
+(function ($) {
+    // To top button
+    $("#back-to-top").on('click', function () {
+        $('body, html').animate({ scrollTop: 0 }, 600);
+    });
 
-// 滚动到指定元素
-function scrollToElement(target, offset) {
-  var scroll_offset = $(target).offset();
-  $('body,html').animate({
-    scrollTop: scroll_offset.top + (offset || 0),
-    easing   : 'swing'
-  });
-}
+    // Nav bar toggle
+    $('#main-nav-toggle').on('click', function () {
+        $('.nav-container-inner').slideToggle();
+    });
 
-// 顶部菜单的监听事件
-function navbarScrollEvent() {
-  var navbar = $('#navbar');
-  var submenu = $('#navbar .dropdown-menu');
-  if (navbar.offset().top > 0) {
-    navbar.removeClass('navbar-dark');
-    submenu.removeClass('navbar-dark');
-  }
-  listenScroll(function() {
-    navbar[navbar.offset().top > 50 ? 'addClass' : 'removeClass']('top-nav-collapse');
-    submenu[navbar.offset().top > 50 ? 'addClass' : 'removeClass']('dropdown-collapse');
-    if (navbar.offset().top > 0) {
-      navbar.removeClass('navbar-dark');
-      submenu.removeClass('navbar-dark');
-    } else {
-      navbar.addClass('navbar-dark');
-      submenu.removeClass('navbar-dark');
+    // Caption
+    $('.article-entry').each(function(i) {
+        $(this).find('img').each(function() {
+            if (this.alt && !(!!$.prototype.justifiedGallery && $(this).parent('.justified-gallery').length)) {
+                $(this).after('<span class="caption">' + this.alt + '</span>');
+            }
+
+            // 对于已经包含在链接内的图片不适用lightGallery
+            if ($(this).parent().prop("tagName") !== 'A') {
+                $(this).wrap('<a href="' + this.src + '" title="' + this.alt + '" class="gallery-item"></a>');
+            }
+        });
+
+    });
+    if (typeof lightGallery != 'undefined') {
+        var options = {
+            selector: '.gallery-item',
+        };
+        $('.article-entry').each(function(i, entry) {
+            lightGallery(entry, options);
+        });
+        lightGallery($('.article-gallery')[0], options);
     }
-  });
-  $('#navbar-toggler-btn').on('click', function() {
-    $('.animated-icon').toggleClass('open');
-    $('#navbar').toggleClass('navbar-col-show');
-  });
-}
-
-// 头图视差的监听事件
-function parallaxEvent() {
-  var target = $('#background[parallax="true"]');
-  var parallax = function() {
-    var oVal = $(window).scrollTop() / 5;
-    var offset = parseInt($('#board').css('margin-top'), 0);
-    var max = 96 + offset;
-    if (oVal > max) {
-      oVal = max;
+    if (!!$.prototype.justifiedGallery) {  // if justifiedGallery method is defined
+        var options = {
+            rowHeight: 140,
+            margins: 4,
+            lastRow: 'justify'
+        };
+        $('.justified-gallery').justifiedGallery(options);
     }
-    target.css({
-      transform          : 'translate3d(0,' + oVal + 'px,0)',
-      '-webkit-transform': 'translate3d(0,' + oVal + 'px,0)',
-      '-ms-transform'    : 'translate3d(0,' + oVal + 'px,0)',
-      '-o-transform'     : 'translate3d(0,' + oVal + 'px,0)'
+
+    // Sidebar expend
+    $('#sidebar .sidebar-toggle').on('click', function () {
+        if($('#sidebar').hasClass('expend')) {
+            $('#sidebar').removeClass('expend');
+        } else {
+            $('#sidebar').addClass('expend');
+        }
     });
 
-    var toc = $('#toc');
-    if (toc) {
-      $('#toc-ctn').css({
-        'padding-top': oVal + 'px'
-      });
+
+    // Remove extra main nav wrap
+    $('.main-nav-list > li').unwrap();
+
+    // Highlight current nav item
+    $('#main-nav > li > .main-nav-list-link').each(function () {
+        if($('.page-title-link').length > 0){
+            if ($(this).html().toUpperCase() == $('.page-title-link').html().toUpperCase()) {
+                $(this).addClass('current');
+            } else if ($(this).attr('href') == $('.page-title-link').attr('data-url')) {
+                $(this).addClass('current');
+            }
+        }
+    });
+
+    // Auto hide main nav menus
+    function autoHideMenus(){
+        var max_width = $('.nav-container-inner').width() - 10;
+        var main_nav_width = $('#main-nav').width();
+        var sub_nav_width = $('#sub-nav').width();
+        if (main_nav_width + sub_nav_width > max_width) {
+            // If more link not exists
+            if ($('.main-nav-more').length == 0) {
+                $(['<li class="main-nav-list-item top-level-menu main-nav-more">',
+                    '<a class="main-nav-list-link" href="javascript:;">More</a>',
+                    '<ul class="main-nav-list-child">',
+                    '</ul></li>'].join('')).appendTo($('#main-nav'));
+                // Bind hover event
+                $('.main-nav-more').hover(function () {
+                    if($(window).width() < 480) {
+                        return;
+                    }
+                    $(this).children('.main-nav-list-child').slideDown('fast');
+                }, function () {
+                    if($(window).width() < 480) {
+                        return;
+                    }
+                    $(this).children('.main-nav-list-child').slideUp('fast');
+                });
+            }
+            var child_count = $('#main-nav').children().length;
+            for (var i = child_count - 2; i >= 0; i--) {
+                var element = $('#main-nav').children().eq(i);
+                if (main_nav_width + sub_nav_width > max_width) {
+                    element.prependTo($('.main-nav-more > ul'));
+                    main_nav_width = $('#main-nav').width();
+                } else {
+                    return;
+                }
+            }
+        }
+        // Nav bar is wide enough
+        if ($('.main-nav-more').length > 0) {
+            $('.main-nav-more > ul').children().appendTo($('#main-nav'));
+            $('.main-nav-more').remove();
+        }
     }
-  };
-  if (target.length > 0) {
-    listenScroll(parallax);
-  }
-}
+    autoHideMenus();
 
-// 向下滚动箭头的监听事件
-function scrollDownArrowEvent() {
-  $('.scroll-down-bar').on('click', function() {
-    scrollToElement('#board', -$('#navbar').height());
-  });
-}
+    $(window).on('resize', function () {
+        autoHideMenus();
+    });
 
-// 向顶部滚动箭头的监听事件
-function scrollTopArrowEvent() {
-  var topArrow = $('#scroll-top-button');
-  if (!topArrow) {
-    return;
-  }
-  var posDisplay = false;
-  var scrollDisplay = false;
-  // 位置
-  var setTopArrowPos = function() {
-    var boardRight = document.getElementById('board').getClientRects()[0].right;
-    var bodyWidth = document.body.offsetWidth;
-    var right = bodyWidth - boardRight;
-    posDisplay = right >= 50;
-    topArrow.css({
-      'bottom': posDisplay && scrollDisplay ? '20px' : '-60px',
-      'right' : right - 64 + 'px'
+    // Fold second-level menu
+    $('.main-nav-list-item').hover(function () {
+        if ($(window).width() < 480) {
+            return;
+        }
+        $(this).children('.main-nav-list-child').slideDown('fast');
+    }, function () {
+        if ($(window).width() < 480) {
+            return;
+        }
+        $(this).children('.main-nav-list-child').slideUp('fast');
     });
-  };
-  setTopArrowPos();
-  $(window).resize(setTopArrowPos);
-  // 显示
-  var headerHeight = $('#board').offset().top;
-  listenScroll(function() {
-    var scrollHeight = document.body.scrollTop + document.documentElement.scrollTop;
-    scrollDisplay = scrollHeight >= headerHeight;
-    topArrow.css({
-      'bottom': posDisplay && scrollDisplay ? '20px' : '-60px'
-    });
-  });
-  // 点击
-  topArrow.on('click', function() {
-    $('body,html').animate({
-      scrollTop: 0,
-      easing   : 'swing'
-    });
-  });
-}
 
-$(document).ready(function() {
-  navbarScrollEvent();
-  parallaxEvent();
-  scrollDownArrowEvent();
-  scrollTopArrowEvent();
-});
+    // Add second-level menu mark
+    $('.main-nav-list-item').each(function () {
+        if ($(this).find('.main-nav-list-child').length > 0) {
+            $(this).addClass('top-level-menu');
+        }
+    });
+
+})(jQuery);

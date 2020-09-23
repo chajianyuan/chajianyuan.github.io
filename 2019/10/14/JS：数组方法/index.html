@@ -1,599 +1,747 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
-
-
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
-  <meta name="author" content="chajianyuan">
-  <meta name="keywords" content="">
-  <title>JS：数组方法 - 南殇的博客</title>
+    <meta charset="utf-8" />
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+    
+
+    
+    <title>JS：数组方法 | 南殇的博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="javascript" />
+    
+    <meta name="description" content="一、改变原数组1、push（添加元素）向数组后面添加元素，返回值为添加完后的数组长度 123let array &#x3D; [1,2,3,4,5]array.push(6)   &#x3D;&gt;  6array           &#x3D;&gt;  [1, 2, 3, 4, 5, 6]  2、pop（删除元素）从后面删除数组元素，只能删除一个，返回被删除的元素 123let arr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS：数组方法">
+<meta property="og:url" content="http://cjyblog.com/2019/10/14/JS%EF%BC%9A%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="南殇的博客">
+<meta property="og:description" content="一、改变原数组1、push（添加元素）向数组后面添加元素，返回值为添加完后的数组长度 123let array &#x3D; [1,2,3,4,5]array.push(6)   &#x3D;&gt;  6array           &#x3D;&gt;  [1, 2, 3, 4, 5, 6]  2、pop（删除元素）从后面删除数组元素，只能删除一个，返回被删除的元素 123let arr">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-14T13:01:06.000Z">
+<meta property="article:modified_time" content="2020-02-24T02:53:33.000Z">
+<meta property="article:author" content="chajianyuan">
+<meta property="article:tag" content="javascript">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="南殇的博客" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+    
+<link rel="stylesheet" href="/css/style.css">
 
-  
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
     
     
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
-  
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+    
+    
+    
+    
 
 
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="南殇的博客" type="application/atom+xml">
-</head>
-
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 <body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                    
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-10-14 21:01" pubdate>
-        2019年10月14日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      1k 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      15
-       分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
-          
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-      </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </header>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-  <main>
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
     
-      
+    未分类
+    </h1>
+</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
-            <!-- SEO header -->
-            <h1 style="display: none">JS：数组方法</h1>
+                        <div class="main-body-content">
+                            <article id="post-JS：数组方法" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        JS：数组方法
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2019/10/14/JS%EF%BC%9A%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" class="article-date">
+       <time datetime="2019-10-14T13:01:06.000Z" itemprop="datePublished">2019-10-14</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2019/10/14/JS%EF%BC%9A%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" class="article-date">
+     <time datetime="2020-02-24T02:53:33.000Z" itemprop="dateModified">2020-02-24</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/javascript/" rel="tag">javascript</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
             
-            <div class="markdown-body" id="post-body">
-              <meta name="referrer" content="no-referrer"/>
+
+            
+
+            
+
+            <meta name="referrer" content="no-referrer"/>
 
 <h2 id="一、改变原数组"><a href="#一、改变原数组" class="headerlink" title="一、改变原数组"></a>一、改变原数组</h2><h3 id="1、push（添加元素）"><a href="#1、push（添加元素）" class="headerlink" title="1、push（添加元素）"></a>1、push（添加元素）</h3><p>向数组后面添加元素，返回值为添加完后的数组长度</p>
-<pre><code class="hljs smali">let<span class="hljs-built_in"> array </span>= [1,2,3,4,5]
-array.push(6)   =&gt;  6
-array           =&gt;  [1, 2, 3, 4, 5, 6]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.push(6)   &#x3D;&gt;  6</span><br><span class="line">array           &#x3D;&gt;  [1, 2, 3, 4, 5, 6]</span><br></pre></td></tr></table></figure>
 
 <h3 id="2、pop（删除元素）"><a href="#2、pop（删除元素）" class="headerlink" title="2、pop（删除元素）"></a>2、pop（删除元素）</h3><p>从后面删除数组元素，只能删除一个，返回被删除的元素</p>
-<pre><code class="hljs smali">let<span class="hljs-built_in"> array </span>= [1,2,3,4,5]
-array.pop()  =&gt;  5
-array        =&gt;  [1, 2, 3, 4]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.pop()  &#x3D;&gt;  5</span><br><span class="line">array        &#x3D;&gt;  [1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
 
 <h3 id="3、shift（删除元素）"><a href="#3、shift（删除元素）" class="headerlink" title="3、shift（删除元素）"></a>3、shift（删除元素）</h3><p>从前面删除数组元素，只能删除一个，返回被删除的元素</p>
-<pre><code class="hljs smali">let<span class="hljs-built_in"> array </span>= [1,2,3,4,5]
-array.shift()  =&gt;  1
-array          =&gt;  [2, 3, 4, 5]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.shift()  &#x3D;&gt;  1</span><br><span class="line">array          &#x3D;&gt;  [2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
 
 <h3 id="4、unshift（添加元素）"><a href="#4、unshift（添加元素）" class="headerlink" title="4、unshift（添加元素）"></a>4、unshift（添加元素）</h3><p>从前面添加数组元素，返回添加后的数组的长度</p>
-<pre><code class="hljs smali">let<span class="hljs-built_in"> array </span>= [1,2,3,4,5]
-array.unshift(6)  =&gt;  6
-array             =&gt;  [6, 1, 2, 3, 4, 5]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.unshift(6)  &#x3D;&gt;  6</span><br><span class="line">array             &#x3D;&gt;  [6, 1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
 
 <h3 id="5、splice（添加、删除、替换元素）"><a href="#5、splice（添加、删除、替换元素）" class="headerlink" title="5、splice（添加、删除、替换元素）"></a>5、splice（添加、删除、替换元素）</h3><h4 id="（1）添加元素"><a href="#（1）添加元素" class="headerlink" title="（1）添加元素"></a>（1）添加元素</h4><p>返回空数组</p>
 <p><code>array.splice(index,0,item...)</code></p>
-<pre><code class="hljs smali">let<span class="hljs-built_in"> array </span>= [1,2,3,4,5]
-array.splice(2,0,6)  =&gt;  []
-array                =&gt;  [1, 2, 6, 3, 4, 5]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.splice(2,0,6)  &#x3D;&gt;  []</span><br><span class="line">array                &#x3D;&gt;  [1, 2, 6, 3, 4, 5]</span><br></pre></td></tr></table></figure>
 
 <h4 id="（2）删除元素"><a href="#（2）删除元素" class="headerlink" title="（2）删除元素"></a>（2）删除元素</h4><p>返回被删除的元素</p>
 <p><code>array.splice(index,howMany)</code></p>
-<pre><code class="hljs smali">let<span class="hljs-built_in"> array </span>= [1,2,3,4,5]
-array.splice(1,2)  =&gt;  [2, 3]
-array              =&gt;  [1, 4, 5]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.splice(1,2)  &#x3D;&gt;  [2, 3]</span><br><span class="line">array              &#x3D;&gt;  [1, 4, 5]</span><br></pre></td></tr></table></figure>
 
 <h4 id="（3）替换数组"><a href="#（3）替换数组" class="headerlink" title="（3）替换数组"></a>（3）替换数组</h4><p>返回要被替换的元素</p>
 <p><code>array.splice(index,homMany,item...)</code></p>
-<pre><code class="hljs smali">let<span class="hljs-built_in"> array </span>= [1,2,3,4,5]
-array.splice(2,1,6)  =&gt;  [3]
-array                =&gt;  [1, 2, 6, 4, 5]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.splice(2,1,6)  &#x3D;&gt;  [3]</span><br><span class="line">array                &#x3D;&gt;  [1, 2, 6, 4, 5]</span><br></pre></td></tr></table></figure>
 
 <h3 id="6、sort"><a href="#6、sort" class="headerlink" title="6、sort"></a>6、sort</h3><p>对数组进行排序，返回排好序的数组</p>
-<pre><code class="hljs angelscript">let nums = [<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">4</span>,<span class="hljs-number">6</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>]
-nums.sort()  =&gt;  [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]
-nums         =&gt;  [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let nums &#x3D; [3,1,4,6,2,5]</span><br><span class="line">nums.sort()  &#x3D;&gt;  [1, 2, 3, 4, 5, 6]</span><br><span class="line">nums         &#x3D;&gt;  [1, 2, 3, 4, 5, 6]</span><br></pre></td></tr></table></figure>
 
 <h3 id="7、reverse"><a href="#7、reverse" class="headerlink" title="7、reverse"></a>7、reverse</h3><p>将数组反转，返回反转后的数组</p>
-<pre><code class="hljs angelscript">let nums = [<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">4</span>,<span class="hljs-number">6</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>]
-<span class="hljs-built_in">array</span>.reverse()  =&gt;  [<span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>]
-<span class="hljs-built_in">array</span>            =&gt;  [<span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let nums &#x3D; [3,1,4,6,2,5]</span><br><span class="line">array.reverse()  &#x3D;&gt;  [5, 4, 3, 2, 1]</span><br><span class="line">array            &#x3D;&gt;  [5, 4, 3, 2, 1]</span><br></pre></td></tr></table></figure>
 
 <h3 id="8、copyWithin（替换元素）"><a href="#8、copyWithin（替换元素）" class="headerlink" title="8、copyWithin（替换元素）"></a>8、copyWithin（替换元素）</h3><p>替换数组中的元素，返回替换后的数组</p>
 <p><code>array.copyWithin(复制到指定目标索引，元素复制的起始位置，停止复印的索引位置)</code></p>
-<pre><code class="hljs angelscript">let <span class="hljs-built_in">array</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
-<span class="hljs-built_in">array</span>.copyWithin(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>)  =&gt;  [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]
-<span class="hljs-built_in">array</span>                    =&gt;  [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.copyWithin(1,3,4)  &#x3D;&gt;  [1, 4, 3, 4, 5]</span><br><span class="line">array                    &#x3D;&gt;  [1, 4, 3, 4, 5]</span><br></pre></td></tr></table></figure>
 
 <h3 id="9、fill（替换元素）"><a href="#9、fill（替换元素）" class="headerlink" title="9、fill（替换元素）"></a>9、fill（替换元素）</h3><p>用一个固定值填充一个数组中从索引到终止索引（不包括）内的全部元素，返回替换后的数组</p>
 <p><code>array.fill(value[,start,[,end]])</code></p>
-<pre><code class="hljs angelscript"><span class="hljs-built_in">array</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
-<span class="hljs-built_in">array</span>.fill(<span class="hljs-number">6</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>)  =&gt;  [<span class="hljs-number">1</span>, <span class="hljs-number">6</span>, <span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]
-<span class="hljs-built_in">array</span>              =&gt;  [<span class="hljs-number">1</span>, <span class="hljs-number">6</span>, <span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.fill(6,1,3)  &#x3D;&gt;  [1, 6, 6, 4, 5]</span><br><span class="line">array              &#x3D;&gt;  [1, 6, 6, 4, 5]</span><br></pre></td></tr></table></figure>
 
 <h2 id="二、不改变原数组"><a href="#二、不改变原数组" class="headerlink" title="二、不改变原数组"></a>二、不改变原数组</h2><h3 id="1、concat（拼接数组）"><a href="#1、concat（拼接数组）" class="headerlink" title="1、concat（拼接数组）"></a>1、concat（拼接数组）</h3><p>返回连接后的新数组</p>
-<pre><code class="hljs angelscript">let <span class="hljs-built_in">array</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
-<span class="hljs-built_in">array</span>.concat([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>])  =&gt;  [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>]
-<span class="hljs-built_in">array</span>                =&gt;  [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.concat([1,2])  &#x3D;&gt;  [1, 2, 3, 4, 5, 1, 2]</span><br><span class="line">array                &#x3D;&gt;  [1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
 
 <h3 id="2、split"><a href="#2、split" class="headerlink" title="2、split"></a>2、split</h3><p>将字符串转换成数组</p>
-<pre><code class="hljs processing">let <span class="hljs-built_in">str</span> = <span class="hljs-string">&#x27;12345&#x27;</span>
-<span class="hljs-built_in">str</span>.<span class="hljs-built_in">split</span>(<span class="hljs-string">&#x27;&#x27;</span>)  =&gt;  [<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-string">&quot;4&quot;</span>, <span class="hljs-string">&quot;5&quot;</span>]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let str &#x3D; &#39;12345&#39;</span><br><span class="line">str.split(&#39;&#39;)  &#x3D;&gt;  [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;]</span><br></pre></td></tr></table></figure>
 
 <h3 id="3、slice（截取一部分元素）"><a href="#3、slice（截取一部分元素）" class="headerlink" title="3、slice（截取一部分元素）"></a>3、slice（截取一部分元素）</h3><p>切去索引值 start 到索引值 end 的值，不包含 end 索引的值，返回被切掉的数组</p>
-<pre><code class="hljs smali">let<span class="hljs-built_in"> array </span>= [1,2,3,4,5]
-array.slice(1,3)  =&gt;  [2, 3]
-array             =&gt;  [1, 2, 3, 4, 5]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.slice(1,3)  &#x3D;&gt;  [2, 3]</span><br><span class="line">array             &#x3D;&gt;  [1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
 
 <h3 id="4、includes"><a href="#4、includes" class="headerlink" title="4、includes"></a>4、includes</h3><p>判断数组中是否包含某个值，返回 true 或 false</p>
-<pre><code class="hljs angelscript"><span class="hljs-built_in">array</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
-<span class="hljs-built_in">array</span>.includes(<span class="hljs-number">2</span>)  =&gt;  <span class="hljs-literal">true</span></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.includes(2)  &#x3D;&gt;  true</span><br></pre></td></tr></table></figure>
 
 <h3 id="5、join"><a href="#5、join" class="headerlink" title="5、join"></a>5、join</h3><p>将数组元素拼接起来</p>
-<pre><code class="hljs angelscript"><span class="hljs-built_in">array</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
-<span class="hljs-built_in">array</span>.join(<span class="hljs-string">&#x27;&#x27;</span>)  =&gt;  <span class="hljs-string">&quot;12345&quot;</span></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.join(&#39;&#39;)  &#x3D;&gt;  &quot;12345&quot;</span><br></pre></td></tr></table></figure>
 
 <h3 id="6、toString"><a href="#6、toString" class="headerlink" title="6、toString"></a>6、toString</h3><p>将数组转换成字符串</p>
-<pre><code class="hljs angelscript"><span class="hljs-built_in">array</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,&#123;a:<span class="hljs-number">4</span>&#125;]
-<span class="hljs-built_in">array</span>.toString()  =&gt;  <span class="hljs-string">&quot;1,2,3,[object Object]&quot;</span></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array &#x3D; [1,2,3,&#123;a:4&#125;]</span><br><span class="line">array.toString()  &#x3D;&gt;  &quot;1,2,3,[object Object]&quot;</span><br></pre></td></tr></table></figure>
 
 <h3 id="7、indexOf"><a href="#7、indexOf" class="headerlink" title="7、indexOf"></a>7、indexOf</h3><p>从前往后查找元素索引</p>
-<pre><code class="hljs angelscript"><span class="hljs-built_in">array</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
-<span class="hljs-built_in">array</span>.indexOf(<span class="hljs-number">2</span>)  =&gt;  <span class="hljs-number">1</span>
-<span class="hljs-built_in">array</span>.indexOf(<span class="hljs-number">6</span>)  =&gt;  <span class="hljs-number">-1</span></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.indexOf(2)  &#x3D;&gt;  1</span><br><span class="line">array.indexOf(6)  &#x3D;&gt;  -1</span><br></pre></td></tr></table></figure>
 
 <h3 id="8、lastIndexOf"><a href="#8、lastIndexOf" class="headerlink" title="8、lastIndexOf"></a>8、lastIndexOf</h3><p>从后往前查找元素索引</p>
-<pre><code class="hljs angelscript"><span class="hljs-built_in">array</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
-<span class="hljs-built_in">array</span>.lastIndexOf(<span class="hljs-number">2</span>)  =&gt;  <span class="hljs-number">1</span>
-<span class="hljs-built_in">array</span>.lastIndexOf(<span class="hljs-number">6</span>)  =&gt;  <span class="hljs-number">-1</span></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.lastIndexOf(2)  &#x3D;&gt;  1</span><br><span class="line">array.lastIndexOf(6)  &#x3D;&gt;  -1</span><br></pre></td></tr></table></figure>
 
 <h2 id="三、遍历数组"><a href="#三、遍历数组" class="headerlink" title="三、遍历数组"></a>三、遍历数组</h2><h3 id="1、forEach"><a href="#1、forEach" class="headerlink" title="1、forEach"></a>1、forEach</h3><p>遍历数组，无 return</p>
-<pre><code class="hljs smali">let<span class="hljs-built_in"> array </span>= [1,2,3,4,5]
-array.forEach(item=&gt;&#123;
-	item = item * 2
-&#125;)
-array  =&gt;  [1, 2, 3, 4, 5]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.forEach(item&#x3D;&gt;&#123;</span><br><span class="line">	item &#x3D; item * 2</span><br><span class="line">&#125;)</span><br><span class="line">array  &#x3D;&gt;  [1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
 
 <h3 id="2、map"><a href="#2、map" class="headerlink" title="2、map"></a>2、map</h3><p>遍历数组，对数组中元素进行修改，返回修改后的数组</p>
-<pre><code class="hljs smali">let<span class="hljs-built_in"> array </span>= [1,2,3,4,5]
-array.map(item=&gt;item*=2)  =&gt;  [2, 4, 6, 8, 10]
-array                     =&gt;  [1, 2, 3, 4, 5]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.map(item&#x3D;&gt;item*&#x3D;2)  &#x3D;&gt;  [2, 4, 6, 8, 10]</span><br><span class="line">array                     &#x3D;&gt;  [1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
 
 <h3 id="3、filter"><a href="#3、filter" class="headerlink" title="3、filter"></a>3、filter</h3><p>可以筛选数组中满足条件的元素</p>
-<pre><code class="hljs angelscript"><span class="hljs-built_in">array</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
-<span class="hljs-built_in">array</span>.filter(item=&gt;item&gt;<span class="hljs-number">4</span>)  =&gt;  [<span class="hljs-number">5</span>]
-<span class="hljs-built_in">array</span>  =&gt;  [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.filter(item&#x3D;&gt;item&gt;4)  &#x3D;&gt;  [5]</span><br><span class="line">array  &#x3D;&gt;  [1,2,3,4,5]</span><br></pre></td></tr></table></figure>
 
 <h3 id="4、reduce"><a href="#4、reduce" class="headerlink" title="4、reduce"></a>4、reduce</h3><p>接收一个函数作为累加器，接收两个参数（回调函数，初始值），返回一个值</p>
-<pre><code class="hljs angelscript"><span class="hljs-built_in">array</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
-<span class="hljs-built_in">array</span>.reduce((acc,current)=&gt;acc+current,<span class="hljs-number">0</span>)  =&gt;  <span class="hljs-number">15</span>
-<span class="hljs-built_in">array</span>  =&gt;  [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array &#x3D; [1,2,3,4,5]</span><br><span class="line">array.reduce((acc,current)&#x3D;&gt;acc+current,0)  &#x3D;&gt;  15</span><br><span class="line">array  &#x3D;&gt;  [1,2,3,4,5]</span><br></pre></td></tr></table></figure>
 
 <p>​</p>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://cjyblog.com/2019/10/14/JS%EF%BC%9A%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" data-id="ckfet1us1000me8fycvop5wvg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "chajianyuan"
+        },
+        "headline": "JS：数组方法",
+        "image": "http://cjyblog.com",
+        "keywords": "javascript",
+        "genre": "",
+        "datePublished": "2019-10-14",
+        "dateCreated": "2019-10-14",
+        "dateModified": "2020-02-24",
+        "url": "http://cjyblog.com/2019/10/14/JS：数组方法/",
+        "description": "
+
+一、改变原数组1、push（添加元素）向数组后面添加元素，返回值为添加完后的数组长度
+123let array &#x3D; [1,2,3,4,5]array.push(6)   &#x3D;&gt;  6array           &#x3D;&gt;  [1, 2, 3, 4, 5, 6]
+
+2、pop（删除元素）从后面删除数组元素，只能删除一个，返回被删除的元素
+123let arr",
+        "wordCount": 833
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
                 
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
                 
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
-                    
-                  </div>
+            
                 
-              </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2019/10/15/ES6%EF%BC%9Athis/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ES6：this</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2019/10/14/ES6%EF%BC%9Alet%E3%80%81const%E3%80%81var/">
-                        <span class="hidden-mobile">ES6：let、const、var</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/10/15/ES6%EF%BC%9Athis/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            ES6：this
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2019/10/14/ES6%EF%BC%9Alet%E3%80%81const%E3%80%81var/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">ES6：let、const、var</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
 
             
-          </article>
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/27/vue%EF%BC%9Avue%E7%89%88%E6%9C%AC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://pic3.zhimg.com/80/v2-120c6f2e62e740210a77ab3c87d65c0e_1440w.jpg)" alt="vue：vue版本之间的区别" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/27/vue%EF%BC%9Avue%E7%89%88%E6%9C%AC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" class="title">vue：vue版本之间的区别</a></p>
+                            <p class="item-date"><time datetime="2020-03-27T00:51:17.000Z" itemprop="datePublished">2020-03-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0koa.js/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0koa.js/" class="title">Node：学习koa.js</a></p>
+                            <p class="item-date"><time datetime="2020-03-26T01:01:10.000Z" itemprop="datePublished">2020-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0Express.js/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0Express.js/" class="title">Node：学习Express.js</a></p>
+                            <p class="item-date"><time datetime="2020-03-26T00:50:44.000Z" itemprop="datePublished">2020-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/26/%E6%80%BB%E7%BB%93%EF%BC%9ANode.js/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/26/%E6%80%BB%E7%BB%93%EF%BC%9ANode.js/" class="title">总结：Node.js</a></p>
+                            <p class="item-date"><time datetime="2020-03-26T00:45:13.000Z" itemprop="datePublished">2020-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E5%92%8Chttps/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://user-gold-cdn.xitu.io/2018/6/11/163ef70cbdc63e95?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)" alt="网络协议：http和https" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E5%92%8Chttps/" class="title">网络协议：http和https</a></p>
+                            <p class="item-date"><time datetime="2020-03-25T00:39:45.000Z" itemprop="datePublished">2020-03-25</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
-      </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
-</div>
 
-      </div>
-    
-  </div>
-</div>
+            
+                
 
-<!-- Custom -->
-
-
-    
-  </main>
-
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
-
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">43</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">7</span></li></ul>
         </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
     </div>
-  </div>
-</div>
-  
 
-  
 
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/" rel="tag">ES6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/" rel="tag">html</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/koa/" rel="tag">koa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uniapp/" rel="tag">uniapp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" rel="tag">网络协议</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a><span class="tag-list-count">1</span></li></ul>
+        </div>
     </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ES6/" style="font-size: 14.29px;">ES6</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/html/" style="font-size: 12.86px;">html</a> <a href="/tags/javascript/" style="font-size: 18.57px;">javascript</a> <a href="/tags/koa/" style="font-size: 10px;">koa</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/uniapp/" style="font-size: 10px;">uniapp</a> <a href="/tags/vue/" style="font-size: 17.14px;">vue</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 11.43px;">其他</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 18.57px;">总结</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 15.71px;">浏览器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.14px;">算法</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 14.29px;">网络协议</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">面经</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 chajianyuan</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
     
 
-    
 
-    
-  </div>
+            </div>
+        </div>
+    </div>
 </footer>
 
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
-
-<!-- Plugins -->
-
-
-  
-    <script  src="/js/lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://cjyblog.com/2019/10/14/JS%EF%BC%9A%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
 
 
 
 
 
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
 
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
 
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "JS：数组方法&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
 
 
 
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
-      
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
+<!-- Custom Scripts -->
 
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="/js/main.js"></script>
 
 
 </body>
