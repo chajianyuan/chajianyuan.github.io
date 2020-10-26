@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chajianyuanblog.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"chajianyuan.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"ZFO5FC3GGP","apiKey":"ebb197ff3f64dd809727fafc95ab1151","indexName":"test_NAME","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="一、let&#x2F;const参见总结：ES6：let、const、var 二、模板字符串模板字符串（&#96;&#96;），相对于一般的加号字符串拼接，优势在于他能够识别空格、换行符等，还能直接使用 ${}来拼接变量 三、set、map、weakSet、weakMap参见总结：ES6：set、map、weakSet、weakMap 四、箭头函数参见总结：ES6：this 五、promise、Generator、as">
 <meta property="og:type" content="article">
 <meta property="og:title" content="总结：ES6">
-<meta property="og:url" content="http://chajianyuanblog.com/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9AES6/index.html">
+<meta property="og:url" content="https://chajianyuan.github.io/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9AES6/index.html">
 <meta property="og:site_name" content="查见原的博客">
 <meta property="og:description" content="一、let&#x2F;const参见总结：ES6：let、const、var 二、模板字符串模板字符串（&#96;&#96;），相对于一般的加号字符串拼接，优势在于他能够识别空格、换行符等，还能直接使用 ${}来拼接变量 三、set、map、weakSet、weakMap参见总结：ES6：set、map、weakSet、weakMap 四、箭头函数参见总结：ES6：this 五、promise、Generator、as">
 <meta property="og:locale" content="zh_CN">
@@ -33,7 +33,7 @@
 <meta property="article:tag" content="总结">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://chajianyuanblog.com/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9AES6/">
+<link rel="canonical" href="https://chajianyuan.github.io/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9AES6/">
 
 
 <script id="page-configurations">
@@ -106,6 +106,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -125,11 +126,35 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+      
+    </div>
+  </div>
 
 </div>
     </header>
@@ -153,7 +178,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://chajianyuanblog.com/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9AES6/">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9AES6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -388,6 +413,13 @@
 
   
 
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
+<script src="/js/algolia-search.js"></script>
 
 
 
