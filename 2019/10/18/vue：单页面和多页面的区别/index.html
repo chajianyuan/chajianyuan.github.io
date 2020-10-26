@@ -325,7 +325,7 @@
 </tr>
 </tbody></table>
 <h2 id="四、单页应用实现–前端路由"><a href="#四、单页应用实现–前端路由" class="headerlink" title="四、单页应用实现–前端路由"></a>四、单页应用实现–前端路由</h2><h3 id="1、hash"><a href="#1、hash" class="headerlink" title="1、hash"></a>1、hash</h3><p>早期的前端路由的实现就是基于 location.hash 来实现的。其实现原理很简单，location.hash 的值就是 URL 中 # 后面的内容。比如下面这个网站，它的 location.hash 的值为 ‘#search’：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.word.com#search</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>www.word.com<span class="comment">#search</span></span><br></pre></td></tr></table></figure>
 
 <p>hash 路由模式的实现主要是基于下面几个特性：</p>
 <ul>
@@ -335,7 +335,7 @@
 <li>我们可以使用 hashchange 事件来监听 hash 值的变化，从而对页面进行跳转（渲染）。</li>
 </ul>
 <h3 id="2、history"><a href="#2、history" class="headerlink" title="2、history"></a>2、history</h3><p>HTML5 提供了 History API 来实现 URL 的变化。其中做最主要的 API 有以下两个：history.pushState() 和 history.repalceState()。这两个 API 可以在不进行刷新的情况下，操作浏览器的历史纪录。唯一不同的是，前者是新增一个历史记录，后者是直接替换当前的历史记录，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.history.pushState(null, null, path);</span><br><span class="line">window.history.replaceState(null, null, path);</span><br></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">window</span>.history.pushState(<span class="keyword">null</span>, <span class="keyword">null</span>, <span class="type">path</span>);</span><br><span class="line"><span class="keyword">window</span>.history.replaceState(<span class="keyword">null</span>, <span class="keyword">null</span>, <span class="type">path</span>);</span><br></pre></td></tr></table></figure>
 
 <p>history 路由模式的实现主要基于存在下面几个特性：</p>
 <ul>
@@ -449,7 +449,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

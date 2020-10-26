@@ -296,21 +296,21 @@
 <h2 id="五、-lt-head-gt-中都有什么元素"><a href="#五、-lt-head-gt-中都有什么元素" class="headerlink" title="五、&lt; head &gt;中都有什么元素"></a>五、&lt; head &gt;中都有什么元素</h2><h3 id="1、-lt-base-gt"><a href="#1、-lt-base-gt" class="headerlink" title="1、&lt; base &gt;"></a>1、&lt; base &gt;</h3><p>为页面上的所有链接规定默认地址或默认目标</p>
 <p>通常情况下，浏览器会从当前文档的 URL 中提取相应的元素来填写相对 URL 中的空白。</p>
 <p>使用 &lt; base &gt; 标签可以改变这一点。浏览器随后将不再使用当前文档的 URL，而使用指定的基本 URL 来解析所有的相对 URL。这其中包括 &lt; a &gt;、&lt; img &gt;、&lt; link &gt;、&lt; form &gt; 标签中的 URL。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;base href&#x3D;&quot;http:&#x2F;&#x2F;www.w3school.com.cn&#x2F;i&#x2F;&quot; &#x2F;&gt;</span><br><span class="line">&lt;base target&#x3D;&quot;_blank&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">&quot;http://www.w3school.com.cn/i/&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">base</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="2、-lt-link-gt"><a href="#2、-lt-link-gt" class="headerlink" title="2、&lt; link &gt;"></a>2、&lt; link &gt;</h3><p>定义文档与外部资源的关系，最常见的就是链接样式表。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;theme.css&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link <span class="attribute">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attribute">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attribute">href</span>=<span class="string">&quot;theme.css&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
 
 <h3 id="3、-lt-script-gt"><a href="#3、-lt-script-gt" class="headerlink" title="3、&lt; script &gt;"></a>3、&lt; script &gt;</h3><p>用于定义用户脚本，比如 JavaScript。script 元素既可以包含脚本语言，也可以通过 src 属性指向外部脚本文件。必须的 type 属性规定脚本的 MIME 类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">	document.write(&quot;Hello World!&quot;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="built_in">document</span>.write(<span class="string">&quot;Hello World!&quot;</span>)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="4、-lt-meta-gt"><a href="#4、-lt-meta-gt" class="headerlink" title="4、&lt; meta &gt;"></a>4、&lt; meta &gt;</h3><p>可提供有关页面的元信息，比如针对搜索引擎和更新频度的描述和关键词。定义了与文档相关联的名称/值对。</p>
 <p><code>&lt;meta name=&quot;keywords&quot; content=&quot;HTML,ASP,PHP,SQL&quot;&gt;</code></p>
 <h3 id="5、-lt-style-gt"><a href="#5、-lt-style-gt" class="headerlink" title="5、&lt; style &gt;"></a>5、&lt; style &gt;</h3><p>用于为 html 文档定义样式信息。type 属性是必须的，定义 style 元素的内容，唯一可能的值是“text/css”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">	h1 &#123;color:red&#125;</span><br><span class="line">	p &#123;color:blue&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span></span><br><span class="line"><span class="css">	<span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>:red&#125;</span></span><br><span class="line"><span class="css">	<span class="selector-tag">p</span> &#123;<span class="attribute">color</span>:blue&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="6、-lt-title-gt"><a href="#6、-lt-title-gt" class="headerlink" title="6、&lt; title &gt;"></a>6、&lt; title &gt;</h3><p>定义文档的标题，通常是现实在浏览器窗口的标题栏或者是状态栏上。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;title&gt;XHTML Tag Reference&lt;&#x2F;title&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;title&gt;</span>XHTML <span class="keyword">Tag</span> <span class="title">Reference</span><span class="tag">&lt;/title&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="六、本地存储"><a href="#六、本地存储" class="headerlink" title="六、本地存储"></a>六、本地存储</h2><p><a target="_blank" rel="noopener" href="https://cjy1.github.io/2019/10/26/cookie%E3%80%81sessionStorage%E3%80%81localStorage%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%A7%A3/">参见总结：cookie、session、sessionStorage、localStorage</a></p>
 <h2 id="七、websocket"><a href="#七、websocket" class="headerlink" title="七、websocket"></a>七、websocket</h2><p><a target="_blank" rel="noopener" href="https://cjy1.github.io/2019/10/26/webSocket%E5%AD%A6%E4%B9%A0/">参见总结：webSocket 学习</a></p>
@@ -446,7 +446,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
