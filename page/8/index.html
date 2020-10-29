@@ -22,26 +22,26 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="查见原的博客">
-<meta property="og:url" content="https://chajianyuan.github.io/tags/css/page/2/index.html">
+<meta property="og:url" content="https://chajianyuan.github.io/page/8/index.html">
 <meta property="og:site_name" content="查见原的博客">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="chajianyuan">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://chajianyuan.github.io/tags/css/page/2/">
+<link rel="canonical" href="https://chajianyuan.github.io/page/8/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
+    isHome : true,
     isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: css | 查见原的博客</title>
+  <title>查见原的博客</title>
   
 
 
@@ -186,74 +186,100 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/27/css%EF%BC%9ABFC%E8%A7%84%E8%8C%83/">
 
-  
-  
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">css
-          <small>标签</small>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/27/css%EF%BC%9ABFC%E8%A7%84%E8%8C%83/" class="post-title-link" itemprop="url">css：BFC规范</a>
         </h2>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-27 11:00:05" itemprop="dateCreated datePublished" datetime="2019-10-27T11:00:05+08:00">2019-10-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-22 14:10:21" itemprop="dateModified" datetime="2020-02-22T14:10:21+08:00">2020-02-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2019</span>
+          <meta name="referrer" content="no-referrer"/>
+
+<h2 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h2><p>BFC（Block formatting context，块级格式化上下文），他是一个独立的渲染区域，只有 Block-level box 参与，他规定了内部的 Block-level box 如何布局，并且与这个区域外部毫不相干。通俗的讲，BFC 是一个容器，用于管理块级元素。</p>
+<h2 id="2、BFC-主要特征"><a href="#2、BFC-主要特征" class="headerlink" title="2、BFC 主要特征"></a>2、BFC 主要特征</h2><ul>
+<li>BFC 容器是一个隔离的容器，和其他元素互不干扰；所以我们可以用触发两个元素的 BFC 来解决垂直边距折叠问题</li>
+<li>BFC 不会重叠浮动元素</li>
+<li>BFC 可以包含浮动</li>
+</ul>
+<h2 id="3、BFC-触发方式"><a href="#3、BFC-触发方式" class="headerlink" title="3、BFC 触发方式"></a>3、BFC 触发方式</h2><ul>
+<li>float 为 left|right</li>
+<li>overflow 为 hidden|auto|scroll</li>
+<li>display 为 table-cell|table-caption|inline-block</li>
+<li>position 为 absolute|fixed</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5bc33d0d6fb9a05d1658afc7">深入理解 BFC</a></p>
+
+      
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-10-13T09:53:53+08:00"
-              content="2019-10-13">
-          10-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/10/13/css%EF%BC%9Aflex%E5%B8%83%E5%B1%80/" itemprop="url">
-            <span itemprop="name">css：flex布局</span>
-          </a>
-      </div>
-
-    </header>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-08-22T14:24:36+08:00"
-              content="2019-08-22">
-          08-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/08/22/css%EF%BC%9Acss%E5%8A%A8%E7%94%BB/" itemprop="url">
-            <span itemprop="name">css：css动画</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-    </div>
-  </div>
   
   
   
+
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/tags/css/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/tags/css/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
   </nav>
 
 

@@ -265,7 +265,10 @@
     <a href="/2020/10/27/react%EF%BC%9AuseEffect/" rel="prev" title="react: useEffect">
       <i class="fa fa-chevron-left"></i> react: useEffect
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/29/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%B1%82%E6%A0%B9%E5%88%B0%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C/" rel="next" title="算法：求根到叶子节点数字之和">
+      算法：求根到叶子节点数字之和 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -338,7 +341,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-count">71</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -358,7 +361,10 @@
 </div>
 
 
-
+<!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	<div class="widget" id="CloudCalendar"></div>
+</div>
       </div>
 
     </div>
@@ -464,6 +470,23 @@
   
 
   
+<!-- calendar widget -->
+
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/schedule/'
+                }
+            )
+        );
+    });
+    </script>
+
 
 </body>
 </html>

@@ -196,13 +196,33 @@
     <div class="posts-collapse">
       <div class="collection-title">
         
-        <span class="collection-header">不错! 目前共计 70 篇日志。 继续努力。</span>
+        <span class="collection-header">不错! 目前共计 71 篇日志。 继续努力。</span>
       </div>
 
       
     <div class="collection-year">
       <span class="collection-header">2020</span>
     </div>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2020-03-22T09:28:46+08:00"
+              content="2020-03-22">
+          03-22
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2020/03/22/JS%EF%BC%9Amap%E3%80%81filter%E3%80%81reduce/" itemprop="url">
+            <span itemprop="name">JS：map、filter、reduce</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
 
   <article itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
@@ -339,7 +359,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-count">71</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -359,7 +379,10 @@
 </div>
 
 
-
+<!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	<div class="widget" id="CloudCalendar"></div>
+</div>
       </div>
 
     </div>
@@ -465,6 +488,23 @@
   
 
   
+<!-- calendar widget -->
+
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/schedule/'
+                }
+            )
+        );
+    });
+    </script>
+
 
 </body>
 </html>
