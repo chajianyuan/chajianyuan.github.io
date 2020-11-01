@@ -192,6 +192,956 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/09/03/webpack%EF%BC%9Awebpack%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/03/webpack%EF%BC%9Awebpack%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" class="post-title-link" itemprop="url">webpack：webpack学习之旅</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-03 16:28:28" itemprop="dateCreated datePublished" datetime="2019-09-03T16:28:28+08:00">2019-09-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-27 19:35:50" itemprop="dateModified" datetime="2020-10-27T19:35:50+08:00">2020-10-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<h2 id="一、为什么需要构建工具"><a href="#一、为什么需要构建工具" class="headerlink" title="一、为什么需要构建工具"></a>一、为什么需要构建工具</h2><p>（1）转换 ES6 语法</p>
+<p>（2）转换 JSX</p>
+<p>（3）CSS 前传补全</p>
+<p>（4）压缩混淆</p>
+<p>（5）图片压缩</p>
+<h2 id="二、为什么选择-webpack"><a href="#二、为什么选择-webpack" class="headerlink" title="二、为什么选择 webpack"></a>二、为什么选择 webpack</h2><p>（1）社区生态丰富</p>
+<p>（2）配置灵活和插件化扩展</p>
+<p>（3）官方更新迭代速度快</p>
+<h2 id="三、初识-webpack"><a href="#三、初识-webpack" class="headerlink" title="三、初识 webpack"></a>三、初识 webpack</h2><p>webpack 默认配置文件：webpack.config.js</p>
+<p>可以通过 webpack –config 指定配置文件</p>
+<p><img src="https://github.com/cjy1/picture/blob/master/TIM%E5%9B%BE%E7%89%8720190918091733.png?raw=true"></p>
+<h2 id="四、安装-webpack"><a href="#四、安装-webpack" class="headerlink" title="四、安装 webpack"></a>四、安装 webpack</h2><h4 id="1、安装-Node-js-和-NPM"><a href="#1、安装-Node-js-和-NPM" class="headerlink" title="1、安装 Node.js 和 NPM"></a>1、安装 Node.js 和 NPM</h4><h4 id="2、创建一个空目录"><a href="#2、创建一个空目录" class="headerlink" title="2、创建一个空目录"></a>2、创建一个空目录</h4><p><code>mkdir my_project</code></p>
+<h4 id="3、进入该目录"><a href="#3、进入该目录" class="headerlink" title="3、进入该目录"></a>3、进入该目录</h4><p><code>cd my_project</code></p>
+<h4 id="4、生成初始的-package-文件"><a href="#4、生成初始的-package-文件" class="headerlink" title="4、生成初始的 package 文件"></a>4、生成初始的 package 文件</h4><p><code>npm init -y</code></p>
+<h4 id="5、安装-webpack-和-webpack-cli"><a href="#5、安装-webpack-和-webpack-cli" class="headerlink" title="5、安装 webpack 和 webpack-cli"></a>5、安装 webpack 和 webpack-cli</h4><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install webpack --<span class="built_in">save</span>-<span class="built_in">dev</span></span><br><span class="line">cnpm install webpack-cli --<span class="built_in">save</span>-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="6、在项目中新建一个-webpack-config-js-文件"><a href="#6、在项目中新建一个-webpack-config-js-文件" class="headerlink" title="6、在项目中新建一个 webpack.config.js 文件"></a>6、在项目中新建一个 webpack.config.js 文件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.join(_dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mode: <span class="string">&#x27;production&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="7、创建一个-src-目录"><a href="#7、创建一个-src-目录" class="headerlink" title="7、创建一个 src 目录"></a>7、创建一个 src 目录</h4><p>在 src 中新建一个 helloworld.js 文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">helloworld</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;Hello webpack&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 src 中新建一个 index.js 文件</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; helloworld &#125; <span class="keyword">from</span> <span class="string">&#x27;./helloworld&#x27;</span>;</span><br><span class="line"><span class="built_in">document</span>.write(helloworld());</span><br></pre></td></tr></table></figure>
+
+<h4 id="8、运行打包"><a href="#8、运行打包" class="headerlink" title="8、运行打包"></a>8、运行打包</h4><p>在 package.json 文件中的“scripts”中添加”build”: “webpack”</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;</span><span class="keyword">Error</span>: <span class="keyword">no</span> <span class="keyword">test</span> specified\<span class="string">&quot; &amp;&amp; exit 1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build&quot;</span>: <span class="string">&quot;webpack&quot;</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>npm run build</code></p>
+<h2 id="五、webpack-基本用法"><a href="#五、webpack-基本用法" class="headerlink" title="五、webpack 基本用法"></a>五、webpack 基本用法</h2><p>本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器（module bundler）。当 webpack 处理应用程序时，他会递归的构建一个依赖关系图（dependency graph），其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。</p>
+<p>在这开始之前需要先理解四个核心概念：</p>
+<ul>
+<li>入口（entry）</li>
+<li>输出（output）</li>
+<li>loader</li>
+<li>插件（plugins）</li>
+</ul>
+<h4 id="1、核心概念之入口（entry）"><a href="#1、核心概念之入口（entry）" class="headerlink" title="1、核心概念之入口（entry）"></a>1、核心概念之入口（entry）</h4><p>**入口起点 **（ entry point）指示 webpack 应该使用哪个模块来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出哪些模块和库是入口起点（直接或间接）依赖的。</p>
+<p>每个依赖项随即被处理，最后输出到称之为 bundles 的文件中。</p>
+<p>可以通过在 webpack 配置中配置 entry 属性，来指定一个入口起点（或多个入口起点）。默认值为./src。</p>
+<p><strong>单入口</strong> ：entry 是一个字符串</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.<span class="built_in">exports</span> = &#123;</span><br><span class="line">  entry:<span class="string">&#x27;./path/to/my/entry/files.js&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>多入口</strong> ：entry 是一个对象</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.<span class="built_in">exports</span> = &#123;</span><br><span class="line">  entry:&#123;</span><br><span class="line">    app:<span class="string">&#x27;./src/app.js&#x27;</span>,</span><br><span class="line">    adminApp:<span class="string">&#x27;./src/adminApp.js&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、核心概念之出口（output）"><a href="#2、核心概念之出口（output）" class="headerlink" title="2、核心概念之出口（output）"></a>2、核心概念之出口（output）</h4><p><strong>Output</strong> 用来告诉 webpack 如何将编译后的文件输出到磁盘</p>
+<p><strong>多入口配置</strong></p>
+<p><strong>用法：</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const <span class="built_in">path</span> = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    index: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">    search: <span class="string">&#x27;./src/search.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">output</span>: &#123;</span><br><span class="line">    <span class="built_in">path</span>: <span class="built_in">path</span>.join(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    filename: <span class="string">&#x27;[name].js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mode: <span class="string">&#x27;production&#x27;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、核心概念之-Loaders"><a href="#3、核心概念之-Loaders" class="headerlink" title="3、核心概念之 Loaders"></a>3、核心概念之 Loaders</h4><p>webpack 开箱即用只支持 JS 和 JSON 两种文件类型，通过 loaders 去支持其他文件类型并且把他们转化成有效的模块，并且可以添加到依赖图中。</p>
+<p>本身是一个函数，接受源文件作为参数，返回转换的结果。</p>
+<p>常见的 loades:</p>
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">bable-loader</td>
+<td align="center">转换 ES6、ES7 等 JS 新特性语法</td>
+</tr>
+<tr>
+<td align="center">css-loader</td>
+<td align="center">支持.css 文件的加载和解析</td>
+</tr>
+<tr>
+<td align="center">less-loader</td>
+<td align="center">将 less 文件转换成 css</td>
+</tr>
+<tr>
+<td align="center">ts-loader</td>
+<td align="center">将 TS 转换成 js</td>
+</tr>
+<tr>
+<td align="center">file-loader</td>
+<td align="center">进行图片、文字等的打包</td>
+</tr>
+<tr>
+<td align="center">raw-loader</td>
+<td align="center">将文件以字符串定位形式导入</td>
+</tr>
+<tr>
+<td align="center">thread-loader</td>
+<td align="center">多进程打包 JS 和 CSS</td>
+</tr>
+</tbody></table>
+<p><strong>用法：</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.<span class="built_in">exports</span> = &#123;</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line"> modules:&#123;</span><br><span class="line">   rules:[</span><br><span class="line">     &#123;</span><br><span class="line">       test:<span class="regexp">/\.txt$/</span>,        <span class="comment">//test指定匹配规则</span></span><br><span class="line">       use: <span class="string">&#x27;raw-loader&#x27;</span>     <span class="comment">//use指定使用的loader名称</span></span><br><span class="line">     &#125;</span><br><span class="line">   ]</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、核心概念之-Plugins"><a href="#4、核心概念之-Plugins" class="headerlink" title="4、核心概念之 Plugins"></a>4、核心概念之 Plugins</h4><p>插件用于 bundle 文件的优化，资源管理和环境变量注入</p>
+<p>作用于整个构建过程</p>
+<p><strong>常见的 Plugin:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">CommonsChunkPlugin</td>
+<td align="center">将 chunks 相同的模块代码提取成公共 js</td>
+</tr>
+<tr>
+<td align="center">CleanWebpackPlugin</td>
+<td align="center">清理构建目录</td>
+</tr>
+<tr>
+<td align="center">ExtractTextWebpackPlugin</td>
+<td align="center">将 css 从 bundle 文件中提取成一个独立的 css 文件</td>
+</tr>
+<tr>
+<td align="center">CopyWebpackPlugin</td>
+<td align="center">将文件或者文件夹拷贝到构建的输出目录</td>
+</tr>
+<tr>
+<td align="center">HtmlWebpackPlugin</td>
+<td align="center">创建 html 文件去承载输出的 bundle</td>
+</tr>
+<tr>
+<td align="center">UglifyjsWepackPlugin</td>
+<td align="center">压缩 JS</td>
+</tr>
+<tr>
+<td align="center">ZipWebpackPlugin</td>
+<td align="center">将打包出的资源生成一个 zip 包</td>
+</tr>
+</tbody></table>
+<p><strong>用法：</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.<span class="built_in">exports</span> = &#123;</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line"> plugins: [</span><br><span class="line">   <span class="keyword">new</span> HtmlWebpackPlugin(&#123;          <span class="comment">//放在plugins数组中</span></span><br><span class="line">     template: <span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">   &#125;)</span><br><span class="line"> ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5、核心概念之-mode"><a href="#5、核心概念之-mode" class="headerlink" title="5、核心概念之 mode"></a>5、核心概念之 mode</h4><p>mode 用来制定当前的构建环境是：production、development 还是 none</p>
+<p>设置 mode 可以使用 webpack 内置的函数，默认值为 production</p>
+<p><strong>mode 的内置函数功能</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">选项</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">development</td>
+<td align="center">设置 process、env、NODE_ENV 的值为 development，开启 NamedChunksPlugin 和 NamedModulesPlugin</td>
+</tr>
+<tr>
+<td align="center">production</td>
+<td align="center">设置 process.env.NODE_ENV 的值为 production。开启 FlagDependencyUsagePlugin, FlagIncludedChunksPlugin, ModuleConcatenationPlugin, NoEmitOnErrorsPlugin, OccurrenceOrderPlugin, SideEffectsFlagPlugin 和 TerserPlugin</td>
+</tr>
+<tr>
+<td align="center">none</td>
+<td align="center">不开启任何优化</td>
+</tr>
+</tbody></table>
+<h2 id="六、资源解析"><a href="#六、资源解析" class="headerlink" title="六、资源解析"></a>六、资源解析</h2><h4 id="1、解析-CSS"><a href="#1、解析-CSS" class="headerlink" title="1、解析 CSS"></a>1、解析 CSS</h4><p>css-loader 用于加载。css 文件，并且转换成 .js 对象</p>
+<p>style-loader 将样式通过&lt; style &gt; 标签插入到 head 中</p>
+<p><code>npm i style-loader css-loader -D</code></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const <span class="built_in">path</span> = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry:<span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">  <span class="built_in">output</span>: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">    <span class="built_in">path</span>:<span class="built_in">path</span>.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line"> modules:&#123;</span><br><span class="line">   rules:[</span><br><span class="line">     &#123;</span><br><span class="line">       test:/\.css$/,</span><br><span class="line">       use: [</span><br><span class="line">         <span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">         <span class="string">&#x27;css-loader&#x27;</span></span><br><span class="line">       ]</span><br><span class="line">     &#125;</span><br><span class="line">   ]</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、解析-Less-和-SaSS"><a href="#2、解析-Less-和-SaSS" class="headerlink" title="2、解析 Less 和 SaSS"></a>2、解析 Less 和 SaSS</h4><p>less-loader 用于将 less 转换成 css</p>
+<p><code>npm i less less-loader -D</code></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">const <span class="built_in">path</span> = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry:<span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">  <span class="built_in">output</span>: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">    <span class="built_in">path</span>:<span class="built_in">path</span>.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line"> modules:&#123;</span><br><span class="line">   rules:[</span><br><span class="line">     &#123;</span><br><span class="line">       test:/\.less$/,</span><br><span class="line">       use: [</span><br><span class="line">         <span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">         <span class="string">&#x27;css-loader&#x27;</span>,</span><br><span class="line">         <span class="string">&#x27;less-loader&#x27;</span></span><br><span class="line">       ]</span><br><span class="line">     &#125;</span><br><span class="line">   ]</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、解析文件、字体"><a href="#3、解析文件、字体" class="headerlink" title="3、解析文件、字体"></a>3、解析文件、字体</h4><p>file-loader 用于处理文件、字体</p>
+<p><code>npm i file-loader -D</code></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const <span class="built_in">path</span> = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry:<span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">  <span class="built_in">output</span>: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">    <span class="built_in">path</span>:<span class="built_in">path</span>.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line"> modules:&#123;</span><br><span class="line">   rules:[</span><br><span class="line">     &#123;</span><br><span class="line">       test:/\.(png|svg|gif|word|woff2|otf)$/,</span><br><span class="line">       use: [</span><br><span class="line">         <span class="string">&#x27;file-loader&#x27;</span></span><br><span class="line">       ]</span><br><span class="line">     &#125;</span><br><span class="line">   ]</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>url-loader 也可以处理图片和字体，可以设置较小资源自动 base64</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const <span class="built_in">path</span> = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry:<span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">  <span class="built_in">output</span>: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">    <span class="built_in">path</span>:<span class="built_in">path</span>.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line"> modules:&#123;</span><br><span class="line">   rules:[</span><br><span class="line">     &#123;</span><br><span class="line">       test:/\.(png|svg|gif|word|woff2|otf)$/,</span><br><span class="line">       use: [</span><br><span class="line">         <span class="string">&#x27;url-loader&#x27;</span>,</span><br><span class="line">         options:&#123;</span><br><span class="line">           limit:<span class="number">10240</span></span><br><span class="line">         &#125;</span><br><span class="line">       ]</span><br><span class="line">     &#125;</span><br><span class="line">   ]</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、解析-ES6"><a href="#4、解析-ES6" class="headerlink" title="4、解析 ES6"></a>4、解析 ES6</h4><p>使用 babel-loader</p>
+<p>babel 的配置文件是：_babelrc</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const <span class="built_in">path</span> = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry:<span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">  <span class="built_in">output</span>: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">    <span class="built_in">path</span>:<span class="built_in">path</span>.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line"> modules:&#123;</span><br><span class="line">   rules:[</span><br><span class="line">     &#123;</span><br><span class="line">       test:/\.js$/,</span><br><span class="line">       use: <span class="string">&#x27;babel-loader&#x27;</span></span><br><span class="line">     &#125;</span><br><span class="line">   ]</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>增加 ES6 的 babel preset 配置</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;presets&quot;</span>:[</span><br><span class="line">    <span class="string">&quot;@babel/preset-env&quot;</span>        ————————增加ES6的babel preset配置</span><br><span class="line">    <span class="string">&quot;@babel/preset-react&quot;</span>      ————————增加React的babel preset配置</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;plugins&quot;</span>:[</span><br><span class="line">    <span class="string">&quot;@babel/proposal-class-properties&quot;</span></span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+
+<h2 id="七、webpack-中的文件监听"><a href="#七、webpack-中的文件监听" class="headerlink" title="七、webpack 中的文件监听"></a>七、webpack 中的文件监听</h2><p>文件监听是在发现源码发生变化时。自动重新构建出新的输出文件</p>
+<p>webpack 开启监听模式，有两种方式：</p>
+<p>·启动 webpack 命令时，带上–watch 参数</p>
+<p>·在配置 webpack.config.js 中设置成 watch:true</p>
+<p>唯一缺陷：每次需要手动刷新浏览器</p>
+<p><strong>文件监听的原理分析：</strong></p>
+<p>轮训判断文件的最后编辑时间是否变化</p>
+<p>某个文件发生了变化，并不会立刻告诉监听者，而是先缓存起来，等 aggregateTimeout</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">module.export = &#123;</span><br><span class="line">  <span class="regexp">//</span>默认false，也就是不开启</span><br><span class="line">  watch:true,</span><br><span class="line">  <span class="regexp">//</span>只有开启监听模式时，watchOptios才有意义</span><br><span class="line">  watchOptions:&#123;</span><br><span class="line">    <span class="regexp">//</span>默认为空，不监听的文件或者文件夹，支持正则匹配</span><br><span class="line">    ignored:<span class="regexp">/node_modules/</span>,</span><br><span class="line">    <span class="regexp">//</span>监听到变化发生后会等<span class="number">300</span>ms再去执行，默认<span class="number">300</span>ms</span><br><span class="line">    aggregateTimeout:<span class="number">300</span>ms,</span><br><span class="line">    <span class="regexp">//</span>判断文件是否发生变化时通过不停的询问系统指定文件有没有变化实现的，默认美妙问<span class="number">1000</span>次</span><br><span class="line">    poll:<span class="number">1000</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、热更新"><a href="#八、热更新" class="headerlink" title="八、热更新"></a>八、热更新</h2><h4 id="1-webpack-dev-server-WDS"><a href="#1-webpack-dev-server-WDS" class="headerlink" title="(1) webpack-dev-server(WDS)"></a>(1) webpack-dev-server(WDS)</h4><p>WDS 不刷新浏览器</p>
+<p>WDS 不输出文件，而是放在内存中</p>
+<p>使用 HotModuleReplacementPlugin 插件</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>:<span class="string">&quot;hello-webpack&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>:<span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>:<span class="string">&quot;Hello webpack&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>:<span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>:&#123;</span><br><span class="line">    <span class="attr">&quot;build&quot;</span>:<span class="string">&quot;webpack&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;dev&quot;</span>:<span class="string">&quot;webpack-dev-server --open&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;keywords&quot;</span>:[],</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>:<span class="string">&quot;ISC&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-webpack-dev-middleware"><a href="#2-webpack-dev-middleware" class="headerlink" title="(2) webpack-dev-middleware"></a>(2) webpack-dev-middleware</h4><p>WDM 将 webpack 输出的文件传送给服务器</p>
+<p>适用于灵活的定制场景</p>
+<h4 id="3-热更新的原理分析"><a href="#3-热更新的原理分析" class="headerlink" title="(3) 热更新的原理分析"></a>(3) 热更新的原理分析</h4><p>Webpack Compile：将 JS 编译成 Bundle</p>
+<p>HMR Server：将热更新的文件输出给 HMR Runtime</p>
+<p>Bundle server：提供文件在浏览器的访问</p>
+<p>HMR Rumtime：会注入到浏览器，更新文件的变化</p>
+<p>bundle.js：构建输出的文件</p>
+<p><img src="https://github.com/cjy1/picture/blob/master/TIM%E5%9B%BE%E7%89%8720190919192920.png?raw=true"></p>
+<h2 id="九、文件指纹"><a href="#九、文件指纹" class="headerlink" title="九、文件指纹"></a>九、文件指纹</h2><p>打包后输出的文件名的后缀</p>
+<h4 id="（1）-文件指纹如何生成"><a href="#（1）-文件指纹如何生成" class="headerlink" title="（1） 文件指纹如何生成"></a>（1） 文件指纹如何生成</h4><p>Hash：和整个项目的构建有关，只要项目文件有修改，整个项目构建的 hash 值就会更改</p>
+<p>Chunkhash：和 webpack 打包的 chunk 有关，不同的 entry 会生成不停的 chunkhash</p>
+<p>Contenthash：根据文件内容来定义 hash，文件内容不变，则 contenthash 不变</p>
+<h4 id="（2）JS-的文件指纹设置"><a href="#（2）JS-的文件指纹设置" class="headerlink" title="（2）JS 的文件指纹设置"></a>（2）JS 的文件指纹设置</h4><p>设置 output 的 filename，使用[chunkhash]</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    index: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">    search: <span class="string">&#x27;./src/search.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">output</span>: &#123;</span><br><span class="line">    <span class="built_in">path</span>: __dirname+<span class="string">&#x27;/dist&#x27;</span>,</span><br><span class="line">    filename: <span class="string">&#x27;[name][chunkhash:8].js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（3）CSS-的文件指纹设置"><a href="#（3）CSS-的文件指纹设置" class="headerlink" title="（3）CSS 的文件指纹设置"></a>（3）CSS 的文件指纹设置</h4><p>设置 MiniCssExtractPlugin 的 filename，使用[contenthash]</p>
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    <span class="meta">index</span>: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">    search: <span class="string">&#x27;./src/search.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="meta">output</span>: &#123;</span><br><span class="line">    path: __dirname+<span class="string">&#x27;/dist&#x27;</span>,</span><br><span class="line">    <span class="meta">filename</span>: <span class="string">&#x27;[name][chunkhash:8].js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins:[</span><br><span class="line">    new MiniCssExtractPlug<span class="meta">in(</span>&#123;</span><br><span class="line">      <span class="meta">filename</span>:<span class="string">&#x27;[name][contenthash:8].css&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（4）图片的文件指纹设置"><a href="#（4）图片的文件指纹设置" class="headerlink" title="（4）图片的文件指纹设置"></a>（4）图片的文件指纹设置</h4><p>设置 file-loader 的 name，使用[hash]</p>
+<table>
+<thead>
+<tr>
+<th align="center">占位符名称</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">[ext]</td>
+<td align="center">资源后缀名</td>
+</tr>
+<tr>
+<td align="center">[name]</td>
+<td align="center">文件名称</td>
+</tr>
+<tr>
+<td align="center">[path]</td>
+<td align="center">文件的组对路径</td>
+</tr>
+<tr>
+<td align="center">[folder]</td>
+<td align="center">文件所在的文件夹</td>
+</tr>
+<tr>
+<td align="center">[contenthash]</td>
+<td align="center">文件的内容 hash，默认是 MD5 生成</td>
+</tr>
+<tr>
+<td align="center">[hash]</td>
+<td align="center">文件内容的 Hash，默认是 MD5 生成</td>
+</tr>
+<tr>
+<td align="center">[emoji]</td>
+<td align="center">一个随机的指代文件内容的 emoji</td>
+</tr>
+</tbody></table>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.<span class="built_in">exports</span> = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    index: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">    search: <span class="string">&#x27;./src/search.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">module</span>:&#123;</span><br><span class="line">    rules:[</span><br><span class="line">      &#123;</span><br><span class="line">        test:<span class="regexp">/\.(png|svg|jpg|gif)$/</span>,</span><br><span class="line">        use:[&#123;</span><br><span class="line">          loader:<span class="string">&#x27;file-loader&#x27;</span>,</span><br><span class="line">          options:&#123;</span><br><span class="line">            name:<span class="string">&#x27;img/[name][hash:8].[ext]&#x27;</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="十、代码压缩"><a href="#十、代码压缩" class="headerlink" title="十、代码压缩"></a>十、代码压缩</h2><h4 id="（1）JS-文件的压缩"><a href="#（1）JS-文件的压缩" class="headerlink" title="（1）JS 文件的压缩"></a>（1）JS 文件的压缩</h4><p>内置了 uglifyjs-webpack-plugin</p>
+<h4 id="（3）CSS-文件的压缩"><a href="#（3）CSS-文件的压缩" class="headerlink" title="（3）CSS 文件的压缩"></a>（3）CSS 文件的压缩</h4><p>使用 optimize-css-assets-webpack-plugin</p>
+<p>同时使用 cssnano</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">module.exports</span> = <span class="string">&#123;</span></span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">index</span>: <span class="string">&#x27;./src/index.js&#x27;,</span></span><br><span class="line">    <span class="attr">search</span>: <span class="string">&#x27;./src/search.js&#x27;</span></span><br><span class="line">  <span class="attr">&#125;,</span></span><br><span class="line">  <span class="attr">output</span>: <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">path</span>: <span class="string">__dirname+&#x27;/dist&#x27;,</span></span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;[name][chunkhash:8].js&#x27;</span></span><br><span class="line">  <span class="attr">&#125;,</span></span><br><span class="line">  <span class="attr">plugins</span>:<span class="string">[</span></span><br><span class="line">    <span class="attr">new</span> <span class="string">OptimizeCSSAssetsPlugin(&#123;</span></span><br><span class="line">      <span class="attr">assetNameRegExp</span>:<span class="string">/\.css$/,</span></span><br><span class="line">      <span class="attr">cssProcessor</span>:<span class="string">require(&#x27;cssnano)</span></span><br><span class="line">    <span class="attr">&#125;)</span></span><br><span class="line">  <span class="attr">]</span></span><br><span class="line"><span class="attr">&#125;;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="（3）html-文件的压缩"><a href="#（3）html-文件的压缩" class="headerlink" title="（3）html 文件的压缩"></a>（3）html 文件的压缩</h4><p>修改 html-webpack-plugin，设置压缩参数</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    <span class="keyword">index</span>: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">    <span class="keyword">search</span>: <span class="string">&#x27;./src/search.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    <span class="type">path</span>: __dirname+<span class="string">&#x27;/dist&#x27;</span>,</span><br><span class="line">    filename: <span class="string">&#x27;[name][chunkhash:8].js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins:[</span><br><span class="line">    <span class="built_in">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      tempalte:<span class="type">path</span>.<span class="keyword">join</span>(__dirname,<span class="string">&#x27;src/search.html&#x27;</span>),</span><br><span class="line">      filename:<span class="string">&#x27;search.html&#x27;</span>,</span><br><span class="line">      chunks:[<span class="string">&#x27;search&#x27;</span>],</span><br><span class="line">      inject:<span class="keyword">true</span>,</span><br><span class="line">      minify:&#123;</span><br><span class="line">        html5:<span class="keyword">true</span>,</span><br><span class="line">        collapseWhitespace:<span class="keyword">true</span>,</span><br><span class="line">        preserveLineBreaks:<span class="keyword">false</span>,</span><br><span class="line">        minifyCSS:<span class="keyword">true</span>,</span><br><span class="line">        minifyJS:<span class="keyword">true</span>,</span><br><span class="line">        removeComments:<span class="keyword">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/20/JS%EF%BC%9A%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/20/JS%EF%BC%9A%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/" class="post-title-link" itemprop="url">前端模块化</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-20 09:05:47" itemprop="dateCreated datePublished" datetime="2019-10-20T09:05:47+08:00">2019-10-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-26 19:11:14" itemprop="dateModified" datetime="2020-10-26T19:11:14+08:00">2020-10-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<h3 id="1、CommonJS"><a href="#1、CommonJS" class="headerlink" title="1、CommonJS"></a>1、CommonJS</h3><p>从架构的角度来看，CommonJS模块是一个可以复用的JavaScript块，它出口对任何独立代码都起作用的特定对象。</p>
+<p>CommonJS模块上包括两个基础的部分：一个取名为exports的自由变量，它包含模块希望提供给其他模块的对象，以及模块所需要的可以用来引入和导出其他模块的函数。</p>
+<p>Node.js 是 CommonJS 规范的主要实践者，它有四个重要的环境变量为模块化的实现提供支持：<code>module</code>、<code>exports</code>、<code>require</code>、<code>global</code>。实际使用时，用<code>module.exports</code>定义当前模块对外输出的接口（不推荐直接用<code>exports</code>），用<code>require</code>加载模块。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义模块math.js</span></span><br><span class="line"><span class="keyword">var</span> basicNum = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123; <span class="comment">//在这里写上需要向外暴露的函数、变量</span></span><br><span class="line">  add: add,</span><br><span class="line">  basicNum: basicNum</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引用自定义的模块时，参数包含路径，可省略.js</span></span><br><span class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">&#x27;./math&#x27;</span>);</span><br><span class="line">math.add(<span class="number">2</span>, <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引用核心模块时，不需要带路径</span></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line">http.createService(...).listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>commonJS 用同步的方式加载模块。在服务端，模块文件都存在本地磁盘，读取非常快，所以这样做不会有问题。但是在浏览器端，限于网络原因，更合理的方案是使用异步加载。</p>
+<h3 id="2、AMD-和-require-js"><a href="#2、AMD-和-require-js" class="headerlink" title="2、AMD 和 require.js"></a>2、AMD 和 require.js</h3><p><strong>定义：</strong> 异步模块定义（Asynchronous Module Definition）</p>
+<p>AMD 规范采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。这里介绍用 require.js 实现 AMD 规范的模块化：用<code>require.config()</code>指定引用路径等，用<code>define()</code>定义模块，用<code>require()</code>加载模块。</p>
+<p>首先我们需要引入 require.js 文件和一个入口文件 main.js。main.js 中配置<code>require.config()</code>并规定项目中用到的基础模块。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">//</span> 网页中引入require.js及main.js</span><br><span class="line">&lt;script src=<span class="string">&quot;js/require.js&quot;</span> data-main=<span class="string">&quot;js/main&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> main.js 入口文件/主模块</span><br><span class="line"><span class="regexp">//</span> 首先用config()指定各模块路径和引用名</span><br><span class="line">require.config(&#123;</span><br><span class="line">  baseUrl: <span class="string">&quot;js/lib&quot;</span>,</span><br><span class="line">  paths: &#123;</span><br><span class="line">    <span class="string">&quot;jquery&quot;</span>: <span class="string">&quot;jquery.min&quot;</span>,  <span class="regexp">//</span>实际路径为js<span class="regexp">/lib/</span>jquery.min.js</span><br><span class="line">    <span class="string">&quot;underscore&quot;</span>: <span class="string">&quot;underscore.min&quot;</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="regexp">//</span> 执行基本操作</span><br><span class="line">require([<span class="string">&quot;jquery&quot;</span>,<span class="string">&quot;underscore&quot;</span>],<span class="keyword">function</span>($,_)&#123;</span><br><span class="line">  <span class="regexp">//</span> some code here</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>引用模块的时候，我们将模块名放在<code>[]</code>中作为<code>reqiure()</code>的第一参数；如果我们定义的模块本身也依赖其他模块,那就需要将它们放在<code>[]</code>中作为<code>define()</code>的第一参数。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义math.js模块</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> basicNum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x + y;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        add: add,</span><br><span class="line">        basicNum :basicNum</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 定义一个依赖underscore.js的模块</span></span><br><span class="line">define([<span class="string">&#x27;underscore&#x27;</span>],<span class="function"><span class="keyword">function</span>(<span class="params">_</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> classify = <span class="function"><span class="keyword">function</span>(<span class="params"><span class="keyword">list</span></span>)</span>&#123;</span><br><span class="line">    _.countBy(<span class="keyword">list</span>,<span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> num &gt; <span class="number">30</span> ? <span class="string">&#x27;old&#x27;</span> : <span class="string">&#x27;young&#x27;</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    classify :classify</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引用模块，将模块放在[]内</span></span><br><span class="line"><span class="keyword">require</span>([<span class="string">&#x27;jquery&#x27;</span>, <span class="string">&#x27;math&#x27;</span>],<span class="function"><span class="keyword">function</span>(<span class="params">$, math</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> sum = math.add(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line">  $(<span class="string">&quot;#sum&quot;</span>).html(sum);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、CMD-和-sea-js"><a href="#3、CMD-和-sea-js" class="headerlink" title="3、CMD 和 sea.js"></a>3、CMD 和 sea.js</h3><p>require.js 在申明依赖的模块时会在第一之间加载并执行模块内的代码：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span>, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;f&quot;</span>], <span class="function"><span class="keyword">function</span><span class="params">(a, b, c, d, e, f)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 等于在最前面声明并初始化了要用到的所有模块</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">false</span>) &#123;</span><br><span class="line">      <span class="comment">// 即便没用到某个模块 b，但 b 还是提前执行了</span></span><br><span class="line">      b.foo()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>CMD 是另一种 js 模块化方案，它与 AMD 很类似，不同点在于：AMD 推崇依赖前置、提前执行，CMD 推崇依赖就近、延迟执行。此规范其实是在 sea.js 推广过程中产生的。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// AMD写法</span></span><br><span class="line">define([<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span>, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;f&quot;</span>], <span class="function"><span class="keyword">function</span>(<span class="params">a, b, c, d, e, f</span>) </span>&#123;</span><br><span class="line">     <span class="comment">// 等于在最前面声明并初始化了要用到的所有模块</span></span><br><span class="line">    a.doSomething();</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">false</span>) &#123;</span><br><span class="line">        <span class="comment">// 即便没用到某个模块 b，但 b 还是提前执行了</span></span><br><span class="line">        b.doSomething()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// CMD写法</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"><span class="keyword">require</span>, exports, module</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="keyword">require</span>(<span class="string">&#x27;./a&#x27;</span>); <span class="comment">//在需要时申明</span></span><br><span class="line">    a.doSomething();</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">false</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> b = <span class="keyword">require</span>(<span class="string">&#x27;./b&#x27;</span>);</span><br><span class="line">        b.doSomething();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// sea.js</span></span><br><span class="line"><span class="comment">// 定义模块 math.js</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"><span class="keyword">require</span>, exports, module</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> $ = <span class="keyword">require</span>(<span class="string">&#x27;jquery.js&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a+b;</span><br><span class="line">    &#125;</span><br><span class="line">    exports.add = add;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 加载模块</span></span><br><span class="line">seajs.<span class="keyword">use</span>([<span class="string">&#x27;math.js&#x27;</span>], <span class="function"><span class="keyword">function</span>(<span class="params">math</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sum = math.add(<span class="number">1</span>+<span class="number">2</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、ES6-Module"><a href="#4、ES6-Module" class="headerlink" title="4、ES6 Module"></a>4、ES6 Module</h3><p>ES6 在语言标准的层面上，实现了模块功能，而且实现得相当简单，旨在成为浏览器和服务器通用的模块解决方案。其模块功能主要由两个命令构成：<code>export</code>和<code>import</code>。<code>export</code>命令用于规定模块的对外接口，<code>import</code>命令用于输入其他模块提供的功能。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义模块 math.js</span></span><br><span class="line"><span class="keyword">var</span> basicNum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> &#123; basicNum, add &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引用模块</span></span><br><span class="line"><span class="keyword">import</span> &#123; basicNum, add &#125; <span class="keyword">from</span> <span class="string">&#x27;./math&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">ele</span>) </span>&#123;</span><br><span class="line">    ele.textContent = add(<span class="number">99</span> + basicNum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如上例所示，使用<code>import</code>命令的时候，用户需要知道所要加载的变量名或函数名。其实 ES6 还提供了<code>export default</code>命令，为模块指定默认输出，对应的<code>import</code>语句不需要使用大括号。这也更趋近于 ADM 的引用写法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// export default</span></span><br><span class="line"><span class="comment">//定义输出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123; basicNum, add &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//引入</span></span><br><span class="line"><span class="keyword">import</span> math <span class="keyword">from</span> <span class="string">&#x27;./math&#x27;</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">ele</span>) </span>&#123;</span><br><span class="line">    ele.textContent = math.add(<span class="number">99</span> + math.basicNum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ES6 的模块不是对象，<code>import</code>命令会被 JavaScript 引擎静态分析，在编译时就引入模块代码，而不是在代码运行时加载，所以无法实现条件加载。也正因为这个，使得静态分析成为可能。</p>
+<p><strong>注意：</strong> import命令是在编译阶段执行的</p>
+<h3 id="5、-ES6-模块与-CommonJS-模块的差异"><a href="#5、-ES6-模块与-CommonJS-模块的差异" class="headerlink" title="5、 ES6 模块与 CommonJS 模块的差异"></a>5、 ES6 模块与 CommonJS 模块的差异</h3><h4 id="（1）CommonJS-模块输出的是一个值的拷贝，ES6-模块输出的是值的引用。"><a href="#（1）CommonJS-模块输出的是一个值的拷贝，ES6-模块输出的是值的引用。" class="headerlink" title="（1）CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。"></a>（1）CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。</h4><ul>
+<li>CommonJS 模块输出的是值的拷贝，也就是说，一旦输出一个值，模块内部的变化就影响不到这个值。</li>
+<li>ES6 模块的运行机制与 CommonJS 不一样。JS 引擎对脚本静态分析的时候，遇到模块加载命令<code>import</code>，就会生成一个只读引用。等到脚本真正执行时，再根据这个只读引用，到被加载的那个模块里面去取值。换句话说，ES6 的<code>import</code>有点像 Unix 系统的“符号连接”，原始值变了，<code>import</code>加载的值也会跟着变。因此，ES6 模块是动态引用，并且不会缓存值，模块里面的变量绑定其所在的模块。</li>
+</ul>
+<h4 id="（2）CommonJS-模块是运行时加载，ES6-模块是编译时输出接口。"><a href="#（2）CommonJS-模块是运行时加载，ES6-模块是编译时输出接口。" class="headerlink" title="（2）CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。"></a>（2）CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。</h4><ul>
+<li>运行时加载: CommonJS 模块就是对象；即在输入时是先加载整个模块，生成一个对象，然后再从这个对象上面读取方法，这种加载称为“运行时加载”。</li>
+<li>编译时加载: ES6 模块不是对象，而是通过 <code>export</code> 命令显式指定输出的代码，<code>import</code>是采用静态命令的形式。即在<code>import</code>时可以指定加载某个输出值，而不是加载整个模块，这种加载称为“编译时加载”。</li>
+</ul>
+<p>CommonJS 加载的是一个对象（即<code>module.exports</code>属性），该对象只有在脚本运行完才会生成。而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/08/09/vue%EF%BC%9A%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/09/vue%EF%BC%9A%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" class="post-title-link" itemprop="url">vue：组件之间的通信</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-09 17:17:27" itemprop="dateCreated datePublished" datetime="2019-08-09T17:17:27+08:00">2019-08-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:31:35" itemprop="dateModified" datetime="2020-09-23T11:31:35+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<h3 id="一、父–-gt-子"><a href="#一、父–-gt-子" class="headerlink" title="一、父–&gt;子"></a>一、父–&gt;子</h3><p>父组件向子组件传递数据通过 props</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">**父组件代码**</span><br><span class="line">&lt;<span class="keyword">template</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">header</span>-<span class="type">box</span> :title-txt=&quot;showTitleTxt&quot;&gt;&lt;/<span class="keyword">header</span>-<span class="type">box</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">template</span>&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">import</span> <span class="keyword">Header</span> <span class="keyword">from</span> <span class="string">&#x27;./header&#x27;</span></span><br><span class="line">    export <span class="keyword">default</span> &#123;</span><br><span class="line">        <span class="type">name</span>: <span class="string">&#x27;index&#x27;</span>,</span><br><span class="line">        components: &#123;</span><br><span class="line">            <span class="string">&#x27;header-box&#x27;</span>: <span class="keyword">Header</span></span><br><span class="line">        &#125;,</span><br><span class="line">        data () &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                showTitleTxt: <span class="string">&#x27;首页&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">**子组件代码**</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">header</span>&gt;</span></span></span><br><span class="line"><span class="xml">        </span><span class="template-variable">&#123;&#123;<span class="name">thisTitleTxt</span>&#125;&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml">    export default &#123;</span></span><br><span class="line"><span class="xml">        name: &#x27;header-box&#x27;,</span></span><br><span class="line"><span class="xml">        props: &#123;</span></span><br><span class="line"><span class="xml">            titleTxt: String</span></span><br><span class="line"><span class="xml">        &#125;,</span></span><br><span class="line"><span class="xml">        data () &#123;</span></span><br><span class="line"><span class="xml">            return &#123;</span></span><br><span class="line"><span class="xml">                thisTitleTxt: this.titleTxt</span></span><br><span class="line"><span class="xml">            &#125;</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二、子–-gt-父"><a href="#二、子–-gt-父" class="headerlink" title="二、子–&gt;父"></a>二、子–&gt;父</h3><p>子组件向父组件传递数据用$on和$emit</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">**父组件代码**</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">typetemplate</span> @<span class="attr">change-type</span>=<span class="string">&quot;changeType&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">typetemplate</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml">  data () </span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">   return &#123;</span></span><br><span class="line"><span class="template-variable">    selectType: 0,</span></span><br><span class="line"><span class="template-variable">  &#125;</span><span class="xml">,</span></span><br><span class="line"><span class="xml">  methods: </span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">   changeType (type) &#123;</span></span><br><span class="line"><span class="template-variable">    this.type = type</span></span><br><span class="line"><span class="template-variable">   &#125;</span></span><br><span class="line"><span class="xml">  &#125;,</span></span><br><span class="line"><span class="xml">  components: </span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">　　typetemplate</span></span><br><span class="line"><span class="template-variable">　&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">**子组件代码**</span><br><span class="line">&lt;template&gt;</span><br><span class="line"> &lt;div <span class="meta">@click</span>=<span class="string">&quot;changeData(1)&quot;</span>&gt;点击改变数据&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  data () &#123;</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">type</span></span>: <span class="number">0</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeData (<span class="class"><span class="keyword">type</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.<span class="keyword">type</span> = <span class="class"><span class="keyword">type</span></span></span><br><span class="line"><span class="class">      <span class="title">this</span>.<span class="title">$emit</span>(<span class="params">&#x27;change-type&#x27;, type</span>)</span></span><br><span class="line"><span class="class">   &#125;</span></span><br><span class="line"><span class="class">  &#125;</span></span><br><span class="line"><span class="class"><span class="title">&lt;/script&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="三、兄弟之间通信"><a href="#三、兄弟之间通信" class="headerlink" title="三、兄弟之间通信"></a>三、兄弟之间通信</h3><p>使用 bus 进行通信</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">**main.js**</span><br><span class="line"><span class="keyword">let</span> bus = <span class="keyword">new</span> <span class="constructor">Vue()</span></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Vue</span>.</span></span>prototype.bus = bus</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">**A组件**</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">header</span> @<span class="attr">click</span>=<span class="string">&quot;changeTitle&quot;</span>&gt;</span></span><span class="template-variable">&#123;&#123;<span class="name">title</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml">export default &#123;</span></span><br><span class="line"><span class="xml">    name: &#x27;header&#x27;,</span></span><br><span class="line"><span class="xml">    data () &#123;</span></span><br><span class="line"><span class="xml">        return &#123;</span></span><br><span class="line"><span class="xml">            title: &#x27;头部&#x27;</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">    &#125;,</span></span><br><span class="line"><span class="xml">    methods: &#123;</span></span><br><span class="line"><span class="xml">        changeTitle () &#123;</span></span><br><span class="line"><span class="xml">            this.bus.$emit(&#x27;toChangeTitle&#x27;,&#x27;首页&#x27;)</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">**B组件**</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><span class="template-variable">&#123;&#123;<span class="name">txt</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml">export default &#123;</span></span><br><span class="line"><span class="xml">    name: &#x27;footer&#x27;,</span></span><br><span class="line"><span class="xml">    mounted () &#123;</span></span><br><span class="line"><span class="xml">        this.bus.$on(&#x27;toChangeTitle&#x27;, function (title) &#123;</span></span><br><span class="line"><span class="xml">            console.log(title)</span></span><br><span class="line"><span class="xml">        &#125;)</span></span><br><span class="line"><span class="xml">    &#125;,</span></span><br><span class="line"><span class="xml">    data () &#123;</span></span><br><span class="line"><span class="xml">        return &#123;</span></span><br><span class="line"><span class="xml">            txt: &#x27;尾部&#x27;</span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/19/vue%EF%BC%9A%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/19/vue%EF%BC%9A%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/" class="post-title-link" itemprop="url">vue：组件通信</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-19 16:58:21" itemprop="dateCreated datePublished" datetime="2019-10-19T16:58:21+08:00">2019-10-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:31:31" itemprop="dateModified" datetime="2020-09-23T11:31:31+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<h2 id="1、props-emit（父子组件）"><a href="#1、props-emit（父子组件）" class="headerlink" title="1、props/$emit（父子组件）"></a>1、props/$emit（父子组件）</h2><p><strong>props</strong></p>
+<p>父级：父级组件中引用子组件，并将自己 data 下面的 giveChild 数据绑定在 giveChildDate 传给子</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">myChild</span> <span class="attr">:giveChildData</span>=<span class="string">&quot;giveChild&quot;</span>&gt;</span></span><span class="template-variable">&#123;&#123;isMe&#125;</span><span class="xml">&#125;<span class="tag">&lt;/<span class="name">myChild</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="xml">data()</span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">  return&#123;</span></span><br><span class="line"><span class="template-variable">    giveChild:&#x27;222&#x27;</span></span><br><span class="line"><span class="template-variable">  &#125;</span></span><br><span class="line"><span class="xml">&#125;,</span></span><br><span class="line"><span class="xml">components:</span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">  myChild</span></span><br><span class="line"><span class="template-variable">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>子级：通过 props 接收父级传来的数据，并将接收到的数据显示在自身模板上</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">props:</span>&#123;</span><br><span class="line"><span class="symbol">      giveChildData:</span>&#123;</span><br><span class="line"><span class="symbol">         type:</span>String</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="params">&lt;div&gt;</span>&#123;&#123;giveChildData&#125;&#125;<span class="params">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>$emit</strong></p>
+<p>子级上的点击事件成功后，通过$emit 将事件和数据发射出去</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="meta">@click</span>=<span class="string">&quot;sendChildData&quot;</span>&gt;点我将子的数据传给父级&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">data</span>()&#123;</span><br><span class="line">	<span class="keyword">return</span>&#123;</span><br><span class="line">		childData:<span class="number">111</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods:&#123;</span><br><span class="line">	sendChildData()&#123;</span><br><span class="line">		<span class="keyword">this</span>.$emit(<span class="string">&#x27;sendChildData&#x27;</span>,<span class="keyword">this</span>.childData)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>父级接收到事件后，走自己的事件 getChildData 并进行相关处理、显示。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;myChild :giveChildData=<span class="string">&quot;giveChild&quot;</span> <span class="meta">@sendChildData</span>=<span class="string">&quot;getChildData&quot;</span>&gt;&lt;/myChild&gt;</span><br><span class="line">&lt;div&gt;这是子级传过来的数据 ——&gt; &#123;&#123;isMe&#125;&#125;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">data</span>()&#123;</span><br><span class="line">	<span class="keyword">return</span>&#123;</span><br><span class="line">		giveChild:<span class="string">&#x27;222&#x27;</span>,</span><br><span class="line">		isMe:<span class="string">&#x27;&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods:&#123;</span><br><span class="line">	getChildData(<span class="keyword">data</span>)&#123;</span><br><span class="line">		<span class="keyword">this</span>.isMe = <span class="keyword">data</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br><span class="line">components:&#123;</span><br><span class="line">	myChild</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、ref-和-parent-children（父子）"><a href="#2、ref-和-parent-children（父子）" class="headerlink" title="2、ref 和$parent/$children（父子）"></a>2、ref 和$parent/$children（父子）</h2><ul>
+<li><code>ref</code>：如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例</li>
+<li><code>$parent</code> / <code>$children</code>：访问父 / 子实例</li>
+</ul>
+<p>ref 是被用来给元素或子组件注册引用信息的。引用信息将会注册在父组件的 $refs 对象上。</p>
+<p>父组件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>我是父组件！<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">child</span> <span class="attr">ref</span>=<span class="string">&quot;msg&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"> <span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">&#x27;../components/child.vue&#x27;</span></span></span><br><span class="line"><span class="javascript"> <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">  components: &#123;Child&#125;,</span><br><span class="line"><span class="javascript">  mounted: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">   <span class="built_in">console</span>.log( <span class="built_in">this</span>.$refs.msg);</span></span><br><span class="line"><span class="javascript">   <span class="built_in">this</span>.$refs.msg.getMessage(<span class="string">&#x27;我是子组件一！&#x27;</span>)</span></span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>子组件</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml"> <span class="tag">&lt;<span class="name">h3</span>&gt;</span></span><span class="template-variable">&#123;&#123;<span class="name">message</span>&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml"> export default &#123;</span></span><br><span class="line"><span class="xml">  data()&#123;</span></span><br><span class="line"><span class="xml">   return&#123;</span></span><br><span class="line"><span class="xml">    message:&#x27;&#x27;</span></span><br><span class="line"><span class="xml">   &#125;</span></span><br><span class="line"><span class="xml">  &#125;,</span></span><br><span class="line"><span class="xml">  methods:&#123;</span></span><br><span class="line"><span class="xml">   getMessage(m)&#123;</span></span><br><span class="line"><span class="xml">    this.message=m;</span></span><br><span class="line"><span class="xml">   &#125;</span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml"> &#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3、EventBus（-emit-on）（父子、隔代、兄弟）"><a href="#3、EventBus（-emit-on）（父子、隔代、兄弟）" class="headerlink" title="3、EventBus（$emit/$ on）（父子、隔代、兄弟）"></a>3、EventBus（$emit/$ on）（父子、隔代、兄弟）</h2><p>这种方法通过一个空的 Vue 实例作为中央事件总线（事件中心），用它来触发事件和监听事件，从而实现任何组件间的通信，包括父子、隔代、兄弟组件。</p>
+<p>bus.js</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="builtin-name">export</span><span class="built_in"> default </span>new Vue;</span><br></pre></td></tr></table></figure>
+
+<p>要通信的组件</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Bus <span class="keyword">from</span> <span class="string">&#x27;./bus.js&#x27;</span></span><br><span class="line"></span><br><span class="line">methods: &#123;</span><br><span class="line">	bus () &#123;</span><br><span class="line">		Bus.$emit(<span class="string">&#x27;msg&#x27;</span>, <span class="string">&#x27;我要传给兄弟组件们，你收到没有&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接收通信的组件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Bus <span class="keyword">from</span> <span class="string">&#x27;./bus.js&#x27;</span></span><br><span class="line"></span><br><span class="line">mounted() &#123;</span><br><span class="line">	<span class="keyword">let</span> self = <span class="built_in">this</span></span><br><span class="line">	Bus.$on(<span class="string">&#x27;msg&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">		self.message = e</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">`传来的数据是：<span class="subst">$&#123;e&#125;</span>`</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、-attrs-listeners（隔代）"><a href="#4、-attrs-listeners（隔代）" class="headerlink" title="4、$attrs/$listeners（隔代）"></a>4、$attrs/$listeners（隔代）</h2><ul>
+<li><code>$attrs</code>：包含了父作用域中不被 prop 所识别 (且获取) 的特性绑定 ( class 和 style 除外 )。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 ( class 和 style 除外 )，并且可以通过 <code>v-bind=&quot;$attrs&quot;</code> 传入内部组件。通常配合 inheritAttrs 选项一起使用。</li>
+<li><code>$listeners</code>：包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。它可以通过 <code>v-on=&quot;$listeners&quot;</code> 传入内部组件</li>
+</ul>
+<h2 id="5、provide-inject（隔代）"><a href="#5、provide-inject（隔代）" class="headerlink" title="5、provide/inject（隔代）"></a>5、provide/inject（隔代）</h2><p>祖先组件中通过 provider 来提供变量，然后在子孙组件中通过 inject 来注入变量。 provide / inject API 主要解决了跨级组件间的通信问题，不过它的使用场景，主要是子组件获取上级组件的状态，跨级组件间建立了一种主动提供与依赖注入的关系。</p>
+<h2 id="6、Vuex（父子、隔代、兄弟）"><a href="#6、Vuex（父子、隔代、兄弟）" class="headerlink" title="6、Vuex（父子、隔代、兄弟）"></a>6、Vuex（父子、隔代、兄弟）</h2><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。每一个 Vuex 应用的核心就是 store（仓库）。“store” 基本上就是一个容器，它包含着你的应用中大部分的状态 ( state )。</p>
+<p>（1）Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。</p>
+<p>（2）改变 store 中的状态的唯一途径就是显式地提交 (commit) mutation。这样使得我们可以方便地跟踪每一个状态的变化。</p>
+<p>主要包括以下几个模块：</p>
+<ul>
+<li>State：定义了应用状态的数据结构，可以在这里设置默认的初始状态。</li>
+<li>Getter：允许组件从 Store 中获取数据，mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性。</li>
+<li>Mutation：是唯一更改 store 中状态的方法，且必须是同步函数。</li>
+<li>Action：用于提交 mutation，而不是直接变更状态，可以包含任意异步操作。</li>
+<li>Module：允许将单一的 Store 拆分为多个 store 且同时保存在单一的状态树中。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/19/vue%EF%BC%9A%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/19/vue%EF%BC%9A%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="post-title-link" itemprop="url">vue：生命周期</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-19 16:22:34" itemprop="dateCreated datePublished" datetime="2019-10-19T16:22:34+08:00">2019-10-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:31:23" itemprop="dateModified" datetime="2020-09-23T11:31:23+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<p><img src="https://user-gold-cdn.xitu.io/2019/8/19/16ca74f183827f46?imageslim"></p>
+<table>
+<thead>
+<tr>
+<th>生命周期</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>beforeCreate</td>
+<td>在实例初始化之后，数据观测（data observer）和 event/watcher 事件配置之前被调用</td>
+</tr>
+<tr>
+<td>created</td>
+<td>在实例创建完成后被立即调用。在这一步，实例已完成以下配置：数据观测（data observer），属性和方法的运算，watch/event 事件回调。然而，挂载阶段还没开始，$el 属性目前不可见。</td>
+</tr>
+<tr>
+<td>beforeMount</td>
+<td>在挂载开始之前被调用：相关的 render 函数首次被调用。<strong>该钩子在服务器渲染期间不被调用</strong></td>
+</tr>
+<tr>
+<td>mounted</td>
+<td>el 被创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。如果 root 实例挂载了一个文档内元素，当 mounted 被调用时 vm.$el 也在文档中。</td>
+</tr>
+<tr>
+<td>beforeUpdate</td>
+<td>数据更新时调用，发生在虚拟 DOM 打补丁之前。这里适合在更新之前访问现有的 DOM，比如手动移除已添加的事件监听器。 <strong>该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务端进行。</strong></td>
+</tr>
+<tr>
+<td>updated</td>
+<td>由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。 当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态。如果要相应状态改变，通常最好使用<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#computed">计算属性</a>或 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#watch">watcher</a> 取而代之。 注意 <code>updated</code> <strong>不会</strong>承诺所有的子组件也都一起被重绘。如果你希望等到整个视图都重绘完毕，可以用 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#vm-nextTick">vm.$nextTick</a> 替换掉 <code>updated</code> <strong>该钩子在服务器端渲染期间不被调用</strong></td>
+</tr>
+<tr>
+<td>activated</td>
+<td>keep-alive 组件激活时调用。 <strong>该钩子在服务器端渲染期间不被调用。</strong></td>
+</tr>
+<tr>
+<td>deactivated</td>
+<td>keep-alive 组件停用时调用。 <strong>该钩子在服务器端渲染期间不被调用。</strong></td>
+</tr>
+<tr>
+<td>beforeDestory</td>
+<td>实例销毁之前调用。在这一步，实例仍然完全可用。 <strong>该钩子在服务器端渲染期间不被调用。</strong></td>
+</tr>
+<tr>
+<td>destoryed</td>
+<td>Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。 <strong>该钩子在服务器端渲染期间不被调用。</strong></td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/18/vue%EF%BC%9A%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%92%8C%E5%A4%9A%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/18/vue%EF%BC%9A%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%92%8C%E5%A4%9A%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">vue：单页面和多页面的区别</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-18 14:28:18" itemprop="dateCreated datePublished" datetime="2019-10-18T14:28:18+08:00">2019-10-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:31:20" itemprop="dateModified" datetime="2020-09-23T11:31:20+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<p><img src="https://user-gold-cdn.xitu.io/2019/6/13/16b51814c9cab135?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
+<h2 id="一、单页应用-SPA"><a href="#一、单页应用-SPA" class="headerlink" title="一、单页应用(SPA)"></a>一、单页应用(SPA)</h2><p>单页面应用就是只有一个主页面的应用，浏览器一开始就要加载所有必须的 html、css、js，所有的页面内容都包含在这个所谓的主页面中，但在写的时候，还是会分开写，对每一个功能模块组件化，单页应用跳转，就是切换相关组件，仅刷新局部资源</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>用户体验好、快，内容的改变不需要重新加载整个页面，避免了不必要的跳转和重复渲染；</li>
+<li>基于上面一点，SPA 相对对服务器压力小；</li>
+<li>前后端职责分离，架构清晰，前端进行交互逻辑，后端负责数据处理；</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>初次加载耗时多：为实现单页 Web 应用功能及显示效果，需要在加载页面的时候将 JavaScript、CSS 统一加载，部分页面按需加载；</li>
+<li>前进后退路由管理：由于单页应用在一个页面中显示所有的内容，所以不能使用浏览器的前进后退功能，所有的页面切换需要自己建立堆栈管理；</li>
+<li>SEO 难度较大：由于所有的内容都在一个页面中动态替换显示，所以在 SEO 上其有着天然的弱势。</li>
+</ul>
+<h2 id="二、多页应用-MPA"><a href="#二、多页应用-MPA" class="headerlink" title="二、多页应用(MPA)"></a>二、多页应用(MPA)</h2><p>多页应用指多个独立的页面的应用，每个页面都必须重复加载 js、css 等相关资源。多页面应用跳转，需要整页资源刷新</p>
+<h2 id="三、两者对比"><a href="#三、两者对比" class="headerlink" title="三、两者对比"></a>三、两者对比</h2><table>
+<thead>
+<tr>
+<th>对比项/模式</th>
+<th>SPA</th>
+<th>MPA</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>结构</td>
+<td>一个主页面+许多模块的组件</td>
+<td>许多完整的页面</td>
+</tr>
+<tr>
+<td>体验</td>
+<td>页面切换快，体验佳；当初次加载文件过多时，需要做相关的优化</td>
+<td>页面切换快，网速慢的时候，体验尤其不好</td>
+</tr>
+<tr>
+<td>资源文件</td>
+<td>组件公用的资源只需要加载一次</td>
+<td>每个页面都要自己加载公用的资源</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>对体验度和流畅度有较高要求的应用，不利于 SEO（可借助 SSR 来优化 SEO）</td>
+<td>适用于对 SEO 要求较高的应用</td>
+</tr>
+<tr>
+<td>过渡动画</td>
+<td>Vue 提供了 transition 的封装组件，容易实现</td>
+<td>很难实现</td>
+</tr>
+<tr>
+<td>内容更新</td>
+<td>相关组件的切换，即局部更新</td>
+<td>整体 HTML 的切换，费钱（重复 HTTP 请求）</td>
+</tr>
+<tr>
+<td>路由模式</td>
+<td>可以使用 hash，history</td>
+<td>普通链接跳转</td>
+</tr>
+<tr>
+<td>数据传递</td>
+<td>因为单页面，使用全局变量就好（Vuex）</td>
+<td>cookie、localStorage 等缓存方案，URL 参数，调用接口保存等</td>
+</tr>
+<tr>
+<td>相关成本</td>
+<td>前期开发成本较高，后期维护较为容易</td>
+<td>前期开发成本低，后期维护就比较麻烦，因为可能一个功能需要改很多地方</td>
+</tr>
+</tbody></table>
+<h2 id="四、单页应用实现–前端路由"><a href="#四、单页应用实现–前端路由" class="headerlink" title="四、单页应用实现–前端路由"></a>四、单页应用实现–前端路由</h2><h3 id="1、hash"><a href="#1、hash" class="headerlink" title="1、hash"></a>1、hash</h3><p>早期的前端路由的实现就是基于 location.hash 来实现的。其实现原理很简单，location.hash 的值就是 URL 中 # 后面的内容。比如下面这个网站，它的 location.hash 的值为 ‘#search’：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>www.word.com<span class="comment">#search</span></span><br></pre></td></tr></table></figure>
+
+<p>hash 路由模式的实现主要是基于下面几个特性：</p>
+<ul>
+<li>URL 中 hash 值只是客户端的一种状态，也就是说当向服务器端发出请求时，hash 部分不会被发送；</li>
+<li>hash 值的改变，都会在浏览器的访问历史中增加一个记录。因此我们能通过浏览器的回退、前进按钮控制 hash 的切换；</li>
+<li>可以通过 a 标签，并设置 href 属性，当用户点击这个标签后，URL 的 hash 值会发生改变；或者使用 JavaScript 来对 loaction.hash 进行赋值，改变 URL 的 hash 值；</li>
+<li>我们可以使用 hashchange 事件来监听 hash 值的变化，从而对页面进行跳转（渲染）。</li>
+</ul>
+<h3 id="2、history"><a href="#2、history" class="headerlink" title="2、history"></a>2、history</h3><p>HTML5 提供了 History API 来实现 URL 的变化。其中做最主要的 API 有以下两个：history.pushState() 和 history.repalceState()。这两个 API 可以在不进行刷新的情况下，操作浏览器的历史纪录。唯一不同的是，前者是新增一个历史记录，后者是直接替换当前的历史记录，如下所示：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">window</span>.history.pushState(<span class="keyword">null</span>, <span class="keyword">null</span>, <span class="type">path</span>);</span><br><span class="line"><span class="keyword">window</span>.history.replaceState(<span class="keyword">null</span>, <span class="keyword">null</span>, <span class="type">path</span>);</span><br></pre></td></tr></table></figure>
+
+<p>history 路由模式的实现主要基于存在下面几个特性：</p>
+<ul>
+<li>pushState 和 repalceState 两个 API 来操作实现 URL 的变化 ；</li>
+<li>我们可以使用 popstate 事件来监听 url 的变化，从而对页面进行跳转（渲染）；</li>
+<li>history.pushState() 或 history.replaceState() 不会触发 popstate 事件，这时我们需要手动触发页面跳转（渲染）。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/05/12/uniapp%EF%BC%9AAPP%E5%AE%9E%E7%8E%B0%E5%AE%9A%E4%BD%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -519,682 +1469,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/16/JS%EF%BC%9A%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/16/JS%EF%BC%9A%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" class="post-title-link" itemprop="url">JS：数组去重</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-16 21:00:46" itemprop="dateCreated datePublished" datetime="2019-10-16T21:00:46+08:00">2019-10-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 11:30:42" itemprop="dateModified" datetime="2020-09-23T11:30:42+08:00">2020-09-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-
-<h3 id="1、ES6-中-Set-去重"><a href="#1、ES6-中-Set-去重" class="headerlink" title="1、ES6 中 Set 去重"></a>1、ES6 中 Set 去重</h3><p>set 中成员的值都是唯一的，没有重复的值，set 内部会判断两个值是否不同</p>
-<p><code>Array.from(new Set(arr))</code></p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">Array.<span class="keyword">from</span>(new Set(arr))  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、利用-for-嵌套-for，然后用-splice-去重"><a href="#2、利用-for-嵌套-for，然后用-splice-去重" class="headerlink" title="2、利用 for 嵌套 for，然后用 splice 去重"></a>2、利用 for 嵌套 for，然后用 splice 去重</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span><span class="params">(arr)</span>&#123;</span></span><br><span class="line">  <span class="keyword">for</span>(let <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; arr.<span class="built_in">length</span>; <span class="built_in">i</span>++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(let <span class="built_in">j</span> = <span class="built_in">i</span> + <span class="number">1</span>; <span class="built_in">j</span> &lt; arr.<span class="built_in">length</span>; <span class="built_in">j</span>++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(arr[<span class="built_in">i</span>] == arr[<span class="built_in">j</span>])&#123;</span><br><span class="line">        arr.splice(<span class="built_in">j</span>, <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">j</span>--;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、利用-indexOf-去重"><a href="#3、利用-indexOf-去重" class="headerlink" title="3、利用 indexOf 去重"></a>3、利用 indexOf 去重</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line"> let array = []</span><br><span class="line">  for(let i = <span class="number">0</span>; i &lt;arr.length; i++)&#123;</span><br><span class="line">    if(array.indexOf(arr[i]) == <span class="number">-1</span>)&#123;</span><br><span class="line">    	array.push(arr[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array;  =&gt; [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、sort"><a href="#4、sort" class="headerlink" title="4、sort()"></a>4、sort()</h3><p>利用 sort()排序方法，然后根据排序后的结果进行 遍历及相邻元素比对</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line"> arr = arr.sort();</span><br><span class="line"> let array = [arr[<span class="number">0</span>]];</span><br><span class="line"> for(let i = <span class="number">1</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">   if(arr[i] != arr[i<span class="number">-1</span>])&#123;</span><br><span class="line">     array.push(arr[i])</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> return array;  =&gt;  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5、includes"><a href="#5、includes" class="headerlink" title="5、includes"></a>5、includes</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line">  let array = [];</span><br><span class="line">  for(let i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">     if(!array.includes(arr[i]))&#123;</span><br><span class="line">       array.push(arr[i])</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array;  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="6、hasOwnProperty"><a href="#6、hasOwnProperty" class="headerlink" title="6、hasOwnProperty"></a>6、hasOwnProperty</h3><p>利用 hasOwnProperty 判断是否存在对象属性</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> obj = &#123;&#125;</span><br><span class="line">  <span class="keyword">return</span> arr.filter(<span class="function">(<span class="params">item, index, arr</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> obj.hasOwnProperty(<span class="keyword">typeof</span> item + item) ? <span class="literal">false</span> : (obj[<span class="keyword">typeof</span> item + item] = <span class="literal">true</span>)</span><br><span class="line">  &#125;)  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="7、filter"><a href="#7、filter" class="headerlink" title="7、filter"></a>7、filter</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line">  return arr.filter((item, index, arr)=&gt;&#123;</span><br><span class="line">    return arr.indexOf(item, <span class="number">0</span>) === index</span><br><span class="line">  &#125;)  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="8、Map"><a href="#8、Map" class="headerlink" title="8、Map"></a>8、Map</h3><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line">  <span class="built_in">let</span> <span class="built_in">map</span> = <span class="built_in">new</span> Map();</span><br><span class="line">  <span class="built_in">let</span> <span class="built_in">array</span> = []</span><br><span class="line">  <span class="keyword">for</span>(<span class="built_in">let</span> i of arr)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">map</span>[i])&#123;</span><br><span class="line">      <span class="built_in">map</span>[i] = i;</span><br><span class="line">      <span class="built_in">array</span>.<span class="built_in">push</span>(i)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> <span class="built_in">array</span>;  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="9、-…new-Set-arr"><a href="#9、-…new-Set-arr" class="headerlink" title="9、[…new Set(arr)]"></a>9、[…new Set(arr)]</h3><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">arr = [...new Set(arr)]  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/26/html%EF%BC%9AwebSocket%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/26/html%EF%BC%9AwebSocket%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">html：WebSocket学习</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-26 17:37:18" itemprop="dateCreated datePublished" datetime="2019-10-26T17:37:18+08:00">2019-10-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 11:30:28" itemprop="dateModified" datetime="2020-09-23T11:30:28+08:00">2020-09-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-
-<h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p><img src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051502.png"></p>
-<p><strong>特点</strong></p>
-<ul>
-<li>服务器可以主动向客户端推送消息，客户端也可以主动向服务器发送消息，是真正的双向平等对话，属于服务器推送技术的一种</li>
-<li>建立在 TCP 协议之上，服务器端的实现比较容易</li>
-<li>与 HTTP 协议有着良好的兼容性，默认端口也是 80 和 443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器</li>
-<li>数据格式比较轻量，性能开销小，通信高效</li>
-<li>可以发送文本，也可以发送二进制数据</li>
-<li>没有同源限制，客户端可以与任意服务器通信</li>
-<li>协议标志符是 ws（如果加密，则为 wss），服务器网址就是 URL。</li>
-</ul>
-<h2 id="二、客户端的简单实例"><a href="#二、客户端的简单实例" class="headerlink" title="二、客户端的简单实例"></a>二、客户端的简单实例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">&quot;wss://echo.websocket.org&quot;</span>);</span><br><span class="line"></span><br><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Connection open ...&quot;</span>);</span><br><span class="line">  ws.send(<span class="string">&quot;Hello WebSockets!&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( <span class="string">&quot;Received Message: &quot;</span> + evt.data);</span><br><span class="line">  ws.close();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Connection closed.&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、客户端的-API"><a href="#三、客户端的-API" class="headerlink" title="三、客户端的 API"></a>三、客户端的 API</h2><h3 id="1、WebSocket-构造函数"><a href="#1、WebSocket-构造函数" class="headerlink" title="1、WebSocket 构造函数"></a>1、WebSocket 构造函数</h3><p><code>websocket</code>对象作为一个构造函数，用于新建一个<code>websocket</code>实例</p>
-<p><code>var ws = new WebSocket(&#39;ws://localhost:8080&#39;);</code></p>
-<p>执行上面语句之后，客户端就会与服务器进行连接</p>
-<h3 id="2、webSocket-readyState"><a href="#2、webSocket-readyState" class="headerlink" title="2、webSocket.readyState"></a>2、webSocket.readyState</h3><p><code>readyState</code>属性返回实例对象的当前状态，共有四种。</p>
-<ul>
-<li><code>CONNECTING</code>：值为 0，表示正在连接</li>
-<li><code>OPEN</code>：值为 1，表示连接成功，可以通信了</li>
-<li><code>CLOSING</code>：值为 2，表示连接正在关闭</li>
-<li><code>CLOSED</code>：值为 3，表示连接已经关闭，或者打开连接失败</li>
-</ul>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">switch (ws.readyState) &#123;</span><br><span class="line">  case WebSocket.CONNECTING:</span><br><span class="line">    <span class="regexp">//</span> <span class="keyword">do</span> something</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  case WebSocket.OPEN:</span><br><span class="line">    <span class="regexp">//</span> <span class="keyword">do</span> something</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  case WebSocket.CLOSING:</span><br><span class="line">    <span class="regexp">//</span> <span class="keyword">do</span> something</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  case WebSocket.CLOSED:</span><br><span class="line">    <span class="regexp">//</span> <span class="keyword">do</span> something</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  default:</span><br><span class="line">    <span class="regexp">//</span> this never happens</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、webSocket-onopen"><a href="#3、webSocket-onopen" class="headerlink" title="3、webSocket.onopen"></a>3、webSocket.onopen</h3><p>实例对象的<code>onopen</code>属性，用于指定连接成功后的回调函数</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">  ws.send(<span class="string">&#x27;Hello Server!&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果要指定多个回调函数，可以使用<code>addEventListener</code>方法</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ws.addEventListener(<span class="string">&#x27;open&#x27;</span>, <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>&#123;</span><br><span class="line">  ws.send(<span class="string">&#x27;Hello Server!&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、webSocket-onclose"><a href="#4、webSocket-onclose" class="headerlink" title="4、webSocket.onclose"></a>4、webSocket.onclose</h3><p>实例对象的<code>onclose</code>属性，用于指定连接关闭后的回调函数</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ws<span class="variable">.onclose</span> = <span class="keyword">function</span>(<span class="keyword">event</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> code = <span class="keyword">event</span><span class="variable">.code</span>;</span><br><span class="line">  <span class="keyword">var</span> reason = <span class="keyword">event</span><span class="variable">.reason</span>;</span><br><span class="line">  <span class="keyword">var</span> wasClean = <span class="keyword">event</span><span class="variable">.wasClean</span>;</span><br><span class="line">  <span class="comment">// handle close event</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws<span class="variable">.addEventListener</span>(<span class="string">&quot;close&quot;</span>, <span class="keyword">function</span>(<span class="keyword">event</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> code = <span class="keyword">event</span><span class="variable">.code</span>;</span><br><span class="line">  <span class="keyword">var</span> reason = <span class="keyword">event</span><span class="variable">.reason</span>;</span><br><span class="line">  <span class="keyword">var</span> wasClean = <span class="keyword">event</span><span class="variable">.wasClean</span>;</span><br><span class="line">  <span class="comment">// handle close event</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="5、webSocket-onmessage"><a href="#5、webSocket-onmessage" class="headerlink" title="5、webSocket.onmessage"></a>5、webSocket.onmessage</h3><p>实例对象的<code>onmessage</code>属性，用于指定收到服务器数据后的回调函数。</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span><span class="params">(event)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> data = event.data;</span><br><span class="line">  <span class="comment">// 处理数据</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.addEventListener(<span class="string">&quot;message&quot;</span>, <span class="function"><span class="keyword">function</span><span class="params">(event)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> data = event.data;</span><br><span class="line">  <span class="comment">// 处理数据</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>注意，服务器数据可能是文本，也可能是二进制数据（<code>blob</code>对象或<code>Arraybuffer</code>对象）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> event.data === <span class="built_in">String</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Received data string&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(event.data <span class="keyword">instanceof</span> <span class="built_in">ArrayBuffer</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> buffer = event.data;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Received arraybuffer&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>除了动态判断收到的数据类型，也可以使用<code>binaryType</code>属性，显示指定收到的二进制数据类型。</p>
-<figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 收到的是 blob 数据</span></span><br><span class="line">ws.binaryType = <span class="string">&quot;blob&quot;</span>;</span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> &#123;</span></span><br><span class="line">  console.<span class="built_in">log</span>(e.data.<span class="built_in">size</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 收到的是 ArrayBuffer 数据</span></span><br><span class="line">ws.binaryType = <span class="string">&quot;arraybuffer&quot;</span>;</span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span><span class="params">(e)</span> &#123;</span></span><br><span class="line">  console.<span class="built_in">log</span>(e.data.byteLength);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="6、webSocket-send"><a href="#6、webSocket-send" class="headerlink" title="6、webSocket.send()"></a>6、webSocket.send()</h3><p>实例对象的<code>send()</code> 方法用于向服务器发送数据</p>
-<p>发送文本的例子</p>
-<p><code>ws.send(&#39;your message&#39;);</code></p>
-<p>发送 Blob 对象的例子</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">file</span> = document.querySelector(&#x27;<span class="keyword">input</span>[<span class="keyword">type</span>=<span class="string">&quot;file&quot;</span>]&#x27;).files[0];</span><br><span class="line">ws.send(<span class="keyword">file</span>);</span><br></pre></td></tr></table></figure>
-
-<p>发送<code>ArrayBuffer</code>对象的例子</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Sending canvas ImageData as ArrayBuffer</span></span><br><span class="line"><span class="keyword">var</span> img = canvas_context.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">400</span>, <span class="number">320</span>);</span><br><span class="line"><span class="keyword">var</span> <span class="keyword">binary</span> = <span class="keyword">new</span> Uint8Array(img.data.length);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; img.data.length; i++) &#123;</span><br><span class="line">  <span class="keyword">binary</span>[i] = img.data[i];</span><br><span class="line">&#125;</span><br><span class="line">ws.send(<span class="keyword">binary</span>.buffer);</span><br></pre></td></tr></table></figure>
-
-<h3 id="7、webSocket-bufferedAmount"><a href="#7、webSocket-bufferedAmount" class="headerlink" title="7、webSocket.bufferedAmount"></a>7、webSocket.bufferedAmount</h3><p>实例对象的<code>bufferedAmount</code> 属性，表示还有多少字节的二进制数据没有发送出去，他可以用来判断发送是否结束</p>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> <span class="built_in">data</span> = <span class="literal">new</span> ArrayBuffer(<span class="number">10000000</span>);</span><br><span class="line">socket.send(<span class="built_in">data</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (socket.bufferedAmount === <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="comment">// 发送完毕</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 发送还没结束</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="8、webSocket-onerror"><a href="#8、webSocket-onerror" class="headerlink" title="8、webSocket.onerror"></a>8、webSocket.onerror</h3><p>实现对象的<code>onerror</code> 属性，用于指定报错时的回调函数</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">socket.onerror = <span class="function"><span class="keyword">function</span><span class="params">(event)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// handle error event</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">socket.addEventListener(<span class="string">&quot;error&quot;</span>, <span class="function"><span class="keyword">function</span><span class="params">(event)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// handle error event</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>详细参见<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2017/05/websocket.html">阮一峰 WebSocket 教程</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/15/html%EF%BC%9A%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E3%80%81%E8%A1%8C%E5%86%85%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E3%80%81%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/15/html%EF%BC%9A%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E3%80%81%E8%A1%8C%E5%86%85%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E3%80%81%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/" class="post-title-link" itemprop="url">html：行内元素、行内块级元素、块级元素</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-15 21:42:11" itemprop="dateCreated datePublished" datetime="2019-10-15T21:42:11+08:00">2019-10-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 11:30:22" itemprop="dateModified" datetime="2020-09-23T11:30:22+08:00">2020-09-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-
-<h2 id="一、行内元素"><a href="#一、行内元素" class="headerlink" title="一、行内元素"></a>一、行内元素</h2><p>可以通过<code>display: inline</code>设置</p>
-<p><strong>特点</strong></p>
-<ol>
-<li>设置宽高无效</li>
-<li>对 margin 仅设置左右有效，设置 padding 有效，即会撑大空间</li>
-<li>不会自动换行</li>
-</ol>
-<p><strong>举例</strong></p>
-<p>&lt; span &gt;、&lt; b &gt;、&lt; i &gt;、&lt; a &gt;、&lt; sub &gt;、&lt; sup &gt;、&lt; br &gt;</p>
-<h2 id="二、行内块级元素"><a href="#二、行内块级元素" class="headerlink" title="二、行内块级元素"></a>二、行内块级元素</h2><p>可以通过<code>display: inline-block</code>设置</p>
-<p><strong>特点</strong></p>
-<ol>
-<li>可以设置宽高</li>
-<li>设置 margin、padding 都有效</li>
-<li>不自动换行，默认排序从左到右</li>
-</ol>
-<p><strong>举例</strong></p>
-<p>&lt; img &gt;、&lt; input &gt;、&lt; td &gt;</p>
-<h2 id="三、块级元素"><a href="#三、块级元素" class="headerlink" title="三、块级元素"></a>三、块级元素</h2><p>可以通过<code>display: block</code>设置</p>
-<p><strong>特点</strong></p>
-<ol>
-<li>可以设置宽高</li>
-<li>设置 margin、padding 都有效</li>
-<li>能自动换行，多个块级元素写在一起默认从上到下</li>
-</ol>
-<p><strong>举例</strong></p>
-<p>&lt; p &gt;、&lt; div &gt;、&lt; ul &gt;、&lt; li &gt;、&lt; h1 &gt;-&lt; h6 &gt;、&lt; ol &gt;</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/09/09/git%EF%BC%9A%E5%AD%A6%E4%B9%A0Git/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/09/git%EF%BC%9A%E5%AD%A6%E4%B9%A0Git/" class="post-title-link" itemprop="url">git：学习Git</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-09 17:45:23" itemprop="dateCreated datePublished" datetime="2019-09-09T17:45:23+08:00">2019-09-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 11:30:18" itemprop="dateModified" datetime="2020-09-23T11:30:18+08:00">2020-09-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-
-<h3 id="一、Git-简介"><a href="#一、Git-简介" class="headerlink" title="一、Git 简介"></a>一、Git 简介</h3><p>Git 是目前世界上最先进的分布式版本控制系统。</p>
-<h3 id="二、集中式和分布式的区别"><a href="#二、集中式和分布式的区别" class="headerlink" title="二、集中式和分布式的区别"></a>二、集中式和分布式的区别</h3><h4 id="1、集中式版本控制系统"><a href="#1、集中式版本控制系统" class="headerlink" title="1、集中式版本控制系统"></a>1、集中式版本控制系统</h4><p>集中式版本控制系统中版本库是集中存放在中央服务器上的，而干活的时候，用的是自己的电脑，所以要先从中央服务器去的最新的版本，然后开始干活，干完活再把自己的活推送到中央服务器，最大的缺点就是必须联网才能工作。</p>
-<h4 id="2、分布式版本控制系统"><a href="#2、分布式版本控制系统" class="headerlink" title="2、分布式版本控制系统"></a>2、分布式版本控制系统</h4><p>每个人的电脑都是一个完整的版本库，这样，你工作的时候就不需要联网了，因为版本库就在自己的电脑上，多人协作时，只需要把各自的修改推送给对方就可以看到对方的修改了。</p>
-<h3 id="二、Git-指令"><a href="#二、Git-指令" class="headerlink" title="二、Git 指令"></a>二、Git 指令</h3><h5 id="1、初始化一个仓库git-init"><a href="#1、初始化一个仓库git-init" class="headerlink" title="1、初始化一个仓库git init"></a>1、初始化一个仓库<code>git init</code></h5><h5 id="2、添加文件到-Git-仓库"><a href="#2、添加文件到-Git-仓库" class="headerlink" title="2、添加文件到 Git 仓库"></a>2、添加文件到 Git 仓库</h5><p>1）使用<code>git add &lt;file&gt;</code> ，注意，可以反复多次使用，添加多个文件（放到暂存区）；</p>
-<p>2）使用<code>git commit -m &lt;message&gt;</code> 提交到本地仓库（放到工作区）。</p>
-<p><strong>注意：</strong> &lt; message &gt;存在规范，不能随便写，例如修改了哪个文件或者新增了哪个文件</p>
-<h5 id="3、查看结果（工作区的状态）git-status"><a href="#3、查看结果（工作区的状态）git-status" class="headerlink" title="3、查看结果（工作区的状态）git status"></a>3、查看结果（工作区的状态）<code>git status</code></h5><h5 id="4、查看具体修改了什么内容git-diff-lt-file-gt"><a href="#4、查看具体修改了什么内容git-diff-lt-file-gt" class="headerlink" title="4、查看具体修改了什么内容git diff &lt;file&gt;"></a>4、查看具体修改了什么内容<code>git diff &lt;file&gt;</code></h5><h5 id="5、查看历史记录git-log-pretty-oneline"><a href="#5、查看历史记录git-log-pretty-oneline" class="headerlink" title="5、查看历史记录git log --pretty=oneline"></a>5、查看历史记录<code>git log --pretty=oneline</code></h5><h5 id="6、版本回退git-reset-hard-commit-id"><a href="#6、版本回退git-reset-hard-commit-id" class="headerlink" title="6、版本回退git reset --hard commit_id"></a>6、版本回退<code>git reset --hard commit_id</code></h5><p><code>HEAD</code> 表示当前版本，上一个版本<code>HEAD^</code> ，上上个版本<code>HEAD^^</code> ，以此类推，往上 100 个版本是<code>HEAD~100</code></p>
-<p>穿梭前，用<code>git log</code> 查看提交历史，以便确定要回退到哪个版本。</p>
-<p>重返未来，用<code>fit reflog</code> 查看历史命令，以便确定要回到未来的哪个版本。</p>
-<h5 id="7、丢弃工作区的修改git-checkout-file"><a href="#7、丢弃工作区的修改git-checkout-file" class="headerlink" title="7、丢弃工作区的修改git checkout -- file"></a>7、丢弃工作区的修改<code>git checkout -- file</code></h5><p>1）文件自修改后还没有放到暂存区，现在撤销修改就回到和版本库一模一样的状态；</p>
-<p>2）文件已经添加到暂存区后，又做了修改，现在撤销修改就回到添加到暂存区后的状态。</p>
-<h5 id="8、删除文件"><a href="#8、删除文件" class="headerlink" title="8、删除文件"></a>8、删除文件</h5><p>本地文件管理器删除文件<code>rm file</code> 后，Git 检测到删除了文件，使用<code>git status</code> 查询哪些文件被删除了：</p>
-<p>1）确定要删除,使用<code>git rm file</code> ，并且<code>git commit</code></p>
-<p>2）误删，恢复到最新版本<code>git checkout -- file</code></p>
-<h5 id="9、关联一个远程仓库git-remote-add-origin-git-server-name-path-reponame-git"><a href="#9、关联一个远程仓库git-remote-add-origin-git-server-name-path-reponame-git" class="headerlink" title="9、关联一个远程仓库git remote add origin git@server-name:path/reponame.git"></a>9、关联一个远程仓库<code>git remote add origin git@server-name:path/reponame.git</code></h5><h5 id="10、推送到远程-master-分支git-push-uorigin-master"><a href="#10、推送到远程-master-分支git-push-uorigin-master" class="headerlink" title="10、推送到远程 master 分支git push -uorigin master"></a>10、推送到远程 master 分支<code>git push -uorigin master</code></h5><h5 id="11、从远程克隆git-clone"><a href="#11、从远程克隆git-clone" class="headerlink" title="11、从远程克隆git clone ..."></a>11、从远程克隆<code>git clone ...</code></h5><h5 id="12、创建与合并分支"><a href="#12、创建与合并分支" class="headerlink" title="12、创建与合并分支"></a>12、创建与合并分支</h5><p>在每次提交时。Git 都将他们串成一条时间线，这条时间线只有一条叫做主分支（master），HEAD 指向的当前分支</p>
-<p>1）创建 dev 分支，并切换到 dev 分支</p>
-<p><code>git checkout -b dev</code> 或者<code>git switch -c dev</code></p>
-<p>等同于</p>
-<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="built_in">dev</span></span><br><span class="line">git checkout <span class="built_in">dev</span> 或者 git switch <span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
-
-<p>2）查看当前分支<code>git branch</code></p>
-<p>3）将 dev 分支合并到 master<code>git merge dev</code></p>
-<p>4）删除分支<code>git branch -d dev</code></p>
-<h5 id="13、查看分支合并图git-log-graph"><a href="#13、查看分支合并图git-log-graph" class="headerlink" title="13、查看分支合并图git log --graph"></a>13、查看分支合并图<code>git log --graph</code></h5><h5 id="14、bug-分支"><a href="#14、bug-分支" class="headerlink" title="14、bug 分支"></a>14、bug 分支</h5><p>例如，你正在 dev 分支上进行工作到一半，突然接到要修复一个代号 101 的 bug 任务</p>
-<p>1）把当前工作现场储藏起来<code>git stash</code> ；</p>
-<p>2）创建分支修复 bug，修复完之后 commit。切换到 master 分支完成合并，最后删除新创建的 bug 分支；</p>
-<p>3）恢复未做完的 dev 工作现场</p>
-<p>​ 使用<code>git stash list</code> 查看工作现场</p>
-<p>​ （1）用<code>git stash apply</code> ，然后使用<code>git stash drop</code> 删除 stash 内容。使用<code>git stash apply stash@&#123;0&#125;</code> 恢复指定的 stash;</p>
-<p>​ （2）使用<code>git stash pop</code> 恢复的同时能把 stash 内容也删除了。</p>
-<p>在 master 分支上修复 bug，想要合并到当前的 dev 分支，可以使用<code>git cherry-pick &lt;commit&gt;</code> ,把 bug 提交的修改复制到当前分支，避免重复劳动。</p>
-<h5 id="15、如果要丢弃一个没有被合并过的分支，可以通过git-branch-D-lt-name-gt-强行删除"><a href="#15、如果要丢弃一个没有被合并过的分支，可以通过git-branch-D-lt-name-gt-强行删除" class="headerlink" title="15、如果要丢弃一个没有被合并过的分支，可以通过git branch -D &lt;name&gt; 强行删除"></a>15、如果要丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code> 强行删除</h5><h5 id="16、查看远程仓库的信息用git-remote-或git-remote-v"><a href="#16、查看远程仓库的信息用git-remote-或git-remote-v" class="headerlink" title="16、查看远程仓库的信息用git remote 或git remote -v"></a>16、查看远程仓库的信息用<code>git remote</code> 或<code>git remote -v</code></h5><h5 id="17、推送分支git-push"><a href="#17、推送分支git-push" class="headerlink" title="17、推送分支git push"></a>17、推送分支<code>git push</code></h5><h5 id="18、将最新的提交拉取下来git-pull"><a href="#18、将最新的提交拉取下来git-pull" class="headerlink" title="18、将最新的提交拉取下来git pull"></a>18、将最新的提交拉取下来<code>git pull</code></h5><h5 id="19、标签操作"><a href="#19、标签操作" class="headerlink" title="19、标签操作"></a>19、标签操作</h5><p>1）切换到需要打标签的分支上</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">git</span> <span class="string">branch</span></span><br><span class="line"><span class="attr">git</span> <span class="string">checkout &lt;name&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>2）打标签<code>git tag &lt;name&gt;</code></p>
-<p>3）查看所有标签<code>git tag</code></p>
-<p>4）查看指定标签信息<code>git show &lt;tagname&gt;</code></p>
-<p>5）删除标签 <code>git tag -d &lt;tagname&gt;</code></p>
-<p>6）推送一个本地标签<code>git push origin &lt;tagname&gt;</code></p>
-<p>7）推送全部未推送过的本地标签<code>git push origin --tags</code></p>
-<p>8）删除一个远程标签<code>git push origin :refs/tags/&lt;tagname&gt;</code></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/15/ES6%EF%BC%9Athis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/15/ES6%EF%BC%9Athis/" class="post-title-link" itemprop="url">ES6：this</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-15 15:20:21" itemprop="dateCreated datePublished" datetime="2019-10-15T15:20:21+08:00">2019-10-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 11:30:15" itemprop="dateModified" datetime="2020-09-23T11:30:15+08:00">2020-09-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-
-<h2 id="一、this-的指向问题"><a href="#一、this-的指向问题" class="headerlink" title="一、this 的指向问题"></a>一、this 的指向问题</h2><p>this 代表函数（方法）执行的上下文环境</p>
-<ul>
-<li>this 指向的一定是对象</li>
-<li>this 指向谁不取决于 this 写在哪儿，取决于 this 在哪儿被调用</li>
-<li>严格模式中：禁止 this 指向全局对象</li>
-</ul>
-<p><img src="https://user-gold-cdn.xitu.io/2018/11/15/16717eaf3383aae8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
-<h2 id="二、箭头函数和普通函数的区别"><a href="#二、箭头函数和普通函数的区别" class="headerlink" title="二、箭头函数和普通函数的区别"></a>二、箭头函数和普通函数的区别</h2><p>**箭头函数 **</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let fun1 = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;111&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>普通函数</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;222&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="1、箭头函数没有原型属性（prototype），所以箭头函数本身没有-this"><a href="#1、箭头函数没有原型属性（prototype），所以箭头函数本身没有-this" class="headerlink" title="1、箭头函数没有原型属性（prototype），所以箭头函数本身没有 this"></a>1、箭头函数没有原型属性（prototype），所以箭头函数本身没有 this</h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = <span class="function"><span class="params">()</span>=&gt;</span> &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a.prototypt); <span class="regexp">//</span> <span class="literal">undefined</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2、箭头函数不绑定-this，会捕获其所在的上下文的-this-值，作为自己的-this-值"><a href="#2、箭头函数不绑定-this，会捕获其所在的上下文的-this-值，作为自己的-this-值" class="headerlink" title="2、箭头函数不绑定 this，会捕获其所在的上下文的 this 值，作为自己的 this 值"></a>2、箭头函数不绑定 this，会捕获其所在的上下文的 this 值，作为自己的 this 值</h3><h3 id="3、箭头函数不绑定-arguments，取而代之用-rest-剩余参数…解决"><a href="#3、箭头函数不绑定-arguments，取而代之用-rest-剩余参数…解决" class="headerlink" title="3、箭头函数不绑定 arguments，取而代之用 rest 剩余参数…解决"></a>3、箭头函数不绑定 arguments，取而代之用 rest 剩余参数…解决</h3><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let B = (b)=&gt;&#123;</span><br><span class="line">  console.log(arguments);</span><br><span class="line">&#125;</span><br><span class="line">B(<span class="number">2</span>,<span class="number">92</span>,<span class="number">32</span>,<span class="number">32</span>);  =&gt;  Uncaught ReferenceError: arguments <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br><span class="line"></span><br><span class="line">let C = (...c) =&gt; &#123;</span><br><span class="line">  console.log(c);</span><br><span class="line">&#125;</span><br><span class="line">C(<span class="number">3</span>,<span class="number">82</span>,<span class="number">32</span>,<span class="number">11323</span>);  =&gt;  [<span class="number">3</span>, <span class="number">82</span>, <span class="number">32</span>, <span class="number">11323</span>]</span><br></pre></td></tr></table></figure>
-
-<p>如果箭头函数的 this 指向全局对象，使用<code>arguments</code> 会报错；</p>
-<p>如果箭头函数的 this 指向一个普通函数，<code>arguments</code> 会继承这个普通函数。</p>
-<h3 id="4、箭头函数通过call-或apply-方法调用一个函数时，只传入了一个参数，对this-没有影响，不会修改箭头函数的-this-指向"><a href="#4、箭头函数通过call-或apply-方法调用一个函数时，只传入了一个参数，对this-没有影响，不会修改箭头函数的-this-指向" class="headerlink" title="4、箭头函数通过call()或apply() 方法调用一个函数时，只传入了一个参数，对this 没有影响，不会修改箭头函数的 this 指向"></a>4、箭头函数通过<code>call()</code>或<code>apply()</code> 方法调用一个函数时，只传入了一个参数，对<code>this</code> 没有影响，不会修改箭头函数的 this 指向</h3><p>要想修改箭头函数的 this 指向，只需要修改它外层的普通函数 this 指向。</p>
-<h3 id="5、箭头函数是匿名函数，不能作为构造函数，不能使用-new"><a href="#5、箭头函数是匿名函数，不能作为构造函数，不能使用-new" class="headerlink" title="5、箭头函数是匿名函数，不能作为构造函数，不能使用 new"></a>5、箭头函数是匿名函数，不能作为构造函数，不能使用 new</h3><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let Fun1 = ()=&gt;<span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  console.log(&#x27;111&#x27;)</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line">let fc = new Fun1();  =&gt;  Uncaught TypeError: Fun1 <span class="keyword">is</span> <span class="keyword">not</span> a <span class="function"><span class="keyword">constructor</span></span></span><br></pre></td></tr></table></figure>
-
-<h3 id="6、箭头函数不能当做-Generator，不能使用-yield-关键字"><a href="#6、箭头函数不能当做-Generator，不能使用-yield-关键字" class="headerlink" title="6、箭头函数不能当做 Generator，不能使用 yield 关键字"></a>6、箭头函数不能当做 Generator，不能使用 yield 关键字</h3><h2 id="三、new-的过程"><a href="#三、new-的过程" class="headerlink" title="三、new 的过程"></a>三、new 的过程</h2><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="type">myFunction</span>(<span class="string">&quot;Li&quot;</span>, <span class="string">&quot;Cherry&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="type">myFunction</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">  obj.__proto__ = myFunction.prototype;</span><br><span class="line">  <span class="keyword">var</span> result = myFunction.call(obj, <span class="string">&quot;Li&quot;</span>, <span class="string">&quot;Cherry&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> typeof result === <span class="string">&#x27;obj&#x27;</span> ? result : <span class="type">obj</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>创建一个空对象 obj；</li>
-<li>将新创建的空对象的隐式原型（proto）指向其构造函数的显式原型（prototype）；</li>
-<li>改变 this 的指向；</li>
-<li>如果无返回值或者返回一个非对象值，则将 obj 返回作为新对象；如果返回值是一个新对象的话那么直接返回该对象。</li>
-</ol>
-<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5c76972af265da2dc4538b64">箭头函数参考文献</a></p>
-<p><a target="_blank" rel="noopener" href="https://juejin.im/post/59bfe84351882531b730bac2">new 的过程参考文献</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/19/ES6%EF%BC%9Aset%E3%80%81map%E3%80%81weakSet%E3%80%81weakMap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/19/ES6%EF%BC%9Aset%E3%80%81map%E3%80%81weakSet%E3%80%81weakMap/" class="post-title-link" itemprop="url">ES6：set、map、weakSet、weakMap</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-19 20:11:38" itemprop="dateCreated datePublished" datetime="2019-10-19T20:11:38+08:00">2019-10-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 11:30:12" itemprop="dateModified" datetime="2020-09-23T11:30:12+08:00">2020-09-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-
-<h3 id="1、map（字典）"><a href="#1、map（字典）" class="headerlink" title="1、map（字典）"></a>1、map（字典）</h3><p><code>&#123;1: 2, 3: 4&#125;</code></p>
-<ul>
-<li>Map 对象保存键值对。</li>
-<li>任何值（对象或者原始值）都可以作为一个键或一个值；</li>
-<li>强引用存储类型</li>
-<li>null 会被当作 undefined</li>
-<li>虽然 NaN !== NaN，但是 map 中 NaN 是与 NaN 相等的。</li>
-</ul>
-<p><strong>缺点</strong></p>
-<ul>
-<li>性能不及 WeakMap</li>
-<li>强引用，垃圾回收算法不能及时清理，容易内存泄漏</li>
-</ul>
-<h3 id="2、WeakMap"><a href="#2、WeakMap" class="headerlink" title="2、WeakMap"></a>2、WeakMap</h3><p>WeakMap 对象是一组键/值对的集合，其中的键是弱引用的。其键必须是对象，而值可以是任意的。</p>
-<p><strong>缺点</strong></p>
-<p>由于弱引用，key 是不确定的，所以 WeakMap 的 key 是不可枚举的。</p>
-<h3 id="3、Set（集合）"><a href="#3、Set（集合）" class="headerlink" title="3、Set（集合）"></a>3、Set（集合）</h3><p><code>[1, 2, 3, 4]</code></p>
-<p>Set 本身是一种构造函数，用来生成 Set 数据结构。</p>
-<p>set 对象允许任何类型的唯一值，无论是原始值或者是对象引用。</p>
-<p>NaN 和 undefined 都可以被存储在 Set 中，NaN 之间被视为相同的值（尽管 NaN !== NaN）</p>
-<p>与 array 的区别：</p>
-<ul>
-<li>不能出现重复的值</li>
-<li>没有索引值（唯一且无序）</li>
-</ul>
-<p>Array.from 方法可以将 Set 结构转为数组。</p>
-<h3 id="4、WeakSet"><a href="#4、WeakSet" class="headerlink" title="4、WeakSet"></a>4、WeakSet</h3><p><code>&#123;[1, 2], [3, 4]&#125;</code></p>
-<p>WeakSet 对象允许将弱引用对象存储在一个集合中</p>
-<ul>
-<li>WeakSet 对象中只能存放对象引用，不能存放值，而 Set 对象都可以</li>
-<li>WeakSet 对象中存储的对象都是被弱引用的，如果没有其他的变量或属性引用这个对象值，则这个对象值会被当做垃圾回收掉，正式因为这样，WeakSet 对象是无法枚举的，没有办法拿到它包含的所有元素</li>
-</ul>
-<h3 id="5、Object"><a href="#5、Object" class="headerlink" title="5、Object"></a>5、Object</h3><ul>
-<li>key 只能是字符串</li>
-<li>迭代顺序有可能不同于插入的顺序</li>
-<li>长度只能手动计算</li>
-</ul>
-<h3 id="6、Array"><a href="#6、Array" class="headerlink" title="6、Array"></a>6、Array</h3><ul>
-<li>有 index 索引值</li>
-<li>可出现重复值</li>
-</ul>
-<h3 id="7、字典（map）和集合（set）的区别"><a href="#7、字典（map）和集合（set）的区别" class="headerlink" title="7、字典（map）和集合（set）的区别"></a>7、字典（map）和集合（set）的区别</h3><ul>
-<li>共同点：集合和字典可以存储不重复的值；</li>
-<li>不同点：集合是以[值，值]的形式存储元素，字典是以[键，值]的形式存储。</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5e1d2717e51d4557e97b109b">参考</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1271,7 +1545,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
