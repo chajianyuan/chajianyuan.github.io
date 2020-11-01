@@ -192,6 +192,93 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/05/12/uniapp%EF%BC%9AAPP%E5%AE%9E%E7%8E%B0%E5%AE%9A%E4%BD%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/12/uniapp%EF%BC%9AAPP%E5%AE%9E%E7%8E%B0%E5%AE%9A%E4%BD%8D/" class="post-title-link" itemprop="url">uniapp：APP实现定位</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-12 10:15:55" itemprop="dateCreated datePublished" datetime="2019-05-12T10:15:55+08:00">2019-05-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:31:17" itemprop="dateModified" datetime="2020-09-23T11:31:17+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<h3 id="使用高德地图定位"><a href="#使用高德地图定位" class="headerlink" title="使用高德地图定位"></a>使用高德地图定位</h3><h4 id="1、先去高德地图-API中申请-key-值"><a href="#1、先去高德地图-API中申请-key-值" class="headerlink" title="1、先去高德地图 API中申请 key 值"></a>1、先去<a target="_blank" rel="noopener" href="https://lbs.amap.com/dev/key/app">高德地图 API</a>中申请 key 值</h4><p><img src="https://github.com/cjy1/picture/blob/master/1.png?raw=true"></p>
+<p>如何获取 SHA1 指纹？</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> .android</span><br><span class="line">keytool -<span class="keyword">list</span> -v -keystore <span class="keyword">debug</span>.keystore</span><br></pre></td></tr></table></figure>
+
+<p>如果出现如下错误<br><img src="https://github.com/cjy1/picture/blob/master/2.png?raw=true"><br>去本地的 jdk 安装目录中的 bin 目录下可以发现 keytool.exe<br><img src="https://github.com/cjy1/picture/blob/master/3.png?raw=true"><br>用命令符输入</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">keytool</span><span class="selector-class">.exe</span> <span class="selector-tag">-list</span> <span class="selector-tag">-keystore</span> <span class="selector-tag">C</span>:\<span class="selector-tag">Users</span>\<span class="selector-tag">cjy</span><span class="selector-class">.android</span>\<span class="selector-tag">debug</span><span class="selector-class">.keystore</span></span><br></pre></td></tr></table></figure>
+
+<p>密钥库口令默认为 android<br><img src="https://github.com/cjy1/picture/blob/master/4.png?raw=true"></p>
+<h4 id="2、下载Android-定位-SDK"><a href="#2、下载Android-定位-SDK" class="headerlink" title="2、下载Android 定位 SDK"></a>2、下载<a target="_blank" rel="noopener" href="https://lbs.amap.com/api/android-location-sdk/download">Android 定位 SDK</a></h4><p>在代码中引入 SDK 文件</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> amapFile <span class="keyword">from</span> <span class="string">&#x27;../../utils/amap-wx.js&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、在代码中编写"><a href="#3、在代码中编写" class="headerlink" title="3、在代码中编写"></a>3、在代码中编写</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myAmapFun = <span class="keyword">new</span> amapFile.AMapWX(&#123; <span class="attr">key</span>: <span class="string">&#x27;在步骤1中拿到的key值&#x27;</span> &#125;);</span><br><span class="line">myAmapFun.getRegeo(&#123;</span><br><span class="line">  success: <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//成功回调</span></span><br><span class="line">    <span class="built_in">this</span>.address = data[<span class="number">0</span>];</span><br><span class="line">  fail: <span class="function"><span class="params">info</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//失败回调</span></span><br><span class="line">  	<span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(info));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2020/02/11/react%EF%BC%9A%E6%9C%89%E7%8A%B6%E6%80%81%E7%BB%84%E4%BB%B6%E5%92%8C%E6%97%A0%E7%8A%B6%E6%80%81%E7%BB%84%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1108,167 +1195,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/14/ES6%EF%BC%9Alet%E3%80%81const%E3%80%81var/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/14/ES6%EF%BC%9Alet%E3%80%81const%E3%80%81var/" class="post-title-link" itemprop="url">ES6：let、const、var</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-14 18:08:43" itemprop="dateCreated datePublished" datetime="2019-10-14T18:08:43+08:00">2019-10-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 11:30:09" itemprop="dateModified" datetime="2020-09-23T11:30:09+08:00">2020-09-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-
-<h2 id="一、var"><a href="#一、var" class="headerlink" title="一、var"></a>一、var</h2><p><code>var</code>用来声明变量</p>
-<ul>
-<li>存在变量提升;</li>
-<li>可以重复声明</li>
-<li>使用<code>var</code>声明的变量会被提升到作用域顶部</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//变量提升:变量还未声明但能使用</span></span><br><span class="line"><span class="built_in">console</span>.log(a)   =&gt;  <span class="literal">undefined</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、let"><a href="#二、let" class="headerlink" title="二、let"></a>二、let</h2><p><code>let</code>是 ES6 中提出的用于声明变量</p>
-<ul>
-<li><p>不存在变量提升，也就是说被<code>let</code> 声明的变量不会提升到作用域顶部，如果还未声明便使用会报错（<strong>Uncaught ReferenceError</strong>）</p>
-<p><strong>let 到底存在变量提升吗？</strong></p>
-<ul>
-<li><p>var 声明的创建、初始化和赋值过程</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> y = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fn</span>(<span class="params"></span>)</span>;</span><br></pre></td></tr></table></figure>
-
-<p>执行 fn 过程：</p>
-<ol>
-<li>进入 fn，为 fn 创建一个环境；</li>
-<li>找到 fn 中所有用 var 声明的变量，在这个环境中创建这些变量（x 和 y）；</li>
-<li>将这些变量初始化为 undefined；</li>
-<li>开始执行代码</li>
-<li>将 x 赋值为 1，将 y 赋值为 2。</li>
-</ol>
-<p><strong>var 声明在代码执行前就会创建变量，并将其初始化为 undefined。</strong></p>
-</li>
-<li><p>function 声明的创建 初始化和赋值过程</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fn2();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span><span class="params">()</span></span> &#123;</span><br><span class="line">  consle.<span class="built_in">log</span>(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>JS 引擎执行过程：</p>
-<ol>
-<li>找到所有用 function 声明，在环境中创建这些变量；</li>
-<li>将这些变量初始化并赋值；</li>
-<li>开始执行 fn2()。</li>
-</ol>
-<p><strong>function 声明会在代码执行之前就创建、初始化并赋值。</strong></p>
-</li>
-<li><p>let 声明的创建、初始化和赋值过程</p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> <span class="attr">x</span> = <span class="number">1</span>;</span><br><span class="line">  <span class="attr">x</span> = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>{}里面的执行过程：</p>
-<ol>
-<li>找到所有用 let 声明的变量，在环境中创建这些变量；</li>
-<li>开始执行代码（注意：现在还没有初始化）；</li>
-<li>执行 x=1，将 x 初始化为 1（这并不是一次赋值，如果代码是 let x，就将 x 初始化为 undefined）;</li>
-<li>执行 x = 2，对 x 进行赋值。</li>
-</ol>
-</li>
-</ul>
-<p><strong>所以综上，</strong></p>
-<p><strong>1. let 的创建过程被提升了，但是初始化没有提升。</strong></p>
-<p><strong>2. var 的创建和初始化都被提升了。</strong></p>
-<p><strong>3. function 的创建、初始化和赋值都被提升了。</strong></p>
-<p><img src="https://pic1.zhimg.com/80/v2-9c8c4a0a3ce5402b1a74f488d79c74d0_hd.jpg"></p>
-</li>
-<li><p>暂时性死区</p>
-</li>
-<li><p>块级作用域</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> li = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;li&#x27;</span>);</span><br><span class="line"><span class="comment">// 代码段1</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; li.length; i++) &#123;</span><br><span class="line">  li[i].onClick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//代码段2</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; li.length; i++) &#123;</span><br><span class="line">  li[i].onClick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>为什么代码段 1 会打印出 5 个 5，而代码段 2 会打印出 0、1、2、3、4？</strong></p>
-<p>猜测：</p>
-<ol>
-<li><p>for(let i = 0; i &lt; li.length; i++)这句话的圆括号之间，有一个隐藏的作用域</p>
-</li>
-<li><p>for(let i = 0; i &lt; li.length; i++) {循环体}在每次执行循环体之前，JS 引擎会把 i 在循环体的上下文中重新声明及初始化一次</p>
-</li>
-<li><p>近似把代码 2 理解为</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(let <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; li.<span class="built_in">length</span>; <span class="built_in">i</span>++) &#123;</span><br><span class="line">  let <span class="built_in">i</span> = 隐藏作用域中的<span class="built_in">i</span></span><br><span class="line">  li[<span class="built_in">i</span>].onClick=<span class="function"><span class="keyword">function</span><span class="params">()</span> &#123;</span></span><br><span class="line">    console.<span class="built_in">log</span>(<span class="built_in">i</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li>不可重复声明</li>
-</ul>
-<h2 id="三、const"><a href="#三、const" class="headerlink" title="三、const"></a>三、const</h2><p><code>const</code> 是 ES6 提出的用于声明变量</p>
-<ul>
-<li>声明必须赋值，一旦声明便不可更改</li>
-<li>其他和<code>let</code> 一致</li>
-</ul>
-<h2 id="四、块级作用域"><a href="#四、块级作用域" class="headerlink" title="四、块级作用域"></a>四、块级作用域</h2><h3 id="为什么需要块级作用域"><a href="#为什么需要块级作用域" class="headerlink" title="为什么需要块级作用域"></a>为什么需要块级作用域</h3><ul>
-<li>内层变量可能覆盖外层变量</li>
-<li>用来计数的循环变量泄露为全局变量</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/28140450">我用了两个月的时间才理解 let</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1338,7 +1264,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1351,7 +1277,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
