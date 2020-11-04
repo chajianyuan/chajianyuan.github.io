@@ -585,13 +585,6 @@
   </url>
   
   <url>
-    <loc>https://chajianyuan.github.io/tags/css/</loc>
-    <lastmod>2020-11-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://chajianyuan.github.io/tags/koa/</loc>
     <lastmod>2020-11-04</lastmod>
     <changefreq>daily</changefreq>
@@ -599,7 +592,7 @@
   </url>
   
   <url>
-    <loc>https://chajianyuan.github.io/tags/html/</loc>
+    <loc>https://chajianyuan.github.io/tags/css/</loc>
     <lastmod>2020-11-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -607,6 +600,13 @@
   
   <url>
     <loc>https://chajianyuan.github.io/tags/git/</loc>
+    <lastmod>2020-11-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://chajianyuan.github.io/tags/html/</loc>
     <lastmod>2020-11-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
