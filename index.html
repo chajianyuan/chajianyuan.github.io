@@ -192,6 +192,329 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2020/11/03/JS%EF%BC%9AscrollWidth%E3%80%81offsetWidth%E3%80%81clientWidth/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/03/JS%EF%BC%9AscrollWidth%E3%80%81offsetWidth%E3%80%81clientWidth/" class="post-title-link" itemprop="url">JS：scrollWidth、offsetWidth、clientWidth</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-03 22:01:56" itemprop="dateCreated datePublished" datetime="2020-11-03T22:01:56+08:00">2020-11-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-04 10:05:20" itemprop="dateModified" datetime="2020-11-04T10:05:20+08:00">2020-11-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Element-clientWidth"><a href="#Element-clientWidth" class="headerlink" title="Element.clientWidth"></a>Element.clientWidth</h3><p>内联元素以及没有css样式的元素的<code>clientWidth</code>值为0。 <code>Element.clientWidth</code>属性表示元素的内部宽度。</p>
+<p>该属性包括内边距padding，但不包括边框border、外边距margin和垂直滚动条（如果有的话）。</p>
+<p>⚠️ 当在根元素（&lt; html &gt;元素）上使用<code>clientWidth</code>(或者在&lt; body &gt;上，如果文档是在怪异模式下)，将返回viewport的宽度（不包含任何滚动条）。</p>
+<blockquote>
+<p>这个属性会进行四舍五入并返回整数，如果需要小数形式的值，则使用<code>element.getBoundingClientRect()</code>。</p>
+</blockquote>
+<h3 id="Element-scrollWidth"><a href="#Element-scrollWidth" class="headerlink" title="Element.scrollWidth"></a>Element.scrollWidth</h3><p><code>Element.scrollWidth</code>这个只读属性是元素内容宽度的一种度量，包括由于overflow溢出而在屏幕上不可见的内容。</p>
+<p>scrollWidth值等于元素在不使用水平滚动条的情况下适合视口中的所有内容所需的最小宽度。</p>
+<p>宽度的测量与<code>clientWidth</code>相同：它包括元素的内边距，但是不包括边框、外边距或垂直滚动条（如果存在）。它还可以包括伪元素的宽度，例如<code>::before</code>或<code>::after</code>。如果元素的内容可以适合而不需要水平滚动条，则其<code>scrollWidth</code>等于<code>clientWidth</code>。</p>
+<blockquote>
+<ol>
+<li>这个属性会进行四舍五入并返回整数，如果需要小数形式的值，则使用<code>element.getBoundingClientRect()</code>。</li>
+<li>谷歌获取的<code>Element.scrollWidth</code>和IE、火狐下获取的<code>Element.scrollWidth</code>并不相同。</li>
+</ol>
+</blockquote>
+<h3 id="Element-offsetWidth"><a href="#Element-offsetWidth" class="headerlink" title="Element.offsetWidth"></a>Element.offsetWidth</h3><p><code>Element.offsetWidth</code>是一个只读属性，返回一个元素的布局宽度。</p>
+<p><code>Element.offsetWidth</code>是测量包含元素的边框（border）、水平线上的内边距（padding）、垂直方向上的滚动条、以及css设置的的宽度（width）值。</p>
+<p>⚠️ 各浏览器的offsetWidth可能有所不同。</p>
+<blockquote>
+<p>这个属性会进行四舍五入并返回整数，如果需要小数形式的值，则使用<code>element.getBoundingClientRect()</code>。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/08/22/%E5%85%B6%E4%BB%96%EF%BC%9AMarkdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/22/%E5%85%B6%E4%BB%96%EF%BC%9AMarkdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">其他：Markdown基本语法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-22 14:34:30" itemprop="dateCreated datePublished" datetime="2019-08-22T14:34:30+08:00">2019-08-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-01 20:37:41" itemprop="dateModified" datetime="2020-11-01T20:37:41+08:00">2020-11-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<h3 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h3><p>示例：</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br><span class="line">#### 这是四级标题</span><br><span class="line">##### 这是五级标题</span><br><span class="line">###### 这是六级标题</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3><h4 id="这是四级标题"><a href="#这是四级标题" class="headerlink" title="这是四级标题"></a>这是四级标题</h4><h5 id="这是五级标题"><a href="#这是五级标题" class="headerlink" title="这是五级标题"></a>这是五级标题</h5><h6 id="这是六级标题"><a href="#这是六级标题" class="headerlink" title="这是六级标题"></a>这是六级标题</h6><h3 id="二、字体"><a href="#二、字体" class="headerlink" title="二、字体"></a>二、字体</h3><p>示例：</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*<span class="strong">*这是加粗的文字*</span><span class="strong">*</span></span><br><span class="line"><span class="strong">*</span>这是倾斜的文字<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span>*<span class="strong">*这是倾斜加粗的文字*</span>*<span class="strong">*</span></span><br><span class="line"><span class="strong">~~这是加删除线的文字~~</span></span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><strong>这是加粗的文字</strong></p>
+<p><em>这是倾斜的文字</em></p>
+<p><strong><em>这是倾斜加粗的文字</em></strong></p>
+<p><del>这是加删除线的文字</del></p>
+<h3 id="三、引用"><a href="#三、引用" class="headerlink" title="三、引用"></a>三、引用</h3><p>示例：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;这是引用的内容</span><br><span class="line"><span class="meta">&gt;&gt;</span>这是引用的内容</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<blockquote>
+<p>这是引用的内容</p>
+<blockquote>
+<p>这是引用的内容</p>
+</blockquote>
+</blockquote>
+<h3 id="四、分割线"><a href="#四、分割线" class="headerlink" title="四、分割线"></a>四、分割线</h3><p>示例：</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">----</span><br><span class="line">**<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span>***<span class="strong">*</span></span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<hr>
+<hr>
+<hr>
+<hr>
+<h3 id="五、图片"><a href="#五、图片" class="headerlink" title="五、图片"></a>五、图片</h3><p>语法：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">图片alt</span>](<span class="link">图片地址 &#x27;&#x27;图片title&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">图片</span>](<span class="link">https://img.wowoqq.com/allimg/171130/1-1G1300I102-52.jpg</span>)</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><img src="https://img.wowoqq.com/allimg/171130/1-1G1300I102-52.jpg" alt="图片"></p>
+<h3 id="六、超链接"><a href="#六、超链接" class="headerlink" title="六、超链接"></a>六、超链接</h3><p>语法：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">超链接名</span>](<span class="link">超链接地址 &quot;超链接title&quot;</span>)</span><br><span class="line">title可加可不加</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">简书</span>](<span class="link">http://jianshu.com</span>)</span><br><span class="line">[<span class="string">百度</span>](<span class="link">http://baidu.com</span>)</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><a target="_blank" rel="noopener" href="http://jianshu.com/">简书</a><br><a target="_blank" rel="noopener" href="http://baidu.com/">百度</a></p>
+<h3 id="七、列表"><a href="#七、列表" class="headerlink" title="七、列表"></a>七、列表</h3><ul>
+<li><h4 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h4></li>
+</ul>
+<p>示例：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> 列表内容</span><br><span class="line"><span class="bullet">+</span> 列表内容</span><br><span class="line"><span class="bullet">*</span> 列表内容</span><br><span class="line"></span><br><span class="line">注意：- + <span class="emphasis">* 跟内容之间都要有一个空格</span></span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<ul>
+<li>列表内容</li>
+</ul>
+<ul>
+<li>列表内容</li>
+<li>列表内容</li>
+</ul>
+<ul>
+<li><h4 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h4>示例：</li>
+</ul>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>列表内容</span><br><span class="line"><span class="number">2.</span>列表内容</span><br><span class="line"><span class="number">3.</span>列表内容</span><br><span class="line"></span><br><span class="line">注意：序号跟内容之间要有空格</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<ol>
+<li>列表内容</li>
+<li>列表内容</li>
+<li>列表内容</li>
+</ol>
+<ul>
+<li><h4 id="列表嵌套"><a href="#列表嵌套" class="headerlink" title="列表嵌套"></a>列表嵌套</h4></li>
+</ul>
+<p><strong>上一级和下一级之间敲三个空格即可</strong></p>
+<ul>
+<li>一级无序列表内容<ul>
+<li>二级无序列表内容</li>
+<li>二级无序列表内容</li>
+<li>二级无序列表内容</li>
+</ul>
+</li>
+<li>一级无序列表内容<ol>
+<li>二级有序列表内容</li>
+<li>二级有序列表内容</li>
+<li>二级有序列表内容</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>一级有序列表内容<ul>
+<li>二级无序列表内容</li>
+<li>二级无序列表内容</li>
+<li>二级无序列表内容</li>
+</ul>
+</li>
+<li>一级有序列表内容<ol>
+<li>二级有序列表内容</li>
+<li>二级有序列表内容</li>
+<li>二级有序列表内容</li>
+</ol>
+</li>
+</ol>
+<h3 id="八、表格"><a href="#八、表格" class="headerlink" title="八、表格"></a>八、表格</h3><p>语法：</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">表头|<span class="string">表头</span>|<span class="string">表头</span></span><br><span class="line"><span class="string">---</span>|<span class="string">:--:</span>|<span class="string">---:</span></span><br><span class="line"><span class="string">内容</span>|<span class="string">内容</span>|<span class="string">内容</span></span><br><span class="line"><span class="string">内容</span>|<span class="string">内容</span>|<span class="string">内容</span></span><br><span class="line"></span><br><span class="line"><span class="string">第二行分割表头和内容。</span></span><br><span class="line"><span class="string">- 有一个就行，为了对齐，多加了几个</span></span><br><span class="line"><span class="string">文字默认居左</span></span><br><span class="line"><span class="string">-两边加：表示文字居中</span></span><br><span class="line"><span class="string">-右边加：表示文字居右</span></span><br><span class="line"><span class="string">注：原生的语法两边都要用 </span>|<span class="string"> 包起来。此处省略</span></span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">姓名|<span class="string">技能</span>|<span class="string">排行</span></span><br><span class="line"><span class="string">--</span>|<span class="string">:--:</span>|<span class="string">--:</span></span><br><span class="line"><span class="string">刘备</span>|<span class="string">哭</span>|<span class="string">大哥</span></span><br><span class="line"><span class="string">关羽</span>|<span class="string">打</span>|<span class="string">二弟</span></span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th align="center">技能</th>
+<th align="right">排行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>刘备</td>
+<td align="center">哭</td>
+<td align="right">大哥</td>
+</tr>
+<tr>
+<td>关羽</td>
+<td align="center">打</td>
+<td align="right">二弟</td>
+</tr>
+</tbody></table>
+<h3 id="九、代码"><a href="#九、代码" class="headerlink" title="九、代码"></a>九、代码</h3><p>语法：</p>
+<p>单行代码：代码之间分别用一个反引号包起来</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`代码内容`</span></span><br></pre></td></tr></table></figure>
+
+<p>代码块：代码之间分别用三个反引号包起来，且两边的反引号单独占一行</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">​<span class="string">``</span><span class="string">`</span></span><br><span class="line"><span class="string">  代码...</span></span><br><span class="line"><span class="string">  代码...</span></span><br><span class="line"><span class="string">  代码...</span></span><br><span class="line"><span class="string">​`</span><span class="string">``</span></span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<p>单行代码：</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`<span class="keyword">create</span> <span class="keyword">database</span> hero;`</span><br></pre></td></tr></table></figure>
+
+<p>代码块：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">​```</span><br><span class="line">function <span class="function"><span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">	echo <span class="string">&quot;这是一句非常牛逼的代码&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">fun</span><span class="params">()</span></span>;</span><br><span class="line">​```</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p>单行代码：</p>
+<p><code>create database hero;</code></p>
+<p>代码块：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function <span class="function"><span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">	echo <span class="string">&quot;这是一句非常牛逼的代码&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">fun</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="十、流程图"><a href="#十、流程图" class="headerlink" title="十、流程图"></a>十、流程图</h3><p>示例：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">​```flow</span><br><span class="line"><span class="attribute">st</span>=&gt;start: 开始</span><br><span class="line"><span class="attribute">op</span>=&gt;operation: My Operation</span><br><span class="line"><span class="attribute">cond</span>=&gt;condition: <span class="literal">Yes</span> <span class="keyword">or</span> <span class="literal">No</span>?</span><br><span class="line"><span class="attribute">e</span>=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(<span class="literal">yes</span>)-&gt;e</span><br><span class="line">cond(<span class="literal">no</span>)-&gt;op</span><br><span class="line">&amp;```</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">st&#x3D;&gt;start: 开始</span><br><span class="line">op&#x3D;&gt;operation: My Operation</span><br><span class="line">cond&#x3D;&gt;condition: Yes or No?</span><br><span class="line">e&#x3D;&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line">&amp;&#96;&#96;&#96;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/03/29/%E7%AE%97%E6%B3%95%EF%BC%9A6%E3%80%81Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2%EF%BC%88JavaScript%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -891,162 +1214,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2020/10/27/react%EF%BC%9AuseEffect/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/27/react%EF%BC%9AuseEffect/" class="post-title-link" itemprop="url">react: useEffect</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-27 19:46:05" itemprop="dateCreated datePublished" datetime="2020-10-27T19:46:05+08:00">2020-10-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-28 19:23:02" itemprop="dateModified" datetime="2020-10-28T19:23:02+08:00">2020-10-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">阅读笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本文是在学习<a target="_blank" rel="noopener" href="https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/">useEffect完整指南</a>中做的笔记，记录自己不理解的地方以及学到的知识。</p>
-<h3 id="🍀-每一次渲染都有它自己的Props和State"><a href="#🍀-每一次渲染都有它自己的Props和State" class="headerlink" title="🍀 每一次渲染都有它自己的Props和State"></a>🍀 每一次渲染都有它自己的Props和State</h3><h3 id="🍀-每一次渲染都有它自己的事件处理函数"><a href="#🍀-每一次渲染都有它自己的事件处理函数" class="headerlink" title="🍀 每一次渲染都有它自己的事件处理函数"></a>🍀 每一次渲染都有它自己的事件处理函数</h3><h3 id="🍀-每一次渲染都有它自己的Effects"><a href="#🍀-每一次渲染都有它自己的Effects" class="headerlink" title="🍀 每一次渲染都有它自己的Effects"></a>🍀 每一次渲染都有它自己的Effects</h3><p>每一个组件内的函数（包括事件处理函数，effects，定时器或者API调用等等）都会捕捉某次渲染中定义的props和state。</p>
-<p>React会根据我们当前的props和state同步到DOM。</p>
-<p>useEffect使你能够根据props和state同步React tree之外的东西。</p>
-<p>useEffect中的依赖项用来告诉React去对比你的Effects。</p>
-<h3 id="🍀-关于依赖项不要对React撒谎"><a href="#🍀-关于依赖项不要对React撒谎" class="headerlink" title="🍀 关于依赖项不要对React撒谎"></a>🍀 关于依赖项不要对React撒谎</h3><ul>
-<li><p>诚实告知依赖</p>
-<ul>
-<li><p>在依赖中包含所有effect中用到的组件内的值。</p>
-</li>
-<li><p>修改effect内部的代码，以确保它包含的值只会在需要的时候发生变更。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="🍀-函数式更新"><a href="#🍀-函数式更新" class="headerlink" title="🍀 函数式更新"></a>🍀 函数式更新</h3><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    const id = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      setCount(<span class="function"><span class="params">c</span> =&gt;</span> c + <span class="number">1</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> clearInterval(id);</span><br><span class="line">  &#125;, []);</span><br></pre></td></tr></table></figure>
-
-<p>例如用<code>setCount(c =&gt; c + 1)</code> 代替  <code>setCount(count+1)</code>, 在effect中传递最小的信息</p>
-<h3 id="🍀-解耦来自Actions的更新"><a href="#🍀-解耦来自Actions的更新" class="headerlink" title="🍀 解耦来自Actions的更新"></a>🍀 解耦来自Actions的更新</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> [step, setStep] = useState(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> id = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      setCount(<span class="function"><span class="params">c</span> =&gt;</span> c + step);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearInterval</span>(id);</span><br><span class="line">  &#125;, [step]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;h1&gt;&#123;count&#125;&lt;/h1&gt;</span><br><span class="line">      &lt;input value=&#123;step&#125; onChange=&#123;<span class="function"><span class="params">e</span> =&gt;</span> setStep(<span class="built_in">Number</span>(e.target.value))&#125; /&gt;</span><br><span class="line">    &lt;/&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>当你想更新一个状态，并且这个状态更新依赖于另一个状态的值时，你可能需要使用<code>useReducer</code>去替换它们。</p>
-<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [<span class="keyword">state</span>, dispatch] = useReducer(reducer, initialState);</span><br><span class="line"><span class="keyword">const</span> &#123; count, step &#125; = <span class="keyword">state</span>;</span><br><span class="line"></span><br><span class="line">useEffect(() =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> id = <span class="built_in">set</span>Interval(() =&gt; &#123;</span><br><span class="line">    dispatch(&#123; type: &#x27;tick&#x27; &#125;); // Instead of <span class="built_in">set</span>Count(c =&gt; c + step);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">  return () =&gt; clearInterval(id);</span><br><span class="line">&#125;, [dispatch]);</span><br></pre></td></tr></table></figure>
-
-<p>React会保证<code>dispatch</code>在组件的生命周期内保持不变。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2020/10/28/css%EF%BC%9Acss%E6%96%B0%E7%89%B9%E6%80%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/28/css%EF%BC%9Acss%E6%96%B0%E7%89%B9%E6%80%A7/" class="post-title-link" itemprop="url">css: css新特性</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-10-28 16:39:01 / 修改时间：18:46:22" itemprop="dateCreated datePublished" datetime="2020-10-28T16:39:01+08:00">2020-10-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>🔗 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/HbfThzav79GFS-sMirAINA">2020年你不应该错过的CSS新特性</a></p>
-<h3 id="🍀-Web动效"><a href="#🍀-Web动效" class="headerlink" title="🍀 Web动效"></a>🍀 Web动效</h3><h5 id="🍃-动态模糊"><a href="#🍃-动态模糊" class="headerlink" title="🍃 动态模糊"></a>🍃 动态模糊</h5>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1116,7 +1283,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

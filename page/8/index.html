@@ -192,6 +192,136 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9Avue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9Avue/" class="post-title-link" itemprop="url">总结：vue</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-24 10:52:09" itemprop="dateCreated datePublished" datetime="2019-10-24T10:52:09+08:00">2019-10-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-22 15:25:18" itemprop="dateModified" datetime="2020-02-22T15:25:18+08:00">2020-02-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<h2 id="一、Vue-生命周期"><a href="#一、Vue-生命周期" class="headerlink" title="一、Vue 生命周期"></a>一、Vue 生命周期</h2><p><a target="_blank" rel="noopener" href="https://cjy1.github.io/2019/10/19/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">参见总结：vue：生命周期</a></p>
+<h2 id="二、Vue-双向数据绑定原理"><a href="#二、Vue-双向数据绑定原理" class="headerlink" title="二、Vue 双向数据绑定原理"></a>二、Vue 双向数据绑定原理</h2><p><a target="_blank" rel="noopener" href="https://cjy1.github.io/2019/10/19/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/">参见总结：vue：双向绑定</a></p>
+<h2 id="三、v-show-和-v-if-的区别"><a href="#三、v-show-和-v-if-的区别" class="headerlink" title="三、v-show 和 v-if 的区别"></a>三、v-show 和 v-if 的区别</h2><p><strong>v-if</strong> 是<strong>真正</strong>的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建；也是<strong>惰性的</strong>：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。</p>
+<p><strong>v-show</strong> 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 的 “display” 属性进行切换。</p>
+<p>所以，v-if 适用于在运行时很少改变条件，不需要频繁切换条件的场景；v-show 则适用于需要非常频繁切换条件的场景。</p>
+<h2 id="四、MVVM"><a href="#四、MVVM" class="headerlink" title="四、MVVM"></a>四、MVVM</h2><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5af8eb55f265da0b814ba766">掘金：看完这篇关于 MVVM 的文章，面试通过率提升了 80%</a></p>
+<h2 id="五、虚拟-DOM"><a href="#五、虚拟-DOM" class="headerlink" title="五、虚拟 DOM"></a>五、虚拟 DOM</h2><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5d12c931f265da1bb2773fcc">掘金：揭秘 Vue 中的 Virtual Dom</a></p>
+<h2 id="六、key"><a href="#六、key" class="headerlink" title="六、key"></a>六、key</h2><p><img src="https://user-gold-cdn.xitu.io/2019/10/31/16e1f60b7d343768?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"><br><img src="https://user-gold-cdn.xitu.io/2019/10/31/16e1f6105886daf5?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"><br>key 的作用就是在更新组件时判断两个节点是否相同。相同就复用，不相同就删除旧的创建新的。</p>
+<ul>
+<li>key 会用在虚拟 DOM 算法（diff 算法）中，用来辨别新旧节点；</li>
+<li>不带 key 的时候会最大限度减少元素的变动，尽可能用相同的元素（就地复用）；</li>
+<li>带 key 的时候，会基于相同的 key 来进行排列（相同的复用）；</li>
+<li>带 key 还能触发过渡效果，以及触发组件的生命周期。</li>
+</ul>
+<h2 id="七、nextTick"><a href="#七、nextTick" class="headerlink" title="七、nextTick"></a>七、nextTick</h2><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5a6fdb846fb9a01cc0268618">掘金：简单理解 Vue 中的 nextTick</a></p>
+<h2 id="八、template-编译"><a href="#八、template-编译" class="headerlink" title="八、template 编译"></a>八、template 编译</h2><p>详情步骤：首先，通过 compile 编译器把 template 编译成 AST 语法树（abstractsyntaxtree 即源代码的抽象语法结构的树状表现形式），compile 是 createCompiler 的返回值，createCompiler 是用以创建编译器的。另外 compile 还负责合并 option。</p>
+<p>然后，AST 会经过 generate（将 AST 语法树转化成 renderfuntion 字符串的过程）得到 render 函数，render 的返回值是 VNode，VNode 是 Vue 的虚拟 DOM 节点，里面有（标签名、子节点、文本等等）</p>
+<h2 id="九、组件间通讯"><a href="#九、组件间通讯" class="headerlink" title="九、组件间通讯"></a>九、组件间通讯</h2><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5cde0b43f265da03867e78d3">掘金：Vue 组件间通信六种方式（完整版）</a></p>
+<h2 id="十、父子组件生命周期"><a href="#十、父子组件生命周期" class="headerlink" title="十、父子组件生命周期"></a>十、父子组件生命周期</h2><h3 id="1、加载渲染过程"><a href="#1、加载渲染过程" class="headerlink" title="1、加载渲染过程"></a>1、加载渲染过程</h3><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父<span class="function"><span class="title">beforeCreate</span>-&gt;</span>父<span class="function"><span class="title">created</span>-&gt;</span>父<span class="function"><span class="title">beforeMount</span>-&gt;</span>子<span class="function"><span class="title">beforeCreate</span>-&gt;</span>子<span class="function"><span class="title">created</span>-&gt;</span>子<span class="function"><span class="title">beforeMount</span>-&gt;</span>子<span class="function"><span class="title">mounted</span>-&gt;</span>父mounted</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、子组件更新过程"><a href="#2、子组件更新过程" class="headerlink" title="2、子组件更新过程"></a>2、子组件更新过程</h3><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父<span class="function"><span class="title">beforeUpdate</span>-&gt;</span>子<span class="function"><span class="title">beforeUpdate</span>-&gt;</span>子<span class="function"><span class="title">updated</span>-&gt;</span>父updated</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、父组件更新过程"><a href="#3、父组件更新过程" class="headerlink" title="3、父组件更新过程"></a>3、父组件更新过程</h3><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父<span class="function"><span class="title">beforeUpdate</span>-&gt;</span>父updated</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、销毁过程"><a href="#4、销毁过程" class="headerlink" title="4、销毁过程"></a>4、销毁过程</h3><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父<span class="function"><span class="title">beforeDestroy</span>-&gt;</span>子<span class="function"><span class="title">beforeDestroy</span>-&gt;</span>子<span class="function"><span class="title">destroyed</span>-&gt;</span>父destroyed</span><br></pre></td></tr></table></figure>
+
+<h2 id="十一、keep-alive"><a href="#十一、keep-alive" class="headerlink" title="十一、keep-alive"></a>十一、keep-alive</h2><p>如果想把切换出去的组件保留在内存中，并保留它的状态或避免重新渲染。为此可以添加一个 keep-alive 指令</p>
+<p><code>&lt;component:is=&#39;curremtView&#39; keep-alive&gt;&lt;/component&gt;</code></p>
+<h2 id="十二、Vuex"><a href="#十二、Vuex" class="headerlink" title="十二、Vuex"></a>十二、Vuex</h2><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5bbe15dcf265da0a867c57bd">掘金：从头开始学习 Vuex</a></p>
+<p>vuex 是一个状态管理容器(你也可以理解为类似于全局变量),数据的流向是是单向数据流</p>
+<table>
+<thead>
+<tr>
+<th>vuex</th>
+<th>vue</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>state</td>
+<td>data</td>
+</tr>
+<tr>
+<td>getters</td>
+<td>computed</td>
+</tr>
+<tr>
+<td>mutations</td>
+<td>methods（同步操作）</td>
+</tr>
+<tr>
+<td>actions</td>
+<td>methods（异步操作</td>
+</tr>
+</tbody></table>
+<h2 id="十三、vue版本之间的区别"><a href="#十三、vue版本之间的区别" class="headerlink" title="十三、vue版本之间的区别"></a>十三、vue版本之间的区别</h2><p><a href="">参见总结：vue：vue版本之间的区别</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/26/html%EF%BC%9Acookie%E3%80%81sessionStorage%E3%80%81localStorage%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -475,7 +605,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
