@@ -1352,7 +1352,7 @@
       
           <meta name="referrer" content="no-referrer"/>
 
-<h2 id="一、改变原数组"><a href="#一、改变原数组" class="headerlink" title="一、改变原数组"></a>一、改变原数组</h2><h3 id="1、push（添加元素）"><a href="#1、push（添加元素）" class="headerlink" title="1、push（添加元素）"></a>1、push（添加元素）</h3><p>向数组后面添加元素，返回值为添加完后的数组长度</p>
+<h2 id="一、改变原数组"><a href="#一、改变原数组" class="headerlink" title="一、改变原数组"></a>一、改变原数组</h2><h3 id="1、push（添加元素）"><a href="#1、push（添加元素）" class="headerlink" title="1、push（添加元素）"></a>1、push（添加元素）</h3><p>向数组后面添加元素，返回新数组长度</p>
 <figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let<span class="built_in"> array </span>= [1,2,3,4,5]</span><br><span class="line">array.push(6)   =&gt;  6</span><br><span class="line">array           =&gt;  [1, 2, 3, 4, 5, 6]</span><br></pre></td></tr></table></figure>
 
 <h3 id="2、pop（删除元素）"><a href="#2、pop（删除元素）" class="headerlink" title="2、pop（删除元素）"></a>2、pop（删除元素）</h3><p>从后面删除数组元素，只能删除一个，返回被删除的元素</p>
@@ -1402,7 +1402,7 @@
 <h3 id="4、includes"><a href="#4、includes" class="headerlink" title="4、includes"></a>4、includes</h3><p>判断数组中是否包含某个值，返回 true 或 false</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>.includes(<span class="number">2</span>)  =&gt;  <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="5、join"><a href="#5、join" class="headerlink" title="5、join"></a>5、join</h3><p>将数组元素拼接起来</p>
+<h3 id="5、join"><a href="#5、join" class="headerlink" title="5、join"></a>5、join</h3><p>将数组元素拼接起来，可以指定分隔符</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>.join(<span class="string">&#x27;&#x27;</span>)  =&gt;  <span class="string">&quot;12345&quot;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="6、toString"><a href="#6、toString" class="headerlink" title="6、toString"></a>6、toString</h3><p>将数组转换成字符串</p>
