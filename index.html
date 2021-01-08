@@ -192,6 +192,122 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/09/09/git%EF%BC%9A%E5%AD%A6%E4%B9%A0Git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/09/git%EF%BC%9A%E5%AD%A6%E4%B9%A0Git/" class="post-title-link" itemprop="url">git：学习Git</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-09 17:45:23" itemprop="dateCreated datePublished" datetime="2019-09-09T17:45:23+08:00">2019-09-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-08 16:35:29" itemprop="dateModified" datetime="2021-01-08T16:35:29+08:00">2021-01-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<h3 id="一、Git-简介"><a href="#一、Git-简介" class="headerlink" title="一、Git 简介"></a>一、Git 简介</h3><p>Git 是目前世界上最先进的分布式版本控制系统。</p>
+<h3 id="二、集中式和分布式的区别"><a href="#二、集中式和分布式的区别" class="headerlink" title="二、集中式和分布式的区别"></a>二、集中式和分布式的区别</h3><h4 id="1、集中式版本控制系统"><a href="#1、集中式版本控制系统" class="headerlink" title="1、集中式版本控制系统"></a>1、集中式版本控制系统</h4><p>集中式版本控制系统中版本库是集中存放在中央服务器上的，而干活的时候，用的是自己的电脑，所以要先从中央服务器去的最新的版本，然后开始干活，干完活再把自己的活推送到中央服务器，最大的缺点就是必须联网才能工作。</p>
+<h4 id="2、分布式版本控制系统"><a href="#2、分布式版本控制系统" class="headerlink" title="2、分布式版本控制系统"></a>2、分布式版本控制系统</h4><p>每个人的电脑都是一个完整的版本库，这样，你工作的时候就不需要联网了，因为版本库就在自己的电脑上，多人协作时，只需要把各自的修改推送给对方就可以看到对方的修改了。</p>
+<h3 id="二、Git-指令"><a href="#二、Git-指令" class="headerlink" title="二、Git 指令"></a>二、Git 指令</h3><h5 id="1、初始化一个仓库git-init"><a href="#1、初始化一个仓库git-init" class="headerlink" title="1、初始化一个仓库git init"></a>1、初始化一个仓库<code>git init</code></h5><h5 id="2、添加文件到-Git-仓库"><a href="#2、添加文件到-Git-仓库" class="headerlink" title="2、添加文件到 Git 仓库"></a>2、添加文件到 Git 仓库</h5><p>1）使用<code>git add &lt;file&gt;</code> ，注意，可以反复多次使用，添加多个文件（放到暂存区）；</p>
+<p>2）使用<code>git commit -m &lt;message&gt;</code> 提交到本地仓库（放到工作区）。</p>
+<p><strong>注意：</strong> &lt; message &gt;存在规范，不能随便写，例如修改了哪个文件或者新增了哪个文件</p>
+<h5 id="3、查看结果（工作区的状态）git-status"><a href="#3、查看结果（工作区的状态）git-status" class="headerlink" title="3、查看结果（工作区的状态）git status"></a>3、查看结果（工作区的状态）<code>git status</code></h5><h5 id="4、查看具体修改了什么内容git-diff-lt-file-gt"><a href="#4、查看具体修改了什么内容git-diff-lt-file-gt" class="headerlink" title="4、查看具体修改了什么内容git diff &lt;file&gt;"></a>4、查看具体修改了什么内容<code>git diff &lt;file&gt;</code></h5><h5 id="5、查看历史记录git-log-pretty-oneline"><a href="#5、查看历史记录git-log-pretty-oneline" class="headerlink" title="5、查看历史记录git log --pretty=oneline"></a>5、查看历史记录<code>git log --pretty=oneline</code></h5><h5 id="6、版本回退git-reset-hard-commit-id"><a href="#6、版本回退git-reset-hard-commit-id" class="headerlink" title="6、版本回退git reset --hard commit_id"></a>6、版本回退<code>git reset --hard commit_id</code></h5><p><code>HEAD</code> 表示当前版本，上一个版本<code>HEAD^</code> ，上上个版本<code>HEAD^^</code> ，以此类推，往上 100 个版本是<code>HEAD~100</code></p>
+<p>穿梭前，用<code>git log</code> 查看提交历史，以便确定要回退到哪个版本。</p>
+<p>重返未来，用<code>fit reflog</code> 查看历史命令，以便确定要回到未来的哪个版本。</p>
+<h5 id="7、丢弃工作区的修改git-checkout-file"><a href="#7、丢弃工作区的修改git-checkout-file" class="headerlink" title="7、丢弃工作区的修改git checkout -- file"></a>7、丢弃工作区的修改<code>git checkout -- file</code></h5><p>1）文件自修改后还没有放到暂存区，现在撤销修改就回到和版本库一模一样的状态；</p>
+<p>2）文件已经添加到暂存区后，又做了修改，现在撤销修改就回到添加到暂存区后的状态。</p>
+<h5 id="8、删除文件"><a href="#8、删除文件" class="headerlink" title="8、删除文件"></a>8、删除文件</h5><p>本地文件管理器删除文件<code>rm file</code> 后，Git 检测到删除了文件，使用<code>git status</code> 查询哪些文件被删除了：</p>
+<p>1）确定要删除,使用<code>git rm file</code> ，并且<code>git commit</code></p>
+<p>2）误删，恢复到最新版本<code>git checkout -- file</code></p>
+<h5 id="9、关联一个远程仓库git-remote-add-origin-git-server-name-path-reponame-git"><a href="#9、关联一个远程仓库git-remote-add-origin-git-server-name-path-reponame-git" class="headerlink" title="9、关联一个远程仓库git remote add origin git@server-name:path/reponame.git"></a>9、关联一个远程仓库<code>git remote add origin git@server-name:path/reponame.git</code></h5><h5 id="10、推送到远程-master-分支git-push-uorigin-master"><a href="#10、推送到远程-master-分支git-push-uorigin-master" class="headerlink" title="10、推送到远程 master 分支git push -uorigin master"></a>10、推送到远程 master 分支<code>git push -uorigin master</code></h5><h5 id="11、从远程克隆git-clone"><a href="#11、从远程克隆git-clone" class="headerlink" title="11、从远程克隆git clone ..."></a>11、从远程克隆<code>git clone ...</code></h5><h5 id="12、创建与合并分支"><a href="#12、创建与合并分支" class="headerlink" title="12、创建与合并分支"></a>12、创建与合并分支</h5><p>在每次提交时。Git 都将他们串成一条时间线，这条时间线只有一条叫做主分支（master），HEAD 指向的当前分支</p>
+<p>1）创建 dev 分支，并切换到 dev 分支</p>
+<p><code>git checkout -b dev</code> 或者<code>git switch -c dev</code></p>
+<p>等同于</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="built_in">dev</span></span><br><span class="line">git checkout <span class="built_in">dev</span> 或者 git switch <span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+
+<p>2）查看当前分支<code>git branch</code></p>
+<p>3）将 dev 分支合并到 master<code>git merge dev</code></p>
+<p>4）删除分支<code>git branch -d dev</code></p>
+<h5 id="13、查看分支合并图git-log-graph"><a href="#13、查看分支合并图git-log-graph" class="headerlink" title="13、查看分支合并图git log --graph"></a>13、查看分支合并图<code>git log --graph</code></h5><h5 id="14、bug-分支"><a href="#14、bug-分支" class="headerlink" title="14、bug 分支"></a>14、bug 分支</h5><p>例如，你正在 dev 分支上进行工作到一半，突然接到要修复一个代号 101 的 bug 任务</p>
+<p>1）把当前工作现场储藏起来<code>git stash</code> ；</p>
+<p>2）创建分支修复 bug，修复完之后 commit。切换到 master 分支完成合并，最后删除新创建的 bug 分支；</p>
+<p>3）恢复未做完的 dev 工作现场</p>
+<p>​ 使用<code>git stash list</code> 查看工作现场</p>
+<p>​ （1）用<code>git stash apply</code> ，然后使用<code>git stash drop</code> 删除 stash 内容。使用<code>git stash apply stash@&#123;0&#125;</code> 恢复指定的 stash;</p>
+<p>​ （2）使用<code>git stash pop</code> 恢复的同时能把 stash 内容也删除了。</p>
+<p>在 master 分支上修复 bug，想要合并到当前的 dev 分支，可以使用<code>git cherry-pick &lt;commit&gt;</code> ,把 bug 提交的修改复制到当前分支，避免重复劳动。</p>
+<h5 id="15、如果要丢弃一个没有被合并过的分支，可以通过git-branch-D-lt-name-gt-强行删除"><a href="#15、如果要丢弃一个没有被合并过的分支，可以通过git-branch-D-lt-name-gt-强行删除" class="headerlink" title="15、如果要丢弃一个没有被合并过的分支，可以通过git branch -D &lt;name&gt; 强行删除"></a>15、如果要丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code> 强行删除</h5><h5 id="16、查看远程仓库的信息用git-remote-或git-remote-v"><a href="#16、查看远程仓库的信息用git-remote-或git-remote-v" class="headerlink" title="16、查看远程仓库的信息用git remote 或git remote -v"></a>16、查看远程仓库的信息用<code>git remote</code> 或<code>git remote -v</code></h5><h5 id="17、推送分支git-push"><a href="#17、推送分支git-push" class="headerlink" title="17、推送分支git push"></a>17、推送分支<code>git push</code></h5><h5 id="18、将最新的提交拉取下来git-pull"><a href="#18、将最新的提交拉取下来git-pull" class="headerlink" title="18、将最新的提交拉取下来git pull"></a>18、将最新的提交拉取下来<code>git pull</code></h5><h5 id="19、标签操作"><a href="#19、标签操作" class="headerlink" title="19、标签操作"></a>19、标签操作</h5><p>1）切换到需要打标签的分支上</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">git</span> <span class="string">branch</span></span><br><span class="line"><span class="attr">git</span> <span class="string">checkout &lt;name&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2）打标签<code>git tag &lt;name&gt;</code></p>
+<p>3）查看所有标签<code>git tag</code></p>
+<p>4）查看指定标签信息<code>git show &lt;tagname&gt;</code></p>
+<p>5）删除标签 <code>git tag -d &lt;tagname&gt;</code></p>
+<p>6）推送一个本地标签<code>git push origin &lt;tagname&gt;</code></p>
+<p>7）推送全部未推送过的本地标签<code>git push origin --tags</code></p>
+<p>8）删除一个远程标签<code>git push origin :refs/tags/&lt;tagname&gt;</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2021/01/08/css%EF%BC%9A%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%EF%BC%88animation%E5%B1%9E%E6%80%A7%E5%92%8C@keyframes%E8%A7%84%E5%88%99%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1397,96 +1513,6 @@
 
 <h4 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h4><p>使用递归思路解决这个问题，对于根节点，如果根节点为空，则返回数组[]，如果为叶子结点，则返回包含此节点的值的数组（这个数组只有一个元素）。如果既不为空也不是叶子结点，则对左右子树递归调用，将两个结果数组拼接起来，最后使用 map 函数来对数组的每个元素进行字符串的操作。</p>
 <figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition <span class="keyword">for</span> a binary tree <span class="type">node</span>.</span><br><span class="line"> * <span class="keyword">function</span> TreeNode(val) &#123;</span><br><span class="line"> *     this.val = val;</span><br><span class="line"> *     this.left = this.right = null;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">/**</span><br><span class="line"> * @param &#123;TreeNode&#125;<span class="built_in"> root</span></span><br><span class="line"> * @<span class="keyword">return</span> <span class="built_in">&#123;string</span>[]&#125;</span><br><span class="line"> */</span><br><span class="line">var binaryTreePaths = <span class="keyword">function</span><span class="built_in">(root</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span><span class="built_in">(root</span> === null)&#123;</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span><span class="built_in">(root</span>.left ===null &amp;&amp;<span class="built_in"> root</span>.right===null)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">[root</span>.val.toString()]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> left=binaryTreePaths<span class="built_in">(root</span>.left),</span><br><span class="line">        right=binaryTreePaths<span class="built_in">(root</span>.right);</span><br><span class="line">    <span class="keyword">return</span> left<span class="built_in">.concat</span>(right).<span class="keyword">map</span>(x=<span class="built_in">&gt;root</span>.val+<span class="string">&#x27;-&gt;&#x27;</span>+x)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/03/29/%E7%AE%97%E6%B3%95%EF%BC%9A488%E3%80%81%E7%A5%96%E7%8E%9B%E6%B8%B8%E6%88%8F%EF%BC%88JavaScript%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/29/%E7%AE%97%E6%B3%95%EF%BC%9A488%E3%80%81%E7%A5%96%E7%8E%9B%E6%B8%B8%E6%88%8F%EF%BC%88JavaScript%EF%BC%89/" class="post-title-link" itemprop="url">算法：488、祖玛游戏（JavaScript）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-03-29 08:35:41" itemprop="dateCreated datePublished" datetime="2019-03-29T08:35:41+08:00">2019-03-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-01 20:37:22" itemprop="dateModified" datetime="2020-11-01T20:37:22+08:00">2020-11-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-
-<p>回忆一下祖玛游戏。现在桌上有一串球，颜色有红色(R)，黄色(Y)，蓝色(B)，绿色(G)，还有白色(W)。 现在你手里也有几个球。</p>
-<p>每一次，你可以从手里的球选一个，然后把这个球插入到一串球中的某个位置上（包括最左端，最右端）。接着，如果有出现三个或者三个以上颜色相同的球相连的话，就把它们移除掉。重复这一步骤直到桌上所有的球都被移除。</p>
-<p>找到插入并可以移除掉桌上所有球所需的最少的球数。如果不能移除桌上所有的球，输出 -1 。</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">示例:</span><br><span class="line">输入: <span class="string">&quot;WRRBBW&quot;</span>, <span class="string">&quot;RB&quot;</span></span><br><span class="line">输出: <span class="number">-1</span></span><br><span class="line">解释: WRRBBW -&gt; WRR[R]BBW -&gt; WBBW -&gt; WBB[B]W -&gt; WW （翻译者标注：手上球已经用完，桌上还剩两个球无法消除，返回<span class="number">-1</span>）</span><br><span class="line"></span><br><span class="line">输入: <span class="string">&quot;WWRRBBWW&quot;</span>, <span class="string">&quot;WRBRW&quot;</span></span><br><span class="line">输出: <span class="number">2</span></span><br><span class="line">解释: WWRRBBWW -&gt; WWRR[R]BBWW -&gt; WWBBWW -&gt; WWBB[B]WW -&gt; WWWW -&gt; empty</span><br><span class="line"></span><br><span class="line">输入:<span class="string">&quot;G&quot;</span>, <span class="string">&quot;GGGGG&quot;</span></span><br><span class="line">输出: <span class="number">2</span></span><br><span class="line">解释: G -&gt; G[G] -&gt; GG[G] -&gt; empty</span><br><span class="line"></span><br><span class="line">输入: <span class="string">&quot;RBYYBBRRB&quot;</span>, <span class="string">&quot;YRBGB&quot;</span></span><br><span class="line">输出: <span class="number">3</span></span><br><span class="line">解释: RBYYBBRRB -&gt; RBYY[Y]BBRRB -&gt; RBBBRRB -&gt; RRRB -&gt; B -&gt; B[B] -&gt; BB[B] -&gt; empty</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>标注:</strong></p>
-<ol>
-<li>你可以假设桌上一开始的球中，不会有三个及三个以上颜色相同且连着的球。</li>
-<li>桌上的球不会超过 20 个，输入的数据中代表这些球的字符串的名字是 “board” 。</li>
-<li>你手中的球不会超过 5 个，输入的数据中代表这些球的字符串的名字是 “hand”。</li>
-<li>输入的两个字符串均为非空字符串，且只包含字符 ‘R’,’Y’,’B’,’G’,’W’。</li>
-</ol>
-<p><strong>解题思路</strong></p>
-<p>​</p>
-<p><strong>代码</strong></p>
 
       
     </div>
