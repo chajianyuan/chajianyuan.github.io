@@ -192,6 +192,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2020/02/24/JS%EF%BC%9A%E8%B5%8B%E5%80%BC%E3%80%81%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/24/JS%EF%BC%9A%E8%B5%8B%E5%80%BC%E3%80%81%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="post-title-link" itemprop="url">JS：赋值、深拷贝和浅拷贝</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-24 08:46:35 / 修改时间：08:46:38" itemprop="dateCreated datePublished" datetime="2020-02-24T08:46:35+08:00">2020-02-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<h2 id="一、浅拷贝和深拷贝"><a href="#一、浅拷贝和深拷贝" class="headerlink" title="一、浅拷贝和深拷贝"></a>一、浅拷贝和深拷贝</h2><p>浅拷贝和深拷贝只针对 object 和 array 这种引用数据类型。</p>
+<p><strong>浅拷贝：</strong> 只复制某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。</p>
+<p><strong>深拷贝：</strong> 会创造一个一模一样的新对象，新对象和原对象不共享内存，修改新对象不会改到原对象。</p>
+<h2 id="二、赋值和浅拷贝"><a href="#二、赋值和浅拷贝" class="headerlink" title="二、赋值和浅拷贝"></a>二、赋值和浅拷贝</h2><p><strong>赋值：</strong> 当把某个对象赋值给一个新的变量时，赋的是该对象在栈中的地址，而不是堆中的数据。</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> a =&#123;</span><br><span class="line">  <span class="built_in">na</span><span class="symbol">me:</span> <span class="string">&quot;zhangsan&quot;</span>,</span><br><span class="line">  scor<span class="symbol">es:</span> [<span class="number">100</span>, <span class="number">99</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">var</span> b = a;</span><br></pre></td></tr></table></figure>
+
+<p>其实是将对象 a 在栈中的指针 a 赋值给了对象 b,指针 a 和指针 b 指向的是同一个堆中的数据，那么其中一个数据改变时，另外一个也会改变。</p>
+<p><strong>浅拷贝：</strong> 浅拷贝会创建一个新的对象，但它是按位拷贝对象，即如果原对象的属性是基本类型，则拷贝的是基本数据类型的值；如果原对象的属性是引用数据类型，则拷贝的是引用类型的指针。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/12/23/167da74d45d3103b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
+<h2 id="三、浅拷贝的实现方式"><a href="#三、浅拷贝的实现方式" class="headerlink" title="三、浅拷贝的实现方式"></a>三、浅拷贝的实现方式</h2><h3 id="1、Object-assign"><a href="#1、Object-assign" class="headerlink" title="1、Object.assign()"></a>1、Object.assign()</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> obj = &#123;</span><br><span class="line">  <span class="selector-tag">a</span>: &#123;</span><br><span class="line">    <span class="selector-tag">a</span>: <span class="string">&#x27;zhangsan&#x27;</span>,</span><br><span class="line">    <span class="selector-tag">b</span>: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">var</span> copyObj = Object.assign(&#123;&#125;, obj)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、Array-prototype-concat"><a href="#2、Array-prototype-concat" class="headerlink" title="2、Array.prototype.concat()"></a>2、Array.prototype.concat()</h3><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">var</span> <span class="string">obj = &#123;</span></span><br><span class="line">  <span class="attr">a</span>: <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">a</span>: <span class="string">&#x27;zhangsan&#x27;,</span></span><br><span class="line">    <span class="attr">b</span>: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"><span class="attr">var</span> <span class="string">copyObj = obj.concat();</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3、Array-prototype-slice"><a href="#3、Array-prototype-slice" class="headerlink" title="3、Array.prototype.slice()"></a>3、Array.prototype.slice()</h3><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">var</span> <span class="string">obj = &#123;</span></span><br><span class="line">  <span class="attr">a</span>: <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">a</span>: <span class="string">&#x27;zhangsan&#x27;,</span></span><br><span class="line">    <span class="attr">b</span>: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"><span class="attr">var</span> <span class="string">copyObj = obj.slice();</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四、深拷贝的实现方式"><a href="#四、深拷贝的实现方式" class="headerlink" title="四、深拷贝的实现方式"></a>四、深拷贝的实现方式</h2><h3 id="1、JSON-parse-JSON-stringify"><a href="#1、JSON-parse-JSON-stringify" class="headerlink" title="1、JSON.parse(JSON.stringify())"></a>1、JSON.parse(JSON.stringify())</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: &#123;</span><br><span class="line">    a: <span class="string">&#x27;zhangsan&#x27;</span>,</span><br><span class="line">    b: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> copyObj = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj));</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、手写递归方法"><a href="#2、手写递归方法" class="headerlink" title="2、手写递归方法"></a>2、手写递归方法</h3><p>遍历对象、数组直到里面都是基本数据类型，然后再去复制。</p>
+<h3 id="3、函数库-lodash"><a href="#3、函数库-lodash" class="headerlink" title="3、函数库 lodash"></a>3、函数库 lodash</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">&#x27;lodash&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: &#123;</span><br><span class="line">    a: <span class="string">&#x27;zhangsan&#x27;</span>,</span><br><span class="line">    b: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> copyObj = _.cloneDeep(obj);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5b5dcf8351882519790c9a2e">浅拷贝与深拷贝</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/19/vue%EF%BC%9A%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -704,7 +794,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -747,7 +837,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

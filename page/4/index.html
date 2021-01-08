@@ -192,6 +192,395 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/15/ES6%EF%BC%9Athis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/15/ES6%EF%BC%9Athis/" class="post-title-link" itemprop="url">ES6：this</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-15 15:20:21" itemprop="dateCreated datePublished" datetime="2019-10-15T15:20:21+08:00">2019-10-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:30:15" itemprop="dateModified" datetime="2020-09-23T11:30:15+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<h2 id="一、this-的指向问题"><a href="#一、this-的指向问题" class="headerlink" title="一、this 的指向问题"></a>一、this 的指向问题</h2><p>this 代表函数（方法）执行的上下文环境</p>
+<ul>
+<li>this 指向的一定是对象</li>
+<li>this 指向谁不取决于 this 写在哪儿，取决于 this 在哪儿被调用</li>
+<li>严格模式中：禁止 this 指向全局对象</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/15/16717eaf3383aae8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
+<h2 id="二、箭头函数和普通函数的区别"><a href="#二、箭头函数和普通函数的区别" class="headerlink" title="二、箭头函数和普通函数的区别"></a>二、箭头函数和普通函数的区别</h2><p>**箭头函数 **</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let fun1 = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;111&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>普通函数</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;222&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1、箭头函数没有原型属性（prototype），所以箭头函数本身没有-this"><a href="#1、箭头函数没有原型属性（prototype），所以箭头函数本身没有-this" class="headerlink" title="1、箭头函数没有原型属性（prototype），所以箭头函数本身没有 this"></a>1、箭头函数没有原型属性（prototype），所以箭头函数本身没有 this</h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = <span class="function"><span class="params">()</span>=&gt;</span> &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a.prototypt); <span class="regexp">//</span> <span class="literal">undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2、箭头函数不绑定-this，会捕获其所在的上下文的-this-值，作为自己的-this-值"><a href="#2、箭头函数不绑定-this，会捕获其所在的上下文的-this-值，作为自己的-this-值" class="headerlink" title="2、箭头函数不绑定 this，会捕获其所在的上下文的 this 值，作为自己的 this 值"></a>2、箭头函数不绑定 this，会捕获其所在的上下文的 this 值，作为自己的 this 值</h3><h3 id="3、箭头函数不绑定-arguments，取而代之用-rest-剩余参数…解决"><a href="#3、箭头函数不绑定-arguments，取而代之用-rest-剩余参数…解决" class="headerlink" title="3、箭头函数不绑定 arguments，取而代之用 rest 剩余参数…解决"></a>3、箭头函数不绑定 arguments，取而代之用 rest 剩余参数…解决</h3><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let B = (b)=&gt;&#123;</span><br><span class="line">  console.log(arguments);</span><br><span class="line">&#125;</span><br><span class="line">B(<span class="number">2</span>,<span class="number">92</span>,<span class="number">32</span>,<span class="number">32</span>);  =&gt;  Uncaught ReferenceError: arguments <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br><span class="line"></span><br><span class="line">let C = (...c) =&gt; &#123;</span><br><span class="line">  console.log(c);</span><br><span class="line">&#125;</span><br><span class="line">C(<span class="number">3</span>,<span class="number">82</span>,<span class="number">32</span>,<span class="number">11323</span>);  =&gt;  [<span class="number">3</span>, <span class="number">82</span>, <span class="number">32</span>, <span class="number">11323</span>]</span><br></pre></td></tr></table></figure>
+
+<p>如果箭头函数的 this 指向全局对象，使用<code>arguments</code> 会报错；</p>
+<p>如果箭头函数的 this 指向一个普通函数，<code>arguments</code> 会继承这个普通函数。</p>
+<h3 id="4、箭头函数通过call-或apply-方法调用一个函数时，只传入了一个参数，对this-没有影响，不会修改箭头函数的-this-指向"><a href="#4、箭头函数通过call-或apply-方法调用一个函数时，只传入了一个参数，对this-没有影响，不会修改箭头函数的-this-指向" class="headerlink" title="4、箭头函数通过call()或apply() 方法调用一个函数时，只传入了一个参数，对this 没有影响，不会修改箭头函数的 this 指向"></a>4、箭头函数通过<code>call()</code>或<code>apply()</code> 方法调用一个函数时，只传入了一个参数，对<code>this</code> 没有影响，不会修改箭头函数的 this 指向</h3><p>要想修改箭头函数的 this 指向，只需要修改它外层的普通函数 this 指向。</p>
+<h3 id="5、箭头函数是匿名函数，不能作为构造函数，不能使用-new"><a href="#5、箭头函数是匿名函数，不能作为构造函数，不能使用-new" class="headerlink" title="5、箭头函数是匿名函数，不能作为构造函数，不能使用 new"></a>5、箭头函数是匿名函数，不能作为构造函数，不能使用 new</h3><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let Fun1 = ()=&gt;<span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  console.log(&#x27;111&#x27;)</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line">let fc = new Fun1();  =&gt;  Uncaught TypeError: Fun1 <span class="keyword">is</span> <span class="keyword">not</span> a <span class="function"><span class="keyword">constructor</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6、箭头函数不能当做-Generator，不能使用-yield-关键字"><a href="#6、箭头函数不能当做-Generator，不能使用-yield-关键字" class="headerlink" title="6、箭头函数不能当做 Generator，不能使用 yield 关键字"></a>6、箭头函数不能当做 Generator，不能使用 yield 关键字</h3><h2 id="三、new-的过程"><a href="#三、new-的过程" class="headerlink" title="三、new 的过程"></a>三、new 的过程</h2><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="type">myFunction</span>(<span class="string">&quot;Li&quot;</span>, <span class="string">&quot;Cherry&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="type">myFunction</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">  obj.__proto__ = myFunction.prototype;</span><br><span class="line">  <span class="keyword">var</span> result = myFunction.call(obj, <span class="string">&quot;Li&quot;</span>, <span class="string">&quot;Cherry&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> typeof result === <span class="string">&#x27;obj&#x27;</span> ? result : <span class="type">obj</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>创建一个空对象 obj；</li>
+<li>将新创建的空对象的隐式原型（proto）指向其构造函数的显式原型（prototype）；</li>
+<li>改变 this 的指向；</li>
+<li>如果无返回值或者返回一个非对象值，则将 obj 返回作为新对象；如果返回值是一个新对象的话那么直接返回该对象。</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5c76972af265da2dc4538b64">箭头函数参考文献</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.im/post/59bfe84351882531b730bac2">new 的过程参考文献</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/19/ES6%EF%BC%9Aset%E3%80%81map%E3%80%81weakSet%E3%80%81weakMap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/19/ES6%EF%BC%9Aset%E3%80%81map%E3%80%81weakSet%E3%80%81weakMap/" class="post-title-link" itemprop="url">ES6：set、map、weakSet、weakMap</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-19 20:11:38" itemprop="dateCreated datePublished" datetime="2019-10-19T20:11:38+08:00">2019-10-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:30:12" itemprop="dateModified" datetime="2020-09-23T11:30:12+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<h3 id="1、map（字典）"><a href="#1、map（字典）" class="headerlink" title="1、map（字典）"></a>1、map（字典）</h3><p><code>&#123;1: 2, 3: 4&#125;</code></p>
+<ul>
+<li>Map 对象保存键值对。</li>
+<li>任何值（对象或者原始值）都可以作为一个键或一个值；</li>
+<li>强引用存储类型</li>
+<li>null 会被当作 undefined</li>
+<li>虽然 NaN !== NaN，但是 map 中 NaN 是与 NaN 相等的。</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>性能不及 WeakMap</li>
+<li>强引用，垃圾回收算法不能及时清理，容易内存泄漏</li>
+</ul>
+<h3 id="2、WeakMap"><a href="#2、WeakMap" class="headerlink" title="2、WeakMap"></a>2、WeakMap</h3><p>WeakMap 对象是一组键/值对的集合，其中的键是弱引用的。其键必须是对象，而值可以是任意的。</p>
+<p><strong>缺点</strong></p>
+<p>由于弱引用，key 是不确定的，所以 WeakMap 的 key 是不可枚举的。</p>
+<h3 id="3、Set（集合）"><a href="#3、Set（集合）" class="headerlink" title="3、Set（集合）"></a>3、Set（集合）</h3><p><code>[1, 2, 3, 4]</code></p>
+<p>Set 本身是一种构造函数，用来生成 Set 数据结构。</p>
+<p>set 对象允许任何类型的唯一值，无论是原始值或者是对象引用。</p>
+<p>NaN 和 undefined 都可以被存储在 Set 中，NaN 之间被视为相同的值（尽管 NaN !== NaN）</p>
+<p>与 array 的区别：</p>
+<ul>
+<li>不能出现重复的值</li>
+<li>没有索引值（唯一且无序）</li>
+</ul>
+<p>Array.from 方法可以将 Set 结构转为数组。</p>
+<h3 id="4、WeakSet"><a href="#4、WeakSet" class="headerlink" title="4、WeakSet"></a>4、WeakSet</h3><p><code>&#123;[1, 2], [3, 4]&#125;</code></p>
+<p>WeakSet 对象允许将弱引用对象存储在一个集合中</p>
+<ul>
+<li>WeakSet 对象中只能存放对象引用，不能存放值，而 Set 对象都可以</li>
+<li>WeakSet 对象中存储的对象都是被弱引用的，如果没有其他的变量或属性引用这个对象值，则这个对象值会被当做垃圾回收掉，正式因为这样，WeakSet 对象是无法枚举的，没有办法拿到它包含的所有元素</li>
+</ul>
+<h3 id="5、Object"><a href="#5、Object" class="headerlink" title="5、Object"></a>5、Object</h3><ul>
+<li>key 只能是字符串</li>
+<li>迭代顺序有可能不同于插入的顺序</li>
+<li>长度只能手动计算</li>
+</ul>
+<h3 id="6、Array"><a href="#6、Array" class="headerlink" title="6、Array"></a>6、Array</h3><ul>
+<li>有 index 索引值</li>
+<li>可出现重复值</li>
+</ul>
+<h3 id="7、字典（map）和集合（set）的区别"><a href="#7、字典（map）和集合（set）的区别" class="headerlink" title="7、字典（map）和集合（set）的区别"></a>7、字典（map）和集合（set）的区别</h3><ul>
+<li>共同点：集合和字典可以存储不重复的值；</li>
+<li>不同点：集合是以[值，值]的形式存储元素，字典是以[键，值]的形式存储。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5e1d2717e51d4557e97b109b">参考</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/14/ES6%EF%BC%9Alet%E3%80%81const%E3%80%81var/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/14/ES6%EF%BC%9Alet%E3%80%81const%E3%80%81var/" class="post-title-link" itemprop="url">ES6：let、const、var</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-14 18:08:43" itemprop="dateCreated datePublished" datetime="2019-10-14T18:08:43+08:00">2019-10-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-23 11:30:09" itemprop="dateModified" datetime="2020-09-23T11:30:09+08:00">2020-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<h2 id="一、var"><a href="#一、var" class="headerlink" title="一、var"></a>一、var</h2><p><code>var</code>用来声明变量</p>
+<ul>
+<li>存在变量提升;</li>
+<li>可以重复声明</li>
+<li>使用<code>var</code>声明的变量会被提升到作用域顶部</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//变量提升:变量还未声明但能使用</span></span><br><span class="line"><span class="built_in">console</span>.log(a)   =&gt;  <span class="literal">undefined</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、let"><a href="#二、let" class="headerlink" title="二、let"></a>二、let</h2><p><code>let</code>是 ES6 中提出的用于声明变量</p>
+<ul>
+<li><p>不存在变量提升，也就是说被<code>let</code> 声明的变量不会提升到作用域顶部，如果还未声明便使用会报错（<strong>Uncaught ReferenceError</strong>）</p>
+<p><strong>let 到底存在变量提升吗？</strong></p>
+<ul>
+<li><p>var 声明的创建、初始化和赋值过程</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> y = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fn</span>(<span class="params"></span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>执行 fn 过程：</p>
+<ol>
+<li>进入 fn，为 fn 创建一个环境；</li>
+<li>找到 fn 中所有用 var 声明的变量，在这个环境中创建这些变量（x 和 y）；</li>
+<li>将这些变量初始化为 undefined；</li>
+<li>开始执行代码</li>
+<li>将 x 赋值为 1，将 y 赋值为 2。</li>
+</ol>
+<p><strong>var 声明在代码执行前就会创建变量，并将其初始化为 undefined。</strong></p>
+</li>
+<li><p>function 声明的创建 初始化和赋值过程</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fn2();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span><span class="params">()</span></span> &#123;</span><br><span class="line">  consle.<span class="built_in">log</span>(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>JS 引擎执行过程：</p>
+<ol>
+<li>找到所有用 function 声明，在环境中创建这些变量；</li>
+<li>将这些变量初始化并赋值；</li>
+<li>开始执行 fn2()。</li>
+</ol>
+<p><strong>function 声明会在代码执行之前就创建、初始化并赋值。</strong></p>
+</li>
+<li><p>let 声明的创建、初始化和赋值过程</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> <span class="attr">x</span> = <span class="number">1</span>;</span><br><span class="line">  <span class="attr">x</span> = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>{}里面的执行过程：</p>
+<ol>
+<li>找到所有用 let 声明的变量，在环境中创建这些变量；</li>
+<li>开始执行代码（注意：现在还没有初始化）；</li>
+<li>执行 x=1，将 x 初始化为 1（这并不是一次赋值，如果代码是 let x，就将 x 初始化为 undefined）;</li>
+<li>执行 x = 2，对 x 进行赋值。</li>
+</ol>
+</li>
+</ul>
+<p><strong>所以综上，</strong></p>
+<p><strong>1. let 的创建过程被提升了，但是初始化没有提升。</strong></p>
+<p><strong>2. var 的创建和初始化都被提升了。</strong></p>
+<p><strong>3. function 的创建、初始化和赋值都被提升了。</strong></p>
+<p><img src="https://pic1.zhimg.com/80/v2-9c8c4a0a3ce5402b1a74f488d79c74d0_hd.jpg"></p>
+</li>
+<li><p>暂时性死区</p>
+</li>
+<li><p>块级作用域</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> li = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;li&#x27;</span>);</span><br><span class="line"><span class="comment">// 代码段1</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; li.length; i++) &#123;</span><br><span class="line">  li[i].onClick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//代码段2</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; li.length; i++) &#123;</span><br><span class="line">  li[i].onClick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>为什么代码段 1 会打印出 5 个 5，而代码段 2 会打印出 0、1、2、3、4？</strong></p>
+<p>猜测：</p>
+<ol>
+<li><p>for(let i = 0; i &lt; li.length; i++)这句话的圆括号之间，有一个隐藏的作用域</p>
+</li>
+<li><p>for(let i = 0; i &lt; li.length; i++) {循环体}在每次执行循环体之前，JS 引擎会把 i 在循环体的上下文中重新声明及初始化一次</p>
+</li>
+<li><p>近似把代码 2 理解为</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(let <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; li.<span class="built_in">length</span>; <span class="built_in">i</span>++) &#123;</span><br><span class="line">  let <span class="built_in">i</span> = 隐藏作用域中的<span class="built_in">i</span></span><br><span class="line">  li[<span class="built_in">i</span>].onClick=<span class="function"><span class="keyword">function</span><span class="params">()</span> &#123;</span></span><br><span class="line">    console.<span class="built_in">log</span>(<span class="built_in">i</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>不可重复声明</li>
+</ul>
+<h2 id="三、const"><a href="#三、const" class="headerlink" title="三、const"></a>三、const</h2><p><code>const</code> 是 ES6 提出的用于声明变量</p>
+<ul>
+<li>声明必须赋值，一旦声明便不可更改</li>
+<li>其他和<code>let</code> 一致</li>
+</ul>
+<h2 id="四、块级作用域"><a href="#四、块级作用域" class="headerlink" title="四、块级作用域"></a>四、块级作用域</h2><h3 id="为什么需要块级作用域"><a href="#为什么需要块级作用域" class="headerlink" title="为什么需要块级作用域"></a>为什么需要块级作用域</h3><ul>
+<li>内层变量可能覆盖外层变量</li>
+<li>用来计数的循环变量泄露为全局变量</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/28140450">我用了两个月的时间才理解 let</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/12/ES6%EF%BC%9A%E6%B5%85%E8%B0%88Promise%E3%80%81Generator%E4%BB%A5%E5%8F%8Aasync%20await/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -482,283 +871,6 @@
 <li>规定动画的时长</li>
 </ul>
 <p>参见<a target="_blank" rel="noopener" href="https://www.runoob.com/css3/css3-animations.html">css3 动画</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/19/css%EF%BC%9Acss3%E5%B1%9E%E6%80%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/19/css%EF%BC%9Acss3%E5%B1%9E%E6%80%A7/" class="post-title-link" itemprop="url">css：css3属性</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-19 11:55:08" itemprop="dateCreated datePublished" datetime="2019-10-19T11:55:08+08:00">2019-10-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 11:29:42" itemprop="dateModified" datetime="2020-09-23T11:29:42+08:00">2020-09-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-
-<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5a0c184c51882531926e4294#heading-11">参照掘金</a></p>
-<h2 id="1、过渡（transition）"><a href="#1、过渡（transition）" class="headerlink" title="1、过渡（transition）"></a>1、过渡（transition）</h2><p>参照<a target="_blank" rel="noopener" href="https://www.runoob.com/css3/css3-transitions.html">菜鸟教程|css3 过渡</a></p>
-<p>CSS 过渡是元素从一种样式逐渐改变为另一种的效果，要实现这一点，必须规定两项内容：</p>
-<ul>
-<li>指定要参加效果的 CSS 属性</li>
-<li>指定效果的持续时间</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>transition</td>
-<td>简写属性，用于在一个属性中设置四个过渡属性</td>
-</tr>
-<tr>
-<td>transition-property</td>
-<td>规定应用过渡的 CSS 属性的名称</td>
-</tr>
-<tr>
-<td>transition-duration</td>
-<td>定义过渡效果花费的时间。默认是 0</td>
-</tr>
-<tr>
-<td>transition-timing-function</td>
-<td>规定过渡效果的时间曲线。默认是“ease”</td>
-</tr>
-<tr>
-<td>transition-delay</td>
-<td>规定过渡效果何时开始。默认是 0</td>
-</tr>
-</tbody></table>
-<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">div&#123;</span><br><span class="line">	<span class="attribute">width</span>:100px;</span><br><span class="line">	<span class="attribute">height</span>:100px;</span><br><span class="line">	<span class="attribute">background</span>:red;</span><br><span class="line">	<span class="attribute">transition-property</span>:width;</span><br><span class="line">	<span class="attribute">transition-duration</span>:1s;</span><br><span class="line">	<span class="attribute">transition-timing-function</span>:linear;</span><br><span class="line">	<span class="attribute">transition-delay</span>:2s;</span><br><span class="line">	/* <span class="attribute">Safari */</span></span><br><span class="line"><span class="attribute">	-webkit-transition-property</span>:width;</span><br><span class="line">	<span class="attribute">-webkit-transition-duration</span>:1s;</span><br><span class="line">	<span class="attribute">-webkit-transition-timing-function</span>:linear;</span><br><span class="line">	<span class="attribute">-webkit-transition-delay</span>:2s;</span><br><span class="line">&#125;</span><br><span class="line">div:hover&#123;</span><br><span class="line">	<span class="attribute">width</span>:200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2、动画（animation）"><a href="#2、动画（animation）" class="headerlink" title="2、动画（animation）"></a>2、动画（animation）</h2><p>参考<a target="_blank" rel="noopener" href="https://www.runoob.com/css3/css3-animations.html">菜鸟教程|css3 动画</a></p>
-<p>要创建 css3 动画，需要了解@keyframes 规则</p>
-<ul>
-<li>@keyframes 规则是创建动画</li>
-<li>@keyframes 规则内指定一个 CSS 样式动画将逐步从目前的样式更改为新的样式</li>
-</ul>
-<p>当在 <strong>@keyframes</strong> 创建动画，把它绑定到一个选择器，否则动画不会有任何效果。</p>
-<p>指定至少这两个 CSS3 的动画属性绑定向一个选择器：</p>
-<ul>
-<li>规定动画的名称</li>
-<li>规定动画的时长</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>keyframes</td>
-<td>规定动画。</td>
-</tr>
-<tr>
-<td>animation</td>
-<td>所有动画属性的简写属性，除了 animation-play-state 属性。</td>
-</tr>
-<tr>
-<td>animation-name</td>
-<td>规定 @keyframes 动画的名称。</td>
-</tr>
-<tr>
-<td>animation-duration</td>
-<td>规定动画完成一个周期所花费的秒或毫秒。默认是 0。</td>
-</tr>
-<tr>
-<td>animation-timing-function</td>
-<td>规定动画的速度曲线。默认是 “ease”。</td>
-</tr>
-<tr>
-<td>animation-fill-mode</td>
-<td>规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式。</td>
-</tr>
-<tr>
-<td>animation-delay</td>
-<td>规定动画何时开始。默认是 0。</td>
-</tr>
-<tr>
-<td>animation-iteration-count</td>
-<td>规定动画被播放的次数。默认是 1。</td>
-</tr>
-<tr>
-<td>animation-direction</td>
-<td>规定动画是否在下一周期逆向地播放。默认是 “normal”。</td>
-</tr>
-<tr>
-<td>animation-play-state</td>
-<td>规定动画是否正在运行或暂停。默认是 “running”。</td>
-</tr>
-</tbody></table>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">div&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">	<span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">	<span class="attribute">background</span>:red;</span><br><span class="line">	<span class="attribute">position</span>:relative;</span><br><span class="line">	<span class="attribute">animation-name</span>:myfirst;</span><br><span class="line">	<span class="attribute">animation-duration</span>:<span class="number">5s</span>;</span><br><span class="line">	<span class="attribute">animation-timing-function</span>:linear;</span><br><span class="line">	<span class="attribute">animation-delay</span>:<span class="number">2s</span>;</span><br><span class="line">	<span class="attribute">animation-iteration-count</span>:infinite;</span><br><span class="line">	<span class="attribute">animation-direction</span>:alternate;</span><br><span class="line">	<span class="attribute">animation-play-state</span>:running;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes myfirst</span><br><span class="line">&#123;</span><br><span class="line">	<span class="number">0%</span>   &#123;<span class="attribute">background</span>:red; <span class="attribute">left</span>:<span class="number">0px</span>; <span class="attribute">top</span>:<span class="number">0px</span>;&#125;</span><br><span class="line">	<span class="number">25%</span>  &#123;<span class="attribute">background</span>:yellow; <span class="attribute">left</span>:<span class="number">200px</span>; <span class="attribute">top</span>:<span class="number">0px</span>;&#125;</span><br><span class="line">	<span class="number">50%</span>  &#123;<span class="attribute">background</span>:blue; <span class="attribute">left</span>:<span class="number">200px</span>; <span class="attribute">top</span>:<span class="number">200px</span>;&#125;</span><br><span class="line">	<span class="number">75%</span>  &#123;<span class="attribute">background</span>:green; <span class="attribute">left</span>:<span class="number">0px</span>; <span class="attribute">top</span>:<span class="number">200px</span>;&#125;</span><br><span class="line">	<span class="number">100%</span> &#123;<span class="attribute">background</span>:red; <span class="attribute">left</span>:<span class="number">0px</span>; <span class="attribute">top</span>:<span class="number">0px</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="animation-和-transition-的异同"><a href="#animation-和-transition-的异同" class="headerlink" title="animation 和 transition 的异同"></a>animation 和 transition 的异同</h3><p><strong>相同：</strong> 功能相同，都是通过改变元素的属性值来实现动画效果的。</p>
-<p><strong>不同：</strong> transition 只能用指定属性的开始值和结束值，然后在这两个属性值之间使用平滑过渡的方式实现动画效果，因此不能实现比较复杂的动画效果；animation 通过定义多个关键帧，以及定义每个关键帧中元素的属性值来实现更为复杂的动画效果。</p>
-<h2 id="3、形状转换（transform）"><a href="#3、形状转换（transform）" class="headerlink" title="3、形状转换（transform）"></a>3、形状转换（transform）</h2><p>参照<a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/css3-pr-transform.html">菜鸟教程|css3 transform</a></p>
-<p>transform 适用于 2D 或 3D 转换的元素</p>
-<p><code>transform: none|transform-functions;</code></p>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>none</td>
-<td>定义不进行转换。</td>
-</tr>
-<tr>
-<td>matrix(<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>)</td>
-<td>定义 2D 转换，使用六个值的矩阵。</td>
-</tr>
-<tr>
-<td>matrix3d(<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>)</td>
-<td>定义 3D 转换，使用 16 个值的 4x4 矩阵。</td>
-</tr>
-<tr>
-<td>translate(<em>x</em>,<em>y</em>)</td>
-<td>定义 2D 转换。</td>
-</tr>
-<tr>
-<td>translate3d(<em>x</em>,<em>y</em>,<em>z</em>)</td>
-<td>定义 3D 转换。</td>
-</tr>
-<tr>
-<td>translateX(<em>x</em>)</td>
-<td>定义转换，只是用 X 轴的值。</td>
-</tr>
-<tr>
-<td>translateY(<em>y</em>)</td>
-<td>定义转换，只是用 Y 轴的值。</td>
-</tr>
-<tr>
-<td>translateZ(<em>z</em>)</td>
-<td>定义 3D 转换，只是用 Z 轴的值。</td>
-</tr>
-<tr>
-<td>scale(<em>x</em>[,<em>y</em>]?)</td>
-<td>定义 2D 缩放转换。</td>
-</tr>
-<tr>
-<td>scale3d(<em>x</em>,<em>y</em>,<em>z</em>)</td>
-<td>定义 3D 缩放转换。</td>
-</tr>
-<tr>
-<td>scaleX(<em>x</em>)</td>
-<td>通过设置 X 轴的值来定义缩放转换。</td>
-</tr>
-<tr>
-<td>scaleY(<em>y</em>)</td>
-<td>通过设置 Y 轴的值来定义缩放转换。</td>
-</tr>
-<tr>
-<td>scaleZ(<em>z</em>)</td>
-<td>通过设置 Z 轴的值来定义 3D 缩放转换。</td>
-</tr>
-<tr>
-<td>rotate(<em>angle</em>)</td>
-<td>定义 2D 旋转，在参数中规定角度。</td>
-</tr>
-<tr>
-<td>rotate3d(<em>x</em>,<em>y</em>,<em>z</em>,<em>angle</em>)</td>
-<td>定义 3D 旋转。</td>
-</tr>
-<tr>
-<td>rotateX(<em>angle</em>)</td>
-<td>定义沿着 X 轴的 3D 旋转。</td>
-</tr>
-<tr>
-<td>rotateY(<em>angle</em>)</td>
-<td>定义沿着 Y 轴的 3D 旋转。</td>
-</tr>
-<tr>
-<td>rotateZ(<em>angle</em>)</td>
-<td>定义沿着 Z 轴的 3D 旋转。</td>
-</tr>
-<tr>
-<td>skew(<em>x-angle</em>,<em>y-angle</em>)</td>
-<td>定义沿着 X 和 Y 轴的 2D 倾斜转换。</td>
-</tr>
-<tr>
-<td>skewX(<em>angle</em>)</td>
-<td>定义沿着 X 轴的 2D 倾斜转换。</td>
-</tr>
-<tr>
-<td>skewY(<em>angle</em>)</td>
-<td>定义沿着 Y 轴的 2D 倾斜转换。</td>
-</tr>
-<tr>
-<td>perspective(<em>n</em>)</td>
-<td>为 3D 转换元素定义透视视图。</td>
-</tr>
-</tbody></table>
-<p><code>transform:rotate(30deg);</code></p>
-<p><img src="https://user-gold-cdn.xitu.io/2017/11/15/15fbf4073fe59bee?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
 
       
     </div>
@@ -1191,248 +1303,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9Ahtml/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9Ahtml/" class="post-title-link" itemprop="url">总结：html</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-24 21:13:21" itemprop="dateCreated datePublished" datetime="2019-10-24T21:13:21+08:00">2019-10-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 11:28:57" itemprop="dateModified" datetime="2020-09-23T11:28:57+08:00">2020-09-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-
-<h2 id="一、HTML-语义化"><a href="#一、HTML-语义化" class="headerlink" title="一、HTML 语义化"></a>一、HTML 语义化</h2><h3 id="1、含义"><a href="#1、含义" class="headerlink" title="1、含义"></a>1、含义</h3><p>语义化的含义就是用正确的标签做正确的事情</p>
-<h3 id="2、优势"><a href="#2、优势" class="headerlink" title="2、优势"></a>2、优势</h3><p>（1）便于对浏览器、搜索引擎解析</p>
-<p>（2）便于盲人浏览网页</p>
-<p>（3）便于阅读源代码的人对网站进行分开，维护和理解</p>
-<h3 id="3、有哪些语义化的标签"><a href="#3、有哪些语义化的标签" class="headerlink" title="3、有哪些语义化的标签"></a>3、有哪些语义化的标签</h3><p>&lt; h1 &gt; - &lt; h6 &gt;、&lt; p &gt;、&lt; ul &gt;、&lt; ol &gt;、&lt; li&gt;、&lt; dl&gt;、&lt; dt&gt;、&lt; dd&gt;、&lt; em&gt;、&lt; strong&gt;、&lt; em&gt;、&lt; table&gt;、&lt; thead&gt;、&lt; tbody&gt;、&lt; td&gt;、&lt; th&gt;、&lt; caption&gt;等</p>
-<h2 id="二、HTML5-新标签"><a href="#二、HTML5-新标签" class="headerlink" title="二、HTML5 新标签"></a>二、HTML5 新标签</h2><ul>
-<li><code>header元素</code>：header 元素代表“网页”或“section”的页眉。</li>
-<li><code>footer元素</code>：footer 元素代表“网页”或“section”的页脚，通常含有该节的一些基本信息，譬如：作者，相关文档链接，版权资料。</li>
-<li><code>hgroup元素</code>：</li>
-<li><code>nav元素</code>：nav 元素代表页面的导航链接区域。用于定义页面的主要导航部分。</li>
-<li><code>aside元素</code>：aside 元素被包含在 article 元素中作为主要内容的附属信息部分，其中的内容可以是与当前文章有关的相关资料、标签、名次解释等。（特殊的 section）</li>
-<li><code>section元素</code>：section 元素代表文档中的“节”或“段”，“段”可以是指一篇文章里按照主题的分段；“节”可以是指一个页面里的分组。section 通常还带标题，虽然 html5 中 section 会自动给标题 h1-h6 降级，但是最好手动给他们降级。</li>
-<li><code>article元素</code>：article 元素最容易跟 section 和 div 容易混淆，其实 article 代表一个在文档，页面或者网站中自成一体的内容，其目的是为了让开发者独立开发或重用。譬如论坛的帖子，博客上的文章，一篇用户的评论，一个互动的 widget 小工具。（特殊的 section）除了它的内容，article 会有一个标题（通常会在 header 里），会有一个 footer 页脚。</li>
-</ul>
-<h2 id="三、常见浏览器及其内核"><a href="#三、常见浏览器及其内核" class="headerlink" title="三、常见浏览器及其内核"></a>三、常见浏览器及其内核</h2><table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">Chrome</th>
-<th align="center">Firefox</th>
-<th align="center">Safari</th>
-<th align="center">IE</th>
-<th align="center">Opera</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">内核</td>
-<td align="center">Blink</td>
-<td align="center">Gecko</td>
-<td align="center">Webkit</td>
-<td align="center">Trident</td>
-<td align="center">Bink</td>
-</tr>
-</tbody></table>
-<h2 id="四、-lt-script-gt-和-lt-link-gt-或者是-src-和-href-的区别"><a href="#四、-lt-script-gt-和-lt-link-gt-或者是-src-和-href-的区别" class="headerlink" title="四、 &lt; script &gt;和&lt; link &gt;或者是 src 和 href 的区别"></a>四、 &lt; script &gt;和&lt; link &gt;或者是 src 和 href 的区别</h2><ol>
-<li>src 表示来源地址，用在 img、script、iframe 等元素上；</li>
-<li>href 表示超文本引用，用在 link、a 等元素上；</li>
-<li>src 的内容是页面必不可少的一部分，表示引入；而 href 的的内容与该页面有关联，表示引用；</li>
-<li>src 用于替代这个元素，而 href 用于建立这个标签与外部资源之间的关系。</li>
-</ol>
-<h2 id="五、-lt-head-gt-中都有什么元素"><a href="#五、-lt-head-gt-中都有什么元素" class="headerlink" title="五、&lt; head &gt;中都有什么元素"></a>五、&lt; head &gt;中都有什么元素</h2><h3 id="1、-lt-base-gt"><a href="#1、-lt-base-gt" class="headerlink" title="1、&lt; base &gt;"></a>1、&lt; base &gt;</h3><p>为页面上的所有链接规定默认地址或默认目标</p>
-<p>通常情况下，浏览器会从当前文档的 URL 中提取相应的元素来填写相对 URL 中的空白。</p>
-<p>使用 &lt; base &gt; 标签可以改变这一点。浏览器随后将不再使用当前文档的 URL，而使用指定的基本 URL 来解析所有的相对 URL。这其中包括 &lt; a &gt;、&lt; img &gt;、&lt; link &gt;、&lt; form &gt; 标签中的 URL。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">&quot;http://www.w3school.com.cn/i/&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">base</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2、-lt-link-gt"><a href="#2、-lt-link-gt" class="headerlink" title="2、&lt; link &gt;"></a>2、&lt; link &gt;</h3><p>定义文档与外部资源的关系，最常见的就是链接样式表。</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link <span class="attribute">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attribute">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attribute">href</span>=<span class="string">&quot;theme.css&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、-lt-script-gt"><a href="#3、-lt-script-gt" class="headerlink" title="3、&lt; script &gt;"></a>3、&lt; script &gt;</h3><p>用于定义用户脚本，比如 JavaScript。script 元素既可以包含脚本语言，也可以通过 src 属性指向外部脚本文件。必须的 type 属性规定脚本的 MIME 类型</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="built_in">document</span>.write(<span class="string">&quot;Hello World!&quot;</span>)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="4、-lt-meta-gt"><a href="#4、-lt-meta-gt" class="headerlink" title="4、&lt; meta &gt;"></a>4、&lt; meta &gt;</h3><p>可提供有关页面的元信息，比如针对搜索引擎和更新频度的描述和关键词。定义了与文档相关联的名称/值对。</p>
-<p><code>&lt;meta name=&quot;keywords&quot; content=&quot;HTML,ASP,PHP,SQL&quot;&gt;</code></p>
-<h3 id="5、-lt-style-gt"><a href="#5、-lt-style-gt" class="headerlink" title="5、&lt; style &gt;"></a>5、&lt; style &gt;</h3><p>用于为 html 文档定义样式信息。type 属性是必须的，定义 style 元素的内容，唯一可能的值是“text/css”</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span></span><br><span class="line"><span class="css">	<span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>:red&#125;</span></span><br><span class="line"><span class="css">	<span class="selector-tag">p</span> &#123;<span class="attribute">color</span>:blue&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="6、-lt-title-gt"><a href="#6、-lt-title-gt" class="headerlink" title="6、&lt; title &gt;"></a>6、&lt; title &gt;</h3><p>定义文档的标题，通常是现实在浏览器窗口的标题栏或者是状态栏上。</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;title&gt;</span>XHTML <span class="keyword">Tag</span> <span class="title">Reference</span><span class="tag">&lt;/title&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="六、本地存储"><a href="#六、本地存储" class="headerlink" title="六、本地存储"></a>六、本地存储</h2><p><a target="_blank" rel="noopener" href="https://cjy1.github.io/2019/10/26/cookie%E3%80%81sessionStorage%E3%80%81localStorage%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%A7%A3/">参见总结：cookie、session、sessionStorage、localStorage</a></p>
-<h2 id="七、websocket"><a href="#七、websocket" class="headerlink" title="七、websocket"></a>七、websocket</h2><p><a target="_blank" rel="noopener" href="https://cjy1.github.io/2019/10/26/webSocket%E5%AD%A6%E4%B9%A0/">参见总结：webSocket 学习</a></p>
-<h2 id="八、W3C-标准"><a href="#八、W3C-标准" class="headerlink" title="八、W3C 标准"></a>八、W3C 标准</h2><p>w3c 标准不是某一个标准，而是一系列标准的集合，网页主要由三部分组成：结构（structure）、表现（Presentation）、行为（behavior）</p>
-<h3 id="1、结构标准语言"><a href="#1、结构标准语言" class="headerlink" title="1、结构标准语言"></a>1、结构标准语言</h3><h4 id="1-1-可扩展标记语言（XML）"><a href="#1-1-可扩展标记语言（XML）" class="headerlink" title="1.1 可扩展标记语言（XML）"></a>1.1 可扩展标记语言（XML）</h4><p>和 HTML 一样，XML 同样来源于标准通用标记语言，可扩展标记语言和标准通用标记语言都是能定义其他语言的语言。XML 最初设计的目的是弥补 HTML 的不足，以强大的扩展性满足网络信息发布的需要，后来逐渐用于网络数据的转换和描述。</p>
-<h4 id="1-2-可扩展超文本标记语言（XHTML）"><a href="#1-2-可扩展超文本标记语言（XHTML）" class="headerlink" title="1.2 可扩展超文本标记语言（XHTML）"></a>1.2 可扩展超文本标记语言（XHTML）</h4><p><strong>HTML 和 XHTML 的共同点</strong></p>
-<ul>
-<li>所有的标记都必须有一个对应的结束标记</li>
-<li>所有的标签的元素和属性的名字都必须使用小写</li>
-<li>所有的 XML 标记都必须合理嵌套</li>
-<li>所有的属性都必须用“ ”引起来</li>
-<li>所有的“&lt;”和“&amp;”特殊符号都用编码表示</li>
-<li>给所有属性赋一个值</li>
-<li>不要在注释内容中使用“–”</li>
-<li>图片必须有说明文字</li>
-</ul>
-<p><strong>HTML 和 XHTML 的区别</strong></p>
-<ul>
-<li>HTML 是一种基于 web 网页的设计语言，XHTML 是一种基于 XML、语法严格、标准的设计语言</li>
-<li>XHTML 元素必须正确的嵌套，元素必须关闭，标签必须小写，必须有根元素；HTML 没有这些限制</li>
-</ul>
-<h3 id="2、表现标准语言"><a href="#2、表现标准语言" class="headerlink" title="2、表现标准语言"></a>2、表现标准语言</h3><h4 id="2-1-层叠样式表（css）"><a href="#2-1-层叠样式表（css）" class="headerlink" title="2.1 层叠样式表（css）"></a>2.1 层叠样式表（css）</h4><p>万维网联盟创建 CSS 标准的目的是以 CSS 取代 HTML 表格式布局、帧和其他表现的语言。纯 CSS 布局与结构式 XHTML 相结合能帮助设计师分离外观与结构，使站点的访问及维护更加容易。</p>
-<h3 id="3、行为标准"><a href="#3、行为标准" class="headerlink" title="3、行为标准"></a>3、行为标准</h3><h4 id="3-1-文档对象模型（DOM）"><a href="#3-1-文档对象模型（DOM）" class="headerlink" title="3.1 文档对象模型（DOM）"></a>3.1 文档对象模型（DOM）</h4><p>根据 W3C DOM 规范，DOM 是一种与浏览器，平台，语言的接口，使得你可以访问页面其他的标准组件。简单理解，DOM 解决了 Netscaped 的 Javascript 和 Microsoft 的 Jscript 之间的冲突，给予 web 设计师和开发者一个标准的方法，让他们来访问他们站点中的数据、脚本和表现层对象。</p>
-<h4 id="3-2-ECMAScript"><a href="#3-2-ECMAScript" class="headerlink" title="3.2 ECMAScript"></a>3.2 ECMAScript</h4><p>ECMAScript 是 ECMA(European Computer Manufacturers Association)制定的标准脚本语言（JAVAScript）。</p>
-<h2 id="九、img-标签上的-title-和-alt-属性的区别"><a href="#九、img-标签上的-title-和-alt-属性的区别" class="headerlink" title="九、img 标签上的 title 和 alt 属性的区别"></a>九、img 标签上的 title 和 alt 属性的区别</h2><ul>
-<li>title 的功能是为元素提供标题信息，即当光标悬浮在标签上后显示的信息</li>
-<li>alt 的功能是图片的替换文案，即当图片不能正常显示的时（如加载失败），用文字代替</li>
-</ul>
-<h2 id="十、空元素"><a href="#十、空元素" class="headerlink" title="十、空元素"></a>十、空元素</h2><p>空元素也就是单标签元素：&lt; br &gt;、&lt; hr &gt;、&lt; img &gt;、&lt; input &gt;、&lt; link &gt;、&lt; meta &gt;</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9AES6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9AES6/" class="post-title-link" itemprop="url">总结：ES6</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-24 09:14:02" itemprop="dateCreated datePublished" datetime="2019-10-24T09:14:02+08:00">2019-10-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-23 11:28:54" itemprop="dateModified" datetime="2020-09-23T11:28:54+08:00">2020-09-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-
-<h2 id="一、let-const"><a href="#一、let-const" class="headerlink" title="一、let/const"></a>一、let/const</h2><p><a target="_blank" rel="noopener" href="https://cjy1.github.io/2019/10/14/let%E3%80%81const%E3%80%81var/">参见总结：ES6：let、const、var</a></p>
-<h2 id="二、模板字符串"><a href="#二、模板字符串" class="headerlink" title="二、模板字符串"></a>二、模板字符串</h2><p>模板字符串（``），相对于一般的加号字符串拼接，优势在于他能够识别空格、换行符等，还能直接使用 ${}来拼接变量</p>
-<h2 id="三、set、map、weakSet、weakMap"><a href="#三、set、map、weakSet、weakMap" class="headerlink" title="三、set、map、weakSet、weakMap"></a>三、set、map、weakSet、weakMap</h2><p><a target="_blank" rel="noopener" href="https://cjy1.github.io/2019/10/19/set%E3%80%81map%E3%80%81weakSet%E3%80%81weakMap/">参见总结：ES6：set、map、weakSet、weakMap</a></p>
-<h2 id="四、箭头函数"><a href="#四、箭头函数" class="headerlink" title="四、箭头函数"></a>四、箭头函数</h2><p><a target="_blank" rel="noopener" href="https://cjy1.github.io/2019/10/15/this/">参见总结：ES6：this</a></p>
-<h2 id="五、promise、Generator、async-await"><a href="#五、promise、Generator、async-await" class="headerlink" title="五、promise、Generator、async/await"></a>五、promise、Generator、async/await</h2><p><a target="_blank" rel="noopener" href="https://cjy1.github.io/2019/10/12/%E6%B5%85%E8%B0%88Promise/">参见总结：ES6：浅谈 Promise、Generator 以及 async await</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1502,7 +1372,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1545,7 +1415,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

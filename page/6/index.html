@@ -192,6 +192,77 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0koa.js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0koa.js/" class="post-title-link" itemprop="url">Node：学习koa.js</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-26 09:01:10 / 修改时间：09:01:12" itemprop="dateCreated datePublished" datetime="2020-03-26T09:01:10+08:00">2020-03-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一、优缺点"><a href="#一、优缺点" class="headerlink" title="一、优缺点"></a>一、优缺点</h2><ul>
+<li><strong>优点：</strong>no callback</li>
+<li><strong>缺点：</strong>content/express 的中间件基本不能重用，基本要重写；依然需要更多人的支持和学习。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0Express.js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1025,111 +1096,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/15/JS%EF%BC%9Acall%E3%80%81apply%E3%80%81bind/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/15/JS%EF%BC%9Acall%E3%80%81apply%E3%80%81bind/" class="post-title-link" itemprop="url">JS：call、apply、bind</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-15 16:11:25" itemprop="dateCreated datePublished" datetime="2019-10-15T16:11:25+08:00">2019-10-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-22 09:26:16" itemprop="dateModified" datetime="2020-03-22T09:26:16+08:00">2020-03-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-
-<h2 id="一、call"><a href="#一、call" class="headerlink" title="一、call"></a>一、call</h2><p>改变函数的 this 指向，<code>call()</code> 第一个参数为 this 要指定的对象，后面可以<strong>接收多个参数列表 **，会</strong>立即调用** 。</p>
-<p><strong>注：</strong> 如果第一个参数为空|null|undefined，则 this 指向 window。</p>
-<h4 id="手撕-call"><a href="#手撕-call" class="headerlink" title="手撕 call"></a>手撕 call</h4><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.call = functionl(context)&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">this</span> != <span class="string">&#x27;function&#x27;</span>)&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">&#x27;Error&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  context = context || <span class="built_in">window</span>;</span><br><span class="line">  context.fn = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">const</span> args = [...<span class="built_in">arguments</span>].slice(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">const</span> result = context.fn(...args);</span><br><span class="line">  <span class="keyword">delete</span> context.fn;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>解析</strong></p>
-<ol>
-<li>context 为可选参数，如果不传的话默认上下文为 window；</li>
-<li>给 context 创建一个 fn 属性，并将值设置为需要调用的函数（因为 call 可以传入多个参数作为调用函数的参数，所以需要将参数剥离出来）；</li>
-<li>调用函数并将对象上的函数删除</li>
-</ol>
-<h2 id="二、apply"><a href="#二、apply" class="headerlink" title="二、apply"></a>二、apply</h2><p>和 call 一样，唯一的区别就是调用参数的形式不同，apply 传入的是数组。</p>
-<h4 id="手撕-apply"><a href="#手撕-apply" class="headerlink" title="手撕 apply"></a>手撕 apply</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.apply = functionl(context)&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">this</span> != <span class="string">&#x27;function&#x27;</span>)&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">&#x27;Error&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  context = context || <span class="built_in">window</span></span><br><span class="line">  context.fn = <span class="built_in">this</span></span><br><span class="line">  <span class="keyword">let</span> result;</span><br><span class="line">  <span class="comment">//处理参数和call有区别</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">arguments</span>[<span class="number">1</span>])&#123;</span><br><span class="line">    result = context.fn(...arguments[<span class="number">1</span>])</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    result = context.fn()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">delete</span> context.fn</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、bind"><a href="#三、bind" class="headerlink" title="三、bind"></a>三、bind</h2><p>bind 也是为了改变函数体内部 this 的指向，返回一个函数，稍后调用。</p>
-<h4 id="手撕-bind"><a href="#手撕-bind" class="headerlink" title="手撕 bind"></a>手撕 bind</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.bind = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">this</span> !== <span class="string">&#x27;function&#x27;</span>)&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">&#x27;Error&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> _this = <span class="built_in">this</span></span><br><span class="line">  <span class="keyword">const</span> args = [...arguments].slice(<span class="number">1</span>)</span><br><span class="line">  <span class="comment">//返回一个函数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//因为返回了一个函数，我们可以new F()，所以需要判断</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">this</span> <span class="keyword">instanceof</span> F)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> _this(...args,...arguments)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _this.apply(context,args.concat(...arguments))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、区别"><a href="#四、区别" class="headerlink" title="四、区别"></a>四、区别</h2><h3 id="1、call、apply、bind-的区别"><a href="#1、call、apply、bind-的区别" class="headerlink" title="1、call、apply、bind 的区别"></a>1、call、apply、bind 的区别</h3><ul>
-<li>call 和 apply 改变了函数的 this 指向后便立即执行；</li>
-<li>bind 则是返回改变了上下文之后的一个函数，便于稍后调用。</li>
-</ul>
-<h3 id="2、call、apply-的区别"><a href="#2、call、apply-的区别" class="headerlink" title="2、call、apply 的区别"></a>2、call、apply 的区别</h3><p>call 和 apply 的第一个参数都是 this 要指向的对象，它们两个不同的地方在于第二个参数之后的参数。</p>
-<ul>
-<li>call 从第二个参数开始以参数列表的形式展现；</li>
-</ul>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">fn</span>.call(obj, arg<span class="number">1</span>, arg<span class="number">2</span>, arg<span class="number">3</span>...);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>apply 将除第一个以外的所有参数都放在一个数组中作为第二个参数。</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">fn</span><span class="selector-class">.apply</span>(<span class="selector-tag">obj</span>, <span class="selector-attr">[arg1, arg2, arg3...]</span>);</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1199,7 +1165,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1242,7 +1208,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -192,6 +192,471 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2021/01/08/css%EF%BC%9A%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%EF%BC%88animation%E5%B1%9E%E6%80%A7%E5%92%8C@keyframes%E8%A7%84%E5%88%99%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/08/css%EF%BC%9A%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%EF%BC%88animation%E5%B1%9E%E6%80%A7%E5%92%8C@keyframes%E8%A7%84%E5%88%99%EF%BC%89/" class="post-title-link" itemprop="url">css：实现文字自动滚动（animation属性和@keyframes规则）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-08 15:48:20 / 修改时间：16:16:56" itemprop="dateCreated datePublished" datetime="2021-01-08T15:48:20+08:00">2021-01-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>使用css的animation属性和@keyframes规则，实现中奖信息的滚动播报</p>
+<p>要创建 css3 动画，需要了解@keyframes 规则</p>
+<ul>
+<li>@keyframes 规则是创建动画</li>
+<li>@keyframes 规则内指定一个 CSS 样式动画将逐步从目前的样式更改为新的样式</li>
+</ul>
+<p>当在 <strong>@keyframes</strong> 创建动画，把它绑定到一个选择器，否则动画不会有任何效果。</p>
+<p>指定至少这两个 CSS3 的动画属性绑定向一个选择器：</p>
+<ul>
+<li>规定动画的名称</li>
+<li>规定动画的时长</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>keyframes</td>
+<td>规定动画。</td>
+</tr>
+<tr>
+<td>animation</td>
+<td>所有动画属性的简写属性，除了 animation-play-state 属性。</td>
+</tr>
+<tr>
+<td>animation-name</td>
+<td>规定 @keyframes 动画的名称。</td>
+</tr>
+<tr>
+<td>animation-duration</td>
+<td>规定动画完成一个周期所花费的秒或毫秒。默认是 0。</td>
+</tr>
+<tr>
+<td>animation-timing-function</td>
+<td>规定动画的速度曲线。默认是 “ease”。</td>
+</tr>
+<tr>
+<td>animation-fill-mode</td>
+<td>规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式。</td>
+</tr>
+<tr>
+<td>animation-delay</td>
+<td>规定动画何时开始。默认是 0。</td>
+</tr>
+<tr>
+<td>animation-iteration-count</td>
+<td>规定动画被播放的次数。默认是 1。</td>
+</tr>
+<tr>
+<td>animation-direction</td>
+<td>规定动画是否在下一周期逆向地播放。默认是 “normal”。</td>
+</tr>
+<tr>
+<td>animation-play-state</td>
+<td>规定动画是否正在运行或暂停。默认是 “running”。</td>
+</tr>
+</tbody></table>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">div&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">	<span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">	<span class="attribute">background</span>:red;</span><br><span class="line">	<span class="attribute">position</span>:relative;</span><br><span class="line">	<span class="attribute">animation-name</span>:myfirst;</span><br><span class="line">	<span class="attribute">animation-duration</span>:<span class="number">5s</span>;</span><br><span class="line">	<span class="attribute">animation-timing-function</span>:linear;</span><br><span class="line">	<span class="attribute">animation-delay</span>:<span class="number">2s</span>;</span><br><span class="line">	<span class="attribute">animation-iteration-count</span>:infinite;</span><br><span class="line">	<span class="attribute">animation-direction</span>:alternate;</span><br><span class="line">	<span class="attribute">animation-play-state</span>:running;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes myfirst</span><br><span class="line">&#123;</span><br><span class="line">	<span class="number">0%</span>   &#123;<span class="attribute">background</span>:red; <span class="attribute">left</span>:<span class="number">0px</span>; <span class="attribute">top</span>:<span class="number">0px</span>;&#125;</span><br><span class="line">	<span class="number">25%</span>  &#123;<span class="attribute">background</span>:yellow; <span class="attribute">left</span>:<span class="number">200px</span>; <span class="attribute">top</span>:<span class="number">0px</span>;&#125;</span><br><span class="line">	<span class="number">50%</span>  &#123;<span class="attribute">background</span>:blue; <span class="attribute">left</span>:<span class="number">200px</span>; <span class="attribute">top</span>:<span class="number">200px</span>;&#125;</span><br><span class="line">	<span class="number">75%</span>  &#123;<span class="attribute">background</span>:green; <span class="attribute">left</span>:<span class="number">0px</span>; <span class="attribute">top</span>:<span class="number">200px</span>;&#125;</span><br><span class="line">	<span class="number">100%</span> &#123;<span class="attribute">background</span>:red; <span class="attribute">left</span>:<span class="number">0px</span>; <span class="attribute">top</span>:<span class="number">0px</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="animation-和-transition-的异同"><a href="#animation-和-transition-的异同" class="headerlink" title="animation 和 transition 的异同"></a>animation 和 transition 的异同</h3><p><strong>相同：</strong> 功能相同，都是通过改变元素的属性值来实现动画效果的。</p>
+<p><strong>不同：</strong> transition 只能用指定属性的开始值和结束值，然后在这两个属性值之间使用平滑过渡的方式实现动画效果，因此不能实现比较复杂的动画效果；animation 通过定义多个关键帧，以及定义每个关键帧中元素的属性值来实现更为复杂的动画效果。</p>
+<p>以react.js为例</p>
+<p>JSX部分</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;prize-info&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">  </span><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;rowup&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">    </span><span class="xquery">&#123;</span></span><br><span class="line"><span class="xquery">      winners.<span class="keyword">map</span>(<span class="type">item</span> =&gt; &lt;div<span class="built_in"> key</span>=&#123;<span class="type">item</span>.nick&#125;</span><span class="xml"> className=&quot;winner-info&quot;&gt;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">className</span>=<span class="string">&quot;prize-img&quot;</span> <span class="attr">src</span>=</span></span><span class="xquery">&#123;<span class="type">item</span>.headerpic ? <span class="type">item</span>.headerpic : defaultAvatar&#125;</span><span class="xml"><span class="tag"> /&gt;</span></span></span><br><span class="line"><span class="xml">        </span><span class="xquery">&#123;<span class="type">item</span>.nick&#125;</span><span class="xml">已获得</span><span class="xquery">&#123;<span class="type">item</span>.price&#125;</span><span class="xml">元试用资格</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="xml">)</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>CSS部分</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.prize-info</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: rgba(<span class="number">#FFFFFF</span>, .<span class="number">19</span>);</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">0.63rem</span>;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">9.5rem</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">padding</span>: .<span class="number">15rem</span> .<span class="number">7rem</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: .<span class="number">55rem</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="selector-class">.winner-info</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: .<span class="number">2rem</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.prize-img</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: .<span class="number">7rem</span>;</span><br><span class="line">    <span class="attribute">height</span>: .<span class="number">7rem</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">border</span>: solid <span class="number">1px</span> <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: .<span class="number">15rem</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.prize-info</span> <span class="selector-class">.rowup</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>: .<span class="number">85rem</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation</span>: <span class="number">10s</span> rowup linear infinite normal;</span><br><span class="line">  <span class="attribute">animation</span>: <span class="number">10s</span> rowup linear infinite normal;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> rowup &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">      -webkit-<span class="attribute">transform</span>: translate3d(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">      <span class="attribute">transform</span>: translate3d(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">      -webkit-<span class="attribute">transform</span>: translate3d(<span class="number">0</span>, -<span class="number">8em</span>, <span class="number">0</span>);</span><br><span class="line">      <span class="attribute">transform</span>: translate3d(<span class="number">0</span>, -<span class="number">8rem</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>待更～（后续会记录使用websocket时时更新数据）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/10/19/css%EF%BC%9Acss3%E5%B1%9E%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/19/css%EF%BC%9Acss3%E5%B1%9E%E6%80%A7/" class="post-title-link" itemprop="url">css：css3属性</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-19 11:55:08" itemprop="dateCreated datePublished" datetime="2019-10-19T11:55:08+08:00">2019-10-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-08 16:16:08" itemprop="dateModified" datetime="2021-01-08T16:16:08+08:00">2021-01-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5a0c184c51882531926e4294#heading-11">参照掘金</a></p>
+<h2 id="1、过渡（transition）"><a href="#1、过渡（transition）" class="headerlink" title="1、过渡（transition）"></a>1、过渡（transition）</h2><p>参照<a target="_blank" rel="noopener" href="https://www.runoob.com/css3/css3-transitions.html">菜鸟教程|css3 过渡</a></p>
+<p>CSS 过渡是元素从一种样式逐渐改变为另一种的效果，要实现这一点，必须规定两项内容：</p>
+<ul>
+<li>指定要参加效果的 CSS 属性</li>
+<li>指定效果的持续时间</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>transition</td>
+<td>简写属性，用于在一个属性中设置四个过渡属性</td>
+</tr>
+<tr>
+<td>transition-property</td>
+<td>规定应用过渡的 CSS 属性的名称</td>
+</tr>
+<tr>
+<td>transition-duration</td>
+<td>定义过渡效果花费的时间。默认是 0</td>
+</tr>
+<tr>
+<td>transition-timing-function</td>
+<td>规定过渡效果的时间曲线。默认是“ease”</td>
+</tr>
+<tr>
+<td>transition-delay</td>
+<td>规定过渡效果何时开始。默认是 0</td>
+</tr>
+</tbody></table>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">div&#123;</span><br><span class="line">	<span class="attribute">width</span>:100px;</span><br><span class="line">	<span class="attribute">height</span>:100px;</span><br><span class="line">	<span class="attribute">background</span>:red;</span><br><span class="line">	<span class="attribute">transition-property</span>:width;</span><br><span class="line">	<span class="attribute">transition-duration</span>:1s;</span><br><span class="line">	<span class="attribute">transition-timing-function</span>:linear;</span><br><span class="line">	<span class="attribute">transition-delay</span>:2s;</span><br><span class="line">	/* <span class="attribute">Safari */</span></span><br><span class="line"><span class="attribute">	-webkit-transition-property</span>:width;</span><br><span class="line">	<span class="attribute">-webkit-transition-duration</span>:1s;</span><br><span class="line">	<span class="attribute">-webkit-transition-timing-function</span>:linear;</span><br><span class="line">	<span class="attribute">-webkit-transition-delay</span>:2s;</span><br><span class="line">&#125;</span><br><span class="line">div:hover&#123;</span><br><span class="line">	<span class="attribute">width</span>:200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、动画（animation）"><a href="#2、动画（animation）" class="headerlink" title="2、动画（animation）"></a>2、动画（animation）</h2><p>参考<a target="_blank" rel="noopener" href="https://www.runoob.com/css3/css3-animations.html">菜鸟教程|css3 动画</a></p>
+<h2 id="3、形状转换（transform）"><a href="#3、形状转换（transform）" class="headerlink" title="3、形状转换（transform）"></a>3、形状转换（transform）</h2><p>参照<a target="_blank" rel="noopener" href="https://www.runoob.com/cssref/css3-pr-transform.html">菜鸟教程|css3 transform</a></p>
+<p>transform 适用于 2D 或 3D 转换的元素</p>
+<p><code>transform: none|transform-functions;</code></p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>none</td>
+<td>定义不进行转换。</td>
+</tr>
+<tr>
+<td>matrix(<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>)</td>
+<td>定义 2D 转换，使用六个值的矩阵。</td>
+</tr>
+<tr>
+<td>matrix3d(<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>,<em>n</em>)</td>
+<td>定义 3D 转换，使用 16 个值的 4x4 矩阵。</td>
+</tr>
+<tr>
+<td>translate(<em>x</em>,<em>y</em>)</td>
+<td>定义 2D 转换。</td>
+</tr>
+<tr>
+<td>translate3d(<em>x</em>,<em>y</em>,<em>z</em>)</td>
+<td>定义 3D 转换。</td>
+</tr>
+<tr>
+<td>translateX(<em>x</em>)</td>
+<td>定义转换，只是用 X 轴的值。</td>
+</tr>
+<tr>
+<td>translateY(<em>y</em>)</td>
+<td>定义转换，只是用 Y 轴的值。</td>
+</tr>
+<tr>
+<td>translateZ(<em>z</em>)</td>
+<td>定义 3D 转换，只是用 Z 轴的值。</td>
+</tr>
+<tr>
+<td>scale(<em>x</em>[,<em>y</em>]?)</td>
+<td>定义 2D 缩放转换。</td>
+</tr>
+<tr>
+<td>scale3d(<em>x</em>,<em>y</em>,<em>z</em>)</td>
+<td>定义 3D 缩放转换。</td>
+</tr>
+<tr>
+<td>scaleX(<em>x</em>)</td>
+<td>通过设置 X 轴的值来定义缩放转换。</td>
+</tr>
+<tr>
+<td>scaleY(<em>y</em>)</td>
+<td>通过设置 Y 轴的值来定义缩放转换。</td>
+</tr>
+<tr>
+<td>scaleZ(<em>z</em>)</td>
+<td>通过设置 Z 轴的值来定义 3D 缩放转换。</td>
+</tr>
+<tr>
+<td>rotate(<em>angle</em>)</td>
+<td>定义 2D 旋转，在参数中规定角度。</td>
+</tr>
+<tr>
+<td>rotate3d(<em>x</em>,<em>y</em>,<em>z</em>,<em>angle</em>)</td>
+<td>定义 3D 旋转。</td>
+</tr>
+<tr>
+<td>rotateX(<em>angle</em>)</td>
+<td>定义沿着 X 轴的 3D 旋转。</td>
+</tr>
+<tr>
+<td>rotateY(<em>angle</em>)</td>
+<td>定义沿着 Y 轴的 3D 旋转。</td>
+</tr>
+<tr>
+<td>rotateZ(<em>angle</em>)</td>
+<td>定义沿着 Z 轴的 3D 旋转。</td>
+</tr>
+<tr>
+<td>skew(<em>x-angle</em>,<em>y-angle</em>)</td>
+<td>定义沿着 X 和 Y 轴的 2D 倾斜转换。</td>
+</tr>
+<tr>
+<td>skewX(<em>angle</em>)</td>
+<td>定义沿着 X 轴的 2D 倾斜转换。</td>
+</tr>
+<tr>
+<td>skewY(<em>angle</em>)</td>
+<td>定义沿着 Y 轴的 2D 倾斜转换。</td>
+</tr>
+<tr>
+<td>perspective(<em>n</em>)</td>
+<td>为 3D 转换元素定义透视视图。</td>
+</tr>
+</tbody></table>
+<p><code>transform:rotate(30deg);</code></p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/11/15/15fbf4073fe59bee?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/03/16/%E5%85%B6%E4%BB%96%EF%BC%9A%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chajianyuan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="查见原的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/16/%E5%85%B6%E4%BB%96%EF%BC%9A%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">其他：使用hexo搭建博客</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-16 09:22:03" itemprop="dateCreated datePublished" datetime="2019-03-16T09:22:03+08:00">2019-03-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-08 16:11:31" itemprop="dateModified" datetime="2021-01-08T16:11:31+08:00">2021-01-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer"/>
+
+<h3 id="一、配置-github"><a href="#一、配置-github" class="headerlink" title="一、配置 github"></a>一、配置 github</h3><p>1、首先注册、登录<a target="_blank" rel="noopener" href="https://github.com/">github.com</a></p>
+<p>2、在右上角选择<a target="_blank" rel="noopener" href="https://github.com/new">New repository</a></p>
+<p><img src="https://github.com/chajianyuan/picture/blob/master/TIM%E5%9B%BE%E7%89%8720190316103736.png?raw=true"></p>
+<p>在网页上输入 你的名字.github.io 显示正常，则新建成功</p>
+<h3 id="二、环境安装（node、git）"><a href="#二、环境安装（node、git）" class="headerlink" title="二、环境安装（node、git）"></a>二、环境安装（node、git）</h3><p>1、安装<a target="_blank" rel="noopener" href="https://nodejs.org/en/">node.js</a></p>
+<p>2、安装 git<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/">廖雪峰老师的安装教程</a></p>
+<p>安装完成后，在开始菜单找到”Git”-&gt;”Git Bash”，名称都是 github 上面的</p>
+<p><img src="https://github.com/cjy1/picture/blob/master/TIM%E5%9B%BE%E7%89%8720190316104850.png"></p>
+<p>3、安装 Hexo</p>
+<p><code>npm install -g hexo-cli</code></p>
+<p><a target="_blank" rel="noopener" href="http://note.youdao.com/noteshare?id=1844b19b5f12367edd3460b6cf88d126">安装 cmder 流程</a></p>
+<p><img src="https://github.com/cjy1/picture/blob/master/TIM%E5%9B%BE%E7%89%8720190316105545.png"></p>
+<h3 id="三、设置"><a href="#三、设置" class="headerlink" title="三、设置"></a>三、设置</h3><p>1、在合适的文件夹下新建文件夹 test,进入 test,右击选择 Cmder Here</p>
+<p><img src="https://github.com/cjy1/picture/blob/master/TIM%E5%9B%BE%E7%89%8720190316110343.png"></p>
+<p>2、在窗口输入<code>hexo init blog</code></p>
+<p><img src="https://github.com/cjy1/picture/blob/master/TIM%E5%9B%BE%E7%89%8720190316111949.png"></p>
+<p>3、成功后提示<code>INFO Start blogging with Hexo!</code></p>
+<p><img src="https://github.com/cjy1/picture/blob/master/TIM%E5%9B%BE%E7%89%8720190316111234.png"></p>
+<p>4、访问 localhost:4000/，就可以访问初步的博客模样</p>
+<p><img src="https://github.com/cjy1/picture/blob/master/TIM%E5%9B%BE%E7%89%8720190316111314.png"></p>
+<p>5、重新打开 cmd 输入</p>
+<p><code>ssh-keygen -t rsa -C &quot;Github注册的邮箱地址&quot;</code></p>
+<p>一路 enter 得到信息</p>
+<p><code>Your public key has been saved in /c/Users/user/.ssh/id_rsa.pub.</code></p>
+<p>找到该文件将里面的内容复制到<a target="_blank" rel="noopener" href="https://github.com/settings/keys">Github</a></p>
+<p>New SSH key ——Title：blog —— Key：输入刚才复制的—— Add SSH key</p>
+<h3 id="四、配置博客"><a href="#四、配置博客" class="headerlink" title="四、配置博客"></a>四、配置博客</h3><p>在 blog 目录下修改以下参数信息</p>
+<p>网站的相关信息</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">title:</span> 南殇的博客 <span class="meta">#标题</span></span><br><span class="line"><span class="symbol">subtitle:</span> 越努力，越幸运 <span class="meta">#副标题</span></span><br><span class="line"><span class="symbol">description:</span>  <span class="meta">#站点描述，给搜索引擎看</span></span><br><span class="line"><span class="symbol">author:</span> chajianyuan <span class="meta">#作者</span></span><br><span class="line"><span class="symbol">language:</span> <span class="built_in">zh</span>-CN <span class="meta">#语言</span></span><br><span class="line"><span class="symbol">timezone:</span>  Asia/Shanghai <span class="meta">#</span></span><br></pre></td></tr></table></figure>
+
+<p>配置部署</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">deploy:</span> <span class="meta">#</span></span><br><span class="line"><span class="symbol">  type:</span> git <span class="meta">#</span></span><br><span class="line"><span class="symbol">  repo:</span> https:<span class="comment">//github.com/cjy1/cjy1.github.io.git</span></span><br><span class="line"><span class="symbol">  branch:</span> master</span><br></pre></td></tr></table></figure>
+
+<h3 id="五、发表文章"><a href="#五、发表文章" class="headerlink" title="五、发表文章"></a>五、发表文章</h3><p>在 cmd 中输入</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="string">&quot;测试文章&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>在给定的位置打开该文件，用 markdown 语法编辑</p>
+<p>然后保存</p>
+<p><code>hexo clean</code> #清除缓存，网页正常情况下可以忽略此条命令</p>
+<p><code>hexo generate</code> #生成</p>
+<p><code>hexo server</code> #启动服务预览</p>
+<p>最后发布到网上执行<code>hexo deploy</code> #部署发布</p>
+<p>在网页上输入 你的名字.github.io 就可以看到已经发布的博客</p>
+<h3 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h3><p>1、如果在执行 hexo deploy 后,出现 error deployer not found:github 的错误，执行：</p>
+<p><code>npm install hexo-deployer-git --save</code></p>
+<p>2、如果部署后出现 404，查看 github 数据源是否在 master 分支下</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2020/11/11/JS%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1037,274 +1502,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/03/27/%E7%AE%97%E6%B3%95%EF%BC%9A%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/27/%E7%AE%97%E6%B3%95%EF%BC%9A%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF/" class="post-title-link" itemprop="url">算法：解题思路</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-03-27 09:58:42" itemprop="dateCreated datePublished" datetime="2019-03-27T09:58:42+08:00">2019-03-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-01 20:37:18" itemprop="dateModified" datetime="2020-11-01T20:37:18+08:00">2020-11-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-
-<h1 id="一、二叉树"><a href="#一、二叉树" class="headerlink" title="一、二叉树"></a>一、二叉树</h1><p>二叉树一般使用迭代的方法</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2020/10/29/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%B1%82%E6%A0%B9%E5%88%B0%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/29/%E7%AE%97%E6%B3%95%EF%BC%9A%E6%B1%82%E6%A0%B9%E5%88%B0%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C/" class="post-title-link" itemprop="url">算法：求根到叶子节点数字之和</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-29 15:46:05" itemprop="dateCreated datePublished" datetime="2020-10-29T15:46:05+08:00">2020-10-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-01 20:37:10" itemprop="dateModified" datetime="2020-11-01T20:37:10+08:00">2020-11-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>💪 打卡算法第四天</p>
-<p>📖 题目来自力扣129题</p>
-<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定一个二叉树，它的每个结点都存放一个 0-9 的数字，每条从根到叶子节点的路径都代表一个数字。</p>
-<p>例如，从根到叶子节点路径 1-&gt;2-&gt;3 代表数字 123。</p>
-<p>计算从根到叶子节点生成的所有数字之和。</p>
-<p>说明: 叶子节点是指没有子节点的节点。</p>
-<p>示例 1:</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">    <span class="number">1</span></span><br><span class="line">   / \</span><br><span class="line">  <span class="number">2</span>   <span class="number">3</span></span><br><span class="line">输出: <span class="number">25</span></span><br><span class="line">解释:</span><br><span class="line">从根到叶子节点路径 <span class="number">1</span>-&gt;<span class="number">2</span> 代表数字 <span class="number">12.</span></span><br><span class="line">从根到叶子节点路径 <span class="number">1</span>-&gt;<span class="number">3</span> 代表数字 <span class="number">13.</span></span><br><span class="line">因此，数字总和 = <span class="number">12</span> + <span class="number">13</span> = <span class="number">25.</span></span><br></pre></td></tr></table></figure>
-
-<p>示例 2:</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输入: [<span class="number">4</span>,<span class="number">9</span>,<span class="number">0</span>,<span class="number">5</span>,<span class="number">1</span>]</span><br><span class="line">    <span class="number">4</span></span><br><span class="line">   / \</span><br><span class="line">  <span class="number">9</span>   <span class="number">0</span></span><br><span class="line"> / \</span><br><span class="line"><span class="number">5</span>   <span class="number">1</span></span><br><span class="line">输出: <span class="number">1026</span></span><br><span class="line">解释:</span><br><span class="line">从根到叶子节点路径 <span class="number">4</span>-&gt;<span class="number">9</span>-&gt;<span class="number">5</span> 代表数字 <span class="number">495.</span></span><br><span class="line">从根到叶子节点路径 <span class="number">4</span>-&gt;<span class="number">9</span>-&gt;<span class="number">1</span> 代表数字 <span class="number">491.</span></span><br><span class="line">从根到叶子节点路径 <span class="number">4</span>-&gt;<span class="number">0</span> 代表数字 <span class="number">40.</span></span><br><span class="line">因此，数字总和 = <span class="number">495</span> + <span class="number">491</span> + <span class="number">40</span> = <span class="number">1026.</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="🤔-题解"><a href="#🤔-题解" class="headerlink" title="🤔 题解"></a>🤔 题解</h4><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition <span class="keyword">for</span> a binary tree <span class="type">node</span>.</span><br><span class="line"> * <span class="keyword">function</span> TreeNode(val) &#123;</span><br><span class="line"> *     this.val = val;</span><br><span class="line"> *     this.left = this.right = null;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">/**</span><br><span class="line"> * @param &#123;TreeNode&#125;<span class="built_in"> root</span></span><br><span class="line"> * @<span class="keyword">return</span> <span class="built_in">&#123;number</span>&#125;</span><br><span class="line"> */</span><br><span class="line">var sumNumbers = <span class="keyword">function</span><span class="built_in">(root</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> dfs<span class="built_in">(root</span>, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const dfs = <span class="built_in">(root</span>, preSum) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">!root</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    const<span class="built_in"> sum</span> = preSum * <span class="number">10</span> +<span class="built_in"> root</span>.val;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">!root</span>.left &amp;&amp; <span class="built_in">!root</span>.right) &#123;</span><br><span class="line">        <span class="keyword">return</span><span class="built_in"> sum</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> dfs<span class="built_in">(root</span>.left,<span class="built_in"> sum</span>) + dfs<span class="built_in">(root</span>.right,<span class="built_in"> sum</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://chajianyuan.github.io/2019/03/29/%E7%AE%97%E6%B3%95%EF%BC%9A914%E3%80%81%E5%8D%A1%E7%89%87%E5%88%86%E7%BB%84%EF%BC%88JavaScripe%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chajianyuan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="查见原的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/03/29/%E7%AE%97%E6%B3%95%EF%BC%9A914%E3%80%81%E5%8D%A1%E7%89%87%E5%88%86%E7%BB%84%EF%BC%88JavaScripe%EF%BC%89/" class="post-title-link" itemprop="url">算法：914、卡片分组（JavaScripe）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-03-29 09:53:18" itemprop="dateCreated datePublished" datetime="2019-03-29T09:53:18+08:00">2019-03-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-01 20:37:01" itemprop="dateModified" datetime="2020-11-01T20:37:01+08:00">2020-11-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer"/>
-
-<p>给定一副牌，每张牌上都写着一个整数。</p>
-<p>此时，你需要选定一个数字 <code>X</code>，使我们可以将整副牌按下述规则分成 1 组或更多组：</p>
-<ul>
-<li>每组都有 <code>X</code> 张牌。</li>
-<li>组内所有的牌上都写着相同的整数。</li>
-</ul>
-<p>仅当你可选的 <code>X &gt;= 2</code> 时返回 <code>true</code>。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">输出：<span class="literal">true</span></span><br><span class="line">解释：可行的分组是 [<span class="number">1</span>,<span class="number">1</span>]，[<span class="number">2</span>,<span class="number">2</span>]，[<span class="number">3</span>,<span class="number">3</span>]，[<span class="number">4</span>,<span class="number">4</span>]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>]</span><br><span class="line">输出：<span class="literal">false</span></span><br><span class="line">解释：没有满足要求的分组。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 3：</strong></p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：[<span class="number">1</span>]</span><br><span class="line">输出：<span class="literal">false</span></span><br><span class="line">解释：没有满足要求的分组。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 4：</strong></p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：[<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line">输出：<span class="literal">true</span></span><br><span class="line">解释：可行的分组是 [<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 5：</strong></p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：[<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line">输出：<span class="literal">true</span></span><br><span class="line">解释：可行的分组是 [<span class="number">1</span>,<span class="number">1</span>]，[<span class="number">2</span>,<span class="number">2</span>]，[<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ol>
-<li><code>1 &lt;= deck.length &lt;= 10000</code></li>
-<li><code>0 &lt;= deck[i] &lt; 10000</code></li>
-</ol>
-<p><strong>解题思路</strong></p>
-<p>找一个集体公约数，收集每张牌的数量存入新数组 arr，公约数 x 从 2 往上累加，最大不超过 min(arr)，判断 arr[i]能否被 x 整除</p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; deck</span></span><br><span class="line"><span class="comment"> * @return &#123;boolean&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="built_in">var</span> hasGroupsSizeX = function(deck) &#123;</span><br><span class="line">   <span class="built_in">var</span> obj=&#123;&#125;,<span class="built_in">max</span>,<span class="built_in">min</span>,arr=[],n=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(deck.<span class="built_in">length</span>&lt;<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">var</span> i=<span class="number">0</span>;i&lt;deck.<span class="built_in">length</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(obj[deck[i]]&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            obj[deck[i]]+=<span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            obj[deck[i]]=<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">        arr[n]=obj[i]</span><br><span class="line">        n++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">min</span>=Math.<span class="built_in">min</span>.<span class="built_in">apply</span>(null,arr)</span><br><span class="line">    <span class="built_in">max</span>=Math.<span class="built_in">max</span>.<span class="built_in">apply</span>(null,arr)</span><br><span class="line">    <span class="keyword">if</span>((<span class="built_in">min</span>===<span class="number">1</span> &amp;&amp; <span class="built_in">min</span> !=<span class="built_in">max</span>) || deck.<span class="built_in">length</span>&lt;<span class="number">2</span>)&#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">var</span> x=<span class="number">2</span>,<span class="built_in">status</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">min</span>&gt;=x)&#123;</span><br><span class="line">        <span class="built_in">status</span>=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">var</span> i=<span class="number">0</span>;i&lt;arr.<span class="built_in">length</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i]%x!=<span class="number">0</span>)</span><br><span class="line">                <span class="built_in">status</span>=<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">status</span>==<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">true</span></span><br><span class="line">        x++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1374,7 +1571,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1417,7 +1614,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
