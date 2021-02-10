@@ -262,82 +262,15 @@
       
           <meta name="referrer" content="no-referrer"/>
 
-<h2 id="一、改变原数组"><a href="#一、改变原数组" class="headerlink" title="一、改变原数组"></a>一、改变原数组</h2><h3 id="1、push（添加元素）"><a href="#1、push（添加元素）" class="headerlink" title="1、push（添加元素）"></a>1、push（添加元素）</h3><p>向数组后面添加元素，返回新数组长度</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let<span class="built_in"> array </span>= [1,2,3,4,5]</span><br><span class="line">array.push(6)   =&gt;  6</span><br><span class="line">array           =&gt;  [1, 2, 3, 4, 5, 6]</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、pop（删除元素）"><a href="#2、pop（删除元素）" class="headerlink" title="2、pop（删除元素）"></a>2、pop（删除元素）</h3><p>从后面删除数组元素，只能删除一个，返回被删除的元素</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let<span class="built_in"> array </span>= [1,2,3,4,5]</span><br><span class="line">array.pop()  =&gt;  5</span><br><span class="line">array        =&gt;  [1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、shift（删除元素）"><a href="#3、shift（删除元素）" class="headerlink" title="3、shift（删除元素）"></a>3、shift（删除元素）</h3><p>从前面删除数组元素，只能删除一个，返回被删除的元素</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let<span class="built_in"> array </span>= [1,2,3,4,5]</span><br><span class="line">array.shift()  =&gt;  1</span><br><span class="line">array          =&gt;  [2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、unshift（添加元素）"><a href="#4、unshift（添加元素）" class="headerlink" title="4、unshift（添加元素）"></a>4、unshift（添加元素）</h3><p>从前面添加数组元素，返回添加后的数组的长度</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let<span class="built_in"> array </span>= [1,2,3,4,5]</span><br><span class="line">array.unshift(6)  =&gt;  6</span><br><span class="line">array             =&gt;  [6, 1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
-
-<h3 id="5、splice（添加、删除、替换元素）"><a href="#5、splice（添加、删除、替换元素）" class="headerlink" title="5、splice（添加、删除、替换元素）"></a>5、splice（添加、删除、替换元素）</h3><h4 id="（1）添加元素"><a href="#（1）添加元素" class="headerlink" title="（1）添加元素"></a>（1）添加元素</h4><p>返回空数组</p>
-<p><code>array.splice(index,0,item...)</code></p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let<span class="built_in"> array </span>= [1,2,3,4,5]</span><br><span class="line">array.splice(2,0,6)  =&gt;  []</span><br><span class="line">array                =&gt;  [1, 2, 6, 3, 4, 5]</span><br></pre></td></tr></table></figure>
-
-<h4 id="（2）删除元素"><a href="#（2）删除元素" class="headerlink" title="（2）删除元素"></a>（2）删除元素</h4><p>返回被删除的元素</p>
-<p><code>array.splice(index,howMany)</code></p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let<span class="built_in"> array </span>= [1,2,3,4,5]</span><br><span class="line">array.splice(1,2)  =&gt;  [2, 3]</span><br><span class="line">array              =&gt;  [1, 4, 5]</span><br></pre></td></tr></table></figure>
-
-<h4 id="（3）替换数组"><a href="#（3）替换数组" class="headerlink" title="（3）替换数组"></a>（3）替换数组</h4><p>返回要被替换的元素</p>
-<p><code>array.splice(index,homMany,item...)</code></p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let<span class="built_in"> array </span>= [1,2,3,4,5]</span><br><span class="line">array.splice(2,1,6)  =&gt;  [3]</span><br><span class="line">array                =&gt;  [1, 2, 6, 4, 5]</span><br></pre></td></tr></table></figure>
-
-<h3 id="6、sort"><a href="#6、sort" class="headerlink" title="6、sort"></a>6、sort</h3><p>对数组进行排序，返回排好序的数组</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let nums = [<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">5</span>]</span><br><span class="line">nums.sort()  =&gt;  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">nums         =&gt;  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br></pre></td></tr></table></figure>
-
-<h3 id="7、reverse"><a href="#7、reverse" class="headerlink" title="7、reverse"></a>7、reverse</h3><p>将数组反转，返回反转后的数组</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let nums = [<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>.reverse()  =&gt;  [<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</span><br><span class="line"><span class="built_in">array</span>            =&gt;  [<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-
-<h3 id="8、copyWithin（替换元素）"><a href="#8、copyWithin（替换元素）" class="headerlink" title="8、copyWithin（替换元素）"></a>8、copyWithin（替换元素）</h3><p>替换数组中的元素，返回替换后的数组</p>
-<p><code>array.copyWithin(复制到指定目标索引，元素复制的起始位置，停止复印的索引位置)</code></p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let <span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>.copyWithin(<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>)  =&gt;  [<span class="number">1</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>                    =&gt;  [<span class="number">1</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-<h3 id="9、fill（替换元素）"><a href="#9、fill（替换元素）" class="headerlink" title="9、fill（替换元素）"></a>9、fill（替换元素）</h3><p>用一个固定值填充一个数组中从索引到终止索引（不包括）内的全部元素，返回替换后的数组</p>
-<p><code>array.fill(value[,start,[,end]])</code></p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>.fill(<span class="number">6</span>,<span class="number">1</span>,<span class="number">3</span>)  =&gt;  [<span class="number">1</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>              =&gt;  [<span class="number">1</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、不改变原数组"><a href="#二、不改变原数组" class="headerlink" title="二、不改变原数组"></a>二、不改变原数组</h2><h3 id="1、concat（拼接数组）"><a href="#1、concat（拼接数组）" class="headerlink" title="1、concat（拼接数组）"></a>1、concat（拼接数组）</h3><p>返回连接后的新数组</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let <span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>.concat([<span class="number">1</span>,<span class="number">2</span>])  =&gt;  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"><span class="built_in">array</span>                =&gt;  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、split"><a href="#2、split" class="headerlink" title="2、split"></a>2、split</h3><p>将字符串转换成数组</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let <span class="built_in">str</span> = <span class="string">&#x27;12345&#x27;</span></span><br><span class="line"><span class="built_in">str</span>.<span class="built_in">split</span>(<span class="string">&#x27;&#x27;</span>)  =&gt;  [<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>, <span class="string">&quot;4&quot;</span>, <span class="string">&quot;5&quot;</span>]</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、slice（截取一部分元素）"><a href="#3、slice（截取一部分元素）" class="headerlink" title="3、slice（截取一部分元素）"></a>3、slice（截取一部分元素）</h3><p>切去索引值 start 到索引值 end 的值，不包含 end 索引的值，返回被切掉的数组</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let<span class="built_in"> array </span>= [1,2,3,4,5]</span><br><span class="line">array.slice(1,3)  =&gt;  [2, 3]</span><br><span class="line">array             =&gt;  [1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、includes"><a href="#4、includes" class="headerlink" title="4、includes"></a>4、includes</h3><p>判断数组中是否包含某个值，返回 true 或 false</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>.includes(<span class="number">2</span>)  =&gt;  <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="5、join"><a href="#5、join" class="headerlink" title="5、join"></a>5、join</h3><p>将数组元素拼接起来，可以指定分隔符</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>.join(<span class="string">&#x27;&#x27;</span>)  =&gt;  <span class="string">&quot;12345&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="6、toString"><a href="#6、toString" class="headerlink" title="6、toString"></a>6、toString</h3><p>将数组转换成字符串</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,&#123;a:<span class="number">4</span>&#125;]</span><br><span class="line"><span class="built_in">array</span>.toString()  =&gt;  <span class="string">&quot;1,2,3,[object Object]&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="7、indexOf"><a href="#7、indexOf" class="headerlink" title="7、indexOf"></a>7、indexOf</h3><p>从前往后查找元素索引</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>.indexOf(<span class="number">2</span>)  =&gt;  <span class="number">1</span></span><br><span class="line"><span class="built_in">array</span>.indexOf(<span class="number">6</span>)  =&gt;  <span class="number">-1</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="8、lastIndexOf"><a href="#8、lastIndexOf" class="headerlink" title="8、lastIndexOf"></a>8、lastIndexOf</h3><p>从后往前查找元素索引</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>.lastIndexOf(<span class="number">2</span>)  =&gt;  <span class="number">1</span></span><br><span class="line"><span class="built_in">array</span>.lastIndexOf(<span class="number">6</span>)  =&gt;  <span class="number">-1</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="三、遍历数组"><a href="#三、遍历数组" class="headerlink" title="三、遍历数组"></a>三、遍历数组</h2><h3 id="1、forEach"><a href="#1、forEach" class="headerlink" title="1、forEach"></a>1、forEach</h3><p>遍历数组，无 return</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let<span class="built_in"> array </span>= [1,2,3,4,5]</span><br><span class="line">array.forEach(item=&gt;&#123;</span><br><span class="line">	item = item * 2</span><br><span class="line">&#125;)</span><br><span class="line">array  =&gt;  [1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、map"><a href="#2、map" class="headerlink" title="2、map"></a>2、map</h3><p>遍历数组，对数组中元素进行修改，返回修改后的数组</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let<span class="built_in"> array </span>= [1,2,3,4,5]</span><br><span class="line">array.map(item=&gt;item*=2)  =&gt;  [2, 4, 6, 8, 10]</span><br><span class="line">array                     =&gt;  [1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、filter"><a href="#3、filter" class="headerlink" title="3、filter"></a>3、filter</h3><p>可以筛选数组中满足条件的元素</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>.filter(item=&gt;item&gt;<span class="number">4</span>)  =&gt;  [<span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>  =&gt;  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、reduce"><a href="#4、reduce" class="headerlink" title="4、reduce"></a>4、reduce</h3><p>接收一个函数作为累加器，接收两个参数（回调函数，初始值），返回一个值</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>.reduce((acc,current)=&gt;acc+current,<span class="number">0</span>)  =&gt;  <span class="number">15</span></span><br><span class="line"><span class="built_in">array</span>  =&gt;  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-<p>​</p>
-
+<h2 id="一、改变原数组"><a href="#一、改变原数组" class="headerlink" title="一、改变原数组"></a>一、改变原数组</h2><h3 id="1、push（添加元素）"><a href="#1、push（添加元素）" class="headerlink" title="1、push（添加元素）"></a>1、push（添加元素）</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/14/JS%EF%BC%9A%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -421,27 +354,14 @@
           <meta name="referrer" content="no-referrer"/>
 
 <h2 id="一、浅拷贝和深拷贝"><a href="#一、浅拷贝和深拷贝" class="headerlink" title="一、浅拷贝和深拷贝"></a>一、浅拷贝和深拷贝</h2><p>浅拷贝和深拷贝只针对 object 和 array 这种引用数据类型。</p>
-<p><strong>浅拷贝：</strong> 只复制某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。</p>
-<p><strong>深拷贝：</strong> 会创造一个一模一样的新对象，新对象和原对象不共享内存，修改新对象不会改到原对象。</p>
-<h2 id="二、赋值和浅拷贝"><a href="#二、赋值和浅拷贝" class="headerlink" title="二、赋值和浅拷贝"></a>二、赋值和浅拷贝</h2><p><strong>赋值：</strong> 当把某个对象赋值给一个新的变量时，赋的是该对象在栈中的地址，而不是堆中的数据。</p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> a =&#123;</span><br><span class="line">  <span class="built_in">na</span><span class="symbol">me:</span> <span class="string">&quot;zhangsan&quot;</span>,</span><br><span class="line">  scor<span class="symbol">es:</span> [<span class="number">100</span>, <span class="number">99</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">var</span> b = a;</span><br></pre></td></tr></table></figure>
-
-<p>其实是将对象 a 在栈中的指针 a 赋值给了对象 b,指针 a 和指针 b 指向的是同一个堆中的数据，那么其中一个数据改变时，另外一个也会改变。</p>
-<p><strong>浅拷贝：</strong> 浅拷贝会创建一个新的对象，但它是按位拷贝对象，即如果原对象的属性是基本类型，则拷贝的是基本数据类型的值；如果原对象的属性是引用数据类型，则拷贝的是引用类型的指针。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/12/23/167da74d45d3103b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
-<h2 id="三、浅拷贝的实现方式"><a href="#三、浅拷贝的实现方式" class="headerlink" title="三、浅拷贝的实现方式"></a>三、浅拷贝的实现方式</h2><h3 id="1、Object-assign"><a href="#1、Object-assign" class="headerlink" title="1、Object.assign()"></a>1、Object.assign()</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> obj = &#123;</span><br><span class="line">  <span class="selector-tag">a</span>: &#123;</span><br><span class="line">    <span class="selector-tag">a</span>: <span class="string">&#x27;zhangsan&#x27;</span>,</span><br><span class="line">    <span class="selector-tag">b</span>: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">var</span> copyObj = Object.assign(&#123;&#125;, obj)</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、Array-prototype-concat"><a href="#2、Array-prototype-concat" class="headerlink" title="2、Array.prototype.concat()"></a>2、Array.prototype.concat()</h3><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">var</span> <span class="string">obj = &#123;</span></span><br><span class="line">  <span class="attr">a</span>: <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">a</span>: <span class="string">&#x27;zhangsan&#x27;,</span></span><br><span class="line">    <span class="attr">b</span>: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"><span class="attr">var</span> <span class="string">copyObj = obj.concat();</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="3、Array-prototype-slice"><a href="#3、Array-prototype-slice" class="headerlink" title="3、Array.prototype.slice()"></a>3、Array.prototype.slice()</h3><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">var</span> <span class="string">obj = &#123;</span></span><br><span class="line">  <span class="attr">a</span>: <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">a</span>: <span class="string">&#x27;zhangsan&#x27;,</span></span><br><span class="line">    <span class="attr">b</span>: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"><span class="attr">var</span> <span class="string">copyObj = obj.slice();</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="四、深拷贝的实现方式"><a href="#四、深拷贝的实现方式" class="headerlink" title="四、深拷贝的实现方式"></a>四、深拷贝的实现方式</h2><h3 id="1、JSON-parse-JSON-stringify"><a href="#1、JSON-parse-JSON-stringify" class="headerlink" title="1、JSON.parse(JSON.stringify())"></a>1、JSON.parse(JSON.stringify())</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: &#123;</span><br><span class="line">    a: <span class="string">&#x27;zhangsan&#x27;</span>,</span><br><span class="line">    b: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> copyObj = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj));</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、手写递归方法"><a href="#2、手写递归方法" class="headerlink" title="2、手写递归方法"></a>2、手写递归方法</h3><p>遍历对象、数组直到里面都是基本数据类型，然后再去复制。</p>
-<h3 id="3、函数库-lodash"><a href="#3、函数库-lodash" class="headerlink" title="3、函数库 lodash"></a>3、函数库 lodash</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">&#x27;lodash&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: &#123;</span><br><span class="line">    a: <span class="string">&#x27;zhangsan&#x27;</span>,</span><br><span class="line">    b: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> copyObj = _.cloneDeep(obj);</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5b5dcf8351882519790c9a2e">浅拷贝与深拷贝</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/24/JS%EF%BC%9A%E8%B5%8B%E5%80%BC%E3%80%81%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -531,30 +451,14 @@
           <meta name="referrer" content="no-referrer"/>
 
 <h2 id="一、Vue-双向数据绑定"><a href="#一、Vue-双向数据绑定" class="headerlink" title="一、Vue 双向数据绑定"></a>一、Vue 双向数据绑定</h2><p><img src="https://upload-images.jianshu.io/upload_images/8560482-d18d5fe20c1ade5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/730/format/webp"></p>
-<p>vue 双向数据绑定是通过数据劫持和订阅者-发布者模式实现的</p>
-<ol>
-<li>实现一个监听器 Observer：对数据进行遍历，包括子属性对象的属性，利用 Object.defineProperty()或 Proxy 对属性都加上 setter 和 getter。这样给这个对象的某个值赋值，就会触发 setter，就能监听到了数据变化；</li>
-<li>实现一个解析器 Compile：解析 Vue 模板指令，将模板中的变量都替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变动，收到通知，调用更新函数进行数据更新；</li>
-<li>实现一个订阅者 Watcher：Watcher 订阅者是 Observer 和 Compile 之间通信的桥梁，主要的任务是订阅 Observer 中的属性值变化的消息，当收到属性值变化的消息时，触发解析器 Compile 中对应的更新函数</li>
-<li>实现一个订阅器 Dep：订阅器采用发布-订阅设计模式，用来收集订阅者 Watcher，对监听器 Observer 和订阅者 Watcher 进行统一管理</li>
-</ol>
-<p><strong>注意：</strong> Object.defineProperty()对数据进行劫持，但是 Object.defineProperty()只能对属性进行数据劫持，不能对整个对象进行劫持，同理无法对数组进行劫持，所以 Vue 框架是通过遍历数组的递归遍历对象，从而达到利用 Object.defineProperty()也能对对象和数组（部分方法的操作）进行监听。</p>
-<p><strong>代码实现：</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span>  <span class="attr">v-model</span>=<span class="string">&quot;number&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">v-click</span>=<span class="string">&quot;increment&quot;</span>&gt;</span>增加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">from</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span> <span class="attr">v-bind</span>=<span class="string">&quot;number&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span>  <span class="attr">v-model</span>=<span class="string">&quot;count&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">v-click</span>=<span class="string">&quot;incre&quot;</span>&gt;</span>增加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span> <span class="attr">v-bind</span>=<span class="string">&quot;count&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="function"><span class="keyword">function</span> <span class="title">myVue</span>(<span class="params">options</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>._init();</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">  myVue.prototype._init = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>.$options = options;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>.$el = <span class="built_in">document</span>.querySelector(options.el);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>.$data = options.data;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>.$methods = options.methods;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>._binding = &#123;&#125;;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>._obverse(<span class="built_in">this</span>.$data);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>._complie(<span class="built_in">this</span>.$el);</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">  myVue.prototype._obverse = <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> _this = <span class="built_in">this</span>;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">Object</span>.keys(obj).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123;</span></span><br><span class="line">      if (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">        _this._binding[key] = &#123;</span><br><span class="line">          _directives: []</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(_this._binding[key])</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> value = obj[key];</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (<span class="keyword">typeof</span> value === <span class="string">&#x27;object&#x27;</span>) &#123;</span></span><br><span class="line">          _this._obverse(value);</span><br><span class="line">        &#125;</span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> binding = _this._binding[key];</span></span><br><span class="line"><span class="javascript">        <span class="built_in">Object</span>.defineProperty(_this.$data, key, &#123;</span></span><br><span class="line"><span class="javascript">          enumerable: <span class="literal">true</span>,</span></span><br><span class="line"><span class="javascript">          configurable: <span class="literal">true</span>,</span></span><br><span class="line"><span class="javascript">          get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;key&#125;</span>获取<span class="subst">$&#123;value&#125;</span>`</span>);</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> value;</span></span><br><span class="line">          &#125;,</span><br><span class="line"><span class="javascript">          set: <span class="function"><span class="keyword">function</span> (<span class="params">newVal</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;key&#125;</span>更新<span class="subst">$&#123;newVal&#125;</span>`</span>);</span></span><br><span class="line">            if (value !== newVal) &#123;</span><br><span class="line">              value = newVal;</span><br><span class="line"><span class="javascript">              binding._directives.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span></span><br><span class="line">                item.update();</span><br><span class="line">              &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">  myVue.prototype._complie = <span class="function"><span class="keyword">function</span> (<span class="params">root</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> _this = <span class="built_in">this</span>;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> nodes = root.children;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; nodes.length; i++) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> node = nodes[i];</span></span><br><span class="line">      if (node.children.length) &#123;</span><br><span class="line"><span class="javascript">        <span class="built_in">this</span>._complie(node);</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span> (node.hasAttribute(<span class="string">&#x27;v-click&#x27;</span>)) &#123;</span></span><br><span class="line"><span class="javascript">        node.onclick = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">var</span> attrVal = nodes[i].getAttribute(<span class="string">&#x27;v-click&#x27;</span>);</span></span><br><span class="line"><span class="javascript">          <span class="keyword">return</span> _this.$methods[attrVal].bind(_this.$data);</span></span><br><span class="line">        &#125;)();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span> (node.hasAttribute(<span class="string">&#x27;v-model&#x27;</span>) &amp;&amp; (node.tagName = <span class="string">&#x27;INPUT&#x27;</span> || node.tagName == <span class="string">&#x27;TEXTAREA&#x27;</span>)) &#123;</span></span><br><span class="line"><span class="javascript">        node.addEventListener(<span class="string">&#x27;input&#x27;</span>, (<span class="function"><span class="keyword">function</span>(<span class="params">key</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">var</span> attrVal = node.getAttribute(<span class="string">&#x27;v-model&#x27;</span>);</span></span><br><span class="line"><span class="javascript">          _this._binding[attrVal]._directives.push(<span class="keyword">new</span> Watcher(</span></span><br><span class="line"><span class="javascript">            <span class="string">&#x27;input&#x27;</span>,</span></span><br><span class="line">            node,</span><br><span class="line">            _this,</span><br><span class="line">            attrVal,</span><br><span class="line"><span class="javascript">            <span class="string">&#x27;value&#x27;</span></span></span><br><span class="line">          ))</span><br><span class="line"></span><br><span class="line"><span class="javascript">          <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line">            _this.$data[attrVal] =  nodes[key].value;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)(i));</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span> (node.hasAttribute(<span class="string">&#x27;v-bind&#x27;</span>)) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> attrVal = node.getAttribute(<span class="string">&#x27;v-bind&#x27;</span>);</span></span><br><span class="line"><span class="javascript">        _this._binding[attrVal]._directives.push(<span class="keyword">new</span> Watcher(</span></span><br><span class="line"><span class="javascript">          <span class="string">&#x27;text&#x27;</span>,</span></span><br><span class="line">          node,</span><br><span class="line">          _this,</span><br><span class="line">          attrVal,</span><br><span class="line"><span class="javascript">          <span class="string">&#x27;innerHTML&#x27;</span></span></span><br><span class="line">        ))</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">  <span class="function"><span class="keyword">function</span> <span class="title">Watcher</span>(<span class="params">name, el, vm, exp, attr</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>.name = name;         <span class="comment">//指令名称，例如文本节点，该值设为&quot;text&quot;</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>.el = el;             <span class="comment">//指令对应的DOM元素</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>.vm = vm;             <span class="comment">//指令所属myVue实例</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>.exp = exp;           <span class="comment">//指令对应的值，本例如&quot;number&quot;</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>.attr = attr;         <span class="comment">//绑定的属性值，本例为&quot;innerHTML&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>.update();</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">  Watcher.prototype.update = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">this</span>.el[<span class="built_in">this</span>.attr] = <span class="built_in">this</span>.vm.$data[<span class="built_in">this</span>.exp];</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">  <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> app = <span class="keyword">new</span> myVue(&#123;</span></span><br><span class="line"><span class="javascript">      el:<span class="string">&#x27;#app&#x27;</span>,</span></span><br><span class="line">      data: &#123;</span><br><span class="line">        number: 0,</span><br><span class="line">        count: 0,</span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line"><span class="javascript">        increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.number ++;</span></span><br><span class="line">        &#125;,</span><br><span class="line"><span class="javascript">        incre: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">this</span>.count ++;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162ad3d5beb544b6?imageslim"></p>
-<h2 id="二、Proxy-和-Object-defineProperty-优劣势对比"><a href="#二、Proxy-和-Object-defineProperty-优劣势对比" class="headerlink" title="二、Proxy 和 Object.defineProperty 优劣势对比"></a>二、Proxy 和 Object.defineProperty 优劣势对比</h2><h3 id="1、Proxy-优势"><a href="#1、Proxy-优势" class="headerlink" title="1、Proxy 优势"></a>1、Proxy 优势</h3><ul>
-<li>Proxy 可以直接监听对象而非属性；</li>
-<li>Proxy 可以直接监听数组的变化；</li>
-<li>Proxy 有多达 13 种拦截方法，不限于 apply、ownKeys、deleteProperty、has 等等是 Object.defineProperty 不具备的；</li>
-<li>Proxy 返回的是一个新对象，我们可以只操作新的对象达到目的，而 Object.defineProperty()只能遍历对象属性直接修改；</li>
-<li>Proxy 作为新标准将受到浏览器厂商重点持续的性能优化，也就是传说中的新标准的性能红利</li>
-</ul>
-<h3 id="2、Object-defineProperty-优势"><a href="#2、Object-defineProperty-优势" class="headerlink" title="2、Object.defineProperty()优势"></a>2、Object.defineProperty()优势</h3><ul>
-<li>兼容性好，支持 IE9，而 Proxy 存在浏览器兼容性问题，而且无法用 polyfill 磨平，因此要在 vue3.0 才能用 Proxy</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5d229bfc5188252d707f3ac6">深入浅出 Vue 响应式原理（完整版）</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/19/vue%EF%BC%9A%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -644,61 +548,14 @@
           <meta name="referrer" content="no-referrer"/>
 
 <h2 id="一、Vue-生命周期"><a href="#一、Vue-生命周期" class="headerlink" title="一、Vue 生命周期"></a>一、Vue 生命周期</h2><p><a target="_blank" rel="noopener" href="https://cjy1.github.io/2019/10/19/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">参见总结：vue：生命周期</a></p>
-<h2 id="二、Vue-双向数据绑定原理"><a href="#二、Vue-双向数据绑定原理" class="headerlink" title="二、Vue 双向数据绑定原理"></a>二、Vue 双向数据绑定原理</h2><p><a target="_blank" rel="noopener" href="https://cjy1.github.io/2019/10/19/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/">参见总结：vue：双向绑定</a></p>
-<h2 id="三、v-show-和-v-if-的区别"><a href="#三、v-show-和-v-if-的区别" class="headerlink" title="三、v-show 和 v-if 的区别"></a>三、v-show 和 v-if 的区别</h2><p><strong>v-if</strong> 是<strong>真正</strong>的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建；也是<strong>惰性的</strong>：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。</p>
-<p><strong>v-show</strong> 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 的 “display” 属性进行切换。</p>
-<p>所以，v-if 适用于在运行时很少改变条件，不需要频繁切换条件的场景；v-show 则适用于需要非常频繁切换条件的场景。</p>
-<h2 id="四、MVVM"><a href="#四、MVVM" class="headerlink" title="四、MVVM"></a>四、MVVM</h2><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5af8eb55f265da0b814ba766">掘金：看完这篇关于 MVVM 的文章，面试通过率提升了 80%</a></p>
-<h2 id="五、虚拟-DOM"><a href="#五、虚拟-DOM" class="headerlink" title="五、虚拟 DOM"></a>五、虚拟 DOM</h2><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5d12c931f265da1bb2773fcc">掘金：揭秘 Vue 中的 Virtual Dom</a></p>
-<h2 id="六、key"><a href="#六、key" class="headerlink" title="六、key"></a>六、key</h2><p><img src="https://user-gold-cdn.xitu.io/2019/10/31/16e1f60b7d343768?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"><br><img src="https://user-gold-cdn.xitu.io/2019/10/31/16e1f6105886daf5?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"><br>key 的作用就是在更新组件时判断两个节点是否相同。相同就复用，不相同就删除旧的创建新的。</p>
-<ul>
-<li>key 会用在虚拟 DOM 算法（diff 算法）中，用来辨别新旧节点；</li>
-<li>不带 key 的时候会最大限度减少元素的变动，尽可能用相同的元素（就地复用）；</li>
-<li>带 key 的时候，会基于相同的 key 来进行排列（相同的复用）；</li>
-<li>带 key 还能触发过渡效果，以及触发组件的生命周期。</li>
-</ul>
-<h2 id="七、nextTick"><a href="#七、nextTick" class="headerlink" title="七、nextTick"></a>七、nextTick</h2><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5a6fdb846fb9a01cc0268618">掘金：简单理解 Vue 中的 nextTick</a></p>
-<h2 id="八、template-编译"><a href="#八、template-编译" class="headerlink" title="八、template 编译"></a>八、template 编译</h2><p>详情步骤：首先，通过 compile 编译器把 template 编译成 AST 语法树（abstractsyntaxtree 即源代码的抽象语法结构的树状表现形式），compile 是 createCompiler 的返回值，createCompiler 是用以创建编译器的。另外 compile 还负责合并 option。</p>
-<p>然后，AST 会经过 generate（将 AST 语法树转化成 renderfuntion 字符串的过程）得到 render 函数，render 的返回值是 VNode，VNode 是 Vue 的虚拟 DOM 节点，里面有（标签名、子节点、文本等等）</p>
-<h2 id="九、组件间通讯"><a href="#九、组件间通讯" class="headerlink" title="九、组件间通讯"></a>九、组件间通讯</h2><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5cde0b43f265da03867e78d3">掘金：Vue 组件间通信六种方式（完整版）</a></p>
-<h2 id="十、父子组件生命周期"><a href="#十、父子组件生命周期" class="headerlink" title="十、父子组件生命周期"></a>十、父子组件生命周期</h2><h3 id="1、加载渲染过程"><a href="#1、加载渲染过程" class="headerlink" title="1、加载渲染过程"></a>1、加载渲染过程</h3><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父<span class="function"><span class="title">beforeCreate</span>-&gt;</span>父<span class="function"><span class="title">created</span>-&gt;</span>父<span class="function"><span class="title">beforeMount</span>-&gt;</span>子<span class="function"><span class="title">beforeCreate</span>-&gt;</span>子<span class="function"><span class="title">created</span>-&gt;</span>子<span class="function"><span class="title">beforeMount</span>-&gt;</span>子<span class="function"><span class="title">mounted</span>-&gt;</span>父mounted</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、子组件更新过程"><a href="#2、子组件更新过程" class="headerlink" title="2、子组件更新过程"></a>2、子组件更新过程</h3><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父<span class="function"><span class="title">beforeUpdate</span>-&gt;</span>子<span class="function"><span class="title">beforeUpdate</span>-&gt;</span>子<span class="function"><span class="title">updated</span>-&gt;</span>父updated</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、父组件更新过程"><a href="#3、父组件更新过程" class="headerlink" title="3、父组件更新过程"></a>3、父组件更新过程</h3><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父<span class="function"><span class="title">beforeUpdate</span>-&gt;</span>父updated</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、销毁过程"><a href="#4、销毁过程" class="headerlink" title="4、销毁过程"></a>4、销毁过程</h3><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父<span class="function"><span class="title">beforeDestroy</span>-&gt;</span>子<span class="function"><span class="title">beforeDestroy</span>-&gt;</span>子<span class="function"><span class="title">destroyed</span>-&gt;</span>父destroyed</span><br></pre></td></tr></table></figure>
-
-<h2 id="十一、keep-alive"><a href="#十一、keep-alive" class="headerlink" title="十一、keep-alive"></a>十一、keep-alive</h2><p>如果想把切换出去的组件保留在内存中，并保留它的状态或避免重新渲染。为此可以添加一个 keep-alive 指令</p>
-<p><code>&lt;component:is=&#39;curremtView&#39; keep-alive&gt;&lt;/component&gt;</code></p>
-<h2 id="十二、Vuex"><a href="#十二、Vuex" class="headerlink" title="十二、Vuex"></a>十二、Vuex</h2><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5bbe15dcf265da0a867c57bd">掘金：从头开始学习 Vuex</a></p>
-<p>vuex 是一个状态管理容器(你也可以理解为类似于全局变量),数据的流向是是单向数据流</p>
-<table>
-<thead>
-<tr>
-<th>vuex</th>
-<th>vue</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>state</td>
-<td>data</td>
-</tr>
-<tr>
-<td>getters</td>
-<td>computed</td>
-</tr>
-<tr>
-<td>mutations</td>
-<td>methods（同步操作）</td>
-</tr>
-<tr>
-<td>actions</td>
-<td>methods（异步操作</td>
-</tr>
-</tbody></table>
-<h2 id="十三、vue版本之间的区别"><a href="#十三、vue版本之间的区别" class="headerlink" title="十三、vue版本之间的区别"></a>十三、vue版本之间的区别</h2><p><a href="">参见总结：vue：vue版本之间的区别</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9Avue/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -788,61 +645,14 @@
           <meta name="referrer" content="no-referrer"/>
 
 <h2 id="一、cookie"><a href="#一、cookie" class="headerlink" title="一、cookie"></a>一、cookie</h2><h3 id="1、cookie-的来源"><a href="#1、cookie-的来源" class="headerlink" title="1、cookie 的来源"></a>1、cookie 的来源</h3><p>cookie 的本质工作并非本地存储，而是“维持状态”。因为<strong>http 协议是无状态的，http 协议本身并不对请求和响应之间的通信状态进行保存</strong>，通常来说，服务器不知道用户上一次做了什么。</p>
-<h3 id="2、什么是-cookie-及应用场景"><a href="#2、什么是-cookie-及应用场景" class="headerlink" title="2、什么是 cookie 及应用场景"></a>2、什么是 cookie 及应用场景</h3><p><strong>cookie</strong>是某些网站为了辨别用户身份而存储在本地终端上的数据（通常经过加密）。</p>
-<p>cookie 是服务端生成，客户端进行维护和存储。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/3/20/1699babec3c4fcc4?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
-<p>cookie 以键值对的形式存在。</p>
-<p><strong>典型的应用场景</strong></p>
-<ul>
-<li>记住密码，下次自动登录</li>
-<li>购物车功能</li>
-<li>记录用户浏览数据，进行广告（商品）推荐</li>
-</ul>
-<h3 id="3、cookie-的原理"><a href="#3、cookie-的原理" class="headerlink" title="3、cookie 的原理"></a>3、cookie 的原理</h3><p><strong>cookie 原理</strong></p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/3/21/1699f22b7029ca14?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
-<ul>
-<li>第一次访问网站时，浏览器发出请求，服务器响应请求后，会在响应头重添加一个 Set-Cookie 选项，将 cookie 放入响应请求中，</li>
-<li>浏览器收到 Set-Cookie 选项后将它保存在本地</li>
-<li>在浏览器第二次发起请求时，通过 cookie 请求头部将 cookie 信息发送给服务器，服务端会辨别用户身份。</li>
-</ul>
-<h2 id="二、session"><a href="#二、session" class="headerlink" title="二、session"></a>二、session</h2><p>session 代表着服务器和客户端一次会话的过程。session 对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序中的 web 页之间跳转时，存储在 session 对象中的变量将不会丢失，而是在整个会话中一直存在下去。当客户端关闭会话，或者 session 超时失效后会话结束。</p>
-<h2 id="三、cookie-和-session-的关系"><a href="#三、cookie-和-session-的关系" class="headerlink" title="三、cookie 和 session 的关系"></a>三、cookie 和 session 的关系</h2><p><img src="https://user-gold-cdn.xitu.io/2019/5/13/16aafb5d90f398e2?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
-<ul>
-<li>用户第一次请求服务器时，服务器根据用户提交的相关信息，创建对应的 session，请求返回时将此 session 的唯一标识符 sessionID 返回给浏览器，</li>
-<li>浏览器收到 sessionID 后，将它保存在 cookie 中，同时 cookie 记录 sessionID 属于哪个域名</li>
-<li>当用户第二次访问服务器时，请求会自动判断此域名下是否存在 cookie 信息，如果存在自动将 cookie 信息也发送给服务端，服务端会从 cookie 中获取 sessionID，再根据 sessionID 查找对应的 session 信息，如果没有找到说明用户没有登录或者登录失效，如果找到 session 证明用户已经登录可执行后面操作</li>
-</ul>
-<h2 id="四、cookie-和-session-的区别"><a href="#四、cookie-和-session-的区别" class="headerlink" title="四、cookie 和 session 的区别"></a>四、cookie 和 session 的区别</h2><ul>
-<li><strong>存放位置不同</strong>，cookie 数据保存在客户端的浏览器上，session 数据保存在服务器上；</li>
-<li><strong>存取方式不同</strong>，cookie 只能是字符串，session 可以是任意数据类型</li>
-<li><strong>隐私策略不同</strong>，cookie 不是很安全，别人可以分析存放在本地的 cookie 并进行 cookie 欺骗，考虑到安全问题应该使用 session</li>
-<li><strong>存储大小不同</strong>，单个 cookie 保存的数据不能超过 4K，session 可存储数据远高于 4K</li>
-<li><strong>有效期不同</strong>，cookie 可以较长时间保存，session 在客户端关闭或者 session 超时都会失效</li>
-</ul>
-<h2 id="五、localStorage、sessionStorage、cookie-的区别"><a href="#五、localStorage、sessionStorage、cookie-的区别" class="headerlink" title="五、localStorage、sessionStorage、cookie 的区别"></a>五、localStorage、sessionStorage、cookie 的区别</h2><ul>
-<li><strong>http 请求</strong><ul>
-<li>cookie 每次都会携带在 HTTP 头中，如果使用 cookie 保存数据过多会带来性能问题</li>
-<li>sessionStorage 和 localStorage 不会把数据发送给服务器，仅在本地保存</li>
-</ul>
-</li>
-<li><strong>存储数据大小</strong><ul>
-<li>cookie 存储的数据不能超过 4K</li>
-<li>sessionStorage 和 localStorage 可以达到 5M 或更大</li>
-</ul>
-</li>
-<li><strong>数据存储有效期</strong><ul>
-<li>cookie 在设置的 cookie 过期时间之前有效，如果没有设置，默认是关闭浏览器后失效</li>
-<li>sessionStroage 仅在关闭当前窗口之前有效，关闭页面或浏览器后会被清除</li>
-<li>localStorage 始终有效，除非被手动清除</li>
-</ul>
-</li>
-<li><strong>易用性</strong><ul>
-<li>cookie 需要自己封装，原生的 cookie 接口不太友好</li>
-<li>localStorage 和 sessionStorage：原生接口可以接受，也可以再次封装来对 Object 和 Array 有更好的支持</li>
-</ul>
-</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/26/html%EF%BC%9Acookie%E3%80%81sessionStorage%E3%80%81localStorage%E8%AF%A6%E7%BB%86%E8%AE%B2%E8%A7%A3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -932,19 +742,14 @@
           <meta name="referrer" content="no-referrer"/>
 
 <h2 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h2><p>BFC（Block formatting context，块级格式化上下文），他是一个独立的渲染区域，只有 Block-level box 参与，他规定了内部的 Block-level box 如何布局，并且与这个区域外部毫不相干。通俗的讲，BFC 是一个容器，用于管理块级元素。</p>
-<h2 id="2、BFC-主要特征"><a href="#2、BFC-主要特征" class="headerlink" title="2、BFC 主要特征"></a>2、BFC 主要特征</h2><ul>
-<li>BFC 容器是一个隔离的容器，和其他元素互不干扰；所以我们可以用触发两个元素的 BFC 来解决垂直边距折叠问题</li>
-<li>BFC 不会重叠浮动元素</li>
-<li>BFC 可以包含浮动</li>
-</ul>
-<h2 id="3、BFC-触发方式"><a href="#3、BFC-触发方式" class="headerlink" title="3、BFC 触发方式"></a>3、BFC 触发方式</h2><ul>
-<li>float 为 left|right</li>
-<li>overflow 为 hidden|auto|scroll</li>
-<li>display 为 table-cell|table-caption|inline-block</li>
-<li>position 为 absolute|fixed</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5bc33d0d6fb9a05d1658afc7">深入理解 BFC</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/27/css%EF%BC%9ABFC%E8%A7%84%E8%8C%83/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

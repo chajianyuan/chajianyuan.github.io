@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"chajianyuan.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"ZFO5FC3GGP","apiKey":"ebb197ff3f64dd809727fafc95ab1151","indexName":"test_NAME","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一、Vue 生命周期参见总结：vue：生命周期 二、Vue 双向数据绑定原理参见总结：vue：双向绑定 三、v-show 和 v-if 的区别v-if 是真正的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建；也是惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。 v-show 就简单得多——不管初始条件是什么，元素总">
+  <meta name="description" content="一、Vue 生命周期参见总结：vue：生命周期">
 <meta property="og:type" content="article">
 <meta property="og:title" content="总结：vue">
 <meta property="og:url" content="https://chajianyuan.github.io/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9Avue/index.html">
 <meta property="og:site_name" content="查见原的博客">
-<meta property="og:description" content="一、Vue 生命周期参见总结：vue：生命周期 二、Vue 双向数据绑定原理参见总结：vue：双向绑定 三、v-show 和 v-if 的区别v-if 是真正的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建；也是惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。 v-show 就简单得多——不管初始条件是什么，元素总">
+<meta property="og:description" content="一、Vue 生命周期参见总结：vue：生命周期">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/10/31/16e1f60b7d343768?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/10/31/16e1f6105886daf5?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
@@ -278,6 +278,8 @@
         <meta name="referrer" content="no-referrer"/>
 
 <h2 id="一、Vue-生命周期"><a href="#一、Vue-生命周期" class="headerlink" title="一、Vue 生命周期"></a>一、Vue 生命周期</h2><p><a target="_blank" rel="noopener" href="https://cjy1.github.io/2019/10/19/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">参见总结：vue：生命周期</a></p>
+<a id="more"></a>
+
 <h2 id="二、Vue-双向数据绑定原理"><a href="#二、Vue-双向数据绑定原理" class="headerlink" title="二、Vue 双向数据绑定原理"></a>二、Vue 双向数据绑定原理</h2><p><a target="_blank" rel="noopener" href="https://cjy1.github.io/2019/10/19/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/">参见总结：vue：双向绑定</a></p>
 <h2 id="三、v-show-和-v-if-的区别"><a href="#三、v-show-和-v-if-的区别" class="headerlink" title="三、v-show 和 v-if 的区别"></a>三、v-show 和 v-if 的区别</h2><p><strong>v-if</strong> 是<strong>真正</strong>的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建；也是<strong>惰性的</strong>：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。</p>
 <p><strong>v-show</strong> 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 的 “display” 属性进行切换。</p>

@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"chajianyuan.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"ZFO5FC3GGP","apiKey":"ebb197ff3f64dd809727fafc95ab1151","indexName":"test_NAME","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一、数据类型1、基本数据类型number、string、Boolean、undefined、null、Symbol 2、引用数据类型Object(Array、Function、Date。。。) 3、基本数据类型和引用数据类型的区别（1）基本数据类型的值不可变，引用数据类型的值可变； （2）基本数据类型存储的是值，引用数据类型存储的是地址（指针）； （3）基本数据类型的比较是值得比较，引用数据类">
+  <meta name="description" content="一、数据类型1、基本数据类型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS：typeof、instanceof以及Object.prototyte.toString.call()">
 <meta property="og:url" content="https://chajianyuan.github.io/2019/10/13/JS%EF%BC%9Atypeof%E3%80%81instanceof%E4%BB%A5%E5%8F%8Aobject-prototyte-tostring-call/index.html">
 <meta property="og:site_name" content="查见原的博客">
-<meta property="og:description" content="一、数据类型1、基本数据类型number、string、Boolean、undefined、null、Symbol 2、引用数据类型Object(Array、Function、Date。。。) 3、基本数据类型和引用数据类型的区别（1）基本数据类型的值不可变，引用数据类型的值可变； （2）基本数据类型存储的是值，引用数据类型存储的是地址（指针）； （3）基本数据类型的比较是值得比较，引用数据类">
+<meta property="og:description" content="一、数据类型1、基本数据类型">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-10-13T06:11:06.000Z">
 <meta property="article:modified_time" content="2020-03-21T06:57:30.000Z">
@@ -274,7 +274,9 @@
       
         <meta name="referrer" content="no-referrer"/>
 
-<h2 id="一、数据类型"><a href="#一、数据类型" class="headerlink" title="一、数据类型"></a>一、数据类型</h2><h3 id="1、基本数据类型"><a href="#1、基本数据类型" class="headerlink" title="1、基本数据类型"></a>1、基本数据类型</h3><p>number、string、Boolean、undefined、null、Symbol</p>
+<h2 id="一、数据类型"><a href="#一、数据类型" class="headerlink" title="一、数据类型"></a>一、数据类型</h2><h3 id="1、基本数据类型"><a href="#1、基本数据类型" class="headerlink" title="1、基本数据类型"></a>1、基本数据类型</h3><a id="more"></a>
+
+<p>number、string、Boolean、undefined、null、Symbol</p>
 <h3 id="2、引用数据类型"><a href="#2、引用数据类型" class="headerlink" title="2、引用数据类型"></a>2、引用数据类型</h3><p>Object(Array、Function、Date。。。)</p>
 <h3 id="3、基本数据类型和引用数据类型的区别"><a href="#3、基本数据类型和引用数据类型的区别" class="headerlink" title="3、基本数据类型和引用数据类型的区别"></a>3、基本数据类型和引用数据类型的区别</h3><p>（1）基本数据类型的值不可变，引用数据类型的值可变；</p>
 <p>（2）基本数据类型存储的是值，引用数据类型存储的是地址（指针）；</p>

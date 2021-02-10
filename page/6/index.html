@@ -255,27 +255,14 @@
 
       
           <p><img src="https://pic3.zhimg.com/80/v2-120c6f2e62e740210a77ab3c87d65c0e_1440w.jpg"></p>
-<ul>
-<li><p>运行时版本 vue.runtime.js</p>
-<ul>
-<li><p>不支持从 html 获取视图；</p>
-</li>
-<li><p>不支持 template，需要通过 webpack 的工具 vue-loader 将组件，预编译 template 模板为 render 函数；</p>
-</li>
-<li><p>没有 complier 编译器，因此代码体积会比完整版小 40%，html 转化成节点。</p>
-<p><code>&lt;script src=&quot;https://cdn.bootcss.com/vue/2.6.9/vue.runtime.min.js&quot;&gt;&lt;/script&gt;</code></p>
-</li>
-</ul>
-</li>
-<li><p>完整版 vue.js</p>
-<ul>
-<li>支持从 html 获取视图；</li>
-<li>支持 template；</li>
-<li>有 complier 编译器，而 complier 可以将字符串<br><code>&lt;script src=&quot;https://cdn.bootcss.com/vue/2.6.10/vue.min.js&quot;&gt;&lt;/script&gt;</code></li>
-</ul>
-</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/27/vue%EF%BC%9Avue%E7%89%88%E6%9C%AC%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -360,7 +347,14 @@
 <li><strong>优点：</strong>no callback</li>
 <li><strong>缺点：</strong>content/express 的中间件基本不能重用，基本要重写；依然需要更多人的支持和学习。</li>
 </ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0koa.js/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -445,7 +439,14 @@
 <li><strong>优点：</strong>历史悠久，文档更完整，资料更多，深入人心；</li>
 <li><strong>缺点：</strong>不能忍的 callback</li>
 </ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/26/Node%EF%BC%9A%E5%AD%A6%E4%B9%A0Express.js/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -527,7 +528,14 @@
 
       
           <h2 id="1、Express-js"><a href="#1、Express-js" class="headerlink" title="1、Express.js"></a>1、Express.js</h2><p><a href="">参见总结：Node：学习 Express.js</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/26/%E6%80%BB%E7%BB%93%EF%BC%9ANode.js/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -610,44 +618,14 @@
       
           <h2 id="一、http"><a href="#一、http" class="headerlink" title="一、http"></a>一、http</h2><p><img src="https://user-gold-cdn.xitu.io/2018/6/11/163ef70cbdc63e95?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
 <p>HTTP 协议是 Hyper Text Transfer Protocol(超文本传输协议)的缩写，适用于从万维网服务器传输文本到本地浏览器的传送协议。</p>
-<h3 id="1、http-1-1-的缺陷"><a href="#1、http-1-1-的缺陷" class="headerlink" title="1、http/1.1 的缺陷"></a>1、http/1.1 的缺陷</h3><ul>
-<li>高延迟–带来页面加载速度的降低；</li>
-<li>无状态特性–带来的巨大 HTTP 头部；</li>
-<li>明文传输–带来的不安全性；</li>
-<li>不支持服务器推送消息。</li>
-</ul>
-<h3 id="2、http-2"><a href="#2、http-2" class="headerlink" title="2、http/2"></a>2、http/2</h3><p><strong>新特性：</strong></p>
-<ul>
-<li>二进制传输；</li>
-<li>Header 压缩；</li>
-<li>多路复用；</li>
-<li>Server Push；</li>
-<li>提高安全性</li>
-</ul>
-<p><strong>缺陷：</strong></p>
-<ul>
-<li>TCP 以及 TCP+TLS 建立连接的延时；</li>
-<li>TCP 的队头阻塞并没有彻底解决。</li>
-</ul>
-<h3 id="3、HTTP-3"><a href="#3、HTTP-3" class="headerlink" title="3、HTTP/3"></a>3、HTTP/3</h3><p><strong>QUIC</strong>是基于 UDP 的一个协议，让 http 跑在 QUIC 上而不是 TCP 上。而这个“HTTP over QUIC”就是 HTTP 协议的下一个大版本–HTTP/3。</p>
-<h4 id="QUIC-新功能"><a href="#QUIC-新功能" class="headerlink" title="QUIC 新功能"></a>QUIC 新功能</h4><ul>
-<li>实现了类似 TCP 的流量控制、传输可靠性的功能；</li>
-<li>实现了快速握手功；</li>
-<li>集成了 TLS 加密功能；</li>
-<li>多路复用，彻底解决 TCP 中队头阻塞的问题。</li>
-</ul>
-<h2 id="二、HTTPS"><a href="#二、HTTPS" class="headerlink" title="二、HTTPS"></a>二、HTTPS</h2><p>HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的 HTTP 通道，简单讲是 HTTP 的安全版。</p>
-<p><strong>HTTP 和 HTTPS 的区别：</strong></p>
-<ul>
-<li>HTTP 是明文传输，HTTPS 通过 SSL/TLS 进行了加密；</li>
-<li>HTTP 的端口号是 80，HTTPS 的是 443；</li>
-<li>HTTPS 需要到 CA 申请证书，一般免费证书很少，需要交费；</li>
-<li>HTTPS 的连接很简单，是无状态的；HTTPS 协议是 SSL+HTTP 协议构建的可进行加密传输、身份认证的网络协议，比 HTTP 协议安全。</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5b1e93aa5188257d3914280e">掘金：关于 http 协议，你必须要知道的</a></p>
-<p><a target="_blank" rel="noopener" href="https://juejin.im/post/5d9abde7e51d4578110dc77f">掘金：解密 http/2 与 http/3 的新特性</a></p>
-<p><a target="_blank" rel="noopener" href="https://juejin.im/post/59e4c02151882578d02f4aca">掘金：谈谈 HTTPS</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E5%92%8Chttps/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -729,21 +707,14 @@
 
       
           <h3 id="1、查找浏览器缓存，如果没有则进行-DNS-解析"><a href="#1、查找浏览器缓存，如果没有则进行-DNS-解析" class="headerlink" title="1、查找浏览器缓存，如果没有则进行 DNS 解析"></a>1、查找浏览器缓存，如果没有则进行 DNS 解析</h3><p>当在浏览器中输入一个 URL 时，最开始要去浏览器缓存中查找，浏览器缓存分为强缓存和协商缓存，强缓存指不需要向服务器发送请求，直接从缓存中读取资源，状态码为 200，协商缓存是指当强缓存失效后，浏览器携带缓存标识向服务器发送请求，如果资源没有改变就返回 304，更新缓存，如果资源改变就返回 200 和新的资源，如果浏览器中不存在缓存，就通过 DNS 服务器启动一个 DNS 查询，获得 URL 对应的 IP 地址</p>
-<h3 id="2、TCP-连接：TCP-三次握手"><a href="#2、TCP-连接：TCP-三次握手" class="headerlink" title="2、TCP 连接：TCP 三次握手"></a>2、TCP 连接：TCP 三次握手</h3><ul>
-<li>第一次握手，由浏览器发起，告诉服务器我要发起请求了</li>
-<li>第二次握手，由服务器发起，告诉浏览器，我已经准备接收了，你可以发送请求了</li>
-<li>第三次握手，由浏览器发起，告诉服务器，我马上发送了，准备接收吧</li>
-</ul>
-<p><strong>三次握手的目的</strong>：防止已失效的连接请求报文段突然又传送到了服务器端，因而产生错误</p>
-<h3 id="3、发送-HTTP-请求"><a href="#3、发送-HTTP-请求" class="headerlink" title="3、发送 HTTP 请求"></a>3、发送 HTTP 请求</h3><h3 id="4、服务器处理请求并返回-HTTP-报文"><a href="#4、服务器处理请求并返回-HTTP-报文" class="headerlink" title="4、服务器处理请求并返回 HTTP 报文"></a>4、服务器处理请求并返回 HTTP 报文</h3><h3 id="5、浏览器解析渲染页面"><a href="#5、浏览器解析渲染页面" class="headerlink" title="5、浏览器解析渲染页面"></a>5、浏览器解析渲染页面</h3><ol>
-<li>根据 HTML 解析 DOM 树</li>
-<li>根据 CSS 解析生成 CSS 规则树</li>
-<li>结合 DOM 树和 CSS 规则树，生成渲染树</li>
-<li>根据渲染树计算每一个节点的信息</li>
-<li>根据计算好的信息绘制页面</li>
-</ol>
-<h3 id="6、断开连接：TCP-四次挥手"><a href="#6、断开连接：TCP-四次挥手" class="headerlink" title="6、断开连接：TCP 四次挥手"></a>6、断开连接：TCP 四次挥手</h3><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5bf3ad55f265da61682afc9b">掘金：从 URL 输入到页面展现到底发生什么？</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/24/%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%E4%B8%80%E4%B8%AAURL%E4%BB%8E%E8%BE%93%E5%85%A5%E5%88%B0%E6%98%BE%E7%A4%BA%E7%9A%84%E8%BF%87%E7%A8%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -833,64 +804,14 @@
           <meta name="referrer" content="no-referrer"/>
 
 <h2 id="一、线程和进程"><a href="#一、线程和进程" class="headerlink" title="一、线程和进程"></a>一、线程和进程</h2><p>javascript 是单线程的，也就是说同一个时间只能做一件事。作为浏览器脚本语言，JavaScript 的主要用途是与用户互动，以及操作 DOM。如果浏览器同时有两个线程，一个线程在某个 DOM 节点上添加内容，另一个线程是删除这个节点，那浏览器应该以哪个线程为主呢？</p>
-<h3 id="1、进程"><a href="#1、进程" class="headerlink" title="1、进程"></a>1、进程</h3><p>CPU 资源分配的最小单位（是能拥有资源和独立运行的最小单位），进程是指在系统中正在运行的一个应用程序，是系统资源分配的基本单位，在内存中有其完备的数据空间和代码空间，拥有完备的虚拟空间地址。一个进程所拥有的数据和变量只属于他自己</p>
-<h3 id="2、线程"><a href="#2、线程" class="headerlink" title="2、线程"></a>2、线程</h3><p>CPU 调度的最小单位（线程是建立在进程的基础上的一次程序运行单位，一个进程中可以有多个线程），线程是进程内相对独立的可执行单元，所以也被称为轻量进程，是操作系统进行任务调度的基本单元。它与父进程的其他线程共享该进程所拥有的全部代码空间和全局变量，但拥有私有的局部变量</p>
-<h3 id="3、联系"><a href="#3、联系" class="headerlink" title="3、联系"></a>3、联系</h3><p>一个进程至少拥有一个线程（主线程），一个线程必须有一个父进程。多个进程可以并发执行；一个线程可以创建或撤销另一个线程；同一个进程中的多个线程之间可以并发执行。</p>
-<h3 id="4、进程和线程的区别"><a href="#4、进程和线程的区别" class="headerlink" title="4、进程和线程的区别"></a>4、进程和线程的区别</h3><ol>
-<li>进程是资源分配和保护的基本单位，线程是处理器调度和分派的基本单位，程序执行的最小单元；</li>
-<li>同一个进程中可以包含多个线程，并且线程共享整个进程的资源（寄存器、堆栈、上下文），一个进程至少包含一个线程；</li>
-<li>进程结束后，它所有的线程都将销毁，而线程的结束不会影响同个进程中其他线程的结束；</li>
-<li>线程是轻量级的进程，它的创建和销毁所需时间和空间都比进程小很多，所有操作系统的执行功能都是创建线程去完成的；</li>
-<li>线程有自己的私有属性 TCB，线程 id，寄存器、硬件上下文，而进程也有自己的私有属性进程控制块 PCB，这些私有属性是不被共享的，用来标示一个进程或一个线程的标志；<br>6 <strong>系统开销</strong>：在创建或撤销进程时，系统都要为它分配或回收资源，导致系统的开销明显大于创建或撤销线程时的开销；<br>7 <strong>资源管理</strong>：进程有独立的地址空间，一个进程崩溃后不会对其他进程产生影响，一个线程死掉会导致整个进程都死掉；<br>8 <strong>通信方式</strong>：进程间通信包括管道、系统 IPC（包括消息队列，信号量，共享存储）、SOCKET 等，进程间的通信方式同样适用于线程之间的通信，但是一个进程之间的多个线程使用全局变量通信更高效。</li>
-</ol>
-<h2 id="二、同步和异步"><a href="#二、同步和异步" class="headerlink" title="二、同步和异步"></a>二、同步和异步</h2><p>任务分为同步任务和异步任务</p>
-<h3 id="1、同步任务"><a href="#1、同步任务" class="headerlink" title="1、同步任务"></a>1、同步任务</h3><p>如果在函数返回的时候，调用者就能够得到预期结果（即拿到了预期的返回值或者看到了预期的效果）</p>
-<h3 id="2、异步任务"><a href="#2、异步任务" class="headerlink" title="2、异步任务"></a>2、异步任务</h3><p>如果在函数返回的时候，调用者还不能得到预期结果，而是需要在将来通过一定的手段得到，那么这个函数就是异步的</p>
-<h4 id="异步详解"><a href="#异步详解" class="headerlink" title="异步详解"></a>异步详解</h4><p><strong>一个异步过程通常是</strong></p>
-<ol>
-<li>主线程发出一个异步请求，异步任务接到请求并告知主线程已经收到（异步函数返回）；</li>
-<li>主线程可以继续执行后面的代码，同时异步操作开始执行；</li>
-<li>执行完成后通知主线程；</li>
-<li>主线程收到通知后，执行一定的动作（调用回调函数）</li>
-</ol>
-<p><strong>异步类型</strong></p>
-<ol>
-<li>普通事件，如 click、resize 等</li>
-<li>资源加载，如 load、error 等</li>
-<li>定时器，包括 setInterval、setTimeout 等</li>
-</ol>
-<p><strong>消息队列</strong></p>
-<p>也叫任务队列、事件队列，总之是和异步任务相关的队列。</p>
-<p>不管异步任务是什么时候开始执行的，只要异步操作执行完成，他就会被添加到消息队列中排队。</p>
-<p>消息就是注册异步任务时添加的回调函数。</p>
-<h2 id="三、事件循环"><a href="#三、事件循环" class="headerlink" title="三、事件循环"></a>三、事件循环</h2><p><img src="https://user-gold-cdn.xitu.io/2018/11/23/16740fa4cd9c6937?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
-<p><strong>步骤</strong></p>
-<ol>
-<li>所有同步任务都在主线程上执行，形成一个执行栈</li>
-<li>主线程之外，还存在一个“消息队列”，只要异步操作执行完成，就到消息队列中排队</li>
-<li>一旦执行栈中的所有同步任务执行完毕，系统就会按次序读取消息队列中的异步任务，于是被读取的异步任务就结束了等待状态，进入到执行栈开始执行</li>
-<li>主线程不断重复上面的第三步</li>
-</ol>
-<p><strong>微任务</strong></p>
-<p>process.nextTick，promise，MutationObserver，其中，process.nextTick 为 Node 独有</p>
-<p><strong>宏任务</strong></p>
-<p>script，setTimeout，setInterval，setImmediate，I/O，UI rendering</p>
-<p>宏任务中包括了 script，浏览器会先执行一个宏任务，接下来有异步代码的话才会先执行微任务。</p>
-<p>宏任务=&gt;所有微任务=&gt;宏任务，如下图：<br><img src="https://user-gold-cdn.xitu.io/2018/6/16/164081cfd8400f92?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
-<h3 id="面试题实践"><a href="#面试题实践" class="headerlink" title="面试题实践"></a>面试题实践</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span></span><br><span class="line">  &#125;)</span><br><span class="line"><span class="javascript">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>)=&gt;</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span></span><br><span class="line">    resolve(3);</span><br><span class="line"><span class="javascript">  &#125;).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(res);</span></span><br><span class="line">  &#125;)</span><br><span class="line"><span class="javascript">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>问题：以上代码的打印顺序是什么？</strong></p>
-<ol>
-<li>先执行 script 同步代码，执行 new Promise 中的<code>console.log(2)</code>，then 后面的不执行，但是属于微任务，然后执行<code>console.log(4)</code>；</li>
-<li>执行完 script 宏任务后，执行微任务<code>console.log(res)=&gt;3</code>;</li>
-<li>执行另一个宏任务，定时器<code>console.log(1)</code>。</li>
-</ol>
-<p>所以最终输出的是 2,4,3,1。</p>
-<h2 id="四、同步变异步"><a href="#四、同步变异步" class="headerlink" title="四、同步变异步"></a>四、同步变异步</h2><p>每一个消息完整的执行后，其他消息才会被执行，这点提供了一些优秀的特性，包括每当一个函数运行时，他不能被抢占，并且在其他代码运行完之前完全运行。</p>
-<p>但是有一个缺点是当消息需要太长时间才能完成，Web 应用无法处理用户的交互，例如点击或滚动。</p>
-<p>于是处理这种情况常见的优化就是同步变异步。</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaohuochai/p/8527618.html#anchor4">深入理解 JavaScript 中的事件循环 event-loop</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/18/%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AFEeventloop/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -985,24 +906,14 @@
 <li>从事件触发处往 window 传播，遇到注册的冒泡事件会触发</li>
 </ul>
 <p>事件触发一般会按照上面的顺序执行，但是也有例外，如果给一个 body 中的子节点同时注册冒泡和捕获事件，事件触发会按照注册的顺序执行。</p>
-<h2 id="2、注册事件"><a href="#2、注册事件" class="headerlink" title="2、注册事件"></a>2、注册事件</h2><p>通常使用<code>addEventListener</code> 注册事件，该函数的第三个参数可以是布尔值，也可以是对象。对于布尔值 useCapture 参数来说，该参数默认值是<code>false</code>， <code>useCapture</code>决定了注册的事件是捕获事件还是冒泡事件。对于对象参数来说，可以使用以下几个属性：</p>
-<ul>
-<li><code>capture</code>：布尔值，和<code>useCapture</code>作用一样</li>
-<li><code>once</code>：布尔值，值为<code>true</code>表示该回调只会调用一次，调用后会移除监听</li>
-<li><code>passive</code>：布尔值，表示永远不会调用<code>preventDefault</code></li>
-</ul>
-<p>一般来说，如果我们只希望事件只触发在目标上，这时候可以使用<code>stopPropagation</code>来阻止事件的进一步传播。通常我们认为<code>stopPropagation</code>是用来阻止事件冒泡的，其实该函数也可以阻止捕获事件。<code>stopImmediatePropagation</code>同样也能实现阻止事件，但是还能阻止该事件目标执行别的注册事件。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">node.addEventListener(</span><br><span class="line">  <span class="string">&#x27;click&#x27;</span>,</span><br><span class="line">  event =&gt; &#123;</span><br><span class="line">    event.stopImmediatePropagation()</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;冒泡&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="literal">false</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">// 点击 node 只会执行上面的函数，该函数不会执行</span></span><br><span class="line">node.addEventListener(</span><br><span class="line">  <span class="string">&#x27;click&#x27;</span>,</span><br><span class="line">  event =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;捕获 &#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="literal">true</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<h2 id="3、事件代理-事件委托"><a href="#3、事件代理-事件委托" class="headerlink" title="3、事件代理/事件委托"></a>3、事件代理/事件委托</h2><p>如果一个节点中的子节点是动态生成的，那么子节点需要注册事件的话应该注册在父节点上</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;ul&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#ul&#x27;</span>)</span></span><br><span class="line"><span class="javascript">	ul.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(event.target);</span></span><br><span class="line">	&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>事件代理的方式相较于直接给目标注册事件来说，有以下优点：</p>
-<ul>
-<li>节省内存</li>
-<li>不需要给子节点注销事件</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/19/%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1091,53 +1002,15 @@
       
           <meta name="referrer" content="no-referrer"/>
 
-<h2 id="一、容器的属性"><a href="#一、容器的属性" class="headerlink" title="一、容器的属性"></a>一、容器的属性</h2><h3 id="1、flex-direction"><a href="#1、flex-direction" class="headerlink" title="1、flex-direction"></a>1、flex-direction</h3><p>定义主轴的方向。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071005.png"></p>
-<h3 id="2、flex-wrap"><a href="#2、flex-wrap" class="headerlink" title="2、flex-wrap"></a>2、flex-wrap</h3><p>定义如果一行排不下，如何换行。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row;</span><br><span class="line">  <span class="attribute">flex-wrap</span>: npwrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071007.png" alt="nowrap"><br><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071008.jpg" alt="wrap"><br><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071009.jpg" alt="wrap-reverse"></p>
-<h3 id="3、flex-flow"><a href="#3、flex-flow" class="headerlink" title="3、flex-flow"></a>3、flex-flow</h3><p>flex-direction 和 flex-wrap 的简写，默认值为 row nowrap。</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">  flex-flow：<span class="params">&lt;flex-direction&gt;</span> || <span class="params">&lt;flex-row&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、justify-content"><a href="#4、justify-content" class="headerlink" title="4、justify-content"></a>4、justify-content</h3><p>定义了项目在主轴上的对齐方式。</p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="built_in">box</span> &#123;</span><br><span class="line">  <span class="built_in">display</span>: flex;</span><br><span class="line">  justify-<span class="built_in">content</span>：flex-start | flex-end | <span class="built_in">center</span> | <span class="built_in">space</span>-between | <span class="built_in">space</span>-around;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071010.png"></p>
-<h3 id="5、align-items"><a href="#5、align-items" class="headerlink" title="5、align-items"></a>5、align-items</h3><p>定义了项目在交叉轴上如何对齐。</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  align-items：flex-start | <span class="type">flex</span>-<span class="keyword">end</span> | <span class="type">center</span> | <span class="type">baseline</span> | <span class="type">stretch</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071011.png"></p>
-<h3 id="6、align-content"><a href="#6、align-content" class="headerlink" title="6、align-content"></a>6、align-content</h3><p>定义了多个项目在主轴上的对齐方式。如果只有一个项目则该属性不奏效。</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  align-content：flex-start | <span class="type">flex</span>-<span class="keyword">end</span> | <span class="type">center</span> | <span class="type">space</span>-between | <span class="type">space</span>-around | <span class="type">stretch</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071012.png"></p>
-<h2 id="二、项目的属性"><a href="#二、项目的属性" class="headerlink" title="二、项目的属性"></a>二、项目的属性</h2><h3 id="1、order"><a href="#1、order" class="headerlink" title="1、order"></a>1、order</h3><p>定义项目的排列顺序。数值越小，排列越靠前，默认值为 0。</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  order： <span class="params">&lt;integer&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071013.png"></p>
-<h3 id="2、flex-grow"><a href="#2、flex-grow" class="headerlink" title="2、flex-grow"></a>2、flex-grow</h3><p>定义项目的放大比例，默认值为 0，即如果存在剩余空间，也不放大。</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  flex-grow：<span class="params">&lt;number&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071014.png"></p>
-<h3 id="3、flex-shrink"><a href="#3、flex-shrink" class="headerlink" title="3、flex-shrink"></a>3、flex-shrink</h3><p>定义了项目的缩小比例，默认值为 1，即如果空间不足，该项目将缩小。</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  flex-shrink：<span class="params">&lt;number&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071015.jpg"></p>
-<h3 id="4、flex-basis"><a href="#4、flex-basis" class="headerlink" title="4、flex-basis"></a>4、flex-basis</h3><p>定义了在分配多余空间之前，项目占据的主轴空间，浏览器根据这个属性，计算主轴是否有多余空间。默认值为 auto，即项目本身的大小。</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  flex-basis：<span class="params">&lt;length&gt;</span> | auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5、flex"><a href="#5、flex" class="headerlink" title="5、flex"></a>5、flex</h3><p>flex-grow，flex-shrink，flex-basis 的简写，默认值为 0 1 auto。后两个属性可选。</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  flex：none | <span class="params">&lt;flex-grow&gt;</span> <span class="params">&lt;flex-shrink&gt;</span>? || <span class="params">&lt;flex-basis&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="6、align-self"><a href="#6、align-self" class="headerlink" title="6、align-self"></a>6、align-self</h3><p>允许单个项目有不同于其他项目在交叉轴上的对齐方式，可以覆盖 align-items。默认为 auto，表示继承父元素的 align-items 属性，如果父元素没有 align-items 属性，则等同于 stretch。</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.item &#123;</span><br><span class="line">  align-self：<span class="built_in">auto</span> | <span class="type">flex</span>-start | <span class="type">flex</span>-<span class="keyword">end</span> | <span class="type">center</span> | <span class="type">baseline</span> | <span class="type">stretch</span>；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071016.png"></p>
-<p>参照<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">阮一峰的 Flex 布局教程</a></p>
-
+<h2 id="一、容器的属性"><a href="#一、容器的属性" class="headerlink" title="一、容器的属性"></a>一、容器的属性</h2><h3 id="1、flex-direction"><a href="#1、flex-direction" class="headerlink" title="1、flex-direction"></a>1、flex-direction</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/13/css%EF%BC%9Aflex%E5%B8%83%E5%B1%80/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1221,19 +1094,14 @@
           <h3 id="1、css-的引入方式有三种"><a href="#1、css-的引入方式有三种" class="headerlink" title="1、css 的引入方式有三种"></a>1、css 的引入方式有三种</h3><p>（1）行内式将样式写在元素的 style 属性里面</p>
 <p>（2）内嵌式将样式写在&lt; style &gt;元素里面</p>
 <p>（3）外链式指通过 link 标签引入 css 文件</p>
-<h3 id="2、link-和-import-引入样式文件的区别"><a href="#2、link-和-import-引入样式文件的区别" class="headerlink" title="2、link 和@import 引入样式文件的区别"></a>2、link 和@import 引入样式文件的区别</h3><p>（1）加载资源的限制</p>
-<p>link 是 XHTML 的标签，除了加载 css 文件之外，还能加载 RSS 等其他事务，如加载模板等；</p>
-<p>@import 只能加载 css 文件</p>
-<p>（2）加载方式</p>
-<p>用 link 引用 css，在页面载入时同时加载，即同步加载；</p>
-<p>用@import 引用 css，则需要等到网页完全载入后，再加载 css 文件，即异步加载</p>
-<p>（3）兼容性</p>
-<p>link 是 XHTML 标签，没有兼容问题</p>
-<p>@import 是在 css2.1 中提出的，不支持低版本的浏览器</p>
-<p>（4）改变样式</p>
-<p>link 的标签是 DOM 元素，支持使用 JavaScript 控制 DOM 和修改样式</p>
-<p>@import 是一种方法，不支持控制 DOM 和修改元素</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/22/css%EF%BC%9Acss%E7%9A%84%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

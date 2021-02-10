@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"chajianyuan.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"ZFO5FC3GGP","apiKey":"ebb197ff3f64dd809727fafc95ab1151","indexName":"test_NAME","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一、线程和进程javascript 是单线程的，也就是说同一个时间只能做一件事。作为浏览器脚本语言，JavaScript 的主要用途是与用户互动，以及操作 DOM。如果浏览器同时有两个线程，一个线程在某个 DOM 节点上添加内容，另一个线程是删除这个节点，那浏览器应该以哪个线程为主呢？ 1、进程CPU 资源分配的最小单位（是能拥有资源和独立运行的最小单位），进程是指在系统中正在运行的一个应用程">
+  <meta name="description" content="一、线程和进程javascript 是单线程的，也就是说同一个时间只能做一件事。作为浏览器脚本语言，JavaScript 的主要用途是与用户互动，以及操作 DOM。如果浏览器同时有两个线程，一个线程在某个 DOM 节点上添加内容，另一个线程是删除这个节点，那浏览器应该以哪个线程为主呢？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浏览器：事件循环Eeventloop">
 <meta property="og:url" content="https://chajianyuan.github.io/2019/10/18/%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AFEeventloop/index.html">
 <meta property="og:site_name" content="查见原的博客">
-<meta property="og:description" content="一、线程和进程javascript 是单线程的，也就是说同一个时间只能做一件事。作为浏览器脚本语言，JavaScript 的主要用途是与用户互动，以及操作 DOM。如果浏览器同时有两个线程，一个线程在某个 DOM 节点上添加内容，另一个线程是删除这个节点，那浏览器应该以哪个线程为主呢？ 1、进程CPU 资源分配的最小单位（是能拥有资源和独立运行的最小单位），进程是指在系统中正在运行的一个应用程">
+<meta property="og:description" content="一、线程和进程javascript 是单线程的，也就是说同一个时间只能做一件事。作为浏览器脚本语言，JavaScript 的主要用途是与用户互动，以及操作 DOM。如果浏览器同时有两个线程，一个线程在某个 DOM 节点上添加内容，另一个线程是删除这个节点，那浏览器应该以哪个线程为主呢？">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/23/16740fa4cd9c6937?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/16/164081cfd8400f92?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
@@ -278,6 +278,8 @@
         <meta name="referrer" content="no-referrer"/>
 
 <h2 id="一、线程和进程"><a href="#一、线程和进程" class="headerlink" title="一、线程和进程"></a>一、线程和进程</h2><p>javascript 是单线程的，也就是说同一个时间只能做一件事。作为浏览器脚本语言，JavaScript 的主要用途是与用户互动，以及操作 DOM。如果浏览器同时有两个线程，一个线程在某个 DOM 节点上添加内容，另一个线程是删除这个节点，那浏览器应该以哪个线程为主呢？</p>
+<a id="more"></a>
+
 <h3 id="1、进程"><a href="#1、进程" class="headerlink" title="1、进程"></a>1、进程</h3><p>CPU 资源分配的最小单位（是能拥有资源和独立运行的最小单位），进程是指在系统中正在运行的一个应用程序，是系统资源分配的基本单位，在内存中有其完备的数据空间和代码空间，拥有完备的虚拟空间地址。一个进程所拥有的数据和变量只属于他自己</p>
 <h3 id="2、线程"><a href="#2、线程" class="headerlink" title="2、线程"></a>2、线程</h3><p>CPU 调度的最小单位（线程是建立在进程的基础上的一次程序运行单位，一个进程中可以有多个线程），线程是进程内相对独立的可执行单元，所以也被称为轻量进程，是操作系统进行任务调度的基本单元。它与父进程的其他线程共享该进程所拥有的全部代码空间和全局变量，但拥有私有的局部变量</p>
 <h3 id="3、联系"><a href="#3、联系" class="headerlink" title="3、联系"></a>3、联系</h3><p>一个进程至少拥有一个线程（主线程），一个线程必须有一个父进程。多个进程可以并发执行；一个线程可以创建或撤销另一个线程；同一个进程中的多个线程之间可以并发执行。</p>
