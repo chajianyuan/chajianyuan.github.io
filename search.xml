@@ -261,6 +261,30 @@
       </tags>
   </entry>
   <entry>
+    <title>JS：for..in和for..of的区别</title>
+    <url>/2019/10/17/JS%EF%BC%9Afor-in%E5%92%8Cfor-of%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+
+<h2 id="1、for…in"><a href="#1、for…in" class="headerlink" title="1、for…in"></a>1、for…in</h2><p><strong>for…in 主要用于遍历对象，取到的是 key</strong></p>
+<p><strong>缺陷</strong></p>
+<ol>
+<li>索引是字符串类型的数字，因而不能直接进行几何运算</li>
+<li>遍历顺序可能不是实际的内部顺序</li>
+<li>for…in 会遍历数组所有的可枚举属性，包括原型</li>
+</ol>
+<h2 id="2、for…of"><a href="#2、for…of" class="headerlink" title="2、for…of"></a>2、for…of</h2><p><strong>for…of 只能遍历数组，取到的是 value</strong></p>
+<h2 id="3、总结"><a href="#3、总结" class="headerlink" title="3、总结"></a>3、总结</h2><p><strong>for…in 遍历对象或返回的是 key</strong></p>
+<p><strong>for…of 遍历对象会报错，遍历数组返回的是 value</strong></p>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;<span class="string">&quot;one&quot;</span>:<span class="number">1</span>,<span class="string">&quot;two&quot;</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> a)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(i)  =&gt;  one  two</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> a)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(i)  =&gt;  Uncaught TypeError: a <span class="keyword">is</span> <span class="keyword">not</span> iterable</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> b)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(i)  =&gt;  <span class="number">0</span>  <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> b)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(i)  =&gt;  <span class="number">3</span>  <span class="number">4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS：call、apply、bind</title>
     <url>/2019/10/15/JS%EF%BC%9Acall%E3%80%81apply%E3%80%81bind/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer"/>
@@ -295,30 +319,6 @@
 <li>apply 将除第一个以外的所有参数都放在一个数组中作为第二个参数。</li>
 </ul>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">fn</span><span class="selector-class">.apply</span>(<span class="selector-tag">obj</span>, <span class="selector-attr">[arg1, arg2, arg3...]</span>);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS：for..in和for..of的区别</title>
-    <url>/2019/10/17/JS%EF%BC%9Afor-in%E5%92%8Cfor-of%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
-
-<h2 id="1、for…in"><a href="#1、for…in" class="headerlink" title="1、for…in"></a>1、for…in</h2><p><strong>for…in 主要用于遍历对象，取到的是 key</strong></p>
-<p><strong>缺陷</strong></p>
-<ol>
-<li>索引是字符串类型的数字，因而不能直接进行几何运算</li>
-<li>遍历顺序可能不是实际的内部顺序</li>
-<li>for…in 会遍历数组所有的可枚举属性，包括原型</li>
-</ol>
-<h2 id="2、for…of"><a href="#2、for…of" class="headerlink" title="2、for…of"></a>2、for…of</h2><p><strong>for…of 只能遍历数组，取到的是 value</strong></p>
-<h2 id="3、总结"><a href="#3、总结" class="headerlink" title="3、总结"></a>3、总结</h2><p><strong>for…in 遍历对象或返回的是 key</strong></p>
-<p><strong>for…of 遍历对象会报错，遍历数组返回的是 value</strong></p>
-<figure class="highlight livescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;<span class="string">&quot;one&quot;</span>:<span class="number">1</span>,<span class="string">&quot;two&quot;</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> a)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(i)  =&gt;  one  two</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> a)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(i)  =&gt;  Uncaught TypeError: a <span class="keyword">is</span> <span class="keyword">not</span> iterable</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> b)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(i)  =&gt;  <span class="number">0</span>  <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> b)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(i)  =&gt;  <span class="number">3</span>  <span class="number">4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -692,6 +692,40 @@
       </tags>
   </entry>
   <entry>
+    <title>JS：数组去重</title>
+    <url>/2019/10/16/JS%EF%BC%9A%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+
+<h3 id="1、ES6-中-Set-去重"><a href="#1、ES6-中-Set-去重" class="headerlink" title="1、ES6 中 Set 去重"></a>1、ES6 中 Set 去重</h3><p>set 中成员的值都是唯一的，没有重复的值，set 内部会判断两个值是否不同</p>
+<p><code>Array.from(new Set(arr))</code></p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">Array.<span class="keyword">from</span>(new Set(arr))  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、利用-for-嵌套-for，然后用-splice-去重"><a href="#2、利用-for-嵌套-for，然后用-splice-去重" class="headerlink" title="2、利用 for 嵌套 for，然后用 splice 去重"></a>2、利用 for 嵌套 for，然后用 splice 去重</h3><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span><span class="params">(arr)</span>&#123;</span></span><br><span class="line">  <span class="keyword">for</span>(let <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; arr.<span class="built_in">length</span>; <span class="built_in">i</span>++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(let <span class="built_in">j</span> = <span class="built_in">i</span> + <span class="number">1</span>; <span class="built_in">j</span> &lt; arr.<span class="built_in">length</span>; <span class="built_in">j</span>++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(arr[<span class="built_in">i</span>] == arr[<span class="built_in">j</span>])&#123;</span><br><span class="line">        arr.splice(<span class="built_in">j</span>, <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">j</span>--;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、利用-indexOf-去重"><a href="#3、利用-indexOf-去重" class="headerlink" title="3、利用 indexOf 去重"></a>3、利用 indexOf 去重</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line"> let array = []</span><br><span class="line">  for(let i = <span class="number">0</span>; i &lt;arr.length; i++)&#123;</span><br><span class="line">    if(array.indexOf(arr[i]) == <span class="number">-1</span>)&#123;</span><br><span class="line">    	array.push(arr[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array;  =&gt; [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、sort"><a href="#4、sort" class="headerlink" title="4、sort()"></a>4、sort()</h3><p>利用 sort()排序方法，然后根据排序后的结果进行 遍历及相邻元素比对</p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line"> arr = arr.sort();</span><br><span class="line"> let array = [arr[<span class="number">0</span>]];</span><br><span class="line"> for(let i = <span class="number">1</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">   if(arr[i] != arr[i<span class="number">-1</span>])&#123;</span><br><span class="line">     array.push(arr[i])</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> return array;  =&gt;  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、includes"><a href="#5、includes" class="headerlink" title="5、includes"></a>5、includes</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line">  let array = [];</span><br><span class="line">  for(let i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">     if(!array.includes(arr[i]))&#123;</span><br><span class="line">       array.push(arr[i])</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array;  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6、hasOwnProperty"><a href="#6、hasOwnProperty" class="headerlink" title="6、hasOwnProperty"></a>6、hasOwnProperty</h3><p>利用 hasOwnProperty 判断是否存在对象属性</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> obj = &#123;&#125;</span><br><span class="line">  <span class="keyword">return</span> arr.filter(<span class="function">(<span class="params">item, index, arr</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> obj.hasOwnProperty(<span class="keyword">typeof</span> item + item) ? <span class="literal">false</span> : (obj[<span class="keyword">typeof</span> item + item] = <span class="literal">true</span>)</span><br><span class="line">  &#125;)  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7、filter"><a href="#7、filter" class="headerlink" title="7、filter"></a>7、filter</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line">  return arr.filter((item, index, arr)=&gt;&#123;</span><br><span class="line">    return arr.indexOf(item, <span class="number">0</span>) === index</span><br><span class="line">  &#125;)  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8、Map"><a href="#8、Map" class="headerlink" title="8、Map"></a>8、Map</h3><figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line">  <span class="built_in">let</span> <span class="built_in">map</span> = <span class="built_in">new</span> Map();</span><br><span class="line">  <span class="built_in">let</span> <span class="built_in">array</span> = []</span><br><span class="line">  <span class="keyword">for</span>(<span class="built_in">let</span> i of arr)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">map</span>[i])&#123;</span><br><span class="line">      <span class="built_in">map</span>[i] = i;</span><br><span class="line">      <span class="built_in">array</span>.<span class="built_in">push</span>(i)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> <span class="built_in">array</span>;  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9、-…new-Set-arr"><a href="#9、-…new-Set-arr" class="headerlink" title="9、[…new Set(arr)]"></a>9、[…new Set(arr)]</h3><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">arr = [...new Set(arr)]  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS：数组方法</title>
     <url>/2019/10/14/JS%EF%BC%9A%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer"/>
@@ -771,40 +805,6 @@
 <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">array</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">array</span>.reduce((acc,current)=&gt;acc+current,<span class="number">0</span>)  =&gt;  <span class="number">15</span></span><br><span class="line"><span class="built_in">array</span>  =&gt;  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
 
 <p>​</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS：数组去重</title>
-    <url>/2019/10/16/JS%EF%BC%9A%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
-
-<h3 id="1、ES6-中-Set-去重"><a href="#1、ES6-中-Set-去重" class="headerlink" title="1、ES6 中 Set 去重"></a>1、ES6 中 Set 去重</h3><p>set 中成员的值都是唯一的，没有重复的值，set 内部会判断两个值是否不同</p>
-<p><code>Array.from(new Set(arr))</code></p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">Array.<span class="keyword">from</span>(new Set(arr))  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、利用-for-嵌套-for，然后用-splice-去重"><a href="#2、利用-for-嵌套-for，然后用-splice-去重" class="headerlink" title="2、利用 for 嵌套 for，然后用 splice 去重"></a>2、利用 for 嵌套 for，然后用 splice 去重</h3><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span><span class="params">(arr)</span>&#123;</span></span><br><span class="line">  <span class="keyword">for</span>(let <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; arr.<span class="built_in">length</span>; <span class="built_in">i</span>++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(let <span class="built_in">j</span> = <span class="built_in">i</span> + <span class="number">1</span>; <span class="built_in">j</span> &lt; arr.<span class="built_in">length</span>; <span class="built_in">j</span>++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(arr[<span class="built_in">i</span>] == arr[<span class="built_in">j</span>])&#123;</span><br><span class="line">        arr.splice(<span class="built_in">j</span>, <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">j</span>--;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、利用-indexOf-去重"><a href="#3、利用-indexOf-去重" class="headerlink" title="3、利用 indexOf 去重"></a>3、利用 indexOf 去重</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line"> let array = []</span><br><span class="line">  for(let i = <span class="number">0</span>; i &lt;arr.length; i++)&#123;</span><br><span class="line">    if(array.indexOf(arr[i]) == <span class="number">-1</span>)&#123;</span><br><span class="line">    	array.push(arr[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array;  =&gt; [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、sort"><a href="#4、sort" class="headerlink" title="4、sort()"></a>4、sort()</h3><p>利用 sort()排序方法，然后根据排序后的结果进行 遍历及相邻元素比对</p>
-<figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line"> arr = arr.sort();</span><br><span class="line"> let array = [arr[<span class="number">0</span>]];</span><br><span class="line"> for(let i = <span class="number">1</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">   if(arr[i] != arr[i<span class="number">-1</span>])&#123;</span><br><span class="line">     array.push(arr[i])</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> return array;  =&gt;  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5、includes"><a href="#5、includes" class="headerlink" title="5、includes"></a>5、includes</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line">  let array = [];</span><br><span class="line">  for(let i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">     if(!array.includes(arr[i]))&#123;</span><br><span class="line">       array.push(arr[i])</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array;  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="6、hasOwnProperty"><a href="#6、hasOwnProperty" class="headerlink" title="6、hasOwnProperty"></a>6、hasOwnProperty</h3><p>利用 hasOwnProperty 判断是否存在对象属性</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> obj = &#123;&#125;</span><br><span class="line">  <span class="keyword">return</span> arr.filter(<span class="function">(<span class="params">item, index, arr</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> obj.hasOwnProperty(<span class="keyword">typeof</span> item + item) ? <span class="literal">false</span> : (obj[<span class="keyword">typeof</span> item + item] = <span class="literal">true</span>)</span><br><span class="line">  &#125;)  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="7、filter"><a href="#7、filter" class="headerlink" title="7、filter"></a>7、filter</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line">  return arr.filter((item, index, arr)=&gt;&#123;</span><br><span class="line">    return arr.indexOf(item, <span class="number">0</span>) === index</span><br><span class="line">  &#125;)  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="8、Map"><a href="#8、Map" class="headerlink" title="8、Map"></a>8、Map</h3><figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">function fun(arr)&#123;</span><br><span class="line">  <span class="built_in">let</span> <span class="built_in">map</span> = <span class="built_in">new</span> Map();</span><br><span class="line">  <span class="built_in">let</span> <span class="built_in">array</span> = []</span><br><span class="line">  <span class="keyword">for</span>(<span class="built_in">let</span> i of arr)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">map</span>[i])&#123;</span><br><span class="line">      <span class="built_in">map</span>[i] = i;</span><br><span class="line">      <span class="built_in">array</span>.<span class="built_in">push</span>(i)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> <span class="built_in">array</span>;  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="9、-…new-Set-arr"><a href="#9、-…new-Set-arr" class="headerlink" title="9、[…new Set(arr)]"></a>9、[…new Set(arr)]</h3><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">let arr = [<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">arr = [...new Set(arr)]  =&gt;  [<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -921,6 +921,26 @@
 <li>position 为 absolute|fixed</li>
 </ul>
 <p><a href="https://juejin.im/post/5bc33d0d6fb9a05d1658afc7">深入理解 BFC</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>css：css动画</title>
+    <url>/2019/08/22/css%EF%BC%9Acss%E5%8A%A8%E7%94%BB/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+
+<h3 id="一、使用-css3-中-animation-属性（-keyframes-规则）"><a href="#一、使用-css3-中-animation-属性（-keyframes-规则）" class="headerlink" title="一、使用 css3 中 animation 属性（@keyframes 规则）"></a>一、使用 css3 中 animation 属性（@keyframes 规则）</h3><p>当在 <strong>@keyframes</strong> 创建动画，把它绑定到一个选择器，否则动画不会有任何效果。</p>
+<p>指定至少这两个 CSS3 的动画属性绑定向一个选择器：</p>
+<ul>
+<li>规定动画的名称</li>
+<li>规定动画的时长</li>
+</ul>
+<p>参见<a href="https://www.runoob.com/css3/css3-animations.html">css3 动画</a></p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1082,21 +1102,10 @@
       </tags>
   </entry>
   <entry>
-    <title>css：css动画</title>
-    <url>/2019/08/22/css%EF%BC%9Acss%E5%8A%A8%E7%94%BB/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
-
-<h3 id="一、使用-css3-中-animation-属性（-keyframes-规则）"><a href="#一、使用-css3-中-animation-属性（-keyframes-规则）" class="headerlink" title="一、使用 css3 中 animation 属性（@keyframes 规则）"></a>一、使用 css3 中 animation 属性（@keyframes 规则）</h3><p>当在 <strong>@keyframes</strong> 创建动画，把它绑定到一个选择器，否则动画不会有任何效果。</p>
-<p>指定至少这两个 CSS3 的动画属性绑定向一个选择器：</p>
-<ul>
-<li>规定动画的名称</li>
-<li>规定动画的时长</li>
-</ul>
-<p>参见<a href="https://www.runoob.com/css3/css3-animations.html">css3 动画</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
+    <title>css: css新特性</title>
+    <url>/2020/10/28/css%EF%BC%9Acss%E6%96%B0%E7%89%B9%E6%80%A7/</url>
+    <content><![CDATA[<p>🔗 <a href="https://mp.weixin.qq.com/s/HbfThzav79GFS-sMirAINA">2020年你不应该错过的CSS新特性</a></p>
+<h3 id="🍀-Web动效"><a href="#🍀-Web动效" class="headerlink" title="🍀 Web动效"></a>🍀 Web动效</h3><h5 id="🍃-动态模糊"><a href="#🍃-动态模糊" class="headerlink" title="🍃 动态模糊"></a>🍃 动态模糊</h5>]]></content>
       <tags>
         <tag>css</tag>
       </tags>
@@ -1123,15 +1132,6 @@
       <categories>
         <category>技术</category>
       </categories>
-      <tags>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>css: css新特性</title>
-    <url>/2020/10/28/css%EF%BC%9Acss%E6%96%B0%E7%89%B9%E6%80%A7/</url>
-    <content><![CDATA[<p>🔗 <a href="https://mp.weixin.qq.com/s/HbfThzav79GFS-sMirAINA">2020年你不应该错过的CSS新特性</a></p>
-<h3 id="🍀-Web动效"><a href="#🍀-Web动效" class="headerlink" title="🍀 Web动效"></a>🍀 Web动效</h3><h5 id="🍃-动态模糊"><a href="#🍃-动态模糊" class="headerlink" title="🍃 动态模糊"></a>🍃 动态模糊</h5>]]></content>
       <tags>
         <tag>css</tag>
       </tags>
@@ -1174,65 +1174,6 @@
 <li>若是 元素选择符/伪元素选择符，则分别加 0.0.0.1</li>
 </ul>
 <p><strong>算法</strong>：将每条规则中，选择符对应的数相加后得到的”四位数“，从左到右进行比较，大的优先级越高。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>css：flex布局</title>
-    <url>/2019/10/13/css%EF%BC%9Aflex%E5%B8%83%E5%B1%80/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
-
-<h2 id="一、容器的属性"><a href="#一、容器的属性" class="headerlink" title="一、容器的属性"></a>一、容器的属性</h2><h3 id="1、flex-direction"><a href="#1、flex-direction" class="headerlink" title="1、flex-direction"></a>1、flex-direction</h3><p>定义主轴的方向。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071005.png"></p>
-<h3 id="2、flex-wrap"><a href="#2、flex-wrap" class="headerlink" title="2、flex-wrap"></a>2、flex-wrap</h3><p>定义如果一行排不下，如何换行。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row;</span><br><span class="line">  <span class="attribute">flex-wrap</span>: npwrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071007.png" alt="nowrap"><br><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071008.jpg" alt="wrap"><br><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071009.jpg" alt="wrap-reverse"></p>
-<h3 id="3、flex-flow"><a href="#3、flex-flow" class="headerlink" title="3、flex-flow"></a>3、flex-flow</h3><p>flex-direction 和 flex-wrap 的简写，默认值为 row nowrap。</p>
-<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">  flex-flow：<span class="params">&lt;flex-direction&gt;</span> || <span class="params">&lt;flex-row&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、justify-content"><a href="#4、justify-content" class="headerlink" title="4、justify-content"></a>4、justify-content</h3><p>定义了项目在主轴上的对齐方式。</p>
-<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">.<span class="built_in">box</span> &#123;</span><br><span class="line">  <span class="built_in">display</span>: flex;</span><br><span class="line">  justify-<span class="built_in">content</span>：flex-start | flex-end | <span class="built_in">center</span> | <span class="built_in">space</span>-between | <span class="built_in">space</span>-around;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071010.png"></p>
-<h3 id="5、align-items"><a href="#5、align-items" class="headerlink" title="5、align-items"></a>5、align-items</h3><p>定义了项目在交叉轴上如何对齐。</p>
-<figure class="highlight coq"><table><tr><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  align-items：flex-start | <span class="type">flex</span>-<span class="keyword">end</span> | <span class="type">center</span> | <span class="type">baseline</span> | <span class="type">stretch</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071011.png"></p>
-<h3 id="6、align-content"><a href="#6、align-content" class="headerlink" title="6、align-content"></a>6、align-content</h3><p>定义了多个项目在主轴上的对齐方式。如果只有一个项目则该属性不奏效。</p>
-<figure class="highlight coq"><table><tr><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  align-content：flex-start | <span class="type">flex</span>-<span class="keyword">end</span> | <span class="type">center</span> | <span class="type">space</span>-between | <span class="type">space</span>-around | <span class="type">stretch</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071012.png"></p>
-<h2 id="二、项目的属性"><a href="#二、项目的属性" class="headerlink" title="二、项目的属性"></a>二、项目的属性</h2><h3 id="1、order"><a href="#1、order" class="headerlink" title="1、order"></a>1、order</h3><p>定义项目的排列顺序。数值越小，排列越靠前，默认值为 0。</p>
-<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  order： <span class="params">&lt;integer&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071013.png"></p>
-<h3 id="2、flex-grow"><a href="#2、flex-grow" class="headerlink" title="2、flex-grow"></a>2、flex-grow</h3><p>定义项目的放大比例，默认值为 0，即如果存在剩余空间，也不放大。</p>
-<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  flex-grow：<span class="params">&lt;number&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071014.png"></p>
-<h3 id="3、flex-shrink"><a href="#3、flex-shrink" class="headerlink" title="3、flex-shrink"></a>3、flex-shrink</h3><p>定义了项目的缩小比例，默认值为 1，即如果空间不足，该项目将缩小。</p>
-<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  flex-shrink：<span class="params">&lt;number&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071015.jpg"></p>
-<h3 id="4、flex-basis"><a href="#4、flex-basis" class="headerlink" title="4、flex-basis"></a>4、flex-basis</h3><p>定义了在分配多余空间之前，项目占据的主轴空间，浏览器根据这个属性，计算主轴是否有多余空间。默认值为 auto，即项目本身的大小。</p>
-<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  flex-basis：<span class="params">&lt;length&gt;</span> | auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5、flex"><a href="#5、flex" class="headerlink" title="5、flex"></a>5、flex</h3><p>flex-grow，flex-shrink，flex-basis 的简写，默认值为 0 1 auto。后两个属性可选。</p>
-<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  flex：none | <span class="params">&lt;flex-grow&gt;</span> <span class="params">&lt;flex-shrink&gt;</span>? || <span class="params">&lt;flex-basis&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="6、align-self"><a href="#6、align-self" class="headerlink" title="6、align-self"></a>6、align-self</h3><p>允许单个项目有不同于其他项目在交叉轴上的对齐方式，可以覆盖 align-items。默认为 auto，表示继承父元素的 align-items 属性，如果父元素没有 align-items 属性，则等同于 stretch。</p>
-<figure class="highlight coq"><table><tr><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.item &#123;</span><br><span class="line">  align-self：<span class="built_in">auto</span> | <span class="type">flex</span>-start | <span class="type">flex</span>-<span class="keyword">end</span> | <span class="type">center</span> | <span class="type">baseline</span> | <span class="type">stretch</span>；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071016.png"></p>
-<p>参照<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">阮一峰的 Flex 布局教程</a></p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1341,6 +1282,65 @@
 <p><strong>注意</strong>：如果两个定位元素重叠，没有指定 z-index，最后定位在 HTML 代码中的元素将被显示在最前面</p>
 <h2 id="四、position-absolute和-float-的异同"><a href="#四、position-absolute和-float-的异同" class="headerlink" title="四、position: absolute和 float 的异同"></a>四、<code>position: absolute</code>和 <code>float</code> 的异同</h2><p><strong>共同点：</strong> 可以让元素脱离文档流，如果是内联元素，可以为它设置宽高</p>
 <p><strong>不同点：</strong> float 仍可以占据位置，不会覆盖在另一个 BFC 区域上，浮动的框可以向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止，如果浮动盒子后面是个非浮动盒子，浮动盒子会覆盖非浮动盒子，但是非浮动盒子中的内容不会被覆盖，会环绕在浮动盒子四周；absolute 会覆盖文档流中的其他元素，即出现遮盖元素</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>css：flex布局</title>
+    <url>/2019/10/13/css%EF%BC%9Aflex%E5%B8%83%E5%B1%80/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+
+<h2 id="一、容器的属性"><a href="#一、容器的属性" class="headerlink" title="一、容器的属性"></a>一、容器的属性</h2><h3 id="1、flex-direction"><a href="#1、flex-direction" class="headerlink" title="1、flex-direction"></a>1、flex-direction</h3><p>定义主轴的方向。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071005.png"></p>
+<h3 id="2、flex-wrap"><a href="#2、flex-wrap" class="headerlink" title="2、flex-wrap"></a>2、flex-wrap</h3><p>定义如果一行排不下，如何换行。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row;</span><br><span class="line">  <span class="attribute">flex-wrap</span>: npwrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071007.png" alt="nowrap"><br><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071008.jpg" alt="wrap"><br><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071009.jpg" alt="wrap-reverse"></p>
+<h3 id="3、flex-flow"><a href="#3、flex-flow" class="headerlink" title="3、flex-flow"></a>3、flex-flow</h3><p>flex-direction 和 flex-wrap 的简写，默认值为 row nowrap。</p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">  flex-flow：<span class="params">&lt;flex-direction&gt;</span> || <span class="params">&lt;flex-row&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、justify-content"><a href="#4、justify-content" class="headerlink" title="4、justify-content"></a>4、justify-content</h3><p>定义了项目在主轴上的对齐方式。</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">.<span class="built_in">box</span> &#123;</span><br><span class="line">  <span class="built_in">display</span>: flex;</span><br><span class="line">  justify-<span class="built_in">content</span>：flex-start | flex-end | <span class="built_in">center</span> | <span class="built_in">space</span>-between | <span class="built_in">space</span>-around;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071010.png"></p>
+<h3 id="5、align-items"><a href="#5、align-items" class="headerlink" title="5、align-items"></a>5、align-items</h3><p>定义了项目在交叉轴上如何对齐。</p>
+<figure class="highlight coq"><table><tr><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  align-items：flex-start | <span class="type">flex</span>-<span class="keyword">end</span> | <span class="type">center</span> | <span class="type">baseline</span> | <span class="type">stretch</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071011.png"></p>
+<h3 id="6、align-content"><a href="#6、align-content" class="headerlink" title="6、align-content"></a>6、align-content</h3><p>定义了多个项目在主轴上的对齐方式。如果只有一个项目则该属性不奏效。</p>
+<figure class="highlight coq"><table><tr><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  align-content：flex-start | <span class="type">flex</span>-<span class="keyword">end</span> | <span class="type">center</span> | <span class="type">space</span>-between | <span class="type">space</span>-around | <span class="type">stretch</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071012.png"></p>
+<h2 id="二、项目的属性"><a href="#二、项目的属性" class="headerlink" title="二、项目的属性"></a>二、项目的属性</h2><h3 id="1、order"><a href="#1、order" class="headerlink" title="1、order"></a>1、order</h3><p>定义项目的排列顺序。数值越小，排列越靠前，默认值为 0。</p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  order： <span class="params">&lt;integer&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071013.png"></p>
+<h3 id="2、flex-grow"><a href="#2、flex-grow" class="headerlink" title="2、flex-grow"></a>2、flex-grow</h3><p>定义项目的放大比例，默认值为 0，即如果存在剩余空间，也不放大。</p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  flex-grow：<span class="params">&lt;number&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071014.png"></p>
+<h3 id="3、flex-shrink"><a href="#3、flex-shrink" class="headerlink" title="3、flex-shrink"></a>3、flex-shrink</h3><p>定义了项目的缩小比例，默认值为 1，即如果空间不足，该项目将缩小。</p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  flex-shrink：<span class="params">&lt;number&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071015.jpg"></p>
+<h3 id="4、flex-basis"><a href="#4、flex-basis" class="headerlink" title="4、flex-basis"></a>4、flex-basis</h3><p>定义了在分配多余空间之前，项目占据的主轴空间，浏览器根据这个属性，计算主轴是否有多余空间。默认值为 auto，即项目本身的大小。</p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  flex-basis：<span class="params">&lt;length&gt;</span> | auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、flex"><a href="#5、flex" class="headerlink" title="5、flex"></a>5、flex</h3><p>flex-grow，flex-shrink，flex-basis 的简写，默认值为 0 1 auto。后两个属性可选。</p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line">.<span class="class">box </span>&#123;</span><br><span class="line"><span class="symbol">  display:</span> flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="class">item </span>&#123;</span><br><span class="line">  flex：none | <span class="params">&lt;flex-grow&gt;</span> <span class="params">&lt;flex-shrink&gt;</span>? || <span class="params">&lt;flex-basis&gt;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6、align-self"><a href="#6、align-self" class="headerlink" title="6、align-self"></a>6、align-self</h3><p>允许单个项目有不同于其他项目在交叉轴上的对齐方式，可以覆盖 align-items。默认为 auto，表示继承父元素的 align-items 属性，如果父元素没有 align-items 属性，则等同于 stretch。</p>
+<figure class="highlight coq"><table><tr><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.item &#123;</span><br><span class="line">  align-self：<span class="built_in">auto</span> | <span class="type">flex</span>-start | <span class="type">flex</span>-<span class="keyword">end</span> | <span class="type">center</span> | <span class="type">baseline</span> | <span class="type">stretch</span>；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071016.png"></p>
+<p>参照<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">阮一峰的 Flex 布局教程</a></p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1464,83 +1464,6 @@
       </tags>
   </entry>
   <entry>
-    <title>css：实现文字自动滚动（animation属性和@keyframes规则）</title>
-    <url>/2021/01/08/css%EF%BC%9A%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%EF%BC%88animation%E5%B1%9E%E6%80%A7%E5%92%8C@keyframes%E8%A7%84%E5%88%99%EF%BC%89/</url>
-    <content><![CDATA[<p>使用css的animation属性和@keyframes规则，实现中奖信息的滚动播报</p>
-<p>要创建 css3 动画，需要了解@keyframes 规则</p>
-<ul>
-<li>@keyframes 规则是创建动画</li>
-<li>@keyframes 规则内指定一个 CSS 样式动画将逐步从目前的样式更改为新的样式</li>
-</ul>
-<p>当在 <strong>@keyframes</strong> 创建动画，把它绑定到一个选择器，否则动画不会有任何效果。</p>
-<p>指定至少这两个 CSS3 的动画属性绑定向一个选择器：</p>
-<ul>
-<li>规定动画的名称</li>
-<li>规定动画的时长</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>keyframes</td>
-<td>规定动画。</td>
-</tr>
-<tr>
-<td>animation</td>
-<td>所有动画属性的简写属性，除了 animation-play-state 属性。</td>
-</tr>
-<tr>
-<td>animation-name</td>
-<td>规定 @keyframes 动画的名称。</td>
-</tr>
-<tr>
-<td>animation-duration</td>
-<td>规定动画完成一个周期所花费的秒或毫秒。默认是 0。</td>
-</tr>
-<tr>
-<td>animation-timing-function</td>
-<td>规定动画的速度曲线。默认是 “ease”。</td>
-</tr>
-<tr>
-<td>animation-fill-mode</td>
-<td>规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式。</td>
-</tr>
-<tr>
-<td>animation-delay</td>
-<td>规定动画何时开始。默认是 0。</td>
-</tr>
-<tr>
-<td>animation-iteration-count</td>
-<td>规定动画被播放的次数。默认是 1。</td>
-</tr>
-<tr>
-<td>animation-direction</td>
-<td>规定动画是否在下一周期逆向地播放。默认是 “normal”。</td>
-</tr>
-<tr>
-<td>animation-play-state</td>
-<td>规定动画是否正在运行或暂停。默认是 “running”。</td>
-</tr>
-</tbody></table>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">div&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">	<span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">	<span class="attribute">background</span>:red;</span><br><span class="line">	<span class="attribute">position</span>:relative;</span><br><span class="line">	<span class="attribute">animation-name</span>:myfirst;</span><br><span class="line">	<span class="attribute">animation-duration</span>:<span class="number">5s</span>;</span><br><span class="line">	<span class="attribute">animation-timing-function</span>:linear;</span><br><span class="line">	<span class="attribute">animation-delay</span>:<span class="number">2s</span>;</span><br><span class="line">	<span class="attribute">animation-iteration-count</span>:infinite;</span><br><span class="line">	<span class="attribute">animation-direction</span>:alternate;</span><br><span class="line">	<span class="attribute">animation-play-state</span>:running;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes myfirst</span><br><span class="line">&#123;</span><br><span class="line">	<span class="number">0%</span>   &#123;<span class="attribute">background</span>:red; <span class="attribute">left</span>:<span class="number">0px</span>; <span class="attribute">top</span>:<span class="number">0px</span>;&#125;</span><br><span class="line">	<span class="number">25%</span>  &#123;<span class="attribute">background</span>:yellow; <span class="attribute">left</span>:<span class="number">200px</span>; <span class="attribute">top</span>:<span class="number">0px</span>;&#125;</span><br><span class="line">	<span class="number">50%</span>  &#123;<span class="attribute">background</span>:blue; <span class="attribute">left</span>:<span class="number">200px</span>; <span class="attribute">top</span>:<span class="number">200px</span>;&#125;</span><br><span class="line">	<span class="number">75%</span>  &#123;<span class="attribute">background</span>:green; <span class="attribute">left</span>:<span class="number">0px</span>; <span class="attribute">top</span>:<span class="number">200px</span>;&#125;</span><br><span class="line">	<span class="number">100%</span> &#123;<span class="attribute">background</span>:red; <span class="attribute">left</span>:<span class="number">0px</span>; <span class="attribute">top</span>:<span class="number">0px</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="animation-和-transition-的异同"><a href="#animation-和-transition-的异同" class="headerlink" title="animation 和 transition 的异同"></a>animation 和 transition 的异同</h3><p><strong>相同：</strong> 功能相同，都是通过改变元素的属性值来实现动画效果的。</p>
-<p><strong>不同：</strong> transition 只能用指定属性的开始值和结束值，然后在这两个属性值之间使用平滑过渡的方式实现动画效果，因此不能实现比较复杂的动画效果；animation 通过定义多个关键帧，以及定义每个关键帧中元素的属性值来实现更为复杂的动画效果。</p>
-<p>以react.js为例</p>
-<p>JSX部分</p>
-<figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;prize-info&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">  </span><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;rowup&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">    </span><span class="xquery">&#123;</span></span><br><span class="line"><span class="xquery">      winners.<span class="keyword">map</span>(<span class="type">item</span> =&gt; &lt;div<span class="built_in"> key</span>=&#123;<span class="type">item</span>.nick&#125;</span><span class="xml"> className=&quot;winner-info&quot;&gt;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">className</span>=<span class="string">&quot;prize-img&quot;</span> <span class="attr">src</span>=</span></span><span class="xquery">&#123;<span class="type">item</span>.headerpic ? <span class="type">item</span>.headerpic : defaultAvatar&#125;</span><span class="xml"><span class="tag"> /&gt;</span></span></span><br><span class="line"><span class="xml">        </span><span class="xquery">&#123;<span class="type">item</span>.nick&#125;</span><span class="xml">已获得</span><span class="xquery">&#123;<span class="type">item</span>.price&#125;</span><span class="xml">元试用资格</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="xml">)</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>CSS部分</p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.prize-info</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: rgba(<span class="number">#FFFFFF</span>, .<span class="number">19</span>);</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">0.63rem</span>;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">9.5rem</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">padding</span>: .<span class="number">15rem</span> .<span class="number">7rem</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: .<span class="number">55rem</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="selector-class">.winner-info</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: .<span class="number">2rem</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.prize-img</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: .<span class="number">7rem</span>;</span><br><span class="line">    <span class="attribute">height</span>: .<span class="number">7rem</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">border</span>: solid <span class="number">1px</span> <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: .<span class="number">15rem</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.prize-info</span> <span class="selector-class">.rowup</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>: .<span class="number">85rem</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation</span>: <span class="number">10s</span> rowup linear infinite normal;</span><br><span class="line">  <span class="attribute">animation</span>: <span class="number">10s</span> rowup linear infinite normal;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> rowup &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">      -webkit-<span class="attribute">transform</span>: translate3d(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">      <span class="attribute">transform</span>: translate3d(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">      -webkit-<span class="attribute">transform</span>: translate3d(<span class="number">0</span>, -<span class="number">8em</span>, <span class="number">0</span>);</span><br><span class="line">      <span class="attribute">transform</span>: translate3d(<span class="number">0</span>, -<span class="number">8rem</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>待更～（后续会记录使用websocket时时更新数据）</p>
-]]></content>
-  </entry>
-  <entry>
     <title>css：水平垂直居中</title>
     <url>/2019/10/16/css%EF%BC%9A%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer"/>
@@ -1631,6 +1554,83 @@
       <tags>
         <tag>css</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>css：实现文字自动滚动（animation属性和@keyframes规则）</title>
+    <url>/2021/01/08/css%EF%BC%9A%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%EF%BC%88animation%E5%B1%9E%E6%80%A7%E5%92%8C@keyframes%E8%A7%84%E5%88%99%EF%BC%89/</url>
+    <content><![CDATA[<p>使用css的animation属性和@keyframes规则，实现中奖信息的滚动播报</p>
+<p>要创建 css3 动画，需要了解@keyframes 规则</p>
+<ul>
+<li>@keyframes 规则是创建动画</li>
+<li>@keyframes 规则内指定一个 CSS 样式动画将逐步从目前的样式更改为新的样式</li>
+</ul>
+<p>当在 <strong>@keyframes</strong> 创建动画，把它绑定到一个选择器，否则动画不会有任何效果。</p>
+<p>指定至少这两个 CSS3 的动画属性绑定向一个选择器：</p>
+<ul>
+<li>规定动画的名称</li>
+<li>规定动画的时长</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>keyframes</td>
+<td>规定动画。</td>
+</tr>
+<tr>
+<td>animation</td>
+<td>所有动画属性的简写属性，除了 animation-play-state 属性。</td>
+</tr>
+<tr>
+<td>animation-name</td>
+<td>规定 @keyframes 动画的名称。</td>
+</tr>
+<tr>
+<td>animation-duration</td>
+<td>规定动画完成一个周期所花费的秒或毫秒。默认是 0。</td>
+</tr>
+<tr>
+<td>animation-timing-function</td>
+<td>规定动画的速度曲线。默认是 “ease”。</td>
+</tr>
+<tr>
+<td>animation-fill-mode</td>
+<td>规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式。</td>
+</tr>
+<tr>
+<td>animation-delay</td>
+<td>规定动画何时开始。默认是 0。</td>
+</tr>
+<tr>
+<td>animation-iteration-count</td>
+<td>规定动画被播放的次数。默认是 1。</td>
+</tr>
+<tr>
+<td>animation-direction</td>
+<td>规定动画是否在下一周期逆向地播放。默认是 “normal”。</td>
+</tr>
+<tr>
+<td>animation-play-state</td>
+<td>规定动画是否正在运行或暂停。默认是 “running”。</td>
+</tr>
+</tbody></table>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">div&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">	<span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">	<span class="attribute">background</span>:red;</span><br><span class="line">	<span class="attribute">position</span>:relative;</span><br><span class="line">	<span class="attribute">animation-name</span>:myfirst;</span><br><span class="line">	<span class="attribute">animation-duration</span>:<span class="number">5s</span>;</span><br><span class="line">	<span class="attribute">animation-timing-function</span>:linear;</span><br><span class="line">	<span class="attribute">animation-delay</span>:<span class="number">2s</span>;</span><br><span class="line">	<span class="attribute">animation-iteration-count</span>:infinite;</span><br><span class="line">	<span class="attribute">animation-direction</span>:alternate;</span><br><span class="line">	<span class="attribute">animation-play-state</span>:running;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes myfirst</span><br><span class="line">&#123;</span><br><span class="line">	<span class="number">0%</span>   &#123;<span class="attribute">background</span>:red; <span class="attribute">left</span>:<span class="number">0px</span>; <span class="attribute">top</span>:<span class="number">0px</span>;&#125;</span><br><span class="line">	<span class="number">25%</span>  &#123;<span class="attribute">background</span>:yellow; <span class="attribute">left</span>:<span class="number">200px</span>; <span class="attribute">top</span>:<span class="number">0px</span>;&#125;</span><br><span class="line">	<span class="number">50%</span>  &#123;<span class="attribute">background</span>:blue; <span class="attribute">left</span>:<span class="number">200px</span>; <span class="attribute">top</span>:<span class="number">200px</span>;&#125;</span><br><span class="line">	<span class="number">75%</span>  &#123;<span class="attribute">background</span>:green; <span class="attribute">left</span>:<span class="number">0px</span>; <span class="attribute">top</span>:<span class="number">200px</span>;&#125;</span><br><span class="line">	<span class="number">100%</span> &#123;<span class="attribute">background</span>:red; <span class="attribute">left</span>:<span class="number">0px</span>; <span class="attribute">top</span>:<span class="number">0px</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="animation-和-transition-的异同"><a href="#animation-和-transition-的异同" class="headerlink" title="animation 和 transition 的异同"></a>animation 和 transition 的异同</h3><p><strong>相同：</strong> 功能相同，都是通过改变元素的属性值来实现动画效果的。</p>
+<p><strong>不同：</strong> transition 只能用指定属性的开始值和结束值，然后在这两个属性值之间使用平滑过渡的方式实现动画效果，因此不能实现比较复杂的动画效果；animation 通过定义多个关键帧，以及定义每个关键帧中元素的属性值来实现更为复杂的动画效果。</p>
+<p>以react.js为例</p>
+<p>JSX部分</p>
+<figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;prize-info&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">  </span><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;rowup&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">    </span><span class="xquery">&#123;</span></span><br><span class="line"><span class="xquery">      winners.<span class="keyword">map</span>(<span class="type">item</span> =&gt; &lt;div<span class="built_in"> key</span>=&#123;<span class="type">item</span>.nick&#125;</span><span class="xml"> className=&quot;winner-info&quot;&gt;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">className</span>=<span class="string">&quot;prize-img&quot;</span> <span class="attr">src</span>=</span></span><span class="xquery">&#123;<span class="type">item</span>.headerpic ? <span class="type">item</span>.headerpic : defaultAvatar&#125;</span><span class="xml"><span class="tag"> /&gt;</span></span></span><br><span class="line"><span class="xml">        </span><span class="xquery">&#123;<span class="type">item</span>.nick&#125;</span><span class="xml">已获得</span><span class="xquery">&#123;<span class="type">item</span>.price&#125;</span><span class="xml">元试用资格</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="xml">)</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>CSS部分</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.prize-info</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: rgba(<span class="number">#FFFFFF</span>, .<span class="number">19</span>);</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">0.63rem</span>;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">9.5rem</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">padding</span>: .<span class="number">15rem</span> .<span class="number">7rem</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: .<span class="number">55rem</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="selector-class">.winner-info</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: .<span class="number">2rem</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.prize-img</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: .<span class="number">7rem</span>;</span><br><span class="line">    <span class="attribute">height</span>: .<span class="number">7rem</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">border</span>: solid <span class="number">1px</span> <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: .<span class="number">15rem</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.prize-info</span> <span class="selector-class">.rowup</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>: .<span class="number">85rem</span>;</span><br><span class="line">  -webkit-<span class="attribute">animation</span>: <span class="number">10s</span> rowup linear infinite normal;</span><br><span class="line">  <span class="attribute">animation</span>: <span class="number">10s</span> rowup linear infinite normal;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> rowup &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">      -webkit-<span class="attribute">transform</span>: translate3d(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">      <span class="attribute">transform</span>: translate3d(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">      -webkit-<span class="attribute">transform</span>: translate3d(<span class="number">0</span>, -<span class="number">8em</span>, <span class="number">0</span>);</span><br><span class="line">      <span class="attribute">transform</span>: translate3d(<span class="number">0</span>, -<span class="number">8rem</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>待更～（后续会记录使用websocket时时更新数据）</p>
+]]></content>
   </entry>
   <entry>
     <title>css：盒模型及box-sizing</title>
@@ -1775,46 +1775,6 @@
       </tags>
   </entry>
   <entry>
-    <title>html：行内元素、行内块级元素、块级元素</title>
-    <url>/2019/10/15/html%EF%BC%9A%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E3%80%81%E8%A1%8C%E5%86%85%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E3%80%81%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
-
-<h2 id="一、行内元素"><a href="#一、行内元素" class="headerlink" title="一、行内元素"></a>一、行内元素</h2><p>可以通过<code>display: inline</code>设置</p>
-<p><strong>特点</strong></p>
-<ol>
-<li>设置宽高无效</li>
-<li>对 margin 仅设置左右有效，设置 padding 有效，即会撑大空间</li>
-<li>不会自动换行</li>
-</ol>
-<p><strong>举例</strong></p>
-<p>&lt; span &gt;、&lt; b &gt;、&lt; i &gt;、&lt; a &gt;、&lt; sub &gt;、&lt; sup &gt;、&lt; br &gt;</p>
-<h2 id="二、行内块级元素"><a href="#二、行内块级元素" class="headerlink" title="二、行内块级元素"></a>二、行内块级元素</h2><p>可以通过<code>display: inline-block</code>设置</p>
-<p><strong>特点</strong></p>
-<ol>
-<li>可以设置宽高</li>
-<li>设置 margin、padding 都有效</li>
-<li>不自动换行，默认排序从左到右</li>
-</ol>
-<p><strong>举例</strong></p>
-<p>&lt; img &gt;、&lt; input &gt;、&lt; td &gt;</p>
-<h2 id="三、块级元素"><a href="#三、块级元素" class="headerlink" title="三、块级元素"></a>三、块级元素</h2><p>可以通过<code>display: block</code>设置</p>
-<p><strong>特点</strong></p>
-<ol>
-<li>可以设置宽高</li>
-<li>设置 margin、padding 都有效</li>
-<li>能自动换行，多个块级元素写在一起默认从上到下</li>
-</ol>
-<p><strong>举例</strong></p>
-<p>&lt; p &gt;、&lt; div &gt;、&lt; ul &gt;、&lt; li &gt;、&lt; h1 &gt;-&lt; h6 &gt;、&lt; ol &gt;</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>html</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>html：WebSocket学习</title>
     <url>/2019/10/26/html%EF%BC%9AwebSocket%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer"/>
@@ -1878,6 +1838,46 @@
 <figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">socket.onerror = <span class="function"><span class="keyword">function</span><span class="params">(event)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// handle error event</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">socket.addEventListener(<span class="string">&quot;error&quot;</span>, <span class="function"><span class="keyword">function</span><span class="params">(event)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// handle error event</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>详细参见<a href="http://www.ruanyifeng.com/blog/2017/05/websocket.html">阮一峰 WebSocket 教程</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>html：行内元素、行内块级元素、块级元素</title>
+    <url>/2019/10/15/html%EF%BC%9A%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E3%80%81%E8%A1%8C%E5%86%85%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E3%80%81%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+
+<h2 id="一、行内元素"><a href="#一、行内元素" class="headerlink" title="一、行内元素"></a>一、行内元素</h2><p>可以通过<code>display: inline</code>设置</p>
+<p><strong>特点</strong></p>
+<ol>
+<li>设置宽高无效</li>
+<li>对 margin 仅设置左右有效，设置 padding 有效，即会撑大空间</li>
+<li>不会自动换行</li>
+</ol>
+<p><strong>举例</strong></p>
+<p>&lt; span &gt;、&lt; b &gt;、&lt; i &gt;、&lt; a &gt;、&lt; sub &gt;、&lt; sup &gt;、&lt; br &gt;</p>
+<h2 id="二、行内块级元素"><a href="#二、行内块级元素" class="headerlink" title="二、行内块级元素"></a>二、行内块级元素</h2><p>可以通过<code>display: inline-block</code>设置</p>
+<p><strong>特点</strong></p>
+<ol>
+<li>可以设置宽高</li>
+<li>设置 margin、padding 都有效</li>
+<li>不自动换行，默认排序从左到右</li>
+</ol>
+<p><strong>举例</strong></p>
+<p>&lt; img &gt;、&lt; input &gt;、&lt; td &gt;</p>
+<h2 id="三、块级元素"><a href="#三、块级元素" class="headerlink" title="三、块级元素"></a>三、块级元素</h2><p>可以通过<code>display: block</code>设置</p>
+<p><strong>特点</strong></p>
+<ol>
+<li>可以设置宽高</li>
+<li>设置 margin、padding 都有效</li>
+<li>能自动换行，多个块级元素写在一起默认从上到下</li>
+</ol>
+<p><strong>举例</strong></p>
+<p>&lt; p &gt;、&lt; div &gt;、&lt; ul &gt;、&lt; li &gt;、&lt; h1 &gt;-&lt; h6 &gt;、&lt; ol &gt;</p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -3683,6 +3683,34 @@
       </tags>
   </entry>
   <entry>
+    <title>算法：488、祖玛游戏（JavaScript）</title>
+    <url>/2019/03/29/%E7%AE%97%E6%B3%95%EF%BC%9A488%E3%80%81%E7%A5%96%E7%8E%9B%E6%B8%B8%E6%88%8F%EF%BC%88JavaScript%EF%BC%89/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+
+<p>回忆一下祖玛游戏。现在桌上有一串球，颜色有红色(R)，黄色(Y)，蓝色(B)，绿色(G)，还有白色(W)。 现在你手里也有几个球。</p>
+<p>每一次，你可以从手里的球选一个，然后把这个球插入到一串球中的某个位置上（包括最左端，最右端）。接着，如果有出现三个或者三个以上颜色相同的球相连的话，就把它们移除掉。重复这一步骤直到桌上所有的球都被移除。</p>
+<p>找到插入并可以移除掉桌上所有球所需的最少的球数。如果不能移除桌上所有的球，输出 -1 。</p>
+<figure class="highlight clean"><table><tr><td class="code"><pre><span class="line">示例:</span><br><span class="line">输入: <span class="string">&quot;WRRBBW&quot;</span>, <span class="string">&quot;RB&quot;</span></span><br><span class="line">输出: <span class="number">-1</span></span><br><span class="line">解释: WRRBBW -&gt; WRR[R]BBW -&gt; WBBW -&gt; WBB[B]W -&gt; WW （翻译者标注：手上球已经用完，桌上还剩两个球无法消除，返回<span class="number">-1</span>）</span><br><span class="line"></span><br><span class="line">输入: <span class="string">&quot;WWRRBBWW&quot;</span>, <span class="string">&quot;WRBRW&quot;</span></span><br><span class="line">输出: <span class="number">2</span></span><br><span class="line">解释: WWRRBBWW -&gt; WWRR[R]BBWW -&gt; WWBBWW -&gt; WWBB[B]WW -&gt; WWWW -&gt; empty</span><br><span class="line"></span><br><span class="line">输入:<span class="string">&quot;G&quot;</span>, <span class="string">&quot;GGGGG&quot;</span></span><br><span class="line">输出: <span class="number">2</span></span><br><span class="line">解释: G -&gt; G[G] -&gt; GG[G] -&gt; empty</span><br><span class="line"></span><br><span class="line">输入: <span class="string">&quot;RBYYBBRRB&quot;</span>, <span class="string">&quot;YRBGB&quot;</span></span><br><span class="line">输出: <span class="number">3</span></span><br><span class="line">解释: RBYYBBRRB -&gt; RBYY[Y]BBRRB -&gt; RBBBRRB -&gt; RRRB -&gt; B -&gt; B[B] -&gt; BB[B] -&gt; empty</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>标注:</strong></p>
+<ol>
+<li>你可以假设桌上一开始的球中，不会有三个及三个以上颜色相同且连着的球。</li>
+<li>桌上的球不会超过 20 个，输入的数据中代表这些球的字符串的名字是 “board” 。</li>
+<li>你手中的球不会超过 5 个，输入的数据中代表这些球的字符串的名字是 “hand”。</li>
+<li>输入的两个字符串均为非空字符串，且只包含字符 ‘R’,’Y’,’B’,’G’,’W’。</li>
+</ol>
+<p><strong>解题思路</strong></p>
+<p>​</p>
+<p><strong>代码</strong></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法：6、Z字形变换（JavaScript）</title>
     <url>/2019/03/29/%E7%AE%97%E6%B3%95%EF%BC%9A6%E3%80%81Z%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2%EF%BC%88JavaScript%EF%BC%89/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer"/>
@@ -3706,34 +3734,6 @@
 <p>2、输出的字符串中按行来，从左到右，第一行和最后一行中每一圈只取一个，中间的取两个</p>
 <p><strong>代码</strong></p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;string&#125; s</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;number&#125; numRows</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;string&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> convert = <span class="function"><span class="keyword">function</span>(<span class="params">s, numRows</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len=s.length;</span><br><span class="line">    <span class="keyword">var</span> twoRows=<span class="number">2</span>*numRows<span class="number">-2</span>;</span><br><span class="line">    <span class="keyword">var</span> str=<span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span>(len==<span class="number">0</span> || numRows&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> s</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;numRows;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=i;j&lt;len;j+=twoRows)&#123;</span><br><span class="line">            str=str.concat(s.charAt(j));</span><br><span class="line">            <span class="keyword">if</span>(i!=<span class="number">0</span> &amp;&amp; i!=numRows<span class="number">-1</span> &amp;&amp; j<span class="number">-2</span>*i+twoRows&lt;len)&#123;</span><br><span class="line">                str=str.concat(s.charAt(j<span class="number">-2</span>*i+twoRows))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法：488、祖玛游戏（JavaScript）</title>
-    <url>/2019/03/29/%E7%AE%97%E6%B3%95%EF%BC%9A488%E3%80%81%E7%A5%96%E7%8E%9B%E6%B8%B8%E6%88%8F%EF%BC%88JavaScript%EF%BC%89/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
-
-<p>回忆一下祖玛游戏。现在桌上有一串球，颜色有红色(R)，黄色(Y)，蓝色(B)，绿色(G)，还有白色(W)。 现在你手里也有几个球。</p>
-<p>每一次，你可以从手里的球选一个，然后把这个球插入到一串球中的某个位置上（包括最左端，最右端）。接着，如果有出现三个或者三个以上颜色相同的球相连的话，就把它们移除掉。重复这一步骤直到桌上所有的球都被移除。</p>
-<p>找到插入并可以移除掉桌上所有球所需的最少的球数。如果不能移除桌上所有的球，输出 -1 。</p>
-<figure class="highlight clean"><table><tr><td class="code"><pre><span class="line">示例:</span><br><span class="line">输入: <span class="string">&quot;WRRBBW&quot;</span>, <span class="string">&quot;RB&quot;</span></span><br><span class="line">输出: <span class="number">-1</span></span><br><span class="line">解释: WRRBBW -&gt; WRR[R]BBW -&gt; WBBW -&gt; WBB[B]W -&gt; WW （翻译者标注：手上球已经用完，桌上还剩两个球无法消除，返回<span class="number">-1</span>）</span><br><span class="line"></span><br><span class="line">输入: <span class="string">&quot;WWRRBBWW&quot;</span>, <span class="string">&quot;WRBRW&quot;</span></span><br><span class="line">输出: <span class="number">2</span></span><br><span class="line">解释: WWRRBBWW -&gt; WWRR[R]BBWW -&gt; WWBBWW -&gt; WWBB[B]WW -&gt; WWWW -&gt; empty</span><br><span class="line"></span><br><span class="line">输入:<span class="string">&quot;G&quot;</span>, <span class="string">&quot;GGGGG&quot;</span></span><br><span class="line">输出: <span class="number">2</span></span><br><span class="line">解释: G -&gt; G[G] -&gt; GG[G] -&gt; empty</span><br><span class="line"></span><br><span class="line">输入: <span class="string">&quot;RBYYBBRRB&quot;</span>, <span class="string">&quot;YRBGB&quot;</span></span><br><span class="line">输出: <span class="number">3</span></span><br><span class="line">解释: RBYYBBRRB -&gt; RBYY[Y]BBRRB -&gt; RBBBRRB -&gt; RRRB -&gt; B -&gt; B[B] -&gt; BB[B] -&gt; empty</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>标注:</strong></p>
-<ol>
-<li>你可以假设桌上一开始的球中，不会有三个及三个以上颜色相同且连着的球。</li>
-<li>桌上的球不会超过 20 个，输入的数据中代表这些球的字符串的名字是 “board” 。</li>
-<li>你手中的球不会超过 5 个，输入的数据中代表这些球的字符串的名字是 “hand”。</li>
-<li>输入的两个字符串均为非空字符串，且只包含字符 ‘R’,’Y’,’B’,’G’,’W’。</li>
-</ol>
-<p><strong>解题思路</strong></p>
-<p>​</p>
-<p><strong>代码</strong></p>
 ]]></content>
       <categories>
         <category>算法</category>
