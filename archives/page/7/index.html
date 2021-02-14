@@ -196,13 +196,33 @@
     <div class="posts-collapse">
       <div class="collection-title">
         
-        <span class="collection-header">不错! 目前共计 77 篇日志。 继续努力。</span>
+        <span class="collection-header">不错! 目前共计 78 篇日志。 继续努力。</span>
       </div>
 
       
     <div class="collection-year">
       <span class="collection-header">2019</span>
     </div>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2019-10-13T14:11:06+08:00"
+              content="2019-10-13">
+          10-13
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2019/10/13/JS%EF%BC%9Atypeof%E3%80%81instanceof%E4%BB%A5%E5%8F%8Aobject-prototyte-tostring-call/" itemprop="url">
+            <span itemprop="name">JS：typeof、instanceof以及Object.prototyte.toString.call()</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
 
   <article itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
@@ -384,26 +404,6 @@
     </header>
   </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-05-12T10:15:55+08:00"
-              content="2019-05-12">
-          05-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/05/12/uniapp%EF%BC%9AAPP%E5%AE%9E%E7%8E%B0%E5%AE%9A%E4%BD%8D/" itemprop="url">
-            <span itemprop="name">uniapp：APP实现定位</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
 
     </div>
   </div>
@@ -479,7 +479,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -617,6 +617,24 @@
   
 
   
+
+  <!-- calendar widget -->
+
+    <script src="/lib/calendar/calendar.min.js"></script>
+    <script src="/lib/calendar/languages.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/schedule/'
+                }
+            )
+        );
+    });
+    </script>
+
 
 
 </body>

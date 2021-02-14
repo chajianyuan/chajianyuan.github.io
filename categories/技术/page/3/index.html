@@ -210,6 +210,26 @@
 
       <div class="post-meta">
         <time itemprop="dateCreated"
+              datetime="2019-10-24T21:31:05+08:00"
+              content="2019-10-24">
+          10-24
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2019/10/24/%E6%80%BB%E7%BB%93%EF%BC%9A%E6%B5%8F%E8%A7%88%E5%99%A8/" itemprop="url">
+            <span itemprop="name">总结：浏览器</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
               datetime="2019-10-24T21:23:10+08:00"
               content="2019-10-24">
           10-24
@@ -385,26 +405,6 @@
     </header>
   </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-10-19T21:20:56+08:00"
-              content="2019-10-19">
-          10-19
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/10/19/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9A%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F/" itemprop="url">
-            <span itemprop="name">网络协议：前端跨域</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
     </div>
   </div>
   
@@ -479,7 +479,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -617,6 +617,24 @@
   
 
   
+
+  <!-- calendar widget -->
+
+    <script src="/lib/calendar/calendar.min.js"></script>
+    <script src="/lib/calendar/languages.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/schedule/'
+                }
+            )
+        );
+    });
+    </script>
+
 
 
 </body>

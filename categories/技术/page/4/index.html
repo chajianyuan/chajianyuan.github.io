@@ -210,6 +210,26 @@
 
       <div class="post-meta">
         <time itemprop="dateCreated"
+              datetime="2019-10-19T21:20:56+08:00"
+              content="2019-10-19">
+          10-19
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2019/10/19/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9A%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F/" itemprop="url">
+            <span itemprop="name">网络协议：前端跨域</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
               datetime="2019-10-19T20:11:38+08:00"
               content="2019-10-19">
           10-19
@@ -385,26 +405,6 @@
     </header>
   </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-10-18T14:28:18+08:00"
-              content="2019-10-18">
-          10-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/10/18/vue%EF%BC%9A%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%92%8C%E5%A4%9A%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%88%AB/" itemprop="url">
-            <span itemprop="name">vue：单页面和多页面的区别</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
     </div>
   </div>
   
@@ -479,7 +479,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -617,6 +617,24 @@
   
 
   
+
+  <!-- calendar widget -->
+
+    <script src="/lib/calendar/calendar.min.js"></script>
+    <script src="/lib/calendar/languages.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/schedule/'
+                }
+            )
+        );
+    });
+    </script>
+
 
 
 </body>
