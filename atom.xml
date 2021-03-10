@@ -6,7 +6,7 @@
   <link href="https://chajianyuan.github.io/atom.xml" rel="self"/>
   
   <link href="https://chajianyuan.github.io/"/>
-  <updated>2021-03-08T08:43:19.997Z</updated>
+  <updated>2021-03-10T03:32:35.481Z</updated>
   <id>https://chajianyuan.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>学习资料</title>
+    <link href="https://chajianyuan.github.io/2021/03/10/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
+    <id>https://chajianyuan.github.io/2021/03/10/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</id>
+    <published>2021-03-10T03:22:47.000Z</published>
+    <updated>2021-03-10T03:32:35.481Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://pic1.zhimg.com/v2-1c7eb3599dd689e6b3631818d9c007a0_720w.jpg?source=172ae18b"></p><a id="more"></a><ul><li><input disabled="" type="checkbox"> <a href="https://mp.weixin.qq.com/s/HbfThzav79GFS-sMirAINA">2020年你不应该错过的CSS新特性</a></li><li><input disabled="" type="checkbox"> <a href="https://www.yuque.com/docs/share/d32ce6ae-f7c0-437e-9c5a-2df32bcb3580#">《专家思维、大脑和学习》</a></li><li><input disabled="" type="checkbox"> <a href="https://reactjs.org/blog/2020/10/20/react-v17.html">react 17</a></li><li><input disabled="" type="checkbox"> <a href="https://www.yuque.com/docs/share/3c219cf1-6376-420c-98c0-265871ad71bf#%20%E3%80%8AOKR%E6%91%98%E5%BD%95%E3%80%8B">OKA摘录</a></li><li><input disabled="" type="checkbox"> <a href="https://book.douban.com/subject/4164024//">高效程序员的45个习惯</a></li><li><input disabled="" type="checkbox"> <a href="https://mp.weixin.qq.com/s/IYx6VFoy7cLuF--WZed9YQ">28 个 JavaScript 编程黑科技：还有这种操作！</a></li><li><input disabled="" type="checkbox"> 书籍：金字塔</li><li><input disabled="" type="checkbox"> 数据结构与算法之美</li><li><input disabled="" type="checkbox"> 你不知道的JavaScript</li><li><input disabled="" type="checkbox"> <a href="https://segmentfault.com/a/1190000021712743">git merge的原理</a></li><li><input disabled="" type="checkbox"> <a href="https://www.yuque.com/docs/share/d5caf5e8-1674-4f4d-90fa-7fca8c1a5a6a#%20%E3%80%8A%E7%BB%93%E6%9E%84%E5%8C%96%E6%80%9D%E7%BB%B4%E3%80%8B">结构化思维</a></li><li><input disabled="" type="checkbox"> <a href="https://backlog.com/git-tutorial/cn/intro/intro1_1.html">猴子都能懂的GIT入门</a></li><li><input disabled="" type="checkbox"> <a href="https://mp.weixin.qq.com/s/TI54CJ7vgE2wiquFN5NyPA">你可能不知道的 CSS 阴影技巧与细节</a></li><li><input disabled="" type="checkbox"> <a href="https://inrupt.com/solid">Solid</a></li><li><input disabled="" type="checkbox"> <a href="https://bitable.feishu.cn/app8Ok6k9qafpMkgyRbfgxeEnet?from=logout&table=tblEnSV2PNAajtWE&view=vewJHSwJVd">前端年后面试真题，会80%直接金大厂</a></li><li><input disabled="" type="checkbox"> <a href="https://zhuanlan.zhihu.com/p/94611888">Continuation 在 JS 中的应用</a></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://pic1.zhimg.com/v2-1c7eb3599dd689e6b3631818d9c007a0_720w.jpg?source=172ae18b&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://chajianyuan.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="学习资料" scheme="https://chajianyuan.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
+    
+  </entry>
   
   <entry>
     <title>elixir：基础数据结构</title>
@@ -423,29 +444,6 @@
     
     
     <category term="总结" scheme="https://chajianyuan.github.io/tags/%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JS：赋值、深拷贝和浅拷贝</title>
-    <link href="https://chajianyuan.github.io/2020/02/24/JS%EF%BC%9A%E8%B5%8B%E5%80%BC%E3%80%81%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/"/>
-    <id>https://chajianyuan.github.io/2020/02/24/JS%EF%BC%9A%E8%B5%8B%E5%80%BC%E3%80%81%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/</id>
-    <published>2020-02-24T00:46:35.000Z</published>
-    <updated>2020-02-24T00:46:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h2 id="一、浅拷贝和深拷贝"><a href="#一、浅拷贝和深拷贝" class="headerlink" title="一、浅拷贝和深拷贝"></a>一、浅拷贝和深拷贝</h2><p>浅拷贝和深拷贝只针对 object 和 array 这种引用数据类型。</p><a id="more"></a><p><strong>浅拷贝：</strong> 只复制某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。</p><p><strong>深拷贝：</strong> 会创造一个一模一样的新对象，新对象和原对象不共享内存，修改新对象不会改到原对象。</p><h2 id="二、赋值和浅拷贝"><a href="#二、赋值和浅拷贝" class="headerlink" title="二、赋值和浅拷贝"></a>二、赋值和浅拷贝</h2><p><strong>赋值：</strong> 当把某个对象赋值给一个新的变量时，赋的是该对象在栈中的地址，而不是堆中的数据。</p><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> a =&#123;</span><br><span class="line">  <span class="built_in">na</span><span class="symbol">me:</span> <span class="string">&quot;zhangsan&quot;</span>,</span><br><span class="line">  scor<span class="symbol">es:</span> [<span class="number">100</span>, <span class="number">99</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">var</span> b = a;</span><br></pre></td></tr></table></figure><p>其实是将对象 a 在栈中的指针 a 赋值给了对象 b,指针 a 和指针 b 指向的是同一个堆中的数据，那么其中一个数据改变时，另外一个也会改变。</p><p><strong>浅拷贝：</strong> 浅拷贝会创建一个新的对象，但它是按位拷贝对象，即如果原对象的属性是基本类型，则拷贝的是基本数据类型的值；如果原对象的属性是引用数据类型，则拷贝的是引用类型的指针。</p><p><img src="https://user-gold-cdn.xitu.io/2018/12/23/167da74d45d3103b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p><h2 id="三、浅拷贝的实现方式"><a href="#三、浅拷贝的实现方式" class="headerlink" title="三、浅拷贝的实现方式"></a>三、浅拷贝的实现方式</h2><h3 id="1、Object-assign"><a href="#1、Object-assign" class="headerlink" title="1、Object.assign()"></a>1、Object.assign()</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> obj = &#123;</span><br><span class="line">  <span class="selector-tag">a</span>: &#123;</span><br><span class="line">    <span class="selector-tag">a</span>: <span class="string">&#x27;zhangsan&#x27;</span>,</span><br><span class="line">    <span class="selector-tag">b</span>: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">var</span> copyObj = Object.assign(&#123;&#125;, obj)</span><br></pre></td></tr></table></figure><h3 id="2、Array-prototype-concat"><a href="#2、Array-prototype-concat" class="headerlink" title="2、Array.prototype.concat()"></a>2、Array.prototype.concat()</h3><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">var</span> <span class="string">obj = &#123;</span></span><br><span class="line">  <span class="attr">a</span>: <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">a</span>: <span class="string">&#x27;zhangsan&#x27;,</span></span><br><span class="line">    <span class="attr">b</span>: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"><span class="attr">var</span> <span class="string">copyObj = obj.concat();</span></span><br></pre></td></tr></table></figure><h3 id="3、Array-prototype-slice"><a href="#3、Array-prototype-slice" class="headerlink" title="3、Array.prototype.slice()"></a>3、Array.prototype.slice()</h3><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">var</span> <span class="string">obj = &#123;</span></span><br><span class="line">  <span class="attr">a</span>: <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">a</span>: <span class="string">&#x27;zhangsan&#x27;,</span></span><br><span class="line">    <span class="attr">b</span>: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"><span class="attr">var</span> <span class="string">copyObj = obj.slice();</span></span><br></pre></td></tr></table></figure><h2 id="四、深拷贝的实现方式"><a href="#四、深拷贝的实现方式" class="headerlink" title="四、深拷贝的实现方式"></a>四、深拷贝的实现方式</h2><h3 id="1、JSON-parse-JSON-stringify"><a href="#1、JSON-parse-JSON-stringify" class="headerlink" title="1、JSON.parse(JSON.stringify())"></a>1、JSON.parse(JSON.stringify())</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: &#123;</span><br><span class="line">    a: <span class="string">&#x27;zhangsan&#x27;</span>,</span><br><span class="line">    b: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> copyObj = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj));</span><br></pre></td></tr></table></figure><h3 id="2、手写递归方法"><a href="#2、手写递归方法" class="headerlink" title="2、手写递归方法"></a>2、手写递归方法</h3><p>遍历对象、数组直到里面都是基本数据类型，然后再去复制。</p><h3 id="3、函数库-lodash"><a href="#3、函数库-lodash" class="headerlink" title="3、函数库 lodash"></a>3、函数库 lodash</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">&#x27;lodash&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: &#123;</span><br><span class="line">    a: <span class="string">&#x27;zhangsan&#x27;</span>,</span><br><span class="line">    b: <span class="string">&#x27;lisi&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> copyObj = _.cloneDeep(obj);</span><br></pre></td></tr></table></figure><p><a href="https://juejin.im/post/5b5dcf8351882519790c9a2e">浅拷贝与深拷贝</a></p>]]></content>
-    
-    
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;/&gt;
-
-&lt;h2 id=&quot;一、浅拷贝和深拷贝&quot;&gt;&lt;a href=&quot;#一、浅拷贝和深拷贝&quot; class=&quot;headerlink&quot; title=&quot;一、浅拷贝和深拷贝&quot;&gt;&lt;/a&gt;一、浅拷贝和深拷贝&lt;/h2&gt;&lt;p&gt;浅拷贝和深拷贝只针对 object 和 array 这种引用数据类型。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="技术" scheme="https://chajianyuan.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="javascript" scheme="https://chajianyuan.github.io/tags/javascript/"/>
     
   </entry>
   
