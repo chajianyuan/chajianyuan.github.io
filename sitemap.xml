@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://chajianyuan.github.io/2021/03/23/JS%EF%BC%9A%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/</loc>
+    <loc>https://chajianyuan.github.io/2019/09/09/git%EF%BC%9A%E5%AD%A6%E4%B9%A0Git/</loc>
     
     <lastmod>2021-03-23</lastmod>
     
   </url>
   
   <url>
-    <loc>https://chajianyuan.github.io/2019/09/09/git%EF%BC%9A%E5%AD%A6%E4%B9%A0Git/</loc>
+    <loc>https://chajianyuan.github.io/2021/03/23/JS%EF%BC%9A%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/</loc>
     
     <lastmod>2021-03-23</lastmod>
     
@@ -648,6 +648,13 @@
   </url>
   
   <url>
+    <loc>https://chajianyuan.github.io/tags/elixir/</loc>
+    <lastmod>2021-03-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://chajianyuan.github.io/tags/git/</loc>
     <lastmod>2021-03-23</lastmod>
     <changefreq>daily</changefreq>
@@ -662,14 +669,14 @@
   </url>
   
   <url>
-    <loc>https://chajianyuan.github.io/tags/react/</loc>
+    <loc>https://chajianyuan.github.io/tags/uniapp/</loc>
     <lastmod>2021-03-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://chajianyuan.github.io/tags/uniapp/</loc>
+    <loc>https://chajianyuan.github.io/tags/react/</loc>
     <lastmod>2021-03-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -683,6 +690,13 @@
   </url>
   
   <url>
+    <loc>https://chajianyuan.github.io/tags/webpack/</loc>
+    <lastmod>2021-03-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://chajianyuan.github.io/tags/%E5%85%B6%E4%BB%96/</loc>
     <lastmod>2021-03-23</lastmod>
     <changefreq>daily</changefreq>
@@ -690,7 +704,7 @@
   </url>
   
   <url>
-    <loc>https://chajianyuan.github.io/tags/webpack/</loc>
+    <loc>https://chajianyuan.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</loc>
     <lastmod>2021-03-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -711,7 +725,7 @@
   </url>
   
   <url>
-    <loc>https://chajianyuan.github.io/tags/elixir/</loc>
+    <loc>https://chajianyuan.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2021-03-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -719,13 +733,6 @@
   
   <url>
     <loc>https://chajianyuan.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/</loc>
-    <lastmod>2021-03-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://chajianyuan.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2021-03-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -740,13 +747,6 @@
   
   <url>
     <loc>https://chajianyuan.github.io/tags/%E9%9D%A2%E7%BB%8F/</loc>
-    <lastmod>2021-03-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://chajianyuan.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</loc>
     <lastmod>2021-03-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
