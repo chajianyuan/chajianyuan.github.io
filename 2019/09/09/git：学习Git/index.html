@@ -26,8 +26,9 @@
 <meta property="og:site_name" content="查见原的博客">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://github.com/chajianyuan/picture/blob/master/1631616508997_.pic.jpg?raw=true">
+<meta property="og:image" content="https://github.com/chajianyuan/picture/blob/master/1661616730056_.pic.jpg?raw=true">
 <meta property="article:published_time" content="2019-09-09T09:45:23.000Z">
-<meta property="article:modified_time" content="2021-03-23T14:19:18.881Z">
+<meta property="article:modified_time" content="2021-03-26T06:52:39.080Z">
 <meta property="article:author" content="chajianyuan">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
@@ -228,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-23 22:19:18" itemprop="dateModified" datetime="2021-03-23T22:19:18+08:00">2021-03-23</time>
+                <time title="修改时间：2021-03-26 14:52:39" itemprop="dateModified" datetime="2021-03-26T14:52:39+08:00">2021-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,14 +254,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.4k</span>
+              <span>3.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -278,10 +279,41 @@
 <a id="more"></a>
 
 <h3 id="一、Git-简介"><a href="#一、Git-简介" class="headerlink" title="一、Git 简介"></a>一、Git 简介</h3><p>Git 是目前世界上最先进的分布式版本控制系统。</p>
-<h3 id="二、集中式和分布式的区别"><a href="#二、集中式和分布式的区别" class="headerlink" title="二、集中式和分布式的区别"></a>二、集中式和分布式的区别</h3><h4 id="1、集中式版本控制系统"><a href="#1、集中式版本控制系统" class="headerlink" title="1、集中式版本控制系统"></a>1、集中式版本控制系统</h4><p>集中式版本控制系统中版本库是集中存放在中央服务器上的，而干活的时候，用的是自己的电脑，所以要先从中央服务器去的最新的版本，然后开始干活，干完活再把自己的活推送到中央服务器，最大的缺点就是必须联网才能工作。</p>
+<h3 id="二、集中式和分布式的区别"><a href="#二、集中式和分布式的区别" class="headerlink" title="二、集中式和分布式的区别"></a>二、集中式和分布式的区别</h3><h4 id="1、集中式版本控制系统"><a href="#1、集中式版本控制系统" class="headerlink" title="1、集中式版本控制系统"></a>1、集中式版本控制系统</h4><p>提到集中式版本控制，大家肯定都会想到<code>SVN</code>，集中式版本控制系统中版本库是集中存放在中央服务器上的，而干活的时候，用的是自己的电脑，所以要先从中央服务器拿到最新的版本，然后开始干活，干完活再把自己的活推送到中央服务器，最大的缺点就是必须联网才能工作。</p>
 <h4 id="2、分布式版本控制系统"><a href="#2、分布式版本控制系统" class="headerlink" title="2、分布式版本控制系统"></a>2、分布式版本控制系统</h4><p>每个人的电脑都是一个完整的版本库，这样，你工作的时候就不需要联网了，因为版本库就在自己的电脑上，多人协作时，只需要把各自的修改推送给对方就可以看到对方的修改了。</p>
-<h3 id="二、Git-指令"><a href="#二、Git-指令" class="headerlink" title="二、Git 指令"></a>二、Git 指令</h3><h4 id="1、初始化一个仓库git-init"><a href="#1、初始化一个仓库git-init" class="headerlink" title="1、初始化一个仓库git init"></a>1、初始化一个仓库<code>git init</code></h4><p>初始化一个新的git仓库，或者重新初始化已存在的仓库</p>
-<h4 id="2、添加文件到-Git-仓库"><a href="#2、添加文件到-Git-仓库" class="headerlink" title="2、添加文件到 Git 仓库"></a>2、添加文件到 Git 仓库</h4><p>1）使用<code>git add &lt;file&gt;</code> ，注意，可以反复多次使用，添加多个文件（放到暂存区）；</p>
+<h3 id="二、Git-指令"><a href="#二、Git-指令" class="headerlink" title="二、Git 指令"></a>二、Git 指令</h3><h4 id="1、git-clone-git-server-name-path-reponame-git-从远程克隆"><a href="#1、git-clone-git-server-name-path-reponame-git-从远程克隆" class="headerlink" title="1、git clone git@server-name:path/reponame.git 从远程克隆"></a>1、<code>git clone git@server-name:path/reponame.git</code> 从远程克隆</h4><h4 id="2、git-remote-add-origin-git-server-name-path-reponame-git-关联一个远程仓库"><a href="#2、git-remote-add-origin-git-server-name-path-reponame-git-关联一个远程仓库" class="headerlink" title="2、git remote add origin git@server-name:path/reponame.git 关联一个远程仓库"></a>2、<code>git remote add origin git@server-name:path/reponame.git</code> 关联一个远程仓库</h4><h4 id="3、git-init-初始化一个仓库"><a href="#3、git-init-初始化一个仓库" class="headerlink" title="3、git init 初始化一个仓库"></a>3、<code>git init</code> 初始化一个仓库</h4><p>初始化一个新的git仓库，或者重新初始化已存在的仓库</p>
+<h4 id="4、创建与合并分支"><a href="#4、创建与合并分支" class="headerlink" title="4、创建与合并分支"></a>4、创建与合并分支</h4><p>在每次提交时，Git都将他们串成一条时间线，这条时间线只有一条叫做主分支（master），HEAD 指向当前分支</p>
+<p>1）创建 dev 分支，并切换到 dev 分支</p>
+<p><code>git checkout -b dev</code> 或者<code>git switch -c dev</code></p>
+<p>等同于</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="built_in">dev</span></span><br><span class="line">git checkout <span class="built_in">dev</span> 或者 git switch <span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+
+<p>2）查看当前分支<code>git branch</code></p>
+<p>3）将 dev 分支合并到 master<code>git merge dev</code></p>
+<blockquote>
+<p><strong>PS: merge和rebase有什么区别❓</strong></p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">dev</span>                 <span class="comment">✅</span> -- <span class="comment">✅</span> </span><br><span class="line">                  <span class="comment">/</span>                </span><br><span class="line">                 <span class="comment">/</span>                </span><br><span class="line">                <span class="comment">/</span>               </span><br><span class="line"><span class="comment">matser</span>  <span class="comment">⭕️</span> -- <span class="comment">⭕️</span> -- <span class="comment">⭕</span> --<span class="comment">️️</span> <span class="comment">⭕</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>merge<ul>
+<li>特点：会自动创建一个新的commit</li>
+<li>优点：真实记录commit</li>
+<li>缺点：commit繁杂</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dev                 ✅ -- ✅ -- ✅（多了一次合并的commit）</span><br><span class="line">                  <span class="regexp">/           /</span></span><br><span class="line">                 <span class="regexp">/           /</span></span><br><span class="line">                <span class="regexp">/           /</span></span><br><span class="line">matser  ⭕️ -- ⭕️ -- ⭕ --️️ ⭕ </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>rebase<ul>
+<li>特点：合并之前的commit地址</li>
+<li>优点：得到更简洁的commit历史</li>
+<li>缺点：如果合并代码时出现了问题，不容易定位，因为重写了commit history<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">dev</span>                <span class="comment">⭕</span> -- <span class="comment">⭕️️</span> -- <span class="comment">✅</span> -- <span class="comment">✅</span> </span><br><span class="line">                 <span class="comment">/</span>                </span><br><span class="line">                <span class="comment">/</span>                </span><br><span class="line">               <span class="comment">/</span>               </span><br><span class="line"><span class="comment">matser</span>  <span class="comment">⭕️</span> -- <span class="comment">⭕️</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="5、添加文件到-Git-本地仓库"><a href="#5、添加文件到-Git-本地仓库" class="headerlink" title="5、添加文件到 Git 本地仓库"></a>5、添加文件到 Git 本地仓库</h4><p>1）使用<code>git add &lt;file&gt;</code> ，注意，可以反复多次使用，添加多个文件（放到暂存区）；</p>
 <p>2）使用<code>git commit -m &lt;message&gt;</code> 提交到本地仓库（放到工作区）。</p>
 <p><strong>注意：</strong> &lt; message &gt;存在规范，不能随便写，例如修改了哪个文件或者新增了哪个文件</p>
 <p><code>commit message格式</code></p>
@@ -300,39 +332,51 @@
 <li>perf: 优化相关，比如提升性能、体验</li>
 <li>test: 增加测试</li>
 <li>chore: 构建过程或辅助工具的变动</li>
-<li>revert: 会滚到上一个版本</li>
+<li>revert: 回滚到上一个版本</li>
 <li>merge: 代码合并</li>
 <li>sync: 同步主线或分支的bug</li>
 </ul>
 <p><strong>scope(可选)：用于说明commit影响的范围</strong></p>
 <p><strong>subject(必须)：<code>commit</code>目的的简短描述</strong></p>
-<h4 id="3、查看结果（工作区的状态）git-status"><a href="#3、查看结果（工作区的状态）git-status" class="headerlink" title="3、查看结果（工作区的状态）git status"></a>3、查看结果（工作区的状态）<code>git status</code></h4><p>可以查看本地未提交的修改</p>
-<h4 id="4、查看具体修改了什么内容git-diff-lt-file-gt"><a href="#4、查看具体修改了什么内容git-diff-lt-file-gt" class="headerlink" title="4、查看具体修改了什么内容git diff &lt;file&gt;"></a>4、查看具体修改了什么内容<code>git diff &lt;file&gt;</code></h4><h4 id="5、查看历史记录git-log-pretty-oneline"><a href="#5、查看历史记录git-log-pretty-oneline" class="headerlink" title="5、查看历史记录git log --pretty=oneline"></a>5、查看历史记录<code>git log --pretty=oneline</code></h4><h4 id="6、版本回退git-reset-hard-commit-id"><a href="#6、版本回退git-reset-hard-commit-id" class="headerlink" title="6、版本回退git reset --hard commit_id"></a>6、版本回退<code>git reset --hard commit_id</code></h4><p><code>HEAD</code> 表示当前版本，上一个版本<code>HEAD^</code> ，上上个版本<code>HEAD^^</code> ，以此类推，往上 100 个版本是<code>HEAD~100</code></p>
-<p>穿梭前，用<code>git log</code> 查看提交历史，以便确定要回退到哪个版本。</p>
-<p>重返未来，用<code>fit reflog</code> 查看历史命令，以便确定要回到未来的哪个版本。</p>
-<h4 id="7、丢弃工作区的修改git-checkout-file"><a href="#7、丢弃工作区的修改git-checkout-file" class="headerlink" title="7、丢弃工作区的修改git checkout -- file"></a>7、丢弃工作区的修改<code>git checkout -- file</code></h4><p>1）文件自修改后还没有放到暂存区，现在撤销修改就回到和版本库一模一样的状态；</p>
-<p>2）文件已经添加到暂存区后，又做了修改，现在撤销修改就回到添加到暂存区后的状态。</p>
-<h4 id="8、删除文件"><a href="#8、删除文件" class="headerlink" title="8、删除文件"></a>8、删除文件</h4><p>本地文件管理器删除文件<code>rm file</code> 后，Git 检测到删除了文件，使用<code>git status</code> 查询哪些文件被删除了：</p>
-<p>1）确定要删除,使用<code>git rm file</code> ，并且<code>git commit</code></p>
-<p>2）误删，恢复到最新版本<code>git checkout -- file</code></p>
-<h4 id="9、关联一个远程仓库git-remote-add-origin-git-server-name-path-reponame-git"><a href="#9、关联一个远程仓库git-remote-add-origin-git-server-name-path-reponame-git" class="headerlink" title="9、关联一个远程仓库git remote add origin git@server-name:path/reponame.git"></a>9、关联一个远程仓库<code>git remote add origin git@server-name:path/reponame.git</code></h4><h4 id="10、推送到远程-master-分支git-push-uorigin-master"><a href="#10、推送到远程-master-分支git-push-uorigin-master" class="headerlink" title="10、推送到远程 master 分支git push -uorigin master"></a>10、推送到远程 master 分支<code>git push -uorigin master</code></h4><h4 id="11、从远程克隆git-clone"><a href="#11、从远程克隆git-clone" class="headerlink" title="11、从远程克隆git clone ..."></a>11、从远程克隆<code>git clone ...</code></h4><h4 id="12、创建与合并分支"><a href="#12、创建与合并分支" class="headerlink" title="12、创建与合并分支"></a>12、创建与合并分支</h4><p>在每次提交时。Git 都将他们串成一条时间线，这条时间线只有一条叫做主分支（master），HEAD 指向的当前分支</p>
-<p>1）创建 dev 分支，并切换到 dev 分支</p>
-<p><code>git checkout -b dev</code> 或者<code>git switch -c dev</code></p>
-<p>等同于</p>
-<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="built_in">dev</span></span><br><span class="line">git checkout <span class="built_in">dev</span> 或者 git switch <span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<h4 id="6、git-push-u-origin-lt-name-gt-推送到远程-master-分支"><a href="#6、git-push-u-origin-lt-name-gt-推送到远程-master-分支" class="headerlink" title="6、git push -u origin &lt;name&gt; 推送到远程 master 分支"></a>6、<code>git push -u origin &lt;name&gt;</code> 推送到远程 master 分支</h4><p>如果远程仓库没有对应的分支，则使用<code>git push --set-upstream origin &lt;name&gt;</code>创建远程分支</p>
+<h4 id="7、git-pull-u-origin-lt-name-gt-将最新的提交拉取下来"><a href="#7、git-pull-u-origin-lt-name-gt-将最新的提交拉取下来" class="headerlink" title="7、git pull -u origin &lt;name&gt; 将最新的提交拉取下来"></a>7、<code>git pull -u origin &lt;name&gt;</code> 将最新的提交拉取下来</h4><h4 id="8、git-status查看工作区的状态"><a href="#8、git-status查看工作区的状态" class="headerlink" title="8、git status查看工作区的状态"></a>8、<code>git status</code>查看工作区的状态</h4><p>可以查看本地未提交的代码中，修改了哪些文件。</p>
+<h4 id="9、git-diff-lt-file-gt-查看具体修改了什么内容"><a href="#9、git-diff-lt-file-gt-查看具体修改了什么内容" class="headerlink" title="9、git diff &lt;file&gt; 查看具体修改了什么内容"></a>9、<code>git diff &lt;file&gt;</code> 查看具体修改了什么内容</h4><p>执行<code>git diff</code>可以查看所有具体修改，也可以指定查看具体的文件修改</p>
+<h4 id="10、git-log-pretty-oneline-查看历史记录"><a href="#10、git-log-pretty-oneline-查看历史记录" class="headerlink" title="10、git log --pretty=oneline 查看历史记录"></a>10、<code>git log --pretty=oneline</code> 查看历史记录</h4><h4 id="11、版本回退"><a href="#11、版本回退" class="headerlink" title="11、版本回退"></a>11、版本回退</h4><ol>
+<li><code>git reset --hard commit_id</code></li>
+</ol>
+<p><strong>场景</strong>：如果想撤销之前的某个版本，但是又想保留该目标版本之后的版本，记录下整个版本变动流程</p>
+<p><code>HEAD</code> 表示当前版本，上一个版本<code>HEAD^</code> ，上上个版本<code>HEAD^^</code> ，以此类推，往上 100 个版本是<code>HEAD~100</code></p>
+<p><strong>具体操作</strong>：</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. git <span class="built_in">log</span> 查看版本号</span><br><span class="line"><span class="number">2</span>. git <span class="built_in">reset</span> --hard 目标版本</span><br><span class="line"><span class="number">3</span>. git <span class="built_in">push</span> -f <span class="built_in">origin</span> 分支名</span><br></pre></td></tr></table></figure>
 
-<p>2）查看当前分支<code>git branch</code></p>
-<p>3）将 dev 分支合并到 master<code>git merge dev</code></p>
-<p>4）删除分支<code>git branch -d dev</code></p>
-<h4 id="13、查看分支合并图git-log-graph"><a href="#13、查看分支合并图git-log-graph" class="headerlink" title="13、查看分支合并图git log --graph"></a>13、查看分支合并图<code>git log --graph</code></h4><h4 id="14、bug-分支"><a href="#14、bug-分支" class="headerlink" title="14、bug 分支"></a>14、bug 分支</h4><p>例如，你正在 dev 分支上进行工作到一半，突然接到要修复一个代号 101 的 bug 任务</p>
+<!--穿梭前，用`git log` 查看提交历史，以便确定要回退到哪个版本。-->
+
+<!--重返未来，用`git reflog` 查看历史命令，以便确定要回到未来的哪个版本。-->
+
+<p>2） <code>git revert（反做）</code></p>
+<p><strong>场景</strong>：如果想恢复到之前某个提交的版本，并且那个版本之后的提交都不要了</p>
+<p><strong>具体操作</strong>：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> git log 查看版本号</span><br><span class="line"><span class="number">2.</span> git revert -n 版本号</span><br><span class="line"><span class="number">3.</span> git commit -m <span class="string">&quot;版本名&quot;</span></span><br><span class="line"><span class="number">4.</span> git push</span><br></pre></td></tr></table></figure>
+
+<h4 id="12、git-checkout-file-丢弃工作区的修改"><a href="#12、git-checkout-file-丢弃工作区的修改" class="headerlink" title="12、git checkout -- file 丢弃工作区的修改"></a>12、<code>git checkout -- file</code> 丢弃工作区的修改</h4><p>1）文件自修改后还没有放到暂存区，现在撤销修改就回到和版本库一模一样的状态；</p>
+<p>2）文件已经添加到暂存区后，又做了修改，现在撤销修改就回到添加到暂存区后的状态。</p>
+<h4 id="13、删除文件"><a href="#13、删除文件" class="headerlink" title="13、删除文件"></a>13、删除文件</h4><p>本地文件管理器删除文件<code>rm file</code> 后，使用<code>git status</code>可以 查询哪些文件被删除了：</p>
+<p>1）如果确定要删除,使用<code>git rm file</code> ，并且<code>git commit</code></p>
+<p>2）如果误删，则恢复删除的文件<code>git checkout -- file</code></p>
+<h4 id="14、git-log-graph-查看分支合并图"><a href="#14、git-log-graph-查看分支合并图" class="headerlink" title="14、git log --graph 查看分支合并图"></a>14、<code>git log --graph</code> 查看分支合并图</h4><h4 id="15、bug-分支"><a href="#15、bug-分支" class="headerlink" title="15、bug 分支"></a>15、bug 分支</h4><p>例如，你正在 dev 分支上进行工作到一半，突然接到要修复一个代号 101 的 bug 任务</p>
 <p>1）把当前工作现场储藏起来<code>git stash</code> ；</p>
 <p>2）创建分支修复 bug，修复完之后 commit。切换到 master 分支完成合并，最后删除新创建的 bug 分支；</p>
 <p>3）恢复未做完的 dev 工作现场</p>
 <p>​ 使用<code>git stash list</code> 查看工作现场</p>
-<p>​ （1）用<code>git stash apply</code> ，然后使用<code>git stash drop</code> 删除 stash 内容。使用<code>git stash apply stash@&#123;0&#125;</code> 恢复指定的 stash;</p>
-<p>​ （2）使用<code>git stash pop</code> 恢复的同时能把 stash 内容也删除了。</p>
+<p>​ （a）用<code>git stash apply</code> ，然后使用<code>git stash drop</code> 删除 stash 内容。使用<code>git stash apply stash@&#123;0&#125;</code> 恢复指定的 stash;</p>
+<p>​ （b）使用<code>git stash pop</code> 恢复的同时能把 stash 内容也删除了。</p>
 <p>在 master 分支上修复 bug，想要合并到当前的 dev 分支，可以使用<code>git cherry-pick &lt;commit&gt;</code> ,把 bug 提交的修改复制到当前分支，避免重复劳动。</p>
-<h4 id="15、如果要丢弃一个没有被合并过的分支，可以通过git-branch-D-lt-name-gt-强行删除"><a href="#15、如果要丢弃一个没有被合并过的分支，可以通过git-branch-D-lt-name-gt-强行删除" class="headerlink" title="15、如果要丢弃一个没有被合并过的分支，可以通过git branch -D &lt;name&gt; 强行删除"></a>15、如果要丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code> 强行删除</h4><h4 id="16、查看远程仓库的信息用git-remote-或git-remote-v"><a href="#16、查看远程仓库的信息用git-remote-或git-remote-v" class="headerlink" title="16、查看远程仓库的信息用git remote 或git remote -v"></a>16、查看远程仓库的信息用<code>git remote</code> 或<code>git remote -v</code></h4><h4 id="17、推送分支git-push"><a href="#17、推送分支git-push" class="headerlink" title="17、推送分支git push"></a>17、推送分支<code>git push</code></h4><h4 id="18、将最新的提交拉取下来git-pull"><a href="#18、将最新的提交拉取下来git-pull" class="headerlink" title="18、将最新的提交拉取下来git pull"></a>18、将最新的提交拉取下来<code>git pull</code></h4><h4 id="19、标签操作"><a href="#19、标签操作" class="headerlink" title="19、标签操作"></a>19、标签操作</h4><p>1）切换到需要打标签的分支上</p>
+<h4 id="16、git-branch-D-lt-name-gt-删除本地分支"><a href="#16、git-branch-D-lt-name-gt-删除本地分支" class="headerlink" title="16、git branch -D &lt;name&gt; 删除本地分支"></a>16、<code>git branch -D &lt;name&gt;</code> 删除本地分支</h4><p><code>git push origin -d &lt;name&gt;</code> 删除远程分支</p>
+<blockquote>
+<p>⚠ ️删除分支时需要切换到除被删除分支之外的分支</p>
+</blockquote>
+<h4 id="17、查看远程仓库的信息用git-remote-或git-remote-v"><a href="#17、查看远程仓库的信息用git-remote-或git-remote-v" class="headerlink" title="17、查看远程仓库的信息用git remote 或git remote -v"></a>17、查看远程仓库的信息用<code>git remote</code> 或<code>git remote -v</code></h4><h4 id="18、git-tag-lt-name-gt-标签操作"><a href="#18、git-tag-lt-name-gt-标签操作" class="headerlink" title="18、git tag &lt;name&gt; 标签操作"></a>18、<code>git tag &lt;name&gt;</code> 标签操作</h4><p>为什么要打标签？四个字：<strong>以示重要</strong></p>
+<p>1）切换到需要打标签的分支上</p>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">git</span> <span class="string">branch</span></span><br><span class="line"><span class="attr">git</span> <span class="string">checkout &lt;name&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>2）打标签<code>git tag &lt;name&gt;</code></p>
@@ -342,7 +386,33 @@
 <p>6）推送一个本地标签<code>git push origin &lt;tagname&gt;</code></p>
 <p>7）推送全部未推送过的本地标签<code>git push origin --tags</code></p>
 <p>8）删除一个远程标签<code>git push origin :refs/tags/&lt;tagname&gt;</code></p>
-<p>参照 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vzgST0ko-HZVkFFiSZ2xGg">如何让规范你的Git commit</a></p>
+<h4 id="20、git-bisect-查找哪一次代码提交引入了错误"><a href="#20、git-bisect-查找哪一次代码提交引入了错误" class="headerlink" title="20、git bisect 查找哪一次代码提交引入了错误"></a>20、<code>git bisect</code> 查找哪一次代码提交引入了错误</h4><p><strong>原理</strong>：二分法</p>
+<p>举个栗子：一共有101次提交</p>
+<p><strong>使用流程</strong>：</p>
+<ol>
+<li><p>检查代码提交记录 <code>git log --pretty=oneline</code></p>
+</li>
+<li><p>启动查错 <code>git bisect start [终点commit] [起点commit]</code></p>
+<p>终点是最近一次的提交，起点是更久之前的提交</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git bisect <span class="keyword">start</span> [第<span class="number">101</span>次<span class="keyword">commit</span>] [第<span class="number">1</span>次<span class="keyword">commit</span>]</span><br></pre></td></tr></table></figure>
+
+<p>执行上述命令完之后，代码库会切换到上述范围正中间的那一次提交(也就是第51次提交)</p>
+</li>
+<li><p>此时运行代码，如果代码运行正常，则使用<code>git bisect good</code>标记本次提交是没有问题的，此时代码会自动切换到后半段中点的版本（也就是第76次提交）</p>
+</li>
+<li><p>继续运行代码，如果代码运行不正常了，则使用<code>git bisect bad</code>标记本次提交是有问题的，此时代码会自动切换到本次提交到上一次提交的中点（也就是第63次提交）</p>
+</li>
+<li><p>不断重复上述第3、4步骤，就能找到出问题的那次提交<br><img src="https://github.com/chajianyuan/picture/blob/master/1661616730056_.pic.jpg?raw=true"></p>
+</li>
+<li><p>退出查错，回到最近一次提交<code>git bisect reset</code></p>
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>参照 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vzgST0ko-HZVkFFiSZ2xGg">如何规范你的Git commit</a></li>
+<li>参照 <a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2018/12/git-bisect.html">git bisect 命令教程</a></li>
+</ul>
+</blockquote>
 
     </div>
 
@@ -427,7 +497,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81Git-%E7%AE%80%E4%BB%8B"><span class="nav-text">一、Git 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%9B%86%E4%B8%AD%E5%BC%8F%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">二、集中式和分布式的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F"><span class="nav-text">1、集中式版本控制系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F"><span class="nav-text">2、分布式版本控制系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Git-%E6%8C%87%E4%BB%A4"><span class="nav-text">二、Git 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E4%BB%93%E5%BA%93git-init"><span class="nav-text">1、初始化一个仓库git init</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E5%88%B0-Git-%E4%BB%93%E5%BA%93"><span class="nav-text">2、添加文件到 Git 仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E6%9F%A5%E7%9C%8B%E7%BB%93%E6%9E%9C%EF%BC%88%E5%B7%A5%E4%BD%9C%E5%8C%BA%E7%9A%84%E7%8A%B6%E6%80%81%EF%BC%89git-status"><span class="nav-text">3、查看结果（工作区的状态）git status</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E6%9F%A5%E7%9C%8B%E5%85%B7%E4%BD%93%E4%BF%AE%E6%94%B9%E4%BA%86%E4%BB%80%E4%B9%88%E5%86%85%E5%AE%B9git-diff-lt-file-gt"><span class="nav-text">4、查看具体修改了什么内容git diff &lt;file&gt;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5%E3%80%81%E6%9F%A5%E7%9C%8B%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95git-log-pretty-oneline"><span class="nav-text">5、查看历史记录git log --pretty&#x3D;oneline</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6%E3%80%81%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80git-reset-hard-commit-id"><span class="nav-text">6、版本回退git reset --hard commit_id</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7%E3%80%81%E4%B8%A2%E5%BC%83%E5%B7%A5%E4%BD%9C%E5%8C%BA%E7%9A%84%E4%BF%AE%E6%94%B9git-checkout-file"><span class="nav-text">7、丢弃工作区的修改git checkout -- file</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8%E3%80%81%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="nav-text">8、删除文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9%E3%80%81%E5%85%B3%E8%81%94%E4%B8%80%E4%B8%AA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93git-remote-add-origin-git-server-name-path-reponame-git"><span class="nav-text">9、关联一个远程仓库git remote add origin git@server-name:path&#x2F;reponame.git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10%E3%80%81%E6%8E%A8%E9%80%81%E5%88%B0%E8%BF%9C%E7%A8%8B-master-%E5%88%86%E6%94%AFgit-push-uorigin-master"><span class="nav-text">10、推送到远程 master 分支git push -uorigin master</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11%E3%80%81%E4%BB%8E%E8%BF%9C%E7%A8%8B%E5%85%8B%E9%9A%86git-clone"><span class="nav-text">11、从远程克隆git clone ...</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12%E3%80%81%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF"><span class="nav-text">12、创建与合并分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13%E3%80%81%E6%9F%A5%E7%9C%8B%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6%E5%9B%BEgit-log-graph"><span class="nav-text">13、查看分支合并图git log --graph</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14%E3%80%81bug-%E5%88%86%E6%94%AF"><span class="nav-text">14、bug 分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15%E3%80%81%E5%A6%82%E6%9E%9C%E8%A6%81%E4%B8%A2%E5%BC%83%E4%B8%80%E4%B8%AA%E6%B2%A1%E6%9C%89%E8%A2%AB%E5%90%88%E5%B9%B6%E8%BF%87%E7%9A%84%E5%88%86%E6%94%AF%EF%BC%8C%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87git-branch-D-lt-name-gt-%E5%BC%BA%E8%A1%8C%E5%88%A0%E9%99%A4"><span class="nav-text">15、如果要丢弃一个没有被合并过的分支，可以通过git branch -D &lt;name&gt; 强行删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16%E3%80%81%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BF%A1%E6%81%AF%E7%94%A8git-remote-%E6%88%96git-remote-v"><span class="nav-text">16、查看远程仓库的信息用git remote 或git remote -v</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17%E3%80%81%E6%8E%A8%E9%80%81%E5%88%86%E6%94%AFgit-push"><span class="nav-text">17、推送分支git push</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18%E3%80%81%E5%B0%86%E6%9C%80%E6%96%B0%E7%9A%84%E6%8F%90%E4%BA%A4%E6%8B%89%E5%8F%96%E4%B8%8B%E6%9D%A5git-pull"><span class="nav-text">18、将最新的提交拉取下来git pull</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#19%E3%80%81%E6%A0%87%E7%AD%BE%E6%93%8D%E4%BD%9C"><span class="nav-text">19、标签操作</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81Git-%E7%AE%80%E4%BB%8B"><span class="nav-text">一、Git 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%9B%86%E4%B8%AD%E5%BC%8F%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">二、集中式和分布式的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F"><span class="nav-text">1、集中式版本控制系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F"><span class="nav-text">2、分布式版本控制系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Git-%E6%8C%87%E4%BB%A4"><span class="nav-text">二、Git 指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81git-clone-git-server-name-path-reponame-git-%E4%BB%8E%E8%BF%9C%E7%A8%8B%E5%85%8B%E9%9A%86"><span class="nav-text">1、git clone git@server-name:path&#x2F;reponame.git 从远程克隆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81git-remote-add-origin-git-server-name-path-reponame-git-%E5%85%B3%E8%81%94%E4%B8%80%E4%B8%AA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-text">2、git remote add origin git@server-name:path&#x2F;reponame.git 关联一个远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81git-init-%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E4%BB%93%E5%BA%93"><span class="nav-text">3、git init 初始化一个仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF"><span class="nav-text">4、创建与合并分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5%E3%80%81%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E5%88%B0-Git-%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="nav-text">5、添加文件到 Git 本地仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6%E3%80%81git-push-u-origin-lt-name-gt-%E6%8E%A8%E9%80%81%E5%88%B0%E8%BF%9C%E7%A8%8B-master-%E5%88%86%E6%94%AF"><span class="nav-text">6、git push -u origin &lt;name&gt; 推送到远程 master 分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7%E3%80%81git-pull-u-origin-lt-name-gt-%E5%B0%86%E6%9C%80%E6%96%B0%E7%9A%84%E6%8F%90%E4%BA%A4%E6%8B%89%E5%8F%96%E4%B8%8B%E6%9D%A5"><span class="nav-text">7、git pull -u origin &lt;name&gt; 将最新的提交拉取下来</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8%E3%80%81git-status%E6%9F%A5%E7%9C%8B%E5%B7%A5%E4%BD%9C%E5%8C%BA%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-text">8、git status查看工作区的状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9%E3%80%81git-diff-lt-file-gt-%E6%9F%A5%E7%9C%8B%E5%85%B7%E4%BD%93%E4%BF%AE%E6%94%B9%E4%BA%86%E4%BB%80%E4%B9%88%E5%86%85%E5%AE%B9"><span class="nav-text">9、git diff &lt;file&gt; 查看具体修改了什么内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10%E3%80%81git-log-pretty-oneline-%E6%9F%A5%E7%9C%8B%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95"><span class="nav-text">10、git log --pretty&#x3D;oneline 查看历史记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11%E3%80%81%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80"><span class="nav-text">11、版本回退</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12%E3%80%81git-checkout-file-%E4%B8%A2%E5%BC%83%E5%B7%A5%E4%BD%9C%E5%8C%BA%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="nav-text">12、git checkout -- file 丢弃工作区的修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13%E3%80%81%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="nav-text">13、删除文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14%E3%80%81git-log-graph-%E6%9F%A5%E7%9C%8B%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6%E5%9B%BE"><span class="nav-text">14、git log --graph 查看分支合并图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15%E3%80%81bug-%E5%88%86%E6%94%AF"><span class="nav-text">15、bug 分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16%E3%80%81git-branch-D-lt-name-gt-%E5%88%A0%E9%99%A4%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF"><span class="nav-text">16、git branch -D &lt;name&gt; 删除本地分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17%E3%80%81%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BF%A1%E6%81%AF%E7%94%A8git-remote-%E6%88%96git-remote-v"><span class="nav-text">17、查看远程仓库的信息用git remote 或git remote -v</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18%E3%80%81git-tag-lt-name-gt-%E6%A0%87%E7%AD%BE%E6%93%8D%E4%BD%9C"><span class="nav-text">18、git tag &lt;name&gt; 标签操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20%E3%80%81git-bisect-%E6%9F%A5%E6%89%BE%E5%93%AA%E4%B8%80%E6%AC%A1%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E5%BC%95%E5%85%A5%E4%BA%86%E9%94%99%E8%AF%AF"><span class="nav-text">20、git bisect 查找哪一次代码提交引入了错误</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -441,7 +511,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -491,13 +561,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">134k</span>
+    <span title="站点总字数">136k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:02</span>
+    <span title="站点阅读时长">2:04</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
