@@ -313,7 +313,8 @@
 <h4 id="1-2-Cache-control"><a href="#1-2-Cache-control" class="headerlink" title="1.2 Cache-control"></a>1.2 Cache-control</h4><p><code>Cache-control: max-age=30</code></p>
 <p><code>Cache-Control</code> 出现于 HTTP/1.1，<strong>优先级高于 Expires</strong> 。该属性值表示资源会在 30 秒后过期，需要再次请求。</p>
 <p><code>Cache-Control</code> <strong>可以在请求头或者响应头中设置</strong>，并且可以组合使用多种指令</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/12/6/1678234a1ed20487?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
+<img src="https://user-gold-cdn.xitu.io/2018/12/6/1678234a1ed20487?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" width="600px" />
+
 <p>从图中我们可以看到，我们可以将<strong>多个指令配合起来一起使用</strong>，达到多个目的。比如说我们希望资源能被缓存下来，并且是客户端和代理服务器都能缓存，还能设置缓存失效时间等等。</p>
 <p><img src="https://user-gold-cdn.xitu.io/2018/12/5/1677ef2cd7bf1bba?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="常见指令作用"></p>
 <h3 id="2、协商缓存"><a href="#2、协商缓存" class="headerlink" title="2、协商缓存"></a>2、协商缓存</h3><p>如果缓存过期了，就需要发起请求验证资源是否有更新。协商缓存可以通过设置两种 HTTP Header 实现：<code>Last-Modified</code>和 <code>ETag</code> 。</p>
