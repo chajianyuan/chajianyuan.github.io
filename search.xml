@@ -2663,24 +2663,40 @@
     <url>/2019/09/03/webpack%EF%BC%9Awebpack%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer"/>
 
-<h2 id="一、为什么需要构建工具"><a href="#一、为什么需要构建工具" class="headerlink" title="一、为什么需要构建工具"></a>一、为什么需要构建工具</h2><a id="more"></a>
+<img src="" />
 
-<p>（1）转换 ES6 语法</p>
+<a id="more"></a>
+
+<p><a href="https://webpack.js.org/">webpack官方文档</a></p>
+<h3 id="一、为什么需要构建工具"><a href="#一、为什么需要构建工具" class="headerlink" title="一、为什么需要构建工具"></a>一、为什么需要构建工具</h3><p>（1）转换 ES6 语法</p>
 <p>（2）转换 JSX</p>
 <p>（3）CSS 前传补全</p>
 <p>（4）压缩混淆</p>
 <p>（5）图片压缩</p>
-<h2 id="二、为什么选择-webpack"><a href="#二、为什么选择-webpack" class="headerlink" title="二、为什么选择 webpack"></a>二、为什么选择 webpack</h2><p>（1）社区生态丰富</p>
+<h3 id="二、为什么选择-webpack"><a href="#二、为什么选择-webpack" class="headerlink" title="二、为什么选择 webpack"></a>二、为什么选择 webpack</h3><p>（1）社区生态丰富</p>
 <p>（2）配置灵活和插件化扩展</p>
 <p>（3）官方更新迭代速度快</p>
-<h2 id="三、初识-webpack"><a href="#三、初识-webpack" class="headerlink" title="三、初识 webpack"></a>三、初识 webpack</h2><p>webpack 默认配置文件：webpack.config.js</p>
+<h3 id="三、初识-webpack"><a href="#三、初识-webpack" class="headerlink" title="三、初识 webpack"></a>三、初识 webpack</h3><p>webpack是模块打包工具（Module Bundler）</p>
+<ul>
+<li>它能识别任何模块引入方式使用的语法；</li>
+<li>它能打包任何形式的文件，不仅限于js文件；</li>
+</ul>
+<p>webpack 默认配置文件：webpack.config.js</p>
 <p>可以通过 webpack –config 指定配置文件</p>
 <p><img src="https://github.com/cjy1/picture/blob/master/TIM%E5%9B%BE%E7%89%8720190918091733.png?raw=true"></p>
-<h2 id="四、安装-webpack"><a href="#四、安装-webpack" class="headerlink" title="四、安装 webpack"></a>四、安装 webpack</h2><h4 id="1、安装-Node-js-和-NPM"><a href="#1、安装-Node-js-和-NPM" class="headerlink" title="1、安装 Node.js 和 NPM"></a>1、安装 Node.js 和 NPM</h4><h4 id="2、创建一个空目录"><a href="#2、创建一个空目录" class="headerlink" title="2、创建一个空目录"></a>2、创建一个空目录</h4><p><code>mkdir my_project</code></p>
+<h3 id="四、安装-webpack"><a href="#四、安装-webpack" class="headerlink" title="四、安装 webpack"></a>四、安装 webpack</h3><h4 id="1、安装-Node-js-和-NPM"><a href="#1、安装-Node-js-和-NPM" class="headerlink" title="1、安装 Node.js 和 NPM"></a>1、安装 Node.js 和 NPM</h4><h4 id="2、创建一个空目录"><a href="#2、创建一个空目录" class="headerlink" title="2、创建一个空目录"></a>2、创建一个空目录</h4><p><code>mkdir my_project</code></p>
 <h4 id="3、进入该目录"><a href="#3、进入该目录" class="headerlink" title="3、进入该目录"></a>3、进入该目录</h4><p><code>cd my_project</code></p>
 <h4 id="4、生成初始的-package-文件"><a href="#4、生成初始的-package-文件" class="headerlink" title="4、生成初始的 package 文件"></a>4、生成初始的 package 文件</h4><p><code>npm init -y</code></p>
-<h4 id="5、安装-webpack-和-webpack-cli"><a href="#5、安装-webpack-和-webpack-cli" class="headerlink" title="5、安装 webpack 和 webpack-cli"></a>5、安装 webpack 和 webpack-cli</h4><figure class="highlight q"><table><tr><td class="code"><pre><span class="line">cnpm install webpack --<span class="built_in">save</span>-<span class="built_in">dev</span></span><br><span class="line">cnpm install webpack-cli --<span class="built_in">save</span>-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
-
+<h4 id="5、安装-webpack-和-webpack-cli"><a href="#5、安装-webpack-和-webpack-cli" class="headerlink" title="5、安装 webpack 和 webpack-cli"></a>5、安装 webpack 和 webpack-cli</h4><ol>
+<li>全局安装</li>
+</ol>
+<p><code>npm install webpack webpack-cli -g</code></p>
+<p>查看版本号 <code>webpack -v</code></p>
+<p>卸载 <code>npm uninstall webapck webpack-cli -g</code></p>
+<ol start="2">
+<li>项目内部安装</li>
+</ol>
+<p>进入项目内部，执行 <code>npm install webpack webpack-cli --save-dev</code>或<code>npm install webpack webpack-cli -D</code></p>
 <h4 id="6、在项目中新建一个-webpack-config-js-文件"><a href="#6、在项目中新建一个-webpack-config-js-文件" class="headerlink" title="6、在项目中新建一个 webpack.config.js 文件"></a>6、在项目中新建一个 webpack.config.js 文件</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.join(_dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mode: <span class="string">&#x27;production&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h4 id="7、创建一个-src-目录"><a href="#7、创建一个-src-目录" class="headerlink" title="7、创建一个 src 目录"></a>7、创建一个 src 目录</h4><p>在 src 中新建一个 helloworld.js 文件</p>
@@ -2693,7 +2709,7 @@
 <figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;</span><span class="keyword">Error</span>: <span class="keyword">no</span> <span class="keyword">test</span> specified\<span class="string">&quot; &amp;&amp; exit 1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build&quot;</span>: <span class="string">&quot;webpack&quot;</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
 
 <p>然后<code>npm run build</code></p>
-<h2 id="五、webpack-基本用法"><a href="#五、webpack-基本用法" class="headerlink" title="五、webpack 基本用法"></a>五、webpack 基本用法</h2><p>本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器（module bundler）。当 webpack 处理应用程序时，他会递归的构建一个依赖关系图（dependency graph），其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。</p>
+<h3 id="五、webpack-基本用法"><a href="#五、webpack-基本用法" class="headerlink" title="五、webpack 基本用法"></a>五、webpack 基本用法</h3><p>本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器（module bundler）。当 webpack 处理应用程序时，他会递归的构建一个依赖关系图（dependency graph），其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。</p>
 <p>在这开始之前需要先理解四个核心概念：</p>
 <ul>
 <li>入口（entry）</li>
@@ -2716,8 +2732,10 @@
 <figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">const <span class="built_in">path</span> = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    index: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">    search: <span class="string">&#x27;./src/search.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">output</span>: &#123;</span><br><span class="line">    <span class="built_in">path</span>: <span class="built_in">path</span>.join(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    filename: <span class="string">&#x27;[name].js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mode: <span class="string">&#x27;production&#x27;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h4 id="3、核心概念之-Loaders"><a href="#3、核心概念之-Loaders" class="headerlink" title="3、核心概念之 Loaders"></a>3、核心概念之 Loaders</h4><p>webpack 开箱即用只支持 JS 和 JSON 两种文件类型，通过 loaders 去支持其他文件类型并且把他们转化成有效的模块，并且可以添加到依赖图中。</p>
+<p>loaders就是一个打包方案</p>
 <p>本身是一个函数，接受源文件作为参数，返回转换的结果。</p>
-<p>常见的 loades:</p>
+<p>loaders需要安装 <code>npm install loader名称 -D</code></p>
+<p>常见的 loaders:</p>
 <table>
 <thead>
 <tr>
@@ -2754,9 +2772,26 @@
 <td align="center">多进程打包 JS 和 CSS</td>
 </tr>
 </tbody></table>
+<p>loader是有执行顺序的，<code>从下到上，从右到左</code></p>
 <p><strong>用法：</strong></p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.<span class="built_in">exports</span> = &#123;</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line"> modules:&#123;</span><br><span class="line">   rules:[</span><br><span class="line">     &#123;</span><br><span class="line">       test:<span class="regexp">/\.txt$/</span>,        <span class="comment">//test指定匹配规则</span></span><br><span class="line">       use: <span class="string">&#x27;raw-loader&#x27;</span>     <span class="comment">//use指定使用的loader名称</span></span><br><span class="line">     &#125;</span><br><span class="line">   ]</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>（1） 打包静态资源 —— 图片</p>
+<p>a) <a href="https://webpack.js.org/loaders/file-loader/">file-loader</a></p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">const path = require(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line"> modules:&#123;</span><br><span class="line">   rules:[</span><br><span class="line">      &#123;</span><br><span class="line">        test:<span class="regexp">/\.(jpg|png|gif)$/</span>,        <span class="regexp">//</span>test指定匹配规则</span><br><span class="line">        use: <span class="string">&#x27;file-loader&#x27;</span>,     <span class="regexp">//u</span>se指定使用的loader名称</span><br><span class="line">        options: &#123;</span><br><span class="line">          name: <span class="string">&#x27;[name].[ext]&#x27;</span>,  <span class="regexp">//</span> palceholders 占位符</span><br><span class="line">          outputPath: <span class="string">&#x27;images/&#x27;</span>  <span class="regexp">//</span> 打包位置</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   ]</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<p>b) <a href="https://webpack.js.org/loaders/url-loader/">url-loader</a></p>
+<p>（2） 打包静态资源 —— 样式</p>
+<p>a）<a href="https://webpack.js.org/loaders/style-loader/">style-loader</a></p>
+<p>b) <a href="https://webpack.js.org/loaders/css-loader/">css-loader</a></p>
+<p>c）<a href="https://webpack.js.org/loaders/sass-loader/">scss-loader</a></p>
+<p>d）<a href="https://webpack.js.org/loaders/postcss-loader/">postcss-loader</a></p>
+<ul>
+<li><p>loader做了什么？</p>
+<ol>
+<li>当它发现他在代码中引入了一个图片时，它会将这个图片移动到打包文件中，并自定义一个图片名称</li>
+<li>将打包文件中的图片名称返回给引入图片的文件</li>
+</ol>
+</li>
+</ul>
 <h4 id="4、核心概念之-Plugins"><a href="#4、核心概念之-Plugins" class="headerlink" title="4、核心概念之 Plugins"></a>4、核心概念之 Plugins</h4><p>插件用于 bundle 文件的优化，资源管理和环境变量注入</p>
 <p>作用于整个构建过程</p>
 <p><strong>常见的 Plugin:</strong></p>
@@ -2822,7 +2857,7 @@
 <td align="center">不开启任何优化</td>
 </tr>
 </tbody></table>
-<h2 id="六、资源解析"><a href="#六、资源解析" class="headerlink" title="六、资源解析"></a>六、资源解析</h2><h4 id="1、解析-CSS"><a href="#1、解析-CSS" class="headerlink" title="1、解析 CSS"></a>1、解析 CSS</h4><p>css-loader 用于加载。css 文件，并且转换成 .js 对象</p>
+<h3 id="六、资源解析"><a href="#六、资源解析" class="headerlink" title="六、资源解析"></a>六、资源解析</h3><h4 id="1、解析-CSS"><a href="#1、解析-CSS" class="headerlink" title="1、解析 CSS"></a>1、解析 CSS</h4><p>css-loader 用于加载。css 文件，并且转换成 .js 对象</p>
 <p>style-loader 将样式通过&lt; style &gt; 标签插入到 head 中</p>
 <p><code>npm i style-loader css-loader -D</code></p>
 <figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">const <span class="built_in">path</span> = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry:<span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">  <span class="built_in">output</span>: &#123;</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">    <span class="built_in">path</span>:<span class="built_in">path</span>.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line"> modules:&#123;</span><br><span class="line">   rules:[</span><br><span class="line">     &#123;</span><br><span class="line">       test:/\.css$/,</span><br><span class="line">       use: [</span><br><span class="line">         <span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">         <span class="string">&#x27;css-loader&#x27;</span></span><br><span class="line">       ]</span><br><span class="line">     &#125;</span><br><span class="line">   ]</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -2845,7 +2880,7 @@
 <p>增加 ES6 的 babel preset 配置</p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;presets&quot;</span>:[</span><br><span class="line">    <span class="string">&quot;@babel/preset-env&quot;</span>        ————————增加ES6的babel preset配置</span><br><span class="line">    <span class="string">&quot;@babel/preset-react&quot;</span>      ————————增加React的babel preset配置</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;plugins&quot;</span>:[</span><br><span class="line">    <span class="string">&quot;@babel/proposal-class-properties&quot;</span></span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
 
-<h2 id="七、webpack-中的文件监听"><a href="#七、webpack-中的文件监听" class="headerlink" title="七、webpack 中的文件监听"></a>七、webpack 中的文件监听</h2><p>文件监听是在发现源码发生变化时。自动重新构建出新的输出文件</p>
+<h3 id="七、webpack-中的文件监听"><a href="#七、webpack-中的文件监听" class="headerlink" title="七、webpack 中的文件监听"></a>七、webpack 中的文件监听</h3><p>文件监听是在发现源码发生变化时。自动重新构建出新的输出文件</p>
 <p>webpack 开启监听模式，有两种方式：</p>
 <p>·启动 webpack 命令时，带上–watch 参数</p>
 <p>·在配置 webpack.config.js 中设置成 watch:true</p>
@@ -2855,7 +2890,7 @@
 <p>某个文件发生了变化，并不会立刻告诉监听者，而是先缓存起来，等 aggregateTimeout</p>
 <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">module.export = &#123;</span><br><span class="line">  <span class="regexp">//</span>默认false，也就是不开启</span><br><span class="line">  watch:true,</span><br><span class="line">  <span class="regexp">//</span>只有开启监听模式时，watchOptios才有意义</span><br><span class="line">  watchOptions:&#123;</span><br><span class="line">    <span class="regexp">//</span>默认为空，不监听的文件或者文件夹，支持正则匹配</span><br><span class="line">    ignored:<span class="regexp">/node_modules/</span>,</span><br><span class="line">    <span class="regexp">//</span>监听到变化发生后会等<span class="number">300</span>ms再去执行，默认<span class="number">300</span>ms</span><br><span class="line">    aggregateTimeout:<span class="number">300</span>ms,</span><br><span class="line">    <span class="regexp">//</span>判断文件是否发生变化时通过不停的询问系统指定文件有没有变化实现的，默认美妙问<span class="number">1000</span>次</span><br><span class="line">    poll:<span class="number">1000</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="八、热更新"><a href="#八、热更新" class="headerlink" title="八、热更新"></a>八、热更新</h2><h4 id="1-webpack-dev-server-WDS"><a href="#1-webpack-dev-server-WDS" class="headerlink" title="(1) webpack-dev-server(WDS)"></a>(1) webpack-dev-server(WDS)</h4><p>WDS 不刷新浏览器</p>
+<h3 id="八、热更新"><a href="#八、热更新" class="headerlink" title="八、热更新"></a>八、热更新</h3><h4 id="1-webpack-dev-server-WDS"><a href="#1-webpack-dev-server-WDS" class="headerlink" title="(1) webpack-dev-server(WDS)"></a>(1) webpack-dev-server(WDS)</h4><p>WDS 不刷新浏览器</p>
 <p>WDS 不输出文件，而是放在内存中</p>
 <p>使用 HotModuleReplacementPlugin 插件</p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>:<span class="string">&quot;hello-webpack&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>:<span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>:<span class="string">&quot;Hello webpack&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>:<span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>:&#123;</span><br><span class="line">    <span class="attr">&quot;build&quot;</span>:<span class="string">&quot;webpack&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;dev&quot;</span>:<span class="string">&quot;webpack-dev-server --open&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;keywords&quot;</span>:[],</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>:<span class="string">&quot;ISC&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2868,7 +2903,7 @@
 <p>HMR Rumtime：会注入到浏览器，更新文件的变化</p>
 <p>bundle.js：构建输出的文件</p>
 <p><img src="https://github.com/cjy1/picture/blob/master/TIM%E5%9B%BE%E7%89%8720190919192920.png?raw=true"></p>
-<h2 id="九、文件指纹"><a href="#九、文件指纹" class="headerlink" title="九、文件指纹"></a>九、文件指纹</h2><p>打包后输出的文件名的后缀</p>
+<h3 id="九、文件指纹"><a href="#九、文件指纹" class="headerlink" title="九、文件指纹"></a>九、文件指纹</h3><p>打包后输出的文件名的后缀</p>
 <h4 id="（1）-文件指纹如何生成"><a href="#（1）-文件指纹如何生成" class="headerlink" title="（1） 文件指纹如何生成"></a>（1） 文件指纹如何生成</h4><p>Hash：和整个项目的构建有关，只要项目文件有修改，整个项目构建的 hash 值就会更改</p>
 <p>Chunkhash：和 webpack 打包的 chunk 有关，不同的 entry 会生成不停的 chunkhash</p>
 <p>Contenthash：根据文件内容来定义 hash，文件内容不变，则 contenthash 不变</p>
@@ -2917,7 +2952,7 @@
 </tbody></table>
 <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.<span class="built_in">exports</span> = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    index: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">    search: <span class="string">&#x27;./src/search.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">module</span>:&#123;</span><br><span class="line">    rules:[</span><br><span class="line">      &#123;</span><br><span class="line">        test:<span class="regexp">/\.(png|svg|jpg|gif)$/</span>,</span><br><span class="line">        use:[&#123;</span><br><span class="line">          loader:<span class="string">&#x27;file-loader&#x27;</span>,</span><br><span class="line">          options:&#123;</span><br><span class="line">            name:<span class="string">&#x27;img/[name][hash:8].[ext]&#x27;</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="十、代码压缩"><a href="#十、代码压缩" class="headerlink" title="十、代码压缩"></a>十、代码压缩</h2><h4 id="（1）JS-文件的压缩"><a href="#（1）JS-文件的压缩" class="headerlink" title="（1）JS 文件的压缩"></a>（1）JS 文件的压缩</h4><p>内置了 uglifyjs-webpack-plugin</p>
+<h3 id="十、代码压缩"><a href="#十、代码压缩" class="headerlink" title="十、代码压缩"></a>十、代码压缩</h3><h4 id="（1）JS-文件的压缩"><a href="#（1）JS-文件的压缩" class="headerlink" title="（1）JS 文件的压缩"></a>（1）JS 文件的压缩</h4><p>内置了 uglifyjs-webpack-plugin</p>
 <h4 id="（3）CSS-文件的压缩"><a href="#（3）CSS-文件的压缩" class="headerlink" title="（3）CSS 文件的压缩"></a>（3）CSS 文件的压缩</h4><p>使用 optimize-css-assets-webpack-plugin</p>
 <p>同时使用 cssnano</p>
 <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="meta">module.exports</span> = <span class="string">&#123;</span></span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">index</span>: <span class="string">&#x27;./src/index.js&#x27;,</span></span><br><span class="line">    <span class="attr">search</span>: <span class="string">&#x27;./src/search.js&#x27;</span></span><br><span class="line">  <span class="attr">&#125;,</span></span><br><span class="line">  <span class="attr">output</span>: <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">path</span>: <span class="string">__dirname+&#x27;/dist&#x27;,</span></span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;[name][chunkhash:8].js&#x27;</span></span><br><span class="line">  <span class="attr">&#125;,</span></span><br><span class="line">  <span class="attr">plugins</span>:<span class="string">[</span></span><br><span class="line">    <span class="attr">new</span> <span class="string">OptimizeCSSAssetsPlugin(&#123;</span></span><br><span class="line">      <span class="attr">assetNameRegExp</span>:<span class="string">/\.css$/,</span></span><br><span class="line">      <span class="attr">cssProcessor</span>:<span class="string">require(&#x27;cssnano)</span></span><br><span class="line">    <span class="attr">&#125;)</span></span><br><span class="line">  <span class="attr">]</span></span><br><span class="line"><span class="attr">&#125;;</span></span><br></pre></td></tr></table></figure>
@@ -3207,6 +3242,9 @@
 <li><input disabled="" type="checkbox"> 💻 <a href="https://zhuanlan.zhihu.com/p/94611888">Continuation 在 JS 中的应用</a></li>
 <li><input checked="" disabled="" type="checkbox"> 👸 <a href="https://mp.weixin.qq.com/s/8j2z3uOaVWADLf5FD_BF3g">JavaScript 代码整洁之道</a></li>
 <li><input disabled="" type="checkbox"> 💻 <a href="https://github.com/CavsZhouyou/Front-End-Interview-Notebook">Front-End-Interview-Notebook</a></li>
+<li><input disabled="" type="checkbox"> 💻 <a href="https://app.yinxiang.com/fx/5a9f1e0f-a3c7-43ed-bffe-e15802ff2b66">大鱼：Node.js Learning Path</a></li>
+<li><input disabled="" type="checkbox"> 💻 <a href="https://nqdeng.github.io/7-days-nodejs/">七天学会NodeJS</a></li>
+<li><input disabled="" type="checkbox"> 👸 <a href="https://mp.weixin.qq.com/s/tsEgUOmWnHDLVPOFLqUd7Q">当面试官问Webpack的时候他想知道什么</a></li>
 </ul>
 ]]></content>
       <categories>
