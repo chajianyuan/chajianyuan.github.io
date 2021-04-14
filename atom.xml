@@ -6,7 +6,7 @@
   <link href="https://chajianyuan.github.io/atom.xml" rel="self"/>
   
   <link href="https://chajianyuan.github.io/"/>
-  <updated>2021-03-30T14:34:19.814Z</updated>
+  <updated>2021-04-14T03:10:41.620Z</updated>
   <id>https://chajianyuan.github.io/</id>
   
   <author>
@@ -17,13 +17,42 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>mac：macbook蓝牙不可用问题</title>
+    <link href="https://chajianyuan.github.io/2021/04/14/mac%EF%BC%9Amacbook%E8%93%9D%E7%89%99%E4%B8%8D%E5%8F%AF%E7%94%A8%E9%97%AE%E9%A2%98/"/>
+    <id>https://chajianyuan.github.io/2021/04/14/mac%EF%BC%9Amacbook%E8%93%9D%E7%89%99%E4%B8%8D%E5%8F%AF%E7%94%A8%E9%97%AE%E9%A2%98/</id>
+    <published>2021-04-14T03:03:14.000Z</published>
+    <updated>2021-04-14T03:10:41.620Z</updated>
+    
+    <content type="html"><![CDATA[<p>突然发现mac电脑的蓝牙打不开了，按理说百分之八十的问题，都可以使用重启电脑来解决，可是这次不管用了😭</p><p>各方百度，终于找到了解决办法</p><ol><li><p>拔掉所有usb设备</p></li><li><p>关机</p></li><li><p>同时按[shift+control+command+开机键]6秒</p></li><li><p>再按[command+option+p+r+开机键]直到开机</p></li></ol><p>万能的百度啊😄，再次感谢百度🙏<a href="https://jingyan.baidu.com/article/fedf0737e4368735ac8977f5.html">奉献上参考地址</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;突然发现mac电脑的蓝牙打不开了，按理说百分之八十的问题，都可以使用重启电脑来解决，可是这次不管用了😭&lt;/p&gt;
+&lt;p&gt;各方百度，终于找到了解决办法&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;拔掉所有usb设备&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;关机&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p</summary>
+      
+    
+    
+    
+    <category term="mac" scheme="https://chajianyuan.github.io/categories/mac/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>react：setState</title>
     <link href="https://chajianyuan.github.io/2021/03/28/react%EF%BC%9AsetState/"/>
     <id>https://chajianyuan.github.io/2021/03/28/react%EF%BC%9AsetState/</id>
     <published>2021-03-28T10:35:14.000Z</published>
-    <updated>2021-03-30T14:34:19.814Z</updated>
+    <updated>2021-04-07T00:03:14.151Z</updated>
     
-    <content type="html"><![CDATA[<img src="https://github.com/chajianyuan/picture/blob/master/1671616928038_.pic.jpg?raw=true" width="600px" /><a id="more"></a><h3 id="一、setState的执行过程"><a href="#一、setState的执行过程" class="headerlink" title="一、setState的执行过程"></a>一、setState的执行过程</h3><p><img src="https://user-gold-cdn.xitu.io/2019/2/23/169197bbdc7ae14e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p><p>简单描述：</p><ol><li>将<code>setState</code>传入<code>partialState</code>参数存储在当前组件实例的state暂存队列中；</li><li>判断当前React是否处于批量更新状态，如果是，将当前组件加入待更新的组件队列中；</li><li>如果未处于批量更新状态，将批量更新状态标识设置为<code>true</code>，用事务再次调用上一步方法，保证当前组件加入了待更新组件队列中；</li><li>调用事务的<code>waper</code>方法，遍历待更新组件队列依次执行更新；</li><li>执行生命周期<code>componentWillReceiveProps</code>；</li><li>将组件的state暂存队列中的<code>state</code>进行合并，获得最终要更新的state对象，并将队列置为空；</li><li>执行生命周期<code>componentShouldUpdate</code>，更具返回值判断是否要继续更新；</li><li>执行生命周期<code>componentWillUpdate</code>；</li><li>执行真正的更新<code>render</code>；</li><li>执行生命周期<code>componentDidUpdate</code>。</li></ol><p><a href="https://juejin.cn/post/6844903781813993486">参考：【React深入】setState的执行机制</a></p>]]></content>
+    <content type="html"><![CDATA[<img src="https://github.com/chajianyuan/picture/blob/master/1671616928038_.pic.jpg?raw=true" width="600px" /><a id="more"></a><h3 id="一、setState的执行过程"><a href="#一、setState的执行过程" class="headerlink" title="一、setState的执行过程"></a>一、setState的执行过程</h3><p><img src="https://user-gold-cdn.xitu.io/2019/2/23/169197bbdc7ae14e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p><p>简单描述：</p><ol><li>将<code>setState</code>传入<code>partialState</code>参数存储在当前组件实例的state暂存队列中；</li><li>判断当前React是否处于批量更新状态，如果是，将当前组件加入待更新的组件队列中；</li><li>如果未处于批量更新状态，将批量更新状态标识设置为<code>true</code>，用事务再次调用上一步方法，保证当前组件加入了待更新组件队列中；</li><li>调用事务的<code>waper</code>方法，遍历待更新组件队列依次执行更新；</li><li>执行生命周期<code>componentWillReceiveProps</code>；</li><li>将组件的state暂存队列中的<code>state</code>进行合并，获得最终要更新的state对象，并将队列置为空；</li><li>执行生命周期<code>componentShouldUpdate</code>，更具返回值判断是否要继续更新；</li><li>执行生命周期<code>componentWillUpdate</code>；</li><li>执行真正的更新<code>render</code>；</li><li>执行生命周期<code>componentDidUpdate</code>。</li></ol><h3 id="二、setState是同步还是异步"><a href="#二、setState是同步还是异步" class="headerlink" title="二、setState是同步还是异步"></a>二、setState是同步还是异步</h3><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Route extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.<span class="keyword">state</span> = &#123;</span><br><span class="line">      count: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    this.<span class="built_in">set</span>State(&#123;count: this.<span class="keyword">state</span>.count + <span class="number">1</span>&#125;);</span><br><span class="line">    console.<span class="keyword">log</span>(this.<span class="keyword">state</span>.count);  // 打印</span><br><span class="line">    this.<span class="built_in">set</span>State(&#123;count: this.<span class="keyword">state</span>.count + <span class="number">1</span>&#125;);</span><br><span class="line">    console.<span class="keyword">log</span>(this.<span class="keyword">state</span>.count);  // 打印</span><br><span class="line">    <span class="built_in">set</span>Timeout(() =&gt; &#123;</span><br><span class="line">      this.<span class="built_in">set</span>State(&#123;count: this.<span class="keyword">state</span>.count + <span class="number">1</span>&#125;);</span><br><span class="line">      console.<span class="keyword">log</span>(this.<span class="keyword">state</span>.count);  // 打印</span><br><span class="line">    &#125;, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">set</span>Timeout(() =&gt; &#123;</span><br><span class="line">      this.<span class="built_in">set</span>State(&#123;count: this.<span class="keyword">state</span>.count + <span class="number">1</span>&#125;);</span><br><span class="line">      console.<span class="keyword">log</span>(this.<span class="keyword">state</span>.count);  // 打印</span><br><span class="line">    &#125;, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return <span class="variable">&lt;div&gt;</span>&#123;this.<span class="keyword">state</span>.count&#125;&lt;/div&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><a href="https://juejin.cn/post/6844903781813993486">参考：【React深入】setState的执行机制</a></p>]]></content>
     
     
     <summary type="html">&lt;img src=&quot;https://github.com/chajianyuan/picture/blob/master/1671616928038_.pic.jpg?raw=true&quot; width=&quot;600px&quot; /&gt;</summary>
@@ -407,27 +436,6 @@
     
     
     <category term="网络协议" scheme="https://chajianyuan.github.io/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浏览器：一个URL从输入到显示的过程</title>
-    <link href="https://chajianyuan.github.io/2020/03/24/%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%E4%B8%80%E4%B8%AAURL%E4%BB%8E%E8%BE%93%E5%85%A5%E5%88%B0%E6%98%BE%E7%A4%BA%E7%9A%84%E8%BF%87%E7%A8%8B/"/>
-    <id>https://chajianyuan.github.io/2020/03/24/%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%E4%B8%80%E4%B8%AAURL%E4%BB%8E%E8%BE%93%E5%85%A5%E5%88%B0%E6%98%BE%E7%A4%BA%E7%9A%84%E8%BF%87%E7%A8%8B/</id>
-    <published>2020-03-24T12:29:48.000Z</published>
-    <updated>2020-03-24T12:29:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://github.com/chajianyuan/picture/blob/master/1651616595458_.pic.jpg?raw=true"></p><a id="more"></a><p>过程简述：</p><ol><li>查找浏览器缓存，如果没找到则进行DNS解析</li><li>TCP三次握手</li><li>发送http请求</li><li>服务器处理请求并返回http报文</li><li>浏览器解析渲染页面</li><li>TCP四次挥手</li></ol><p>具体过程描述：</p><h3 id="1、查找浏览器缓存，如果没有则进行-DNS-解析"><a href="#1、查找浏览器缓存，如果没有则进行-DNS-解析" class="headerlink" title="1、查找浏览器缓存，如果没有则进行 DNS 解析"></a>1、查找浏览器缓存，如果没有则进行 DNS 解析</h3><p>当在浏览器中输入一个 URL 时，最开始要去浏览器缓存中查找，<a href="https://chajianyuan.github.io/2019/10/20/%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/">浏览器缓存分为强缓存和协商缓存</a>，强缓存指不需要向服务器发送请求，直接从缓存中读取资源，状态码为 200，协商缓存是指当强缓存失效后，浏览器携带缓存标识向服务器发送请求，如果资源没有改变就返回 304，更新缓存，如果资源改变就返回 200 和新的资源，如果浏览器中不存在缓存，就通过 DNS 服务器启动一个 DNS 查询，获得 URL 对应的 IP 地址</p><blockquote><p>👂 这里我们讲一下<code>URL</code>的构成部分：<br>以<code>https://www.runoob.com/css/css-tutorial.html</code>为例<br><code>URL</code>包含协议（<code>https</code>）、网络地址(<code>www.runoob.com</code>)、资源路径(<code>/css</code>)、文件名(<code>css-tutorial.html</code>)、动态参数<br><strong>· 协议：</strong>指从该计算机获取资源的方式，一般有<code>Http、Https、Ftp、File</code>等协议，不同协议有不同的通讯内容格式，其中常用的就是<a href="https://chajianyuan.github.io/2020/03/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E5%92%8Chttps/"><code>Http</code>和<code>Https</code></a>。<br><strong>· 网络地址：</strong>指连接网络上哪台计算机或服务器，可以是域名或IP地址，后面可能还带冒号+端口号，一般端口号都是默认的，比如Http的默认端口号是80，Https的默认端口号是443，如果使用默认的端口时，则URL上不需要带端口号；如果改变了默认端口号，则需要在URL上展示对应的端口号。<br><strong>· 资源路径：</strong>指从服务器上获取哪一项资源的等级路径，用<code>/</code>分割。<br><strong>· 文件名：</strong>指真正需要访问的文件名，有的URL直接以<code>/</code>结尾，则表示访问的是最后一层文件路径下的<code>index.html</code>或<code>default.html</code>文件<br><strong>· 动态参数：</strong>指以<code>?</code>开始的参数，一般是需要传给服务端进行动态数据库查询的。</p></blockquote><h3 id="2、TCP-连接：TCP-三次握手🤝"><a href="#2、TCP-连接：TCP-三次握手🤝" class="headerlink" title="2、TCP 连接：TCP 三次握手🤝"></a>2、TCP 连接：TCP 三次握手🤝</h3><ul><li>第一次握手，由浏览器发起，告诉服务器我要发起请求了</li><li>第二次握手，由服务器发起，告诉浏览器，我已经准备接收了，你可以发送请求了</li><li>第三次握手，由浏览器发起，告诉服务器，我马上发送了，准备接收吧</li></ul><p><strong>三次握手的目的</strong>：防止已失效的连接请求报文段突然又传送到了服务器端，因而产生错误</p><h3 id="3、发送-HTTP-请求"><a href="#3、发送-HTTP-请求" class="headerlink" title="3、发送 HTTP 请求"></a>3、发送 HTTP 请求</h3><h3 id="4、服务器处理请求并返回-HTTP-报文"><a href="#4、服务器处理请求并返回-HTTP-报文" class="headerlink" title="4、服务器处理请求并返回 HTTP 报文"></a>4、服务器处理请求并返回 HTTP 报文</h3><h3 id="5、浏览器解析渲染页面"><a href="#5、浏览器解析渲染页面" class="headerlink" title="5、浏览器解析渲染页面"></a>5、浏览器解析渲染页面</h3><ol><li>根据 HTML 解析 DOM 树</li><li>根据 CSS 解析生成 CSS 规则树</li><li>结合 DOM 树和 CSS 规则树，生成渲染树</li><li>根据渲染树计算每一个节点的信息</li><li>根据计算好的信息绘制页面</li></ol><h3 id="6、断开连接：TCP-四次挥手🙋"><a href="#6、断开连接：TCP-四次挥手🙋" class="headerlink" title="6、断开连接：TCP 四次挥手🙋"></a>6、断开连接：TCP 四次挥手🙋</h3><p>参照：<a href="https://juejin.im/post/5bf3ad55f265da61682afc9b">掘金：从 URL 输入到页面展现到底发生什么？</a><br>参照：<a href="https://www.jianshu.com/p/d616d887953a">浏览器工作原理：从 URL 输入到页面展现到底发生了什么？</a></p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://github.com/chajianyuan/picture/blob/master/1651616595458_.pic.jpg?raw=true&quot;&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="技术" scheme="https://chajianyuan.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="浏览器" scheme="https://chajianyuan.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
     
   </entry>
   
