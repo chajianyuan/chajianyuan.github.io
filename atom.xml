@@ -6,7 +6,7 @@
   <link href="https://chajianyuan.github.io/atom.xml" rel="self"/>
   
   <link href="https://chajianyuan.github.io/"/>
-  <updated>2021-04-14T03:10:41.620Z</updated>
+  <updated>2021-04-16T07:40:02.515Z</updated>
   <id>https://chajianyuan.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>css：css小技巧</title>
+    <link href="https://chajianyuan.github.io/2021/04/16/css%EF%BC%9Acss%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    <id>https://chajianyuan.github.io/2021/04/16/css%EF%BC%9Acss%E5%B0%8F%E6%8A%80%E5%B7%A7/</id>
+    <published>2021-04-16T07:08:58.000Z</published>
+    <updated>2021-04-16T07:40:02.515Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>超出x行省略</li></ol><ul><li>两行或多行省略<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line"><span class="attribute">display</span>: -webkit-box;</span><br><span class="line">-webkit-line-clamp: <span class="number">2</span>;</span><br><span class="line"><span class="comment">/*! autoprefixer: off */</span></span><br><span class="line">-webkit-box-orient: vertical;</span><br></pre></td></tr></table></figure></li><li>一行省略<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line"><span class="attribute">white-space</span>: nowrap;</span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br></pre></td></tr></table></figure>一行省略除了使用上面代码中的方法，还可以将多行省略代码中的限制行数设置为1</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;超出x行省略&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;两行或多行省略&lt;figure class=&quot;highlight scss&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://chajianyuan.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="css" scheme="https://chajianyuan.github.io/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>mac：macbook蓝牙不可用问题</title>
@@ -414,28 +442,6 @@
     
     
     <category term="总结" scheme="https://chajianyuan.github.io/tags/%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>网络协议：http和https</title>
-    <link href="https://chajianyuan.github.io/2020/03/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E5%92%8Chttps/"/>
-    <id>https://chajianyuan.github.io/2020/03/25/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%EF%BC%9Ahttp%E5%92%8Chttps/</id>
-    <published>2020-03-25T00:39:45.000Z</published>
-    <updated>2020-03-25T01:12:03.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="一、http"><a href="#一、http" class="headerlink" title="一、http"></a>一、http</h2><p><img src="https://user-gold-cdn.xitu.io/2018/6/11/163ef70cbdc63e95?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p><p>HTTP 协议是 Hyper Text Transfer Protocol(超文本传输协议)的缩写，适用于从万维网服务器传输文本到本地浏览器的传送协议。</p><a id="more"></a><h3 id="1、http-1-1-的缺陷"><a href="#1、http-1-1-的缺陷" class="headerlink" title="1、http/1.1 的缺陷"></a>1、http/1.1 的缺陷</h3><ul><li>高延迟–带来页面加载速度的降低；</li><li>无状态特性–带来的巨大 HTTP 头部；</li><li>明文传输–带来的不安全性；</li><li>不支持服务器推送消息。</li></ul><h3 id="2、http-2"><a href="#2、http-2" class="headerlink" title="2、http/2"></a>2、http/2</h3><p><strong>新特性：</strong></p><ul><li>二进制传输；</li><li>Header 压缩；</li><li>多路复用；</li><li>Server Push；</li><li>提高安全性</li></ul><p><strong>缺陷：</strong></p><ul><li>TCP 以及 TCP+TLS 建立连接的延时；</li><li>TCP 的队头阻塞并没有彻底解决。</li></ul><h3 id="3、HTTP-3"><a href="#3、HTTP-3" class="headerlink" title="3、HTTP/3"></a>3、HTTP/3</h3><p><strong>QUIC</strong>是基于 UDP 的一个协议，让 http 跑在 QUIC 上而不是 TCP 上。而这个“HTTP over QUIC”就是 HTTP 协议的下一个大版本–HTTP/3。</p><h4 id="QUIC-新功能"><a href="#QUIC-新功能" class="headerlink" title="QUIC 新功能"></a>QUIC 新功能</h4><ul><li>实现了类似 TCP 的流量控制、传输可靠性的功能；</li><li>实现了快速握手功；</li><li>集成了 TLS 加密功能；</li><li>多路复用，彻底解决 TCP 中队头阻塞的问题。</li></ul><h2 id="二、HTTPS"><a href="#二、HTTPS" class="headerlink" title="二、HTTPS"></a>二、HTTPS</h2><p>HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的 HTTP 通道，简单讲是 HTTP 的安全版。</p><p><strong>HTTP 和 HTTPS 的区别：</strong></p><ul><li>HTTP 是明文传输，HTTPS 通过 SSL/TLS 进行了加密；</li><li>HTTP 的端口号是 80，HTTPS 的是 443；</li><li>HTTPS 需要到 CA 申请证书，一般免费证书很少，需要交费；</li><li>HTTPS 的连接很简单，是无状态的；HTTPS 协议是 SSL+HTTP 协议构建的可进行加密传输、身份认证的网络协议，比 HTTP 协议安全。</li></ul><p><a href="https://juejin.im/post/5b1e93aa5188257d3914280e">掘金：关于 http 协议，你必须要知道的</a></p><p><a href="https://juejin.im/post/5d9abde7e51d4578110dc77f">掘金：解密 http/2 与 http/3 的新特性</a></p><p><a href="https://juejin.im/post/59e4c02151882578d02f4aca">掘金：谈谈 HTTPS</a></p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;一、http&quot;&gt;&lt;a href=&quot;#一、http&quot; class=&quot;headerlink&quot; title=&quot;一、http&quot;&gt;&lt;/a&gt;一、http&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://user-gold-cdn.xitu.io/2018/6/11/163ef70cbdc63e95?imageView2/0/w/1280/h/960/format/webp/ignore-error/1&quot;&gt;&lt;/p&gt;
-&lt;p&gt;HTTP 协议是 Hyper Text Transfer Protocol(超文本传输协议)的缩写，适用于从万维网服务器传输文本到本地浏览器的传送协议。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="技术" scheme="https://chajianyuan.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="网络协议" scheme="https://chajianyuan.github.io/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
     
   </entry>
   
