@@ -562,64 +562,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JS：原型、原型链继承</title>
-    <url>/2019/10/15/JS%EF%BC%9A%E5%8E%9F%E5%9E%8B%E3%80%81%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
-
-<a id="more"></a>
-
-<h2 id="一、构造函数"><a href="#一、构造函数" class="headerlink" title="一、构造函数"></a>一、构造函数</h2><p><strong>构造函数模式的目的就是为了创建一个自定义类，并且创建这个类的实例。构造函数模式中拥有了类和实例的概念，并且实例和实例之间是相互独立的，即实例识别。</strong></p>
-<p>构造函数就是一个普通的函数，创建方式和普通函数没有区别，<strong>不同的是构造函数习惯上首字母大写</strong>。另外就是调用方式的不同，普通函数是直接调用，<strong>而构造函数需要使用 new 关键字来调用</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, gender</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">    <span class="built_in">this</span>.gender = gender</span><br><span class="line">    <span class="built_in">this</span>.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="built_in">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> per = <span class="keyword">new</span> Person(<span class="string">&quot;孙悟空&quot;</span>, <span class="number">18</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name, age, gender</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">    <span class="built_in">this</span>.gender = gender</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> Dog(<span class="string">&quot;旺财&quot;</span>, <span class="number">4</span>, <span class="string">&quot;雄&quot;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(per);<span class="comment">//当我们直接在页面中打印一个对象时，事件上是输出的对象的toString()方法的返回值</span></span><br><span class="line"><span class="built_in">console</span>.log(dog);</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://upload-images.jianshu.io/upload_images/3174701-1a20d86bf6856c95?imageMogr2/auto-orient/strip%7CimageView2/2/w/587/format/webp"></p>
-<p>每创建一个 c<code>Person 构造函数，在 Person 构造函数中，为每一个对象都添加了一个 sayName 方法，也就是说构造函数每执行一次就会创建一个新的 sayName 方法。这样就导致了构造函数执行一次就会创建一个新的方法，执行 10000 次就会创建 10000 个新的方法，而 10000 个方法都是一摸一样的，为什么不把这个方法单独放到一个地方，并让所有的实例都可以访问到呢?这就需要原型(</code>prototype`)</p>
-<h2 id="二、原型"><a href="#二、原型" class="headerlink" title="二、原型"></a>二、原型</h2><p><strong>在 JavaScript 中，每当定义一个函数数据类型(普通函数、类)时候，都会天生自带一个 prototype 属性，这个属性指向函数的原型对象，并且这个属性是一个对象数据类型的值。</strong></p>
-<p>让我们用一张图表示构造函数和实例原型之间的关系：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/3174701-2dd95188a8f6b19e?imageMogr2/auto-orient/strip%7CimageView2/2/w/467/format/webp"></p>
-<p>原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象，我们可以将对象中共有的内容，统一设置到原型对象中。</p>
-<h2 id="三、原型链"><a href="#三、原型链" class="headerlink" title="三、原型链"></a>三、原型链</h2><h3 id="1-proto-和constructor"><a href="#1-proto-和constructor" class="headerlink" title="1.__proto__和constructor"></a>1.<code>__proto__</code>和<code>constructor</code></h3><p><strong>每一个对象数据类型(普通的对象、实例、prototype……)也天生自带一个属性</strong>proto<strong>，属性值是当前实例所属类的原型(prototype)。原型对象中有一个属性 constructor, 它指向函数对象。</strong></p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="constructor">Person()</span> &#123;&#125;</span><br><span class="line">var person = <span class="keyword">new</span> <span class="constructor">Person()</span></span><br><span class="line">console.log(person.__proto__<span class="operator"> === </span><span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>prototype)<span class="comment">//true</span></span><br><span class="line">console.log(<span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>prototype.constructor===Person)<span class="comment">//true</span></span><br><span class="line"><span class="comment">//顺便学习一个ES5的方法,可以获得对象的原型</span></span><br><span class="line">console.log(<span class="module-access"><span class="module"><span class="identifier">Object</span>.</span></span>get<span class="constructor">PrototypeOf(<span class="params">person</span>)</span><span class="operator"> === </span><span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>prototype) <span class="comment">// true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/3174701-9a3de0b501161c07?imageMogr2/auto-orient/strip%7CimageView2/2/w/530/format/webp"></p>
-<h3 id="2-何为原型链"><a href="#2-何为原型链" class="headerlink" title="2.何为原型链"></a>2.何为原型链</h3><p><strong>在 JavaScript 中万物都是对象，对象和对象之间也有关系，并不是孤立存在的。对象之间的继承关系，在 JavaScript 中是通过 prototype 对象指向父类对象，直到指向 Object 对象为止，这样就形成了一个原型指向的链条，专业术语称之为原型链</strong>。</p>
-<p>举例说明:person → Person → Object ，普通人继承人类，人类继承对象类</p>
-<p><strong>当我们访问对象的一个属性或方法时，它会先在对象自身中寻找，如果有则直接使用，如果没有则会去原型对象中寻找，如果找到则直接使用。如果没有则去原型的原型中寻找,直到找到 Object 对象的原型，Object 对象的原型没有原型，如果在 Object 原型中依然没有找到，则返回 undefined。</strong></p>
-<p>我们可以使用对象的<code>hasOwnProperty()</code>来检查对象自身中是否含有该属性；使用<code>in</code>检查对象中是否含有某个属性时，如果对象中没有但是原型中有，也会返回 true</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">Person.prototype.a = <span class="number">123</span>;</span><br><span class="line">Person.prototype.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person()</span><br><span class="line"><span class="built_in">console</span>.log(person.a)<span class="comment">//123</span></span><br><span class="line"><span class="built_in">console</span>.log(person.hasOwnProperty(<span class="string">&#x27;a&#x27;</span>));<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;a&#x27;</span><span class="keyword">in</span> person)<span class="comment">//true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>person 实例中没有 a 这个属性，从 person 对象中找不到 a 属性就会从 person 的原型也就是 <code>person.__proto__</code> ，也就是 Person.prototype 中查找，很幸运地得到 a 的值为 123。那假如 <code>person.__proto__</code>中也没有该属性，又该如何查找？</p>
-<p>当读取实例的属性时，如果找不到，就会查找与对象关联的原型中的属性，如果还查不到，就去找原型的原型，一直找到最顶层 Object 为止。<strong>Object 是 JS 中所有对象数据类型的基类(最顶层的类)在 Object.prototype 上没有</strong>proto<strong>这个属性。</strong></p>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.__proto__ === <span class="literal">null</span>) <span class="regexp">//</span> <span class="literal">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/3174701-18a76d28c0a9ea1b?imageMogr2/auto-orient/strip%7CimageView2/2/w/521/format/webp" alt="img"></p>
-<h2 id="四、原型链继承"><a href="#四、原型链继承" class="headerlink" title="四、原型链继承"></a>四、原型链继承</h2><h3 id="1、原型链继承"><a href="#1、原型链继承" class="headerlink" title="1、原型链继承"></a>1、原型链继承</h3><p>子类的原型是父类原型的一个实例对象。</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="constructor">Person(<span class="params">name</span>, <span class="params">age</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="constructor">Student(<span class="params">name</span>, <span class="params">age</span>, <span class="params">sex</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Student</span>.</span></span>prototype = <span class="keyword">new</span> <span class="constructor">Person()</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、借用构造函数"><a href="#2、借用构造函数" class="headerlink" title="2、借用构造函数"></a>2、借用构造函数</h3><p>在子类的构造函数中使用 call()调用父类的构造函数。</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="constructor">Person(<span class="params">name</span>, <span class="params">age</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="constructor">Student(<span class="params">name</span>, <span class="params">age</span>, <span class="params">sex</span>)</span>&#123;</span><br><span class="line">    <span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>call(this, name, age);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="3、原型链继承-借用构造函数-组合继承"><a href="#3、原型链继承-借用构造函数-组合继承" class="headerlink" title="3、原型链继承+借用构造函数=组合继承"></a>3、原型链继承+借用构造函数=组合继承</h3><p>通过在子类的构造函数中调用父类型的构造函数，保留传参的优点，此外通过将父类的实例对象作为子类的原型，满足函数复用。</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="constructor">Person(<span class="params">name</span>, <span class="params">age</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="constructor">Student(<span class="params">name</span>, <span class="params">age</span>, <span class="params">sex</span>)</span>&#123;</span><br><span class="line">    <span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>call(this, name, age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Student</span>.</span></span>prototype = <span class="keyword">new</span> <span class="constructor">Person()</span>;</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Student</span>.</span></span>prototype.constructor = <span class="constructor">Student()</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、组合继承优化-1"><a href="#4、组合继承优化-1" class="headerlink" title="4、组合继承优化 1"></a>4、组合继承优化 1</h3><p>子类的构造函数中调用父类的构造函数，子类的原型和父类的原型指向同一对象。</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="constructor">Person(<span class="params">name</span>, <span class="params">age</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="constructor">Student(<span class="params">name</span>, <span class="params">age</span>, <span class="params">sex</span>)</span>&#123;</span><br><span class="line">    <span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>call(this, name, age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Student</span>.</span></span>prototype = <span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>prototype;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5、组合继承优化-2"><a href="#5、组合继承优化-2" class="headerlink" title="5、组合继承优化 2"></a>5、组合继承优化 2</h3><p>子类的构造函数中调用父类的构造函数，使用 var B = Object.create(A)，以 A 为对象为原型生成 B。这样 B 就继承了 A 的所有属性和方法。</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="constructor">Person(<span class="params">name</span>, <span class="params">age</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="constructor">Student(<span class="params">name</span>, <span class="params">age</span>, <span class="params">sex</span>)</span>&#123;</span><br><span class="line">    <span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>call(this, name, age);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Student</span>.</span></span>prototype = <span class="module-access"><span class="module"><span class="identifier">Object</span>.</span></span>create(<span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>prototype);</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Student</span>.</span></span>prototype.constructor = Student;</span><br></pre></td></tr></table></figure>
-
-<h3 id="6：ES6-中-class-继承"><a href="#6：ES6-中-class-继承" class="headerlink" title="6：ES6 中 class 继承"></a>6：ES6 中 class 继承</h3><figure class="highlight scala"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    constructor(name, age)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    constructor(name, age, sex)&#123;</span><br><span class="line">        <span class="keyword">super</span>(name, age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://juejin.im/post/5bb091a7e51d450e8477d9ba">JavaScript 常见的六种继承方式</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JS：字符串方法</title>
     <url>/2020/11/11/JS%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">let str</span> = <span class="string">&#x27;My name is Lily&#x27;</span>;</span><br></pre></td></tr></table></figure>
@@ -725,6 +667,64 @@
 
 
 
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS：原型、原型链继承</title>
+    <url>/2019/10/15/JS%EF%BC%9A%E5%8E%9F%E5%9E%8B%E3%80%81%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+
+<a id="more"></a>
+
+<h2 id="一、构造函数"><a href="#一、构造函数" class="headerlink" title="一、构造函数"></a>一、构造函数</h2><p><strong>构造函数模式的目的就是为了创建一个自定义类，并且创建这个类的实例。构造函数模式中拥有了类和实例的概念，并且实例和实例之间是相互独立的，即实例识别。</strong></p>
+<p>构造函数就是一个普通的函数，创建方式和普通函数没有区别，<strong>不同的是构造函数习惯上首字母大写</strong>。另外就是调用方式的不同，普通函数是直接调用，<strong>而构造函数需要使用 new 关键字来调用</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, gender</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">    <span class="built_in">this</span>.gender = gender</span><br><span class="line">    <span class="built_in">this</span>.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="built_in">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> per = <span class="keyword">new</span> Person(<span class="string">&quot;孙悟空&quot;</span>, <span class="number">18</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name, age, gender</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">    <span class="built_in">this</span>.gender = gender</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> Dog(<span class="string">&quot;旺财&quot;</span>, <span class="number">4</span>, <span class="string">&quot;雄&quot;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(per);<span class="comment">//当我们直接在页面中打印一个对象时，事件上是输出的对象的toString()方法的返回值</span></span><br><span class="line"><span class="built_in">console</span>.log(dog);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/3174701-1a20d86bf6856c95?imageMogr2/auto-orient/strip%7CimageView2/2/w/587/format/webp"></p>
+<p>每创建一个 c<code>Person 构造函数，在 Person 构造函数中，为每一个对象都添加了一个 sayName 方法，也就是说构造函数每执行一次就会创建一个新的 sayName 方法。这样就导致了构造函数执行一次就会创建一个新的方法，执行 10000 次就会创建 10000 个新的方法，而 10000 个方法都是一摸一样的，为什么不把这个方法单独放到一个地方，并让所有的实例都可以访问到呢?这就需要原型(</code>prototype`)</p>
+<h2 id="二、原型"><a href="#二、原型" class="headerlink" title="二、原型"></a>二、原型</h2><p><strong>在 JavaScript 中，每当定义一个函数数据类型(普通函数、类)时候，都会天生自带一个 prototype 属性，这个属性指向函数的原型对象，并且这个属性是一个对象数据类型的值。</strong></p>
+<p>让我们用一张图表示构造函数和实例原型之间的关系：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3174701-2dd95188a8f6b19e?imageMogr2/auto-orient/strip%7CimageView2/2/w/467/format/webp"></p>
+<p>原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象，我们可以将对象中共有的内容，统一设置到原型对象中。</p>
+<h2 id="三、原型链"><a href="#三、原型链" class="headerlink" title="三、原型链"></a>三、原型链</h2><h3 id="1-proto-和constructor"><a href="#1-proto-和constructor" class="headerlink" title="1.__proto__和constructor"></a>1.<code>__proto__</code>和<code>constructor</code></h3><p><strong>每一个对象数据类型(普通的对象、实例、prototype……)也天生自带一个属性</strong>proto<strong>，属性值是当前实例所属类的原型(prototype)。原型对象中有一个属性 constructor, 它指向函数对象。</strong></p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="constructor">Person()</span> &#123;&#125;</span><br><span class="line">var person = <span class="keyword">new</span> <span class="constructor">Person()</span></span><br><span class="line">console.log(person.__proto__<span class="operator"> === </span><span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>prototype)<span class="comment">//true</span></span><br><span class="line">console.log(<span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>prototype.constructor===Person)<span class="comment">//true</span></span><br><span class="line"><span class="comment">//顺便学习一个ES5的方法,可以获得对象的原型</span></span><br><span class="line">console.log(<span class="module-access"><span class="module"><span class="identifier">Object</span>.</span></span>get<span class="constructor">PrototypeOf(<span class="params">person</span>)</span><span class="operator"> === </span><span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>prototype) <span class="comment">// true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/3174701-9a3de0b501161c07?imageMogr2/auto-orient/strip%7CimageView2/2/w/530/format/webp"></p>
+<h3 id="2-何为原型链"><a href="#2-何为原型链" class="headerlink" title="2.何为原型链"></a>2.何为原型链</h3><p><strong>在 JavaScript 中万物都是对象，对象和对象之间也有关系，并不是孤立存在的。对象之间的继承关系，在 JavaScript 中是通过 prototype 对象指向父类对象，直到指向 Object 对象为止，这样就形成了一个原型指向的链条，专业术语称之为原型链</strong>。</p>
+<p>举例说明:person → Person → Object ，普通人继承人类，人类继承对象类</p>
+<p><strong>当我们访问对象的一个属性或方法时，它会先在对象自身中寻找，如果有则直接使用，如果没有则会去原型对象中寻找，如果找到则直接使用。如果没有则去原型的原型中寻找,直到找到 Object 对象的原型，Object 对象的原型没有原型，如果在 Object 原型中依然没有找到，则返回 undefined。</strong></p>
+<p>我们可以使用对象的<code>hasOwnProperty()</code>来检查对象自身中是否含有该属性；使用<code>in</code>检查对象中是否含有某个属性时，如果对象中没有但是原型中有，也会返回 true</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">Person.prototype.a = <span class="number">123</span>;</span><br><span class="line">Person.prototype.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person()</span><br><span class="line"><span class="built_in">console</span>.log(person.a)<span class="comment">//123</span></span><br><span class="line"><span class="built_in">console</span>.log(person.hasOwnProperty(<span class="string">&#x27;a&#x27;</span>));<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;a&#x27;</span><span class="keyword">in</span> person)<span class="comment">//true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>person 实例中没有 a 这个属性，从 person 对象中找不到 a 属性就会从 person 的原型也就是 <code>person.__proto__</code> ，也就是 Person.prototype 中查找，很幸运地得到 a 的值为 123。那假如 <code>person.__proto__</code>中也没有该属性，又该如何查找？</p>
+<p>当读取实例的属性时，如果找不到，就会查找与对象关联的原型中的属性，如果还查不到，就去找原型的原型，一直找到最顶层 Object 为止。<strong>Object 是 JS 中所有对象数据类型的基类(最顶层的类)在 Object.prototype 上没有</strong>proto<strong>这个属性。</strong></p>
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.__proto__ === <span class="literal">null</span>) <span class="regexp">//</span> <span class="literal">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/3174701-18a76d28c0a9ea1b?imageMogr2/auto-orient/strip%7CimageView2/2/w/521/format/webp" alt="img"></p>
+<h2 id="四、原型链继承"><a href="#四、原型链继承" class="headerlink" title="四、原型链继承"></a>四、原型链继承</h2><h3 id="1、原型链继承"><a href="#1、原型链继承" class="headerlink" title="1、原型链继承"></a>1、原型链继承</h3><p>子类的原型是父类原型的一个实例对象。</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="constructor">Person(<span class="params">name</span>, <span class="params">age</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="constructor">Student(<span class="params">name</span>, <span class="params">age</span>, <span class="params">sex</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Student</span>.</span></span>prototype = <span class="keyword">new</span> <span class="constructor">Person()</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、借用构造函数"><a href="#2、借用构造函数" class="headerlink" title="2、借用构造函数"></a>2、借用构造函数</h3><p>在子类的构造函数中使用 call()调用父类的构造函数。</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="constructor">Person(<span class="params">name</span>, <span class="params">age</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="constructor">Student(<span class="params">name</span>, <span class="params">age</span>, <span class="params">sex</span>)</span>&#123;</span><br><span class="line">    <span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>call(this, name, age);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3、原型链继承-借用构造函数-组合继承"><a href="#3、原型链继承-借用构造函数-组合继承" class="headerlink" title="3、原型链继承+借用构造函数=组合继承"></a>3、原型链继承+借用构造函数=组合继承</h3><p>通过在子类的构造函数中调用父类型的构造函数，保留传参的优点，此外通过将父类的实例对象作为子类的原型，满足函数复用。</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="constructor">Person(<span class="params">name</span>, <span class="params">age</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="constructor">Student(<span class="params">name</span>, <span class="params">age</span>, <span class="params">sex</span>)</span>&#123;</span><br><span class="line">    <span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>call(this, name, age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Student</span>.</span></span>prototype = <span class="keyword">new</span> <span class="constructor">Person()</span>;</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Student</span>.</span></span>prototype.constructor = <span class="constructor">Student()</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、组合继承优化-1"><a href="#4、组合继承优化-1" class="headerlink" title="4、组合继承优化 1"></a>4、组合继承优化 1</h3><p>子类的构造函数中调用父类的构造函数，子类的原型和父类的原型指向同一对象。</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="constructor">Person(<span class="params">name</span>, <span class="params">age</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="constructor">Student(<span class="params">name</span>, <span class="params">age</span>, <span class="params">sex</span>)</span>&#123;</span><br><span class="line">    <span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>call(this, name, age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Student</span>.</span></span>prototype = <span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>prototype;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、组合继承优化-2"><a href="#5、组合继承优化-2" class="headerlink" title="5、组合继承优化 2"></a>5、组合继承优化 2</h3><p>子类的构造函数中调用父类的构造函数，使用 var B = Object.create(A)，以 A 为对象为原型生成 B。这样 B 就继承了 A 的所有属性和方法。</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="constructor">Person(<span class="params">name</span>, <span class="params">age</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="constructor">Student(<span class="params">name</span>, <span class="params">age</span>, <span class="params">sex</span>)</span>&#123;</span><br><span class="line">    <span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>call(this, name, age);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Student</span>.</span></span>prototype = <span class="module-access"><span class="module"><span class="identifier">Object</span>.</span></span>create(<span class="module-access"><span class="module"><span class="identifier">Person</span>.</span></span>prototype);</span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Student</span>.</span></span>prototype.constructor = Student;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6：ES6-中-class-继承"><a href="#6：ES6-中-class-继承" class="headerlink" title="6：ES6 中 class 继承"></a>6：ES6 中 class 继承</h3><figure class="highlight scala"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    constructor(name, age)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    constructor(name, age, sex)&#123;</span><br><span class="line">        <span class="keyword">super</span>(name, age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://juejin.im/post/5bb091a7e51d450e8477d9ba">JavaScript 常见的六种继承方式</a></p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -895,6 +895,33 @@
       </tags>
   </entry>
   <entry>
+    <title>JS：闭包</title>
+    <url>/2021/03/24/JS%EF%BC%9A%E9%97%AD%E5%8C%85/</url>
+    <content><![CDATA[<img src="https://github.com/chajianyuan/picture/blob/master/1641616548534_.pic.jpg?raw=true" width="600px" />
+
+<a id="more"></a>
+
+<h4 id="MDN对闭包的定义"><a href="#MDN对闭包的定义" class="headerlink" title="MDN对闭包的定义"></a>MDN对闭包的定义</h4><blockquote>
+<p>闭包是指那些能够访问自由变量的函数。</p>
+</blockquote>
+<p>❓<strong>自由变量是什么？</strong></p>
+<blockquote>
+<p>自由变量是指能够在函数中使用的，但既不是函数参数也不是函数的局部变量的变量。</p>
+</blockquote>
+<p>对于闭包，我的理解就是当某个函数 A 被调用时，这个函数 A 可以访问它定义时的作用域中的变量。</p>
+<p>使用闭包主要是为了设计私有的方法和变量。闭包的优点是可以避免全局变量的污染；缺点是闭包会常驻内存，增加内存使用量，使用不当很容易造成内存泄漏。在 JavaScript 中，函数即闭包，只有函数才会产生作用域。</p>
+<p>闭包有 3 个特性：</p>
+<ol>
+<li>函数嵌套函数；</li>
+<li>在函数内部可以引用外部的参数和变量；</li>
+<li>参数和变量不会以垃圾回收机制回收。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> name = <span class="string">&#x27;zhangsan&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://segmentfault.com/a/1190000006875662">JavaScript 闭包</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>JS：赋值、深拷贝和浅拷贝</title>
     <url>/2020/02/24/JS%EF%BC%9A%E8%B5%8B%E5%80%BC%E3%80%81%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer"/>
@@ -929,33 +956,6 @@
       <tags>
         <tag>javascript</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>JS：闭包</title>
-    <url>/2021/03/24/JS%EF%BC%9A%E9%97%AD%E5%8C%85/</url>
-    <content><![CDATA[<img src="https://github.com/chajianyuan/picture/blob/master/1641616548534_.pic.jpg?raw=true" width="600px" />
-
-<a id="more"></a>
-
-<h4 id="MDN对闭包的定义"><a href="#MDN对闭包的定义" class="headerlink" title="MDN对闭包的定义"></a>MDN对闭包的定义</h4><blockquote>
-<p>闭包是指那些能够访问自由变量的函数。</p>
-</blockquote>
-<p>❓<strong>自由变量是什么？</strong></p>
-<blockquote>
-<p>自由变量是指能够在函数中使用的，但既不是函数参数也不是函数的局部变量的变量。</p>
-</blockquote>
-<p>对于闭包，我的理解就是当某个函数 A 被调用时，这个函数 A 可以访问它定义时的作用域中的变量。</p>
-<p>使用闭包主要是为了设计私有的方法和变量。闭包的优点是可以避免全局变量的污染；缺点是闭包会常驻内存，增加内存使用量，使用不当很容易造成内存泄漏。在 JavaScript 中，函数即闭包，只有函数才会产生作用域。</p>
-<p>闭包有 3 个特性：</p>
-<ol>
-<li>函数嵌套函数；</li>
-<li>在函数内部可以引用外部的参数和变量；</li>
-<li>参数和变量不会以垃圾回收机制回收。</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> name = <span class="string">&#x27;zhangsan&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://segmentfault.com/a/1190000006875662">JavaScript 闭包</a></p>
-]]></content>
   </entry>
   <entry>
     <title>JS:隐藏页面元素</title>
@@ -1014,6 +1014,7 @@
 <h3 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h3><ol>
 <li>css世界（2月9日）</li>
 <li>Javascript代码整洁之道 (3月5日)</li>
+<li>十天精通CSS3（5月13日）</li>
 </ol>
 <!-- 2. 数据结构与算法之美（3月1日） -->]]></content>
       <categories>
@@ -1054,6 +1055,28 @@
 
 <p><img src="https://github.com/chajianyuan/picture/blob/master/1761617076728_.pic.jpg?raw=true"></p>
 <p><a href="https://juejin.im/post/5bc33d0d6fb9a05d1658afc7">参考：深入理解 BFC</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>css：css动画</title>
+    <url>/2019/08/22/css%EF%BC%9Acss%E5%8A%A8%E7%94%BB/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+
+<h3 id="一、使用-css3-中-animation-属性（-keyframes-规则）"><a href="#一、使用-css3-中-animation-属性（-keyframes-规则）" class="headerlink" title="一、使用 css3 中 animation 属性（@keyframes 规则）"></a>一、使用 css3 中 animation 属性（@keyframes 规则）</h3><p>当在 <strong>@keyframes</strong> 创建动画，把它绑定到一个选择器，否则动画不会有任何效果。</p>
+<a id="more"></a>
+
+<p>指定至少这两个 CSS3 的动画属性绑定向一个选择器：</p>
+<ul>
+<li>规定动画的名称</li>
+<li>规定动画的时长</li>
+</ul>
+<p>参见<a href="https://www.runoob.com/css3/css3-animations.html">css3 动画</a></p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1208,28 +1231,6 @@
 </tbody></table>
 <p><code>transform:rotate(30deg);</code></p>
 <p><img src="https://user-gold-cdn.xitu.io/2017/11/15/15fbf4073fe59bee?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>css：css动画</title>
-    <url>/2019/08/22/css%EF%BC%9Acss%E5%8A%A8%E7%94%BB/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
-
-<h3 id="一、使用-css3-中-animation-属性（-keyframes-规则）"><a href="#一、使用-css3-中-animation-属性（-keyframes-规则）" class="headerlink" title="一、使用 css3 中 animation 属性（@keyframes 规则）"></a>一、使用 css3 中 animation 属性（@keyframes 规则）</h3><p>当在 <strong>@keyframes</strong> 创建动画，把它绑定到一个选择器，否则动画不会有任何效果。</p>
-<a id="more"></a>
-
-<p>指定至少这两个 CSS3 的动画属性绑定向一个选择器：</p>
-<ul>
-<li>规定动画的名称</li>
-<li>规定动画的时长</li>
-</ul>
-<p>参见<a href="https://www.runoob.com/css3/css3-animations.html">css3 动画</a></p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1723,6 +1724,54 @@
 
 <p>待更～（后续会记录使用websocket时时更新数据）</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>css：瀑布流布局</title>
+    <url>/2021/05/02/css%EF%BC%9A%E7%80%91%E5%B8%83%E6%B5%81%E5%B8%83%E5%B1%80/</url>
+    <content><![CDATA[<img src="https://github.com/chajianyuan/picture/blob/master/WX20210515-164933@2x.png?raw=true" width="600px" />
+
+ <a id="more"></a>
+
+<h3 id="一、实现方式"><a href="#一、实现方式" class="headerlink" title="一、实现方式"></a>一、实现方式</h3><h4 id="1-使用javascript原生实现"><a href="#1-使用javascript原生实现" class="headerlink" title="1. 使用javascript原生实现"></a>1. 使用javascript原生实现</h4><ul>
+<li><p>优点：图片排序是按照图片计算的位置横向排列，位置是计算出来的，比较规范</p>
+</li>
+<li><p>缺点：需要计算，列数 = 浏览器窗口宽度 / 图片宽度，图片定位是根据每一列数据块的高度计算接下来图片的位置</p>
+</li>
+</ul>
+<p>盒子之间的间距建议使用padding，因为需要使用<code>offsetHeight</code>计算盒子的高度，<code>offsetHeight</code>指包括<code>padding</code>，不包括<code>margin</code></p>
+<p>js代码实现</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  waterfall(<span class="string">&#x27;main&#x27;</span>, <span class="string">&#x27;box&#x27;</span>);</span><br><span class="line">  <span class="keyword">let</span> dataInt = &#123;</span><br><span class="line">    data: [</span><br><span class="line">      &#123;<span class="attr">src</span>: <span class="string">&#x27;1.jpeg&#x27;</span>&#125;,</span><br><span class="line">      &#123;<span class="attr">src</span>: <span class="string">&#x27;2.jpeg&#x27;</span>&#125;,</span><br><span class="line">      &#123;<span class="attr">src</span>: <span class="string">&#x27;3.jpeg&#x27;</span>&#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">window</span>.onscroll = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (checkScrollSlide()) &#123;</span><br><span class="line">      <span class="comment">// 将数据块渲染到当前页面的尾部</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; dataInt.data.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> oParent = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;main&#x27;</span>);</span><br><span class="line">        <span class="keyword">let</span> oBox = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">        oBox.className = <span class="string">&#x27;box&#x27;</span>;</span><br><span class="line">        oParent.appendChild(oBox);</span><br><span class="line">        <span class="keyword">let</span> oPic = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">        oPic.className = <span class="string">&#x27;pic&#x27;</span>;</span><br><span class="line">        oBox.appendChild(oPic);</span><br><span class="line">        <span class="keyword">let</span> oImg = <span class="built_in">document</span>.createElement(<span class="string">&#x27;img&#x27;</span>);</span><br><span class="line">        oImg.src = <span class="string">`images/<span class="subst">$&#123;dataInt.data[i].src&#125;</span>`</span>;</span><br><span class="line">        oPic.appendChild(oImg);</span><br><span class="line">      &#125;</span><br><span class="line">      waterfall(<span class="string">&#x27;main&#x27;</span>, <span class="string">&#x27;box&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> waterfall = <span class="function">(<span class="params">parent, box</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 将main下的所有class为box的元素取出来</span></span><br><span class="line">  <span class="keyword">let</span> oParent = <span class="built_in">document</span>.getElementById(parent);</span><br><span class="line">  <span class="keyword">let</span> oBoxs = getByClass(oParent, box);</span><br><span class="line">  <span class="comment">// 计算整个页面显示的列数（页面宽/box的宽）</span></span><br><span class="line">  <span class="keyword">let</span> oBoxW = oBoxs[<span class="number">0</span>].offsetWidth;</span><br><span class="line">  <span class="keyword">let</span> cols = <span class="built_in">Math</span>.floor(<span class="built_in">document</span>.documentElement.clientWidth / oBoxW);</span><br><span class="line">  <span class="comment">// 设置main的宽</span></span><br><span class="line">  oParent.style.cssText = <span class="string">&#x27;width:&#x27;</span> + oBoxW * cols + <span class="string">&#x27;px; margin: 0 auto;&#x27;</span>;</span><br><span class="line">  <span class="keyword">let</span> hArr = []; <span class="comment">// 存放每一列高度的数组</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; oBoxs.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i &lt; cols) &#123;</span><br><span class="line">      hArr.push(oBoxs[i].offsetHeight);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> minH = <span class="built_in">Math</span>.min.apply(<span class="literal">null</span>, hArr);</span><br><span class="line">      <span class="keyword">let</span> index = getMinHIndex(hArr, minH);</span><br><span class="line">      oBoxs[i].style.position = <span class="string">&#x27;absolute&#x27;</span>;</span><br><span class="line">      oBoxs[i].style.top = minH + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">      <span class="comment">// oBoxs[i].style.left = oBoxW * index + &#x27;px&#x27;;</span></span><br><span class="line">      oBoxs[i].style.left = oBoxs[index].offsetLeft + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">      hArr[index] += oBoxs[i].offsetHeight;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据class获取元素</span></span><br><span class="line"><span class="keyword">const</span> getByClass = <span class="function">(<span class="params">parent, className</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> boxArr = []; <span class="comment">// 用来存储获取到的所有class为box的元素</span></span><br><span class="line">  <span class="keyword">let</span> oElements = parent.getElementsByTagName(<span class="string">&#x27;*&#x27;</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; oElements.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (oElements[i].className === className) &#123;</span><br><span class="line">      boxArr.push(oElements[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> boxArr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getMinHIndex = <span class="function">(<span class="params">arr, val</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> min = arr.findIndex(<span class="function"><span class="params">i</span> =&gt;</span> i === val);</span><br><span class="line">  <span class="keyword">return</span> min;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  检测是否具备了滚动条加载数据块的条件</span></span><br><span class="line"><span class="keyword">const</span> checkScrollSlide = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> oParent = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;main&#x27;</span>);</span><br><span class="line">  <span class="keyword">let</span> oBoxs = getByClass(oParent, <span class="string">&#x27;box&#x27;</span>);</span><br><span class="line">  <span class="keyword">let</span> lastBoxH = oBoxs[oBoxs.length - <span class="number">1</span>].offsetTop + <span class="built_in">Math</span>.floor(oBoxs[oBoxs.length - <span class="number">1</span>].offsetHeight / <span class="number">2</span>);</span><br><span class="line">  <span class="keyword">let</span> scrollTop = <span class="built_in">document</span>.body.scrollTop || <span class="built_in">document</span>.documentElement.scrollTop;</span><br><span class="line">  <span class="keyword">let</span> height = <span class="built_in">document</span>.body.clientHeight || <span class="built_in">document</span>.documentElement.clientHeight;</span><br><span class="line">  <span class="keyword">return</span> lastBoxH &lt; scrollTop + height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>html代码实现</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">&quot;main&quot;</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;pic&quot;</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">&quot;images/1.jpeg&quot;</span> /&gt;</span><br><span class="line">      &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;pic&quot;</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">&quot;images/2.jpeg&quot;</span> /&gt;</span><br><span class="line">      &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;pic&quot;</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">&quot;images/3.jpeg&quot;</span> /&gt;</span><br><span class="line">      &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;pic&quot;</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">&quot;images/4.jpeg&quot;</span> /&gt;</span><br><span class="line">      &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;pic&quot;</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">&quot;images/5.jpeg&quot;</span> /&gt;</span><br><span class="line">      &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;pic&quot;</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">&quot;images/6.jpeg&quot;</span> /&gt;</span><br><span class="line">      &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;pic&quot;</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">&quot;images/7.jpeg&quot;</span> /&gt;</span><br><span class="line">      &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;pic&quot;</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">&quot;images/8.jpeg&quot;</span> /&gt;</span><br><span class="line">      &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;pic&quot;</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">&quot;images/9.jpeg&quot;</span> /&gt;</span><br><span class="line">      &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;pic&quot;</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">&quot;images/10.jpeg&quot;</span> /&gt;</span><br><span class="line">      &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">  &lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>css代码实现：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">15px</span> <span class="number">0</span> <span class="number">0</span> <span class="number">15px</span>;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.pic</span> &#123;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">border</span>: solid <span class="number">1px</span> <span class="number">#ccc</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.pic</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">250px</span>;</span><br><span class="line">  <span class="attribute">height</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-css3多栏布局实现"><a href="#2-css3多栏布局实现" class="headerlink" title="2. css3多栏布局实现"></a>2. css3多栏布局实现</h4><h5 id="1-使用column属性"><a href="#1-使用column属性" class="headerlink" title="(1) 使用column属性"></a>(1) 使用column属性</h5><ul>
+<li><p>优点：不需要计算，浏览器自动计算，只需设置列宽，性能高</p>
+</li>
+<li><p>缺点：不可横向排列，只能纵向排列，打乱图片的排列顺序</p>
+</li>
+</ul>
+<p>css代码实现：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line">  <span class="attribute">-webkit-column-width</span>: <span class="number">202px</span>;</span><br><span class="line">  <span class="attribute">-moz-column-width</span>: <span class="number">202px</span>;</span><br><span class="line">  <span class="attribute">-moz-column-width</span>: <span class="number">202px</span>;</span><br><span class="line">  <span class="attribute">-ms-column-width</span>: <span class="number">202px</span>;</span><br><span class="line">  <span class="comment">/* -webkit-column-count: 5;</span></span><br><span class="line"><span class="comment">  -moz-column-count: 5;</span></span><br><span class="line"><span class="comment">  -moz-column-count: 5;</span></span><br><span class="line"><span class="comment">  -ms-column-count: 5; */</span></span><br><span class="line">  <span class="attribute">-webkit-column-gap</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">-moz-column-gap</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">-moz-column-gap</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">-ms-column-gap</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-使用flex布局"><a href="#2-使用flex布局" class="headerlink" title="(2) 使用flex布局"></a>(2) 使用flex布局</h5><ul>
+<li>优点：可实现横向排列的瀑布流</li>
+<li>缺点：容器必须有固定高度，并且高度要大于最高的列高</li>
+</ul>
+<p>css代码实现：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">  <span class="attribute">flex-direction</span>: column;</span><br><span class="line">  <span class="comment">/* 容器必须有固定高度</span></span><br><span class="line"><span class="comment">   * 且高度大于最高的列高 */</span></span><br><span class="line">  <span class="attribute">height</span>: <span class="number">2000px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">  <span class="attribute">align-content</span>: space-between;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 强制换列 */</span></span><br><span class="line"><span class="selector-id">#main</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-id">#main</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">order</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:nth-child(2n+1)</span> &#123;</span><br><span class="line">  <span class="attribute">order</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:nth-child(2n)</span> &#123;</span><br><span class="line">  <span class="attribute">order</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">32%</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="number">#ccc</span>;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
   </entry>
   <entry>
     <title>css：水平垂直居中</title>
@@ -3231,63 +3280,6 @@
       </tags>
   </entry>
   <entry>
-    <title>学习资料</title>
-    <url>/2021/03/10/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</url>
-    <content><![CDATA[<p><img src="https://pic1.zhimg.com/v2-1c7eb3599dd689e6b3631818d9c007a0_720w.jpg?source=172ae18b"></p>
-<a id="more"></a>
-
-<table>
-<thead>
-<tr>
-<th>图标</th>
-<th align="center">含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>📖</td>
-<td align="center">书籍</td>
-</tr>
-<tr>
-<td>💻</td>
-<td align="center">网站</td>
-</tr>
-<tr>
-<td>👸</td>
-<td align="center">微信公众号</td>
-</tr>
-</tbody></table>
-<ul>
-<li><input disabled="" type="checkbox"> 💻 <a href="https://mp.weixin.qq.com/s/HbfThzav79GFS-sMirAINA">2020年你不应该错过的CSS新特性</a></li>
-<li><input disabled="" type="checkbox"> 📖 <a href="https://www.yuque.com/docs/share/d32ce6ae-f7c0-437e-9c5a-2df32bcb3580#">《专家思维、大脑和学习》</a></li>
-<li><input disabled="" type="checkbox"> 💻 <a href="https://reactjs.org/blog/2020/10/20/react-v17.html">react 17</a></li>
-<li><input disabled="" type="checkbox"> 📖 <a href="https://www.yuque.com/docs/share/3c219cf1-6376-420c-98c0-265871ad71bf#%20%E3%80%8AOKR%E6%91%98%E5%BD%95%E3%80%8B">OKA摘录</a></li>
-<li><input disabled="" type="checkbox"> 📖 <a href="https://book.douban.com/subject/4164024//">高效程序员的45个习惯</a></li>
-<li><input checked="" disabled="" type="checkbox"> 💻 <a href="https://mp.weixin.qq.com/s/IYx6VFoy7cLuF--WZed9YQ">28 个 JavaScript 编程黑科技：还有这种操作！</a></li>
-<li><input disabled="" type="checkbox"> 📖 金字塔</li>
-<li><input disabled="" type="checkbox"> 📖 数据结构与算法之美</li>
-<li><input disabled="" type="checkbox"> 📖 你不知道的JavaScript</li>
-<li><input disabled="" type="checkbox"> 💻 <a href="https://segmentfault.com/a/1190000021712743">git merge的原理</a></li>
-<li><input disabled="" type="checkbox"> 📖 <a href="https://www.yuque.com/docs/share/d5caf5e8-1674-4f4d-90fa-7fca8c1a5a6a#%20%E3%80%8A%E7%BB%93%E6%9E%84%E5%8C%96%E6%80%9D%E7%BB%B4%E3%80%8B">结构化思维</a></li>
-<li><input disabled="" type="checkbox"> 💻 <a href="https://backlog.com/git-tutorial/cn/intro/intro1_1.html">猴子都能懂的GIT入门</a></li>
-<li><input checked="" disabled="" type="checkbox"> 👸 <a href="https://mp.weixin.qq.com/s/TI54CJ7vgE2wiquFN5NyPA">你可能不知道的 CSS 阴影技巧与细节</a></li>
-<li><input disabled="" type="checkbox"> 💻 <a href="https://inrupt.com/solid">Solid</a></li>
-<li><input disabled="" type="checkbox"> 💻 <a href="https://bitable.feishu.cn/app8Ok6k9qafpMkgyRbfgxeEnet?from=logout&table=tblEnSV2PNAajtWE&view=vewJHSwJVd">前端年后面试真题，会80%直接金大厂</a></li>
-<li><input disabled="" type="checkbox"> 💻 <a href="https://zhuanlan.zhihu.com/p/94611888">Continuation 在 JS 中的应用</a></li>
-<li><input checked="" disabled="" type="checkbox"> 👸 <a href="https://mp.weixin.qq.com/s/8j2z3uOaVWADLf5FD_BF3g">JavaScript 代码整洁之道</a></li>
-<li><input disabled="" type="checkbox"> 💻 <a href="https://github.com/CavsZhouyou/Front-End-Interview-Notebook">Front-End-Interview-Notebook</a></li>
-<li><input disabled="" type="checkbox"> 💻 <a href="https://app.yinxiang.com/fx/5a9f1e0f-a3c7-43ed-bffe-e15802ff2b66">大鱼：Node.js Learning Path</a></li>
-<li><input disabled="" type="checkbox"> 💻 <a href="https://nqdeng.github.io/7-days-nodejs/">七天学会NodeJS</a></li>
-<li><input disabled="" type="checkbox"> 👸 <a href="https://mp.weixin.qq.com/s/tsEgUOmWnHDLVPOFLqUd7Q">当面试官问Webpack的时候他想知道什么</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>学习资料</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>其他：使用hexo搭建博客</title>
     <url>/2019/03/16/%E5%85%B6%E4%BB%96%EF%BC%9A%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer"/>
@@ -3346,6 +3338,65 @@
       </categories>
       <tags>
         <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习资料</title>
+    <url>/2021/03/10/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</url>
+    <content><![CDATA[<p><img src="https://pic1.zhimg.com/v2-1c7eb3599dd689e6b3631818d9c007a0_720w.jpg?source=172ae18b"></p>
+<a id="more"></a>
+
+<table>
+<thead>
+<tr>
+<th>图标</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>📖</td>
+<td align="center">书籍</td>
+</tr>
+<tr>
+<td>💻</td>
+<td align="center">网站</td>
+</tr>
+<tr>
+<td>👸</td>
+<td align="center">微信公众号</td>
+</tr>
+</tbody></table>
+<ul>
+<li><input disabled="" type="checkbox"> 💻 <a href="https://mp.weixin.qq.com/s/HbfThzav79GFS-sMirAINA">2020年你不应该错过的CSS新特性</a></li>
+<li><input disabled="" type="checkbox"> 📖 <a href="https://www.yuque.com/docs/share/d32ce6ae-f7c0-437e-9c5a-2df32bcb3580#">《专家思维、大脑和学习》</a></li>
+<li><input disabled="" type="checkbox"> 💻 <a href="https://reactjs.org/blog/2020/10/20/react-v17.html">react 17</a></li>
+<li><input disabled="" type="checkbox"> 📖 <a href="https://www.yuque.com/docs/share/3c219cf1-6376-420c-98c0-265871ad71bf#%20%E3%80%8AOKR%E6%91%98%E5%BD%95%E3%80%8B">OKA摘录</a></li>
+<li><input disabled="" type="checkbox"> 📖 <a href="https://book.douban.com/subject/4164024//">高效程序员的45个习惯</a></li>
+<li><input checked="" disabled="" type="checkbox"> 💻 <a href="https://mp.weixin.qq.com/s/IYx6VFoy7cLuF--WZed9YQ">28 个 JavaScript 编程黑科技：还有这种操作！</a></li>
+<li><input disabled="" type="checkbox"> 📖 金字塔</li>
+<li><input disabled="" type="checkbox"> 📖 数据结构与算法之美</li>
+<li><input disabled="" type="checkbox"> 📖 你不知道的JavaScript</li>
+<li><input disabled="" type="checkbox"> 💻 <a href="https://segmentfault.com/a/1190000021712743">git merge的原理</a></li>
+<li><input disabled="" type="checkbox"> 📖 <a href="https://www.yuque.com/docs/share/d5caf5e8-1674-4f4d-90fa-7fca8c1a5a6a#%20%E3%80%8A%E7%BB%93%E6%9E%84%E5%8C%96%E6%80%9D%E7%BB%B4%E3%80%8B">结构化思维</a></li>
+<li><input disabled="" type="checkbox"> 💻 <a href="https://backlog.com/git-tutorial/cn/intro/intro1_1.html">猴子都能懂的GIT入门</a></li>
+<li><input checked="" disabled="" type="checkbox"> 👸 <a href="https://mp.weixin.qq.com/s/TI54CJ7vgE2wiquFN5NyPA">你可能不知道的 CSS 阴影技巧与细节</a></li>
+<li><input disabled="" type="checkbox"> 💻 <a href="https://inrupt.com/solid">Solid</a></li>
+<li><input disabled="" type="checkbox"> 💻 <a href="https://bitable.feishu.cn/app8Ok6k9qafpMkgyRbfgxeEnet?from=logout&table=tblEnSV2PNAajtWE&view=vewJHSwJVd">前端年后面试真题，会80%直接金大厂</a></li>
+<li><input disabled="" type="checkbox"> 💻 <a href="https://zhuanlan.zhihu.com/p/94611888">Continuation 在 JS 中的应用</a></li>
+<li><input checked="" disabled="" type="checkbox"> 👸 <a href="https://mp.weixin.qq.com/s/8j2z3uOaVWADLf5FD_BF3g">JavaScript 代码整洁之道</a></li>
+<li><input disabled="" type="checkbox"> 💻 <a href="https://github.com/CavsZhouyou/Front-End-Interview-Notebook">Front-End-Interview-Notebook</a></li>
+<li><input disabled="" type="checkbox"> 💻 <a href="https://app.yinxiang.com/fx/5a9f1e0f-a3c7-43ed-bffe-e15802ff2b66">大鱼：Node.js Learning Path</a></li>
+<li><input disabled="" type="checkbox"> 💻 <a href="https://nqdeng.github.io/7-days-nodejs/">七天学会NodeJS</a></li>
+<li><input disabled="" type="checkbox"> 👸 <a href="https://mp.weixin.qq.com/s/tsEgUOmWnHDLVPOFLqUd7Q">当面试官问Webpack的时候他想知道什么</a></li>
+<li><input disabled="" type="checkbox"> 📖 敏捷软件开发</li>
+<li><input disabled="" type="checkbox"> 六顶思考帽</li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>学习资料</tag>
       </tags>
   </entry>
   <entry>
