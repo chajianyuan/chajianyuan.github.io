@@ -6,7 +6,7 @@
   <link href="https://chajianyuan.github.io/atom.xml" rel="self"/>
   
   <link href="https://chajianyuan.github.io/"/>
-  <updated>2021-06-17T03:26:51.785Z</updated>
+  <updated>2021-06-17T07:03:59.105Z</updated>
   <id>https://chajianyuan.github.io/</id>
   
   <author>
@@ -21,17 +21,17 @@
     <link href="https://chajianyuan.github.io/2021/06/04/react%EF%BC%9A%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6%20VS%20%E9%9D%9E%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6/"/>
     <id>https://chajianyuan.github.io/2021/06/04/react%EF%BC%9A%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6%20VS%20%E9%9D%9E%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6/</id>
     <published>2021-06-04T02:18:23.000Z</published>
-    <updated>2021-06-17T03:26:51.785Z</updated>
+    <updated>2021-06-17T07:03:59.105Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="一、非受控组件"><a href="#一、非受控组件" class="headerlink" title="一、非受控组件"></a>一、非受控组件</h4><ol><li>必须手动操作DOM元素，使用setState无法操作</li></ol><p>ref</p><p>defaultValue defaultChecked</p><p>手动操作DOM元素</p><p>使用场景<br>    必须手动操作DOM元素，setState实现不了<br>    举个 🌰<br>        文件上传<code>&lt;input type=&quot;file&quot; /&gt;</code><br>        某些富文本编辑器，需要传入DOM元素<br>        <code>&lt;input defaultValue=&quot;value&quot; /&gt;</code><br>            如果想更新defaultValue的值，需要加一个key,<code>&lt;input defaultValue=&quot;value&quot; key=&quot;value&quot; /&gt;</code><br>            ❓为什么加一个key，就能更新defalutValue的值了呢？</p><h4 id="二、受控组件"><a href="#二、受控组件" class="headerlink" title="二、受控组件"></a>二、受控组件</h4><ol><li>受state影响</li></ol><p>表单的值，受state影响<br>需要自行监听onChange，更新state<br>无需呀手动操作DOM</p><h4 id="三、受控组件-vs-非受控组件"><a href="#三、受控组件-vs-非受控组件" class="headerlink" title="三、受控组件 vs 非受控组件"></a>三、受控组件 vs 非受控组件</h4><pre><code>优先使用受控组件，符合react设计原则必须操作DOM元素，再使用非受控组件</code></pre>]]></content>
+    <content type="html"><![CDATA[<h4 id="一、非受控组件"><a href="#一、非受控组件" class="headerlink" title="一、非受控组件"></a>一、非受控组件</h4><ol><li><p>必须手动操作DOM元素</p></li><li><p>无法使用setState</p></li><li><p>举个 🌰</p><ul><li><p>ref</p></li><li><p>defaultValue defaultChecked</p></li><li><p>文件上传<code>&lt;input type=&quot;file&quot; /&gt;</code></p></li><li><p>某些富文本编辑器，需要传入DOM元素</p></li><li><p><code>&lt;input defaultValue=&quot;value&quot; /&gt;</code>，如果想更新defaultValue的值，需要加一个key,<code>&lt;input defaultValue=&quot;value&quot; key=&quot;value&quot; /&gt;</code>，❓为什么加一个key，就能更新defalutValue的值了呢？</p></li></ul></li></ol><h4 id="二、受控组件"><a href="#二、受控组件" class="headerlink" title="二、受控组件"></a>二、受控组件</h4><ol><li><p>受state影响</p></li><li><p>需要自行监听onChange，更新state</p></li><li><p>无需手动操作DOM</p></li><li><p>举个 🌰</p><ul><li><p>input 标签中的value属性</p><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span> <span class="title">extents</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      name: <span class="string">&#x27;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleChange = e =&gt; &#123;</span><br><span class="line">    <span class="keyword">this</span>.setstate(&#123;</span><br><span class="line">      name: e.target.value</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;input value=&#123;<span class="keyword">this</span>.state.name&#125; onChange=&#123;<span class="keyword">this</span>.handleChange&#125; /&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul></li></ol><h4 id="三、受控组件-vs-非受控组件"><a href="#三、受控组件-vs-非受控组件" class="headerlink" title="三、受控组件 vs 非受控组件"></a>三、受控组件 vs 非受控组件</h4><ol><li>优先使用受控组件，符合react设计原则</li><li>必须操作DOM元素，再使用非受控组件</li></ol>]]></content>
     
     
       
       
     <summary type="html">&lt;h4 id=&quot;一、非受控组件&quot;&gt;&lt;a href=&quot;#一、非受控组件&quot; class=&quot;headerlink&quot; title=&quot;一、非受控组件&quot;&gt;&lt;/a&gt;一、非受控组件&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;必须手动操作DOM元素，使用setState无法操作&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;ref</summary>
+&lt;li&gt;&lt;p&gt;必须手动操作DOM元素&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;无法使用setState</summary>
       
     
     
