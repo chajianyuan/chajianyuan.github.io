@@ -6,7 +6,7 @@
   <link href="https://chajianyuan.github.io/atom.xml" rel="self"/>
   
   <link href="https://chajianyuan.github.io/"/>
-  <updated>2021-07-19T03:37:00.163Z</updated>
+  <updated>2021-07-19T06:54:18.446Z</updated>
   <id>https://chajianyuan.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react：解决图片上传翻转问题</title>
+    <link href="https://chajianyuan.github.io/2021/07/19/react%EF%BC%9A%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E7%BF%BB%E8%BD%AC%E9%97%AE%E9%A2%98/"/>
+    <id>https://chajianyuan.github.io/2021/07/19/react%EF%BC%9A%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E7%BF%BB%E8%BD%AC%E9%97%AE%E9%A2%98/</id>
+    <published>2021-07-19T06:53:10.000Z</published>
+    <updated>2021-07-19T06:54:18.446Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/chajianyuan/fixIosImageFlip">源码及详细解释在这里👉</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/chajianyuan/fixIosImageFlip&quot;&gt;源码及详细解释在这里👉&lt;/a&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://chajianyuan.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="react" scheme="https://chajianyuan.github.io/tags/react/"/>
+    
+  </entry>
   
   <entry>
     <title>git：github配置ssh_key</title>
@@ -428,28 +453,6 @@
     
     
     <category term="算法" scheme="https://chajianyuan.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>react: useEffect</title>
-    <link href="https://chajianyuan.github.io/2020/10/27/react%EF%BC%9AuseEffect/"/>
-    <id>https://chajianyuan.github.io/2020/10/27/react%EF%BC%9AuseEffect/</id>
-    <published>2020-10-27T11:46:05.000Z</published>
-    <updated>2021-02-10T10:51:22.714Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文是在学习<a href="https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/">useEffect完整指南</a>中做的笔记，记录自己不理解的地方以及学到的知识。</p><h3 id="🍀-每一次渲染都有它自己的Props和State"><a href="#🍀-每一次渲染都有它自己的Props和State" class="headerlink" title="🍀 每一次渲染都有它自己的Props和State"></a>🍀 每一次渲染都有它自己的Props和State</h3><h3 id="🍀-每一次渲染都有它自己的事件处理函数"><a href="#🍀-每一次渲染都有它自己的事件处理函数" class="headerlink" title="🍀 每一次渲染都有它自己的事件处理函数"></a>🍀 每一次渲染都有它自己的事件处理函数</h3><a id="more"></a><h3 id="🍀-每一次渲染都有它自己的Effects"><a href="#🍀-每一次渲染都有它自己的Effects" class="headerlink" title="🍀 每一次渲染都有它自己的Effects"></a>🍀 每一次渲染都有它自己的Effects</h3><p>每一个组件内的函数（包括事件处理函数，effects，定时器或者API调用等等）都会捕捉某次渲染中定义的props和state。</p><p>React会根据我们当前的props和state同步到DOM。</p><p>useEffect使你能够根据props和state同步React tree之外的东西。</p><p>useEffect中的依赖项用来告诉React去对比你的Effects。</p><h3 id="🍀-关于依赖项不要对React撒谎"><a href="#🍀-关于依赖项不要对React撒谎" class="headerlink" title="🍀 关于依赖项不要对React撒谎"></a>🍀 关于依赖项不要对React撒谎</h3><ul><li><p>诚实告知依赖</p><ul><li><p>在依赖中包含所有effect中用到的组件内的值。</p></li><li><p>修改effect内部的代码，以确保它包含的值只会在需要的时候发生变更。</p></li></ul></li></ul><h3 id="🍀-函数式更新"><a href="#🍀-函数式更新" class="headerlink" title="🍀 函数式更新"></a>🍀 函数式更新</h3><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    const id = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      setCount(<span class="function"><span class="params">c</span> =&gt;</span> c + <span class="number">1</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> clearInterval(id);</span><br><span class="line">  &#125;, []);</span><br></pre></td></tr></table></figure><p>例如用<code>setCount(c =&gt; c + 1)</code> 代替  <code>setCount(count+1)</code>, 在effect中传递最小的信息</p><h3 id="🍀-解耦来自Actions的更新"><a href="#🍀-解耦来自Actions的更新" class="headerlink" title="🍀 解耦来自Actions的更新"></a>🍀 解耦来自Actions的更新</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> [step, setStep] = useState(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> id = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      setCount(<span class="function"><span class="params">c</span> =&gt;</span> c + step);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearInterval</span>(id);</span><br><span class="line">  &#125;, [step]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;h1&gt;&#123;count&#125;&lt;/h1&gt;</span><br><span class="line">      &lt;input value=&#123;step&#125; onChange=&#123;<span class="function"><span class="params">e</span> =&gt;</span> setStep(<span class="built_in">Number</span>(e.target.value))&#125; /&gt;</span><br><span class="line">    &lt;/&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>当你想更新一个状态，并且这个状态更新依赖于另一个状态的值时，你可能需要使用<code>useReducer</code>去替换它们。</p><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [<span class="keyword">state</span>, dispatch] = useReducer(reducer, initialState);</span><br><span class="line"><span class="keyword">const</span> &#123; count, step &#125; = <span class="keyword">state</span>;</span><br><span class="line"></span><br><span class="line">useEffect(() =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> id = <span class="built_in">set</span>Interval(() =&gt; &#123;</span><br><span class="line">    dispatch(&#123; type: &#x27;tick&#x27; &#125;); // Instead of <span class="built_in">set</span>Count(c =&gt; c + step);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">  return () =&gt; clearInterval(id);</span><br><span class="line">&#125;, [dispatch]);</span><br></pre></td></tr></table></figure><p>React会保证<code>dispatch</code>在组件的生命周期内保持不变。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;本文是在学习&lt;a href=&quot;https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/&quot;&gt;useEffect完整指南&lt;/a&gt;中做的笔记，记录自己不理解的地方以及学到的知识。&lt;/p&gt;
-&lt;h3 id=&quot;🍀-每一次渲染都有它自己的Props和State&quot;&gt;&lt;a href=&quot;#🍀-每一次渲染都有它自己的Props和State&quot; class=&quot;headerlink&quot; title=&quot;🍀 每一次渲染都有它自己的Props和State&quot;&gt;&lt;/a&gt;🍀 每一次渲染都有它自己的Props和State&lt;/h3&gt;&lt;h3 id=&quot;🍀-每一次渲染都有它自己的事件处理函数&quot;&gt;&lt;a href=&quot;#🍀-每一次渲染都有它自己的事件处理函数&quot; class=&quot;headerlink&quot; title=&quot;🍀 每一次渲染都有它自己的事件处理函数&quot;&gt;&lt;/a&gt;🍀 每一次渲染都有它自己的事件处理函数&lt;/h3&gt;</summary>
-    
-    
-    
-    <category term="阅读笔记" scheme="https://chajianyuan.github.io/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="react" scheme="https://chajianyuan.github.io/tags/react/"/>
     
   </entry>
   
